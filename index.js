@@ -4,7 +4,7 @@ const app = express();
 const port = process.env.PORT || 8080;
 
 
-app.use("/index", express.static("public"));
+app.use("/", express.static("public"));
 
 
 app.get("/cool", (req,res)=>{
