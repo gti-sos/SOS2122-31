@@ -90,7 +90,13 @@ app.delete(BASE_API_URL + "/registration-stats/:country/:year", (req,res)=>{ //b
     res.sendStatus(200, "OK");
 });
 
+app.put(BASE_API_URL + "/registration-stats", (req,res)=>{
+    res.sendStatus(409, "CONFLICT");
+});
 
+app.put(BASE_API_URL + "/registration-stats/:country", (req,res)=>{
+    var countryName = req.params.country;
+});
 app.listen(port, () =>{
     console.log(`server TRULY ready at the port ${port}`);
 });
