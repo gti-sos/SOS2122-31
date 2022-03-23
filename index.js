@@ -32,8 +32,14 @@ app.get(BASE_API_URL + "/registration-stats", (req,res)=>{
 });
 
 app.post(BASE_API_URL + "/registration-stats", (req,res)=>{
-    registration_stats.push(req.body);
-    res.sendStatus(201, "CREATED");
+    registro = registration_stats.push(req.body);
+    if(registro == 1){
+        res.sendStatus(409, "Conflict");
+    }else{
+        res.send(JSON.stringify(registro, null,2));
+    }
+    //registro = registration_stats.push(req.body);
+    //res.sendStatus(201, "CREATED");
 });
 
 app.delete(BASE_API_URL + "/registration-stats", (req,res)=>{ 
