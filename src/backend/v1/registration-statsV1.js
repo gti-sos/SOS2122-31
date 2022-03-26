@@ -186,6 +186,7 @@ module.exports.register = (app) => {
         res.sendStatus(200, "OK.")
         
     });
+    
     app.get(BASE_API_URL + "/registration-stats/docs", (res,req) =>{
         res.redirect("https://documenter.getpostman.com/view/19505610/UVyn2Jnb")
     });
