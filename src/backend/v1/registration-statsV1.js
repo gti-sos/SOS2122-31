@@ -88,7 +88,7 @@ var registration_stats = [
 module.exports.register = (app) => {
     
     app.get(BASE_API_URL + "/registration-stats/docs", (res,req) =>{
-        res.redirect("http://sos2122-31.herokuapp.com/api/v1/registration-stats/docs")
+        res.redirect("https://documenter.getpostman.com/view/19505610/UVyn2Jnb")
     });
 
 
