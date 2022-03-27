@@ -222,9 +222,9 @@ module.exports.register = (app) => {
     });
 
 
-    //app.get(BASE_API_URL + "/registration-stats", (req,res)=>{
-    //    res.send(JSON.stringify(registration_stats, null,2));
-    //})
+    app.get(BASE_API_URL + "/registration-stats", (req,res)=>{
+        res.send(JSON.stringify(registration_stats, null,2));
+    });
 
 
 
@@ -268,7 +268,7 @@ module.exports.register = (app) => {
     app.delete(BASE_API_URL + "/registration-stats/:country", (req,res)=>{ //borrar todos los recursos
         var countryName = req.params.country;
         registration_stats.filter((cont) =>{
-            return (cont.country == countryName); 
+            return (cont.country != countryName); 
         });
         res.sendStatus(200, "OK");
     });
@@ -277,7 +277,7 @@ module.exports.register = (app) => {
         var countryName = req.params.country;
         var yearName = req.params.year;
         registration_stats.filter((cont) =>{
-            return (cont.country == countryName) && (cont.year == yearName); 
+            return (cont.country != countryName) || (cont.year != yearName); 
         });
         res.sendStatus(200, "OK");
     });
