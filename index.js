@@ -12,6 +12,10 @@ app.use(bodyParser.json());
 const registration_statsV1 =  require("./src/backend/v1/registration-statsV1");
 registration_statsV1.register(app);
 
+//Daniel Vega Vera:
+const alphabetization_statsV1 =  require("./src/backend/v1/alphabetization-statsV1");
+alphabetization_statsV1.register(app);
+
 app.use("/", express.static("public"));
 
 app.get("/cool", (req,res)=>{
