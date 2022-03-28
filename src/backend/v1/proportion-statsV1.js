@@ -37,6 +37,78 @@ var proportion_stats = [
         total : 3.1, 
         male : 2.7, 
         female : 3.7
+    },
+
+    {
+        contry: "Afganistan",
+        year: 2020,
+        total: 53.8, 
+        male: 32.2,
+        female: 74.0
+    },
+
+    {
+        contry: "Albania",
+        year: 2019,
+        total: 25.8, 
+        male: 26.2,
+        female: 25.5
+    },
+
+    {
+        contry: "Chipre",
+        year: 2020,
+        total: 14.4, 
+        male: 15.3,
+        female: 13.5
+    },
+
+    {
+        contry: "Colombia",
+        year: 2019,
+        total: 24.0, 
+        male: 15.6,
+        female: 32.4
+    },
+
+    {
+        contry: "Honduras",
+        year: 2019,
+        total: 28.1, 
+        male: 12.3,
+        female: 43.4
+    },
+
+    {
+        contry: "Israel",
+        year: 2020,
+        total: 17.3, 
+        male: 17.4,
+        female: 17.1
+    },
+
+    {
+        contry: "Mauricio",
+        year: 2020,
+        total: 41.7, 
+        male: 36.4,
+        female: 47.7
+    },
+
+    {
+        contry: "Mexico",
+        year: 2020,
+        total: 20.4, 
+        male: 11.8,
+        female: 29.1
+    },
+
+    {
+        contry: "Rwanda",
+        year: 2020,
+        total: 31.0, 
+        male: 26.6,
+        female: 35.3
     }
 
 ];
