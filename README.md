@@ -10,5 +10,5 @@
 -  **APIs**:
     - [https://sos2122-31.herokuapp.com/api/v1/registration-stats/docs](https://sos2122-31.herokuapp.com/api/v1/registration-stats/docs) (developed by [Ismael Mesa Zyout](https://github.com/IsmaelMesaZyout))
     - [https://sos2122-31.herokuapp.com/api/v1/alphabetization-stats/docs](https://sos2122-31.herokuapp.com/api/v1/alphabetization-stats/docs) (developed by [Daniel Vega Vera](https://github.com/daniveg20))
-    - [https://sos2122-00.herokuapp.com/api/v1/my-awesome-resource-3/docs](https://sos2122-00.herokuapp.com/api/v1/my-awesome-resource-3/docs) (developed by [José Ortiz Roldán](https://github.com/madgIitch))
+    - [https://sos2122-31.herokuapp.com/api/v1/proportion-stats](https://sos2122-31.herokuapp.com/api/v1/proportion-stats) (developed by [José Ortiz Roldán](https://github.com/madgIitch))
 
