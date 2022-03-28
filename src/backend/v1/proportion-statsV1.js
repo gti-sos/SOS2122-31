@@ -121,10 +121,10 @@ module.exports.register = (app) => {
         res.send(JSON.stringify(proportion_stats, null,2));
     });
 
-    app.get(BASE_API_URL + "/registration-stats/loadInitialData",(req, res)=>{
+    app.get(BASE_API_URL + "/proportion-stats/loadInitialData",(req, res)=>{
     
-        if(registration_stats.length==0){
-            registration_stats =[
+        if(proportion_stats.length==0){
+            proportion_stats =[
 
                 {
                     contry: "Afganistan",
