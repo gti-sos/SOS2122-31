@@ -17,7 +17,7 @@ const alphabetization_statsV1 =  require("./src/backend/v1/alphabetization-stats
 alphabetization_statsV1.register(app);
 
 //José Ortiz Roldán
-const proportion_statsV1 = require("./src/backend/v1/proportion_statsV1");
+const proportion_statsV1 = require("./src/backend/v1/proportion-statsV1");
 proportion_statsV1.register(app);
 
 app.use("/", express.static("public"));
