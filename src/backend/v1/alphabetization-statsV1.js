@@ -252,7 +252,7 @@ module.exports.register = (app) => {
             var tl = alphabetization_stats.findIndex((reg) =>{
                 return (reg.country == country && reg.year == year)
             });
-            if(tl == null){
+            if(tl != null){
                 res.sendStatus(404,"NOT FOUND");
             }else if(country != body.country || year != body.year){
                 res.sendStatus(400,"BAD REQUEST");
