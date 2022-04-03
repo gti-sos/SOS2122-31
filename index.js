@@ -7,11 +7,11 @@ const port = process.env.PORT || 8080;
 
 const registration_stats_V1 = require("./src/backend/v1/registration-statsV1");
 const Datastore = require('nedb');
-db_regitration_stats = new Datastore();
+//db_regitration_stats = new Datastore();
 
 app.use(bodyParser.json());
 
-registration_stats_V1.register(app,db_regitration_stats);
+registration_stats_V1.register(app);
 
 
 //José Ortiz Roldán
