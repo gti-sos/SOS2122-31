@@ -1,10 +1,5 @@
 const BASE_API_URL = "/api/v1";
 const bodyParser = require("body-parser");
-var Datastore = require("nedb");
-
-var path = require('path');
-var datafile = path.join(__dirname, 'registration-stats.db');
-var db = new Datastore({filename: datafile, autoload:true});
 
 var registration_stats = [{
     country: "germany",
@@ -85,7 +80,7 @@ var registration_stats = [{
 ];
 
 
-module.exports.register = (app) => {
+module.exports.register = (app,db) => {
 
     app.get(BASE_API_URL + "/registration-stats/loadInitialData", (req, res) => {
         db.insert(registration_stats);
