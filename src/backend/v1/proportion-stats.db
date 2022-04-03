@@ -42,9 +42,6 @@
 {"contry":"Mexico","year":2020,"total":20.4,"male":11.8,"female":29.1,"_id":"SURhq0DUmD7CgInh"}
 {"contry":"Colombia","year":2019,"total":24,"male":15.6,"female":32.4,"_id":"T6h9foeRzNpVrvGc"}
 {"contry":"Honduras","year":2019,"total":28.1,"male":12.3,"female":43.4,"_id":"TORn5PO8MHUt4Bjp"}
-{"contry":"Israel","year":2020,"total":17.3,"male":17.4,"female":17.1,"_id":"TahdLIpnWiwgqlTI"}
-{"country":"Japan","year":2019,"total":3.1,"male":2.7,"female":3.7,"_id":"UDO2JqIyxQqlm2jH"}
-{"contry":"Chipre","year":2020,"total":14.4,"male":15.3,"female":13.5,"_id":"UtCJDxf2mqGV4EiY"}
 {"country":"Chad","year":2018,"total":37,"male":24.8,"female":46.4,"_id":"V5aoh4a1UriTlYRE"}
 {"contry":"Israel","year":2020,"total":17.3,"male":17.4,"female":17.1,"_id":"VuzeUv4NsydNEUTI"}
 {"country":"Japan","year":2019,"total":3.1,"male":2.7,"female":3.7,"_id":"W3W6HlUjq3DZs24d"}
@@ -53,8 +50,6 @@
 {"contry":"Mauricio","year":2020,"total":41.7,"male":36.4,"female":47.7,"_id":"YOexaG4T0QD1HhEX"}
 {"contry":"Colombia","year":2019,"total":24,"male":15.6,"female":32.4,"_id":"ZVcy2IPErKdImQuu"}
 {"country":"Chad","year":2018,"total":37,"male":24.8,"female":46.4,"_id":"aK9qKV6k7gSkNovt"}
-{"country":"Argentina","year":2020,"total":22.3,"male":21,"female":23.7,"_id":"c5Ey996uSapRMJ2w"}
-{"contry":"Rwanda","year":2020,"total":31,"male":26.6,"female":35.3,"_id":"d1Ra4XzD39iuFQ5W"}
 {"country":"Argentina","year":2019,"total":24.3,"male":22,"female":26.7,"_id":"dKsaOBVinuJaY1QP"}
 {"contry":"Honduras","year":2019,"total":28.1,"male":12.3,"female":43.4,"_id":"dSxBR4ozuNTJ7CnF"}
 {"country":"Japan","year":2019,"total":3.1,"male":2.7,"female":3.7,"_id":"ePPZ0vHYu4qWbo76"}
@@ -83,6 +78,7 @@
 {"contry":"Afganistan","year":2020,"total":53.8,"male":32.2,"female":74,"_id":"r5QFQeHcePbgavOE"}
 {"country":"Japan","year":2019,"total":3.1,"male":2.7,"female":3.7,"_id":"rHDOJVXRtCep90Yp"}
 {"contry":"Afganistan","year":2020,"total":53.8,"male":32.2,"female":74,"_id":"raBJpENH7iHyIPSb"}
+
 {"country":"Chad","year":2018,"total":37,"male":24.8,"female":46.4,"_id":"rwlcEQWTA6JwdTjs"}
 {"country":"Chad","year":2018,"total":37,"male":24.8,"female":46.4,"_id":"s77X1fqhwyW5sKQY"}
 {"contry":"Honduras","year":2019,"total":28.1,"male":12.3,"female":43.4,"_id":"sFJfdYft7yH8Wffe"}
@@ -93,4 +89,5 @@
 {"country":"Argentina","year":2020,"total":22.3,"male":21,"female":23.7,"_id":"wSoX5XHWtiWKN37d"}
 {"contry":"Chipre","year":2020,"total":14.4,"male":15.3,"female":13.5,"_id":"wmRlZR5mqwp3VCVw"}
 {"contry":"Rwanda","year":2020,"total":31,"male":26.6,"female":35.3,"_id":"wzkNKWcitIX3ZN4e"}
+
 {"contry":"Honduras","year":2019,"total":28.1,"male":12.3,"female":43.4,"_id":"yRYHdymU24p3zCA1"}

@@ -1,20 +1,22 @@
-const cool = require("cool-ascii-faces"); //cool es una función 
+const cool = require("cool-ascii-faces");
 const express = require("express");
+const bodyParser = require("body-parser");
+
 const app = express();
 const port = process.env.PORT || 8080;
 
-var path = require('path');
+const registration_stats_V1 = require("./src/backend/v1/registration-statsV1");
+const Datastore = require('nedb');
+//db_regitration_stats = new Datastore();
 
-const BASE_API_URL = "/api/v1";
-const bodyParser = require("body-parser");
 app.use(bodyParser.json());
 
-const registration_statsV1 =  require("./src/backend/v1/registration-statsV1");
-registration_statsV1.register(app);
+registration_stats_V1.register(app);
 
-//Daniel Vega Vera:
-const alphabetization_statsV1 =  require("./src/backend/v1/alphabetization-statsV1");
-alphabetization_statsV1.register(app);
+
+//José Ortiz Roldán
+const proportion_statsV1 = require("./src/backend/v1/proportion-statsV1");
+proportion_statsV1.register(app);
 
 //José Ortiz Roldán
 const proportion_statsV1 = require("./src/backend/v1/proportion-statsV1");
