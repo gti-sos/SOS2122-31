@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node index.js",
     "test-registration-stats": "npx newman run ./tests/backend_registration.json -e ./tests/env/heroku_registration.json",
-    "test": "npm run test-registration-stats"
+    "test-alphabetization-stats": "npx newman run ./tests/alphabetization-stats.json -e ./tests/env/alphabetization-statsENV.json",
+    "test": "npm run test-registration-stats && test-alphabetization-stats"
   },
   "author": "sos2122-31",
   "license": "ISC",

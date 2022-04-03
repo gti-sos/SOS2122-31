@@ -20,6 +20,12 @@ registration_stats_V1.register(app,db_regitration_stats);
 const proportion_statsV1 = require("./src/backend/v1/proportion-statsV1");
 proportion_statsV1.register(app);
 
+//Daniel Vega Vera:
+const alphabetization_stats_V1 = require("./src/backend/v1/alphabetization-statsV1");
+var datafile = path.join(__dirname, 'alphabetization-stats.db');
+db_alphabetization_stats = new Datastore({filename: datafile, autoload:true});
+alphabetization_stats_V1.register(app,db_alphabetization_stats);
+
 app.use("/", express.static("public"));
 
 app.get("/cool", (req,res)=>{
