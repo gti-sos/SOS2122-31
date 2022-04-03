@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "test": "npx newman run ./tests/backend_registration.json -e ./tests/env/local_registration.json"
+    "test": "npx newman run ./tests/backend_registration.json -e ./tests/env/heroku_registration.json"
   },
   "author": "sos2122-31",
   "license": "ISC",

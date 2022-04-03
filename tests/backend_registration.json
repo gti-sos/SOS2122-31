@@ -14,6 +14,11 @@
 						"exec": [
 							"pm.test(\"Status code is 200\", function () {\r",
 							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Responsse is an Array\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(Array.isArray(jsonData)).to.eql(true);\r",
 							"});"
 						],
 						"type": "text/javascript"
@@ -36,15 +41,11 @@
 					}
 				},
 				"url": {
-					"raw": "{{HOST}}:{{API}}/api/v1/registration-stats/loadInitialData",
+					"raw": "{{HOST}}{{API}}/loadInitialData",
 					"host": [
-						"{{HOST}}"
+						"{{HOST}}{{API}}"
 					],
-					"port": "{{API}}",
 					"path": [
-						"api",
-						"v1",
-						"registration-stats",
 						"loadInitialData"
 					]
 				}
@@ -82,15 +83,11 @@
 					}
 				},
 				"url": {
-					"raw": "{{HOST}}:{{API}}/api/v1/registration-stats/brazil",
+					"raw": "{{HOST}}{{API}}/brazil",
 					"host": [
-						"{{HOST}}"
+						"{{HOST}}{{API}}"
 					],
-					"port": "{{API}}",
 					"path": [
-						"api",
-						"v1",
-						"registration-stats",
 						"brazil"
 					]
 				}
@@ -116,15 +113,11 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{HOST}}:{{API}}/api/v1/registration-stats/?offset=2&limit=3",
+					"raw": "{{HOST}}{{API}}/?offset=2&limit=3",
 					"host": [
-						"{{HOST}}"
+						"{{HOST}}{{API}}"
 					],
-					"port": "{{API}}",
 					"path": [
-						"api",
-						"v1",
-						"registration-stats",
 						""
 					],
 					"query": [
@@ -169,15 +162,9 @@
 					}
 				},
 				"url": {
-					"raw": "{{HOST}}:{{API}}/api/v1/registration-stats",
+					"raw": "{{HOST}}{{API}}",
 					"host": [
-						"{{HOST}}"
-					],
-					"port": "{{API}}",
-					"path": [
-						"api",
-						"v1",
-						"registration-stats"
+						"{{HOST}}{{API}}"
 					]
 				}
 			},
@@ -211,15 +198,9 @@
 					}
 				},
 				"url": {
-					"raw": "{{HOST}}:{{API}}/api/v1/registration-stats",
+					"raw": "{{HOST}}{{API}}",
 					"host": [
-						"{{HOST}}"
-					],
-					"port": "{{API}}",
-					"path": [
-						"api",
-						"v1",
-						"registration-stats"
+						"{{HOST}}{{API}}"
 					]
 				}
 			},
@@ -253,15 +234,9 @@
 					}
 				},
 				"url": {
-					"raw": "{{HOST}}:{{API}}/api/v1/registration-stats",
+					"raw": "{{HOST}}{{API}}",
 					"host": [
-						"{{HOST}}"
-					],
-					"port": "{{API}}",
-					"path": [
-						"api",
-						"v1",
-						"registration-stats"
+						"{{HOST}}{{API}}"
 					]
 				}
 			},
@@ -295,15 +270,9 @@
 					}
 				},
 				"url": {
-					"raw": "{{HOST}}:{{API}}/api/v1/registration-stats",
+					"raw": "{{HOST}}{{API}}",
 					"host": [
-						"{{HOST}}"
-					],
-					"port": "{{API}}",
-					"path": [
-						"api",
-						"v1",
-						"registration-stats"
+						"{{HOST}}{{API}}"
 					]
 				}
 			},
@@ -337,15 +306,11 @@
 					}
 				},
 				"url": {
-					"raw": "{{HOST}}:{{API}}/api/v1/registration-stats/argentina/2010",
+					"raw": "{{HOST}}{{API}}/argentina/2010",
 					"host": [
-						"{{HOST}}"
+						"{{HOST}}{{API}}"
 					],
-					"port": "{{API}}",
 					"path": [
-						"api",
-						"v1",
-						"registration-stats",
 						"argentina",
 						"2010"
 					]
@@ -381,15 +346,11 @@
 					}
 				},
 				"url": {
-					"raw": "{{HOST}}:{{API}}/api/v1/registration-stats/argentina/2010",
+					"raw": "{{HOST}}{{API}}/argentina/2010",
 					"host": [
-						"{{HOST}}"
+						"{{HOST}}{{API}}"
 					],
-					"port": "{{API}}",
 					"path": [
-						"api",
-						"v1",
-						"registration-stats",
 						"argentina",
 						"2010"
 					]
@@ -425,15 +386,11 @@
 					}
 				},
 				"url": {
-					"raw": "{{HOST}}:{{API}}/api/v1/registration-stats/argentina/2010",
+					"raw": "{{HOST}}{{API}}/argentina/2010",
 					"host": [
-						"{{HOST}}"
+						"{{HOST}}{{API}}"
 					],
-					"port": "{{API}}",
 					"path": [
-						"api",
-						"v1",
-						"registration-stats",
 						"argentina",
 						"2010"
 					]
@@ -469,15 +426,11 @@
 					}
 				},
 				"url": {
-					"raw": "{{HOST}}:{{API}}/api/v1/registration-stats/argentina/2010",
+					"raw": "{{HOST}}{{API}}/argentina/2010",
 					"host": [
-						"{{HOST}}"
+						"{{HOST}}{{API}}"
 					],
-					"port": "{{API}}",
 					"path": [
-						"api",
-						"v1",
-						"registration-stats",
 						"argentina",
 						"2010"
 					]
@@ -504,15 +457,9 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{HOST}}:{{API}}/api/v1/registration-stats",
+					"raw": "{{HOST}}{{API}}",
 					"host": [
-						"{{HOST}}"
-					],
-					"port": "{{API}}",
-					"path": [
-						"api",
-						"v1",
-						"registration-stats"
+						"{{HOST}}{{API}}"
 					]
 				}
 			},
@@ -537,15 +484,11 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{HOST}}:{{API}}/api/v1/registration-stats/argentina/2010",
+					"raw": "{{HOST}}{{API}}/argentina/2010",
 					"host": [
-						"{{HOST}}"
+						"{{HOST}}{{API}}"
 					],
-					"port": "{{API}}",
 					"path": [
-						"api",
-						"v1",
-						"registration-stats",
 						"argentina",
 						"2010"
 					]
@@ -572,15 +515,11 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{HOST}}:{{API}}/api/v1/registration-stats/argentina",
+					"raw": "{{HOST}}{{API}}/argentina",
 					"host": [
-						"{{HOST}}"
+						"{{HOST}}{{API}}"
 					],
-					"port": "{{API}}",
 					"path": [
-						"api",
-						"v1",
-						"registration-stats",
 						"argentina"
 					]
 				}
