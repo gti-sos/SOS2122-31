@@ -1,0 +1,591 @@
+{
+	"info": {
+		"_postman_id": "9f6c7784-c4d2-4820-b807-84f23cd7ba64",
+		"name": "sos2122-31",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "registration-stats GET Cargar datos iniciales",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{HOST}}:{{API}}/api/v1/registration-stats/loadInitialData",
+					"host": [
+						"{{HOST}}"
+					],
+					"port": "{{API}}",
+					"path": [
+						"api",
+						"v1",
+						"registration-stats",
+						"loadInitialData"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "registration-stats FAIL GET a recurso inexistente",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 409\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{HOST}}:{{API}}/api/v1/registration-stats/brazil",
+					"host": [
+						"{{HOST}}"
+					],
+					"port": "{{API}}",
+					"path": [
+						"api",
+						"v1",
+						"registration-stats",
+						"brazil"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/api/v1/registration-stats/?offset=2&limit=3",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{HOST}}:{{API}}/api/v1/registration-stats/?offset=2&limit=3",
+					"host": [
+						"{{HOST}}"
+					],
+					"port": "{{API}}",
+					"path": [
+						"api",
+						"v1",
+						"registration-stats",
+						""
+					],
+					"query": [
+						{
+							"key": "offset",
+							"value": "2"
+						},
+						{
+							"key": "limit",
+							"value": "3"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "registration-stats POST de una lista de resursos",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"country\": \"efloiieiiiwf\",\r\n    \"year\": 2010,\r\n    \"primarylevel\": 114,\r\n    \"secondarylevel\": 30,\r\n    \"tertiarylevel\": 0\r\n} \r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{HOST}}:{{API}}/api/v1/registration-stats",
+					"host": [
+						"{{HOST}}"
+					],
+					"port": "{{API}}",
+					"path": [
+						"api",
+						"v1",
+						"registration-stats"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "registration-stats FAIL POST a un recurso concreto",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 409\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"country\": \"italy\",\r\n    \"year\": 2012,\r\n    \"primarylevel\": 88,\r\n    \"ejemplo\": \"martes\"\r\n} \r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{HOST}}:{{API}}/api/v1/registration-stats",
+					"host": [
+						"{{HOST}}"
+					],
+					"port": "{{API}}",
+					"path": [
+						"api",
+						"v1",
+						"registration-stats"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "registration-stats FAIL POST a todos los recursos ",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 409\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"country\": \"italy\",\r\n    \"year\": 2012,\r\n    \"primarylevel\": 88,\r\n    \"secondarylevel\": 30\r\n} \r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{HOST}}:{{API}}/api/v1/registration-stats",
+					"host": [
+						"{{HOST}}"
+					],
+					"port": "{{API}}",
+					"path": [
+						"api",
+						"v1",
+						"registration-stats"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/api/v1/registration-stats",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"country\": \"italy\",\r\n    \"year\": 2012,\r\n    \"primarylevel\": 88\r\n} \r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{HOST}}:{{API}}/api/v1/registration-stats",
+					"host": [
+						"{{HOST}}"
+					],
+					"port": "{{API}}",
+					"path": [
+						"api",
+						"v1",
+						"registration-stats"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/api/v1/registration-stats",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{HOST}}:{{API}}/api/v1/registration-stats/argentina/2010",
+					"host": [
+						"{{HOST}}"
+					],
+					"port": "{{API}}",
+					"path": [
+						"api",
+						"v1",
+						"registration-stats",
+						"argentina",
+						"2010"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "registration-stats PUT para un recurso",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"country\": \"argentina\",\r\n\"year\": 2010,\r\n\"primarylevel\": 117,\r\n\"secondarylevel\": 100,\r\n\"tertiarylevel\": 71000\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{HOST}}:{{API}}/api/v1/registration-stats/argentina/2010",
+					"host": [
+						"{{HOST}}"
+					],
+					"port": "{{API}}",
+					"path": [
+						"api",
+						"v1",
+						"registration-stats",
+						"argentina",
+						"2010"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "registration-stats FAIL PUT a todos los recursos",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"country\": \"spain\",\r\n\"year\": 2010,\r\n\"primarylevel\": 117,\r\n\"secondarylevel\": 100,\r\n\"tertiarylevel\": 73\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{HOST}}:{{API}}/api/v1/registration-stats/argentina/2010",
+					"host": [
+						"{{HOST}}"
+					],
+					"port": "{{API}}",
+					"path": [
+						"api",
+						"v1",
+						"registration-stats",
+						"argentina",
+						"2010"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "registration-stats FAIL PUT para un recurso",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"country\": \"suecia\",\r\n\"year\": 2016,\r\n\"primarylevel\": 17,\r\n\"secondarylevel\": 100,\r\n\"tertiarylevel\": 73\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{HOST}}:{{API}}/api/v1/registration-stats/argentina/2010",
+					"host": [
+						"{{HOST}}"
+					],
+					"port": "{{API}}",
+					"path": [
+						"api",
+						"v1",
+						"registration-stats",
+						"argentina",
+						"2010"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{HOST}}:{{PORT}}/api/v1/registration-stats",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{HOST}}:{{API}}/api/v1/registration-stats",
+					"host": [
+						"{{HOST}}"
+					],
+					"port": "{{API}}",
+					"path": [
+						"api",
+						"v1",
+						"registration-stats"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{HOST}}:{{PORT}}/api/v1/registration-stats/argentina/2010",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{HOST}}:{{API}}/api/v1/registration-stats/argentina/2010",
+					"host": [
+						"{{HOST}}"
+					],
+					"port": "{{API}}",
+					"path": [
+						"api",
+						"v1",
+						"registration-stats",
+						"argentina",
+						"2010"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{HOST}}:{{PORT}}/api/v1/registration-stats/germany",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{HOST}}:{{API}}/api/v1/registration-stats/argentina",
+					"host": [
+						"{{HOST}}"
+					],
+					"port": "{{API}}",
+					"path": [
+						"api",
+						"v1",
+						"registration-stats",
+						"argentina"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
