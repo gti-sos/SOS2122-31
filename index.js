@@ -7,7 +7,9 @@ const port = process.env.PORT || 8080;
 
 const registration_stats_V1 = require("./src/backend/v1/registration-statsV1");
 const Datastore = require('nedb');
-db_regitration_stats = new Datastore();
+const path = require('path');
+var datafile = path.join(__dirname, 'registration-stats.db');
+db_regitration_stats = new Datastore({filename: datafile, autoload:true});
 
 app.use(bodyParser.json());
 
