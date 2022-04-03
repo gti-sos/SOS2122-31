@@ -1,22 +1,24 @@
-const cool = require("cool-ascii-faces"); //cool es una función 
+const cool = require("cool-ascii-faces");
 const express = require("express");
+const bodyParser = require("body-parser");
+
 const app = express();
 const port = process.env.PORT || 8080;
 
-var path = require('path');
+const registration_stats_V1 = require("./src/backend/v1/registration-statsV1");
+const Datastore = require('nedb');
 
-const BASE_API_URL = "/api/v1";
-const bodyParser = require("body-parser");
+//BASE DE DATOS
+
+db_regitration_stats = new Datastore();
+
 app.use(bodyParser.json());
 
-const registration_statsV1 =  require("./src/backend/v1/registration-statsV1");
-registration_statsV1.register(app);
 
-//Daniel Vega Vera:
-const alphabetization_statsV1 =  require("./src/backend/v1/alphabetization-statsV1");
-alphabetization_statsV1.register(app);
+// SERVER APIs
 
-app.use("/", express.static("public"));
+registration_stats_V1.register(app,db_regitration_stats);
+
 
 app.get("/cool", (req,res)=>{
     console.log("Requested /cool route");
