@@ -60,7 +60,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://sos2122-31.herokuapp.com/api/v1/proportion-stats/eeuu",
+					"raw": "https://sos2122-31.herokuapp.com/api/v1/proportion-stats/Argentina",
 					"protocol": "https",
 					"host": [
 						"sos2122-31",
@@ -71,7 +71,7 @@
 						"api",
 						"v1",
 						"proportion-stats",
-						"eeuu"
+						"Argentina"
 					]
 				}
 			},
@@ -107,8 +107,8 @@
 						"api",
 						"v1",
 						"proportion-stats",
-						"argentina",
-						"1991"
+						"Argentina",
+						"2019"
 					]
 				}
 			},
@@ -422,7 +422,7 @@
 						"v1",
 						"proportion-stats",
 						"argentina",
-						"1991"
+						"2019"
 					]
 				}
 			},
@@ -483,7 +483,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n\"country\": \"eeuu\",\r\n\"year\": 1990,\r\n\"male\": 100,\r\n\"female\": 100,\r\n\"total\": 100\r\n}",
+					"raw": "{\r\n\"country\": \"Argentina\",\r\n\"year\": 2019,\r\n\"male\": 100,\r\n\"female\": 100,\r\n\"total\": 100\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -529,7 +529,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n\"country\": \"eeuu\",\r\n\"year\": 1990,\r\n\"male\": 100,\r\n\"female\": 100,\r\n\"total\": 100\r\n}",
+					"raw": "{\r\n\"country\": \"Argentina\",\r\n\"year\": 2019,\r\n\"male\": 100,\r\n\"female\": 100,\r\n\"total\": 100\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -548,8 +548,8 @@
 						"api",
 						"v1",
 						"proportion-stats",
-						"eeuu",
-						"1990"
+						"Argentina",
+						"2019"
 					]
 				}
 			},
