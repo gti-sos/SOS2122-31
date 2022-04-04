@@ -121,6 +121,319 @@ module.exports.register = (app) => {
         res.send(JSON.stringify(proportion_stats, null,2));
     });
 
+    //GET por año:
+
+    app.get(BASE_API_URL + "/proportion-stats", (req,res)=>{
+        var year = req.query.year;
+        var from = req.query.from;
+        var to = req.query.to;
+
+        //Comprobamos el query
+        for (var i = 0; i < Object.keys(req.query).length; i++) {
+            var element = Object.keys(req.query)[i];
+            if (element != "year" && element != "from" && element != "to") {
+                res.sendStatus(400, "BAD REQUEST");
+                return;
+            }
+        }
+
+        //Comprobar si el from es menor que el to
+        if (from<to) {
+            res.sendStatus(400, "BAD REQUEST");
+            return;
+        }
+
+        db.find({}, function(err, newRegis){
+            if (err){
+                res.sendStatus(500, "ERROR en el cliente");
+                return;
+            }
+
+            //Búsqueda por año
+
+            if(year != null){
+                var newRegis = newRegis.filter((reg)=>
+                {
+                    return (reg.year == year);
+                });
+                if (newRegis==0){
+                    res.sendStatus(404, "NOT FOUND");
+                    return;
+                }
+            }
+            
+            //From y to
+
+            if(from != null && to != null){
+                newRegis = newRegis.filter((reg)=>
+                {
+                    return (reg.year >= from && reg.year <= to);
+                });
+                if(newRegis==0){
+                    res.sendStatus(404, "NOT FOUND");
+                    return;
+                }
+
+            }
+
+            //Resultado final
+
+            if(req.query.limit != undefined || req.query.offset != undefined){
+                newRegis = paginacion(req, newRegis);
+            }
+            newRegis.forEach((element)=>{
+                delete element._id;
+            });
+            res.send(JSON.stringify(newRegis, null,2));
+
+        })
+
+    });
+
+    //GET por país:
+
+    app.get(BASE_API_URL + "/proportion-stats", (req,res)=>{
+        var country = req.query.country;
+        var from = req.query.from;
+        var to = req.query.to;
+
+        //Comprobamos el query
+        for (var i = 0; i < Object.keys(req.query).length; i++) {
+            var element = Object.keys(req.query)[i];
+            if (element != "from" && element != "to") {
+                res.sendStatus(400, "BAD REQUEST");
+                return;
+            }
+        }
+
+        //Comprobar si el from es menor que el to
+        if (from<to) {
+            res.sendStatus(400, "BAD REQUEST");
+            return;
+        }
+
+        db.find({}, function(err, newRegis){
+            if (err){
+                res.sendStatus(500, "ERROR en el cliente");
+                return;
+            }
+
+            newRegis = newRegis.filter((reg)=>
+            {
+                return(reg.country == country);
+            });
+
+            //From y to
+            
+            if(from>to){
+                res.sendStatus(400, "BAD REQUEST");
+                return;
+            }
+
+            if(from != null && to != null && from<=to){
+                newRegis = newRegis.filter((reg)=>{
+                    return (reg.year >= from && reg.year <= to);
+                
+                });
+            }
+
+            //Comprobar si existe
+
+            if (newRegis==0){
+                res.sendStatus(404, "NOT FOUND");
+                return;
+            }
+
+            //Resultado final
+
+            if(req.query.limit != undefined || req.query.offset != undefined){
+                newRegis = paginacion(req, newRegis);
+            }
+            newRegis.forEach((element)=>{
+                delete element._id;
+            });
+            res.send(JSON.stringify(newRegis, null,2));
+
+            
+
+        })
+
+
+
+    });
+
+    //GET por país y año:
+
+    app.get(BASE_API_URL + "/proportion-stats", (req,res)=>{
+        var country = req.query.country;
+        var year = req.query.year;
+
+        
+
+        db.find({}, function(err, newRegis){
+            if (err){
+                res.sendStatus(500, "ERROR en el cliente");
+                return;
+            }
+
+            newRegis = newRegis.filter((reg)=>
+            {
+                return(reg.country == country && reg.year == year);
+            });
+            if(newRegis==0){
+                res.sendStatus(404, "NOT FOUND");
+                return;
+            }
+
+            //Resultado final
+
+            if(req.query.limit != undefined || req.query.offset != undefined){
+                newRegis = paginacion(req, newRegis);
+                res.send(JSON.stringify(newRegis, null,2));
+            }
+            newRegis.forEach((element)=>{
+                delete element._id;
+            });
+            res.send(JSON.stringify(newRegis[0], null,2));
+
+            
+
+        })
+
+
+
+    });
+
+    function paginacion(req, lista){
+        var res = [];
+        const limit = req.query.limit;
+        const offset = req.query.offset;
+
+        if(limit < 1 || offset < 0 || offset > lista.length){
+            res.push("ERROR en el LIMIT Y/O OFFSET");
+            return res;
+        }
+
+        res = lista.slice(offset,   parseInt(limit) + parseInt(offset));
+        return res;
+    };
+
+    //POST:
+
+    app.post(BASE_API_URL + "/proportion-stats", (req,res)=>{
+        if(parametroscorrectos(req)){
+            res.sendStatus(400, "BAD REQUEST-Parametros incorrectos");
+        }
+        else{
+            db.find({}, function(err, newRegis){
+                if (err){
+                    res.sendStatus(500, "ERROR en el cliente");
+                    return;
+                }
+                regisNew = regisNew.filter((reg)=>
+                {
+                    return(reg.body.country == reg.country && reg.body.year == reg.year);
+                })
+
+                if(regisNew.length != 0){
+                    res.sendStatus(409, "CONFLICT");
+                }
+                else{
+                    db.insert(req.body);
+                    res.sendStatus(201, "CREATED");
+                }
+            })
+        }
+    });
+
+    //POST con error:
+
+    app.post(BASE_API_URL + "/proportion-stats/:country", (req,res)=>{
+        res.sendStatus(405, "Method not allowed");
+    });
+
+    app.post(BASE_API_URL + "/proportion-stats/:year", (req,res)=>{
+        res.sendStatus(405, "Method not allowed");
+    });
+
+    function parametroscorrectos(req){
+        return (req.body.country == null |
+                 req.body.year == null | 
+                 req.body.total == null | 
+                 req.body.male == null | 
+                 req.body.female == null);
+    };
+
+
+    //DELETE
+
+    app.delete(BASE_API_URL + "/proportion-stats", (req,res)=>{ 
+        proportion_stats = [];
+        res.sendStatus(200, "OK");
+    });
+
+    app.delete(BASE_API_URL + "/proportion-stats/:country", (req,res)=>{ //borrar todos los recursos
+        var countryName = req.params.country;
+        proportion_stats.filter((cont) =>{
+            return (cont.country != countryName); 
+        });
+        res.sendStatus(200, "OK");
+    });
+
+    app.delete(BASE_API_URL + "/proportion-stats/:country/:year", (req, res) =>{
+        var countryReq = req.params.country;
+        var yearReq = req.params.year;
+
+        db.find ({country : countryReq, year: yearReq, {}, (err, regisNew) =>{
+            if (err){
+                res.sendStatus(500, "ERROR en el cliente");
+                return;
+            }
+            if(regisNew==0){
+                res.sendStatus(404, "NOT FOUND");
+                return;
+            }
+            db.remove({country: countryReq, year: yearReq}, {}, (err, numRemoved) =>{
+                if (err){
+                    res.sendStatus(500, "ERROR en el cliente");
+                    return;
+                }
+
+            res.sendStatus(200, "DELETED");
+            return;
+        });
+    });
+
+
+
+    //PUT
+
+    app.put(BASE_API_URL + "/proportion-stats/:country/:year", (req,res)=>{
+        var countryReq = req.params.country;
+        var yearReq = req.params.year;
+
+        db.find ({country : countryReq, year: yearReq, {}, (err, regisNew) =>{
+            if (err){
+                res.sendStatus(500, "ERROR en el cliente");
+                return;
+            }
+            if(regisNew==0){
+                res.sendStatus(404, "NOT FOUND");
+                return;
+            }
+            db.update({country: countryReq, year: yearReq}, req.body);
+            res.sendStatus(200, "OK");
+        });
+    });
+
+    //PUT con error:
+
+    app.put(BASE_API_URL + "/proportion-stats", (req,res)=>{
+        res.sendStatus(405, "Method not allowed");
+    });
+
+   
+
     app.get(BASE_API_URL + "/proportion-stats/loadInitialData",(req, res)=>{
     
         if(proportion_stats.length==0){
@@ -239,21 +552,7 @@ module.exports.register = (app) => {
 
     //POST
 
-    app.post(BASE_API_URL + "/proportion-stats/:country", (req,res)=>{
-        res.sendStatus(405, "Method not allowed");
-    });
-
-    app.post(BASE_API_URL + "/proportion-stats/:year", (req,res)=>{
-        res.sendStatus(405, "Method not allowed");
-    });
-
-    function parametroscorrectos(req){
-        return (req.body.country == null |
-                 req.body.year == null | 
-                 req.body.total == null | 
-                 req.body.male == null | 
-                 req.body.female == null);
-    };
+    
 
     app.post(BASE_API_URL+ "/proportion-stats",(req, res)=>{
         if(parametroscorrectos(req)){
@@ -271,30 +570,9 @@ module.exports.register = (app) => {
     }
     });
 
-    //DELETE
+    
 
-    app.delete(BASE_API_URL + "/proportion-stats", (req,res)=>{ 
-        proportion_stats = [];
-        res.sendStatus(200, "OK");
-    });
-
-    app.delete(BASE_API_URL + "/proportion-stats/:country", (req,res)=>{ //borrar todos los recursos
-        var countryName = req.params.country;
-        proportion_stats.filter((cont) =>{
-            return (cont.country != countryName); 
-        });
-        res.sendStatus(200, "OK");
-    });
-
-    app.delete(BASE_API_URL + "/proportion-stats/:country/:year", (req,res)=>{ //borrar todos los recursos
-        var countryName = req.params.country;
-        var yearName = req.params.year;
-        proportion_stats.filter((cont) =>{
-            return (cont.country != countryName) || (cont.year != yearName); 
-        });
-        res.sendStatus(200, "OK");
-    });
-
+    
     //PUT
 
     app.put(BASE_API_URL + "/proportion-stats", (req,res)=>{
