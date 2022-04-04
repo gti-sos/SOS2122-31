@@ -154,7 +154,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"country\": \"efloiieiiiwf\",\r\n    \"year\": 2010,\r\n    \"primarylevel\": 114,\r\n    \"secondarylevel\": 30,\r\n    \"tertiarylevel\": 0\r\n} \r\n",
+					"raw": "{\r\n    \"country\": \"eerefwecff\",\r\n    \"year\": 2010,\r\n    \"primarylevel\": 114,\r\n    \"secondarylevel\": 30,\r\n    \"tertiarylevel\": 0\r\n} \r\n",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -306,12 +306,12 @@
 					}
 				},
 				"url": {
-					"raw": "{{HOST}}{{API}}/argentina/2010",
+					"raw": "{{HOST}}{{API}}/eerefwecff/2010",
 					"host": [
 						"{{HOST}}{{API}}"
 					],
 					"path": [
-						"argentina",
+						"eerefwecff",
 						"2010"
 					]
 				}
