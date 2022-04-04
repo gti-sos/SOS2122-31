@@ -42,21 +42,21 @@ var proportion_stats = [
 
 ];
 
-app.get(BASE_API_URL + "/proportion-stats", (req,res)=>{
+app.get(BASE_API_URL + "/proportion-stats", (req,res)=>{ //get de todos los recursos
     res.send(JSON.stringify(proportion_stats, null,2));
 });
 
-app.post(BASE_API_URL + "/proportion-stats", (req,res)=>{
+app.post(BASE_API_URL + "/proportion-stats", (req,res)=>{ //post de un recurso
     proportion_stats.push(req.body);
     res.sendStatus(201, "CREATED");
 });
 
-app.delete(BASE_API_URL + "/proportion-stats", (req,res)=>{ 
+app.delete(BASE_API_URL + "/proportion-stats", (req,res)=>{  //delete de todos los recursos
     proportion_stats = [];
     res.sendStatus(200, "OK");
 });
 
-app.get(BASE_API_URL + "/proportion-stats/:country", (req,res)=>{
+app.get(BASE_API_URL + "/proportion-stats/:country", (req,res)=>{ //get de un recurso por country
     var countryName = req.params.country;
     filteredCountry = proportion_stats.filter((cont) =>{
     return (cont.country == countryName); 
@@ -70,7 +70,7 @@ app.get(BASE_API_URL + "/proportion-stats/:country", (req,res)=>{
     }
 });
 
-app.get(BASE_API_URL + "/proportion-stats/:country/:year", (req,res)=>{
+app.get(BASE_API_URL + "/proportion-stats/:country/:year", (req,res)=>{ //get de un recurso por country y year
     var countryName = req.params.country;
     var yearName = req.params.year;
     filteredYear = proportion_stats.filter((cont) =>{
@@ -102,7 +102,7 @@ app.delete(BASE_API_URL + "/proportion-stats/:country/:year", (req,res)=>{ //bor
     res.sendStatus(200, "OK");
 });
 
-app.listen(port, () =>{
+app.listen(port, () =>{ //escuchar en el puerto
     console.log(`server TRULY ready at the port ${port}`);
 });
 

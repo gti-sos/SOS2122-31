@@ -113,7 +113,7 @@ var proportion_stats = [
 
 ];
 
-module.exports.register = (app) => {
+module.exports.register = (app,db) => {
     //GET:
 
     app.get(BASE_API_URL + "/proportion-stats", (req,res)=>{
@@ -121,123 +121,232 @@ module.exports.register = (app) => {
         res.send(JSON.stringify(proportion_stats, null,2));
     });
 
-    app.get(BASE_API_URL + "/proportion-stats/loadInitialData",(req, res)=>{
-    
-        if(proportion_stats.length==0){
-            proportion_stats =[
-
-                {
-                    contry: "Afganistan",
-                    year: 2020,
-                    total: 53.8, 
-                    male: 32.2,
-                    female: 74.0
-                },
-
-                {
-                    contry: "Albania",
-                    year: 2019,
-                    total: 25.8, 
-                    male: 26.2,
-                    female: 25.5
-                },
-
-                {
-                    contry: "Chipre",
-                    year: 2020,
-                    total: 14.4, 
-                    male: 15.3,
-                    female: 13.5
-                },
-
-                {
-                    contry: "Colombia",
-                    year: 2019,
-                    total: 24.0, 
-                    male: 15.6,
-                    female: 32.4
-                },
-
-                {
-                    contry: "Honduras",
-                    year: 2019,
-                    total: 28.1, 
-                    male: 12.3,
-                    female: 43.4
-                },
-
-                {
-                    contry: "Israel",
-                    year: 2020,
-                    total: 17.3, 
-                    male: 17.4,
-                    female: 17.1
-                },
-
-                {
-                    contry: "Mauricio",
-                    year: 2020,
-                    total: 41.7, 
-                    male: 36.4,
-                    female: 47.7
-                },
-
-                {
-                    contry: "Mexico",
-                    year: 2020,
-                    total: 20.4, 
-                    male: 11.8,
-                    female: 29.1
-                },
-
-                {
-                    contry: "Rwanda",
-                    year: 2020,
-                    total: 31.0, 
-                    male: 26.6,
-                    female: 35.3
-                }
-            ];
-        }
-        res.sendStatus(200, "OK")
-
-    });
-    app.get(BASE_API_URL+"/proportion-stats/docs", (req,res)=>{
-        res.redirect("https://documenter.getpostman.com/view/19589104/UVyoUwzV")
-    });
-
-    app.get(BASE_API_URL + "/proportion-stats/:country", (req,res)=>{
-        var countryName = req.params.country;
-        filteredCountry = proportion_stats.filter((cont) =>{
-        return (cont.country == countryName); 
-        });
-        if(filteredCountry == 0){
-            res.sendStatus(404, "NOT FOUND");
-        }else{
-            res.send(JSON.stringify(filteredCountry, null,2));
-        }
-    });
-
-    app.get(BASE_API_URL + "/proportion-stats/:country/:year", (req,res)=>{
-        var countryName = req.params.country;
-        var yearName = req.params.year;
-        filteredYear = proportion_stats.filter((cont) =>{
-        return (cont.country == countryName) && (cont.year == yearName);     
-        });
-    
-        if(filteredYear == 0){
-            res.sendStatus(404, "NOT FOUND");
-        }else{
-            res.send(JSON.stringify(filteredYear, null,2));
-        }
-    });
+    //GET por año:
 
     app.get(BASE_API_URL + "/proportion-stats", (req,res)=>{
-        res.send(JSON.stringify(proportion_stats, null,2));
+        var year = req.query.year;
+        var from = req.query.from;
+        var to = req.query.to;
+
+        //Comprobamos el query
+        for (var i = 0; i < Object.keys(req.query).length; i++) {
+            var element = Object.keys(req.query)[i];
+            if (element != "year" && element != "from" && element != "to") {
+                res.sendStatus(400, "BAD REQUEST");
+                return;
+            }
+        }
+
+        //Comprobar si el from es menor que el to
+        if (from<to) {
+            res.sendStatus(400, "BAD REQUEST");
+            return;
+        }
+
+        db.find({}, function(err, newRegis){
+            if (err){
+                res.sendStatus(500, "ERROR en el cliente");
+                return;
+            }
+
+            //Búsqueda por año
+
+            if(year != null){
+                var newRegis = newRegis.filter((reg)=>
+                {
+                    return (reg.year == year);
+                });
+                if (newRegis==0){
+                    res.sendStatus(404, "NOT FOUND");
+                    return;
+                }
+            }
+            
+            //From y to
+
+            if(from != null && to != null){
+                newRegis = newRegis.filter((reg)=>
+                {
+                    return (reg.year >= from && reg.year <= to);
+                });
+                if(newRegis==0){
+                    res.sendStatus(404, "NOT FOUND");
+                    return;
+                }
+
+            }
+
+            //Resultado final
+
+            if(req.query.limit != undefined || req.query.offset != undefined){
+                newRegis = paginacion(req, newRegis);
+            }
+            newRegis.forEach((element)=>{
+                delete element._id;
+            });
+            res.send(JSON.stringify(newRegis, null,2));
+
+        })
+
     });
 
+    //GET por país:
 
-    //POST
+    app.get(BASE_API_URL + "/proportion-stats", (req,res)=>{
+        var country = req.query.country;
+        var from = req.query.from;
+        var to = req.query.to;
+
+        //Comprobamos el query
+        for (var i = 0; i < Object.keys(req.query).length; i++) {
+            var element = Object.keys(req.query)[i];
+            if (element != "from" && element != "to") {
+                res.sendStatus(400, "BAD REQUEST");
+                return;
+            }
+        }
+
+        //Comprobar si el from es menor que el to
+        if (from<to) {
+            res.sendStatus(400, "BAD REQUEST");
+            return;
+        }
+
+        db.find({}, function(err, newRegis){
+            if (err){
+                res.sendStatus(500, "ERROR en el cliente");
+                return;
+            }
+
+            newRegis = newRegis.filter((reg)=>
+            {
+                return(reg.country == country);
+            });
+
+            //From y to
+            
+            if(from>to){
+                res.sendStatus(400, "BAD REQUEST");
+                return;
+            }
+
+            if(from != null && to != null && from<=to){
+                newRegis = newRegis.filter((reg)=>{
+                    return (reg.year >= from && reg.year <= to);
+                
+                });
+            }
+
+            //Comprobar si existe
+
+            if (newRegis==0){
+                res.sendStatus(404, "NOT FOUND");
+                return;
+            }
+
+            //Resultado final
+
+            if(req.query.limit != undefined || req.query.offset != undefined){
+                newRegis = paginacion(req, newRegis);
+            }
+            newRegis.forEach((element)=>{
+                delete element._id;
+            });
+            res.send(JSON.stringify(newRegis, null,2));
+
+            
+
+        })
+
+
+
+    });
+
+    //GET por país y año:
+
+    app.get(BASE_API_URL + "/proportion-stats", (req,res)=>{
+        var country = req.query.country;
+        var year = req.query.year;
+
+        
+
+        db.find({}, function(err, newRegis){
+            if (err){
+                res.sendStatus(500, "ERROR en el cliente");
+                return;
+            }
+
+            newRegis = newRegis.filter((reg)=>
+            {
+                return(reg.country == country && reg.year == year);
+            });
+            if(newRegis==0){
+                res.sendStatus(404, "NOT FOUND");
+                return;
+            }
+
+            //Resultado final
+
+            if(req.query.limit != undefined || req.query.offset != undefined){
+                newRegis = paginacion(req, newRegis);
+                res.send(JSON.stringify(newRegis, null,2));
+            }
+            newRegis.forEach((element)=>{
+                delete element._id;
+            });
+            res.send(JSON.stringify(newRegis[0], null,2));
+
+            
+
+        })
+
+
+
+    });
+
+    function paginacion(req, lista){
+        var res = [];
+        const limit = req.query.limit;
+        const offset = req.query.offset;
+
+        if(limit < 1 || offset < 0 || offset > lista.length){
+            res.push("ERROR en el LIMIT Y/O OFFSET");
+            return res;
+        }
+
+        res = lista.slice(offset,   parseInt(limit) + parseInt(offset));
+        return res;
+    };
+
+    //POST:
+
+    app.post(BASE_API_URL + "/proportion-stats", (req,res)=>{
+        if(parametroscorrectos(req)){
+            res.sendStatus(400, "BAD REQUEST-Parametros incorrectos");
+        }
+        else{
+            db.find({}, function(err, newRegis){
+                if (err){
+                    res.sendStatus(500, "ERROR en el cliente");
+                    return;
+                }
+                regisNew = regisNew.filter((reg)=>
+                {
+                    return(reg.body.country == reg.country && reg.body.year == reg.year);
+                })
+
+                if(regisNew.length != 0){
+                    res.sendStatus(409, "CONFLICT");
+                }
+                else{
+                    db.insert(req.body);
+                    res.sendStatus(201, "CREATED");
+                }
+            })
+        }
+    });
+
+    //POST con error:
 
     app.post(BASE_API_URL + "/proportion-stats/:country", (req,res)=>{
         res.sendStatus(405, "Method not allowed");
@@ -255,21 +364,6 @@ module.exports.register = (app) => {
                  req.body.female == null);
     };
 
-    app.post(BASE_API_URL+ "/proportion-stats",(req, res)=>{
-        if(parametroscorrectos(req)){
-            res.sendStatus(400,"BAD REQUEST - Parametros incorrectos");
-        }else{ 
-            var postProportion = proportion_stats.filter((reg)=>{
-            return (req.body.country == reg.country && req.body.year == reg.year)
-        });
-        if(postProportion.length != 0){
-            res.sendStatus(409,"CONFLICT");
-        }else{
-            proportion_stats.push(req.body);
-            res.sendStatus(201,"CREATED");
-        }
-    }
-    });
 
     //DELETE
 
@@ -286,43 +380,107 @@ module.exports.register = (app) => {
         res.sendStatus(200, "OK");
     });
 
-    app.delete(BASE_API_URL + "/proportion-stats/:country/:year", (req,res)=>{ //borrar todos los recursos
-        var countryName = req.params.country;
-        var yearName = req.params.year;
-        proportion_stats.filter((cont) =>{
-            return (cont.country != countryName) || (cont.year != yearName); 
+    app.delete(BASE_API_URL + "/proportion-stats/:country/:year", (req, res) =>{
+        var countryReq = req.params.country;
+        var yearReq = req.params.year;
+
+        db.find ({country : countryReq, year: parseInt(yearReq)}, {}, (err, regisNew) =>{
+            if (err){
+                res.sendStatus(500, "ERROR en el cliente");
+                return;
+            }
+            if(regisNew==0){
+                res.sendStatus(404, "NOT FOUND");
+                return;
+            }
+            db.remove({country: countryReq, year: yearReq}, {}, (err, numRemoved) =>{
+                if (err){
+                    res.sendStatus(500, "ERROR en el cliente");
+                    return;
+                }
+
+            res.sendStatus(200, "DELETED");
+            return;
         });
-        res.sendStatus(200, "OK");
     });
+
+})
+
+
 
     //PUT
 
-    app.put(BASE_API_URL + "/proportion-stats", (req,res)=>{
-        res.sendStatus(405, "Method Not Allowed");
-    });
+    app.put(BASE_API_URL + "/proportion-stats/:country/:year", (req,res)=>{
+        var countryReq = req.params.country;
+        var yearReq = req.params.year;
 
-    app.put(BASE_API_URL+"/proportion-stats/:country/:year",(req, res)=>{
-        
-        if(paramOK(req)){
-            res.sendStatus(400,"BAD REQUEST - Parametros incorrectos");
-        }else{
-            var country = req.params.country;
-            var year = req.params.year;
-            var body = req.body;  
-            var tl = proportion_stats.findIndex((reg) =>{
-                return (reg.country == country && reg.year == year)
-            });
-            if(tl == null){
-                res.sendStatus(404,"NOT FOUND");
-            }else if(country != body.country || year != body.year){
-                res.sendStatus(400,"BAD REQUEST");
-            }else{
-                var  update_Proportion = {...body};
-                proportion_stats[tl] = update_Proportion;
-            
-                res.sendStatus(200,"UPDATED");
+        db.find ({country : countryReq, year: parseInt(yearReq)}, {}, (err, regisNew) =>{
+            if (err){
+                res.sendStatus(500, "ERROR en el cliente");
+                return;
             }
-        }
+            if(regisNew==0){
+                res.sendStatus(404, "NOT FOUND");
+                return;
+            }
+            db.update({country: countryReq, year: yearReq}, req.body);
+            res.sendStatus(200, "OK");
+        });
     });
 
+    //PUT con error:
+
+    app.put(BASE_API_URL + "/proportion-stats", (req,res)=>{
+        res.sendStatus(405, "Method not allowed");
+    });
+
+   //PUT bueno
+
+   app.put(BASE_API_URL + "/proportion-stats/:country/:year", (req, res)=>{
+       
+    //Comprobar el JSON
+
+    if (parametroscorrectos(req)){
+        res.sendStatus(400, "BAD REQUEST-Parametros incorrectos");
+        return;
+    }
+
+    var countryRegis = req.params.country;
+    var yearRegis = req.params.year;
+    var body = req.body;
+
+        db.find({}, function(err, regisNew){
+            if (err){
+                res.sendStatus(500, "ERROR en el cliente");
+                return;
+            }
+
+            //Comprobar la existencia del recurso
+            regisNew = regisNew.filter((reg)=>
+            {
+                return(reg.country == countryRegis && reg.year == yearRegis);
+            });
+            if (regisNew==0){
+                res.sendStatus(404, "NOT FOUND");
+            }
+
+            //Los campos actualizados son distintos
+
+            if (countryRegis != body.country || yearRegis != body.year){
+                res.sendStatus(400, "BAD REQUEST-Los campos actualizados son distintos");
+            }
+
+            //Actualizar el valor
+
+            db.update({$and:[{country: String(countryRegis)}, {year: parseInt(yearRegis)}]}, {$set: body}, {},function(err, numUpdated) {
+                if (err){
+                    res.sendStatus(500, "ERROR en el cliente");
+                } else{
+                    res.sendStatus(200, "OK");
+                }
+            });
+        })
+
+    })
+    
 };
