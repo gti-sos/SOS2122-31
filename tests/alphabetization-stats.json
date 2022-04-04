@@ -206,7 +206,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n\"country\": \"rusia\",\r\n\"year\": 2005,\r\n\"ar_ym\": 99,\r\n\"ar_yw\": 97,\r\n\"ar_ty\": 98\r\n}\r\n",
+					"raw": "{\r\n\"country\": \"bielorrusia\",\r\n\"year\": 2005,\r\n\"ar_ym\": 99,\r\n\"ar_yw\": 97,\r\n\"ar_ty\": 98\r\n}\r\n",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -356,42 +356,6 @@
 			"response": []
 		},
 		{
-			"name": "DELETE Pais",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"pm.test(\"Status code is 200\", function () {\r",
-							"    pm.response.to.have.status(200);\r",
-							"});"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "DELETE",
-				"header": [],
-				"url": {
-					"raw": "https://sos2122-31.herokuapp.com/api/v1/alphabetization-stats/argentina",
-					"protocol": "https",
-					"host": [
-						"sos2122-31",
-						"herokuapp",
-						"com"
-					],
-					"path": [
-						"api",
-						"v1",
-						"alphabetization-stats",
-						"argentina"
-					]
-				}
-			},
-			"response": []
-		},
-		{
 			"name": "DELETE Pais Año",
 			"event": [
 				{
@@ -410,7 +374,7 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "https://sos2122-31.herokuapp.com/api/v1/alphabetization-stats/rusia/2005",
+					"raw": "https://sos2122-31.herokuapp.com/api/v1/alphabetization-stats/bielorrusia/2005",
 					"protocol": "https",
 					"host": [
 						"sos2122-31",
@@ -421,7 +385,7 @@
 						"api",
 						"v1",
 						"alphabetization-stats",
-						"rusia",
+						"bielorrusia",
 						"2005"
 					]
 				}
