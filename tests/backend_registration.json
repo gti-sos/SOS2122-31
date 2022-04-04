@@ -154,7 +154,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"country\": \"mozambique\",\r\n    \"year\": 210,\r\n    \"primarylevel\": 114,\r\n    \"secondarylevel\": 30,\r\n    \"tertiarylevel\": 0\r\n} \r\n",
+					"raw": "{\r\n    \"country\": \"polonia\",\r\n    \"year\": 210,\r\n    \"primarylevel\": 114,\r\n    \"secondarylevel\": 30,\r\n    \"tertiarylevel\": 0\r\n} \r\n",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -306,12 +306,12 @@
 					}
 				},
 				"url": {
-					"raw": "{{HOST}}{{API}}/mozambique/210",
+					"raw": "{{HOST}}{{API}}/polonia/210",
 					"host": [
 						"{{HOST}}{{API}}"
 					],
 					"path": [
-						"mozambique",
+						"polonia",
 						"210"
 					]
 				}
@@ -526,6 +526,42 @@
 					],
 					"path": [
 						"argentina"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "registration-stats PUT para un recurso",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(405);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"country\": \"argentina\",\r\n\"year\": 2010,\r\n\"primarylevel\": 117,\r\n\"secondarylevel\": 100,\r\n\"tertiarylevel\": 71000\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{HOST}}{{API}}",
+					"host": [
+						"{{HOST}}{{API}}"
 					]
 				}
 			},
