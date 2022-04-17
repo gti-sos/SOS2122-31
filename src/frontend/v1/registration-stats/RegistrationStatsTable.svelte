@@ -18,14 +18,14 @@
 	onMount(getRegistrations);
 
 	async function getRegistrations(){
-		console.log("Fetching registrations....");
-		const res = await fetch("/api/v1/registration-stats"); //con await esperemos a que haya conectado a la api
-		if(res.ok){
-			const data = await res.json();
-			registrations = data;
-			console.log("Recived contacts:" + registrations.length);
-		}
-	}
+        console.log("Fetching entries....");
+        const res = await fetch("/api/v1/registration-stats/"); 
+        if(res.ok){
+            const data = await res.json();
+            registrations = data;
+            console.log("Received entries: "+registrations.length);
+        }
+    }
 
     async function insertRegistration(){
 		console.log("Inserting registration...." +JSON.stringify(newRegistration));
@@ -41,40 +41,24 @@
 			}); //con await esperemos a que haya conectado a la api
 	}
 
-	async function deleteolimpic(country, year) {
-    	console.log(`Deleting data with name ${country} and date ${year}`);
-   		
-		const res = await fetch("/api/v1/registration-stats"+country+"/"+year,
-							{
-								method: "DELETE"
-								
-							}).then(function(res) {
-								getRegistrations();
-								okMsg = "Dato eliminado";
-								visibleOk=true;
-								visible=false;
-							})
-	}
-	
-	async function deleteAll() {
-    	console.log("Deleting all data");
-   		
-		const res = await fetch("/api/v1/registration-stats",{
-								method: "DELETE"
-								
-							}).then( function (res) {
-							if(res.ok){
-								getRegistrations();
-								okMsg = "Todos los datos se han eliminado";
-								visibleOk=true;
-								visible=false;
-							}else{
-								errorMsg = "No hay datos que borrar";
-								visibleOk=false;
-								visible=true;
-							}
-							})
-	}
+	async function BorrarRegis(countryDelete, yearDelete){
+        console.log("Deleting entry....");
+        const res = await fetch("/api/v1/registration-stats/"+countryDelete+"/"+yearDelete,
+			{
+				method: "DELETE"
+			}).then(function (res){
+				getRegistrations();
+			});
+    }
+	async function BorrarRegistros(){
+        console.log("Deleting entries....");
+        const res = await fetch("/api/v1/registration-stats/",
+			{
+				method: "DELETE"
+			}).then(function (res){
+				getRegistrations();
+			});
+    }
 	async function CargarRegistrations(){
         console.log("Loading entries....");
         const res = await fetch("/api/v1/registration-stats/loadInitialData",
@@ -82,7 +66,6 @@
 				method: "GET"
 			}).then(function (res){
 				getRegistrations();
-				window.alert("Entradas cargadas con éxito");
 			});
     }
 
@@ -128,7 +111,7 @@
 					}}>
 						Editar
 					</Button>
-					<td><Button outline color="danger" on:click={deleteolimpic(registration.country,registration.year)}>
+					<td><Button outline color="danger" on:click={BorrarRegis(registration.country,registration.year)}>
 						Borrar
 					</Button>
 					</td>
@@ -138,7 +121,7 @@
 				<td><Button outline color="success" on:click={CargarRegistrations}>
 					Cargar datos
 				</Button></td>
-				<td><Button outline color="danger" on:click={deleteAll}>
+				<td><Button outline color="danger" on:click={BorrarRegistros}>
 					Borrar todo
 				</Button></td>
 			</tr>
