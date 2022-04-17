@@ -41,24 +41,44 @@
 			}); //con await esperemos a que haya conectado a la api
 	}
 
-	async function BorrarRegis(countryDelete, yearDelete){
-        console.log("Deleting entry....");
-        const res = await fetch("/api/v1/registration-stats/"+countryDelete+"/"+yearDelete,
-			{
-				method: "DELETE"
-			}).then(function (res){
-				getRegistrations();
-			});
+	async function BorrarRegis(countryD, yearD) {
+        
+        const res = await fetch(BASE_API_URL + "/registration-stats"+ "/" + countryD + "/" + yearD, {
+            method: "DELETE"
+        }).then(function (res) {
+            visible = true;
+            getRegistrations();      
+            if (res.status==200) {
+                errorMsg = "Recurso "+countryD+" "+yearD+ " borrado correctamente";
+                console.log("Deleted " + countryD);            
+            } else if (res.status==404) {
+                errorMsg = "No se ha encontrado el objeto " + countryD;
+                console.log("Resource NOT FOUND");            
+            } else {
+                errorMsg= res.status + ": " + "No se pudo borrar el recurso";
+                console.log("ERROR!");
+            }      
+        });
     }
-	async function BorrarRegistros(){
-        console.log("Deleting entries....");
-        const res = await fetch("/api/v1/registration-stats/",
-			{
-				method: "DELETE"
-			}).then(function (res){
-				getRegistrations();
-			});
-    }
+	async function BorrarRegistros(country, year) {
+    	console.log("Deleting all data");
+   		
+		const res = await fetch(BASE_API_URL +"/registration-stats",{
+								method: "DELETE"
+								
+							}).then( function (res) {
+							if(res.ok){
+								getRegistrations();
+								okMsg = "Todos los datos se han eliminado";
+								visibleOk=true;
+								visible=false;
+							}else{
+								errorMsg = "No hay datos que borrar";
+								visibleOk=false;
+								visible=true;
+							}
+							})
+	}
 	async function CargarRegistrations(){
         console.log("Loading entries....");
         const res = await fetch("/api/v1/registration-stats/loadInitialData",

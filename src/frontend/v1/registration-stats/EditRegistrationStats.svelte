@@ -1,72 +1,102 @@
 <script>
-    export let params = {};
+    import {onMount} from "svelte";
     import {pop} from "svelte-spa-router";
-    import { onMount } from 'svelte';
-    import Button from 'sveltestrap/src/Button.svelte';
-    import Table from 'sveltestrap/src/Table.svelte';
+    import Table from "sveltestrap/src/Table.svelte";
+    import Button from "sveltestrap/src/Button.svelte";
+	
+	const colors= [
+   	 	'primary',
+   		'secondary',
+   		 'success',
+   		 'danger',
+   		 'warning',
+   		 'info',
+   		 'light',
+   		 'dark'
+ 	];
+	
+	const BASE_API_URL = "/api/v1";
+    export let params = {};
     let reg = {};
-    let updatedCountry;
-    let updatedYear;
-    let updatedprimarylevel;
-    let updatedsecondarylevel;
-    let updatedtertiarylevel;
-    onMount(getRegistrations);
-
-
-    async function getRegistrations(){
-        console.log("Fetching entries....");
-        const res = await fetch("/api/v1/registration-stats/"+params.country+"/"+params.year); 
-        if(res.ok){
-            const data = await res.json();
-            reg = data;
-            updatedCountry = reg.country;
-            updatedYear = reg.year;
-            updatedprimarylevel = reg.primarylevel;
-            updatedsecondarylevel = reg.secondarylevel;
-            updatedtertiarylevel = reg.tertiarylevel;
-        }else{
-            Errores(res.status,params.country+"/"+params.year);
-            pop();
+	let upcountry = "XXXX";
+	let upYear;
+	let upprimarylevel;
+	let upsecondarylevel;
+	let uptertiarylevel;
+    let errorMsg = "";
+ 	let okMsg = "";
+	let visible = false;
+	let visibleOk = false;
+    onMount(getReg);
+    async function getReg() {
+        console.log("Fetching data..." + params.country + " " + params.year);
+        const res = await fetch(BASE_API_URL +"/registration-stats/" + params.country +"/" + params.year);
+        if (res.ok) {
+            console.log("Ok:");
+            const json = await res.json();
+            reg = json;
+			
+			upcountry = reg.country;
+	 		upYear = parseInt(reg.year);
+			upprimarylevel = parseInt(reg.primarylevel);
+	 		upsecondarylevel = parseInt(reg.secondarylevel);
+	 		uptertiarylevel = parseInt(reg.tertiarylevel);
+			
+			console.log(JSON.stringify(reg));
+            console.log("Received data.");
+        } else {
+			if(res.status === 404){
+            	errorMsg = `No existe dato con Ciudad: ${params.country} y fecha: ${params.year}`;
+            	console.log("ERROR!" + errorMsg);
+				visibleOk=false;
+				visible=true;
+			} else if (res.status === 500) {
+        		errorMsg = "No se han podido acceder a la base de datos";
+      		}
+			
+      		console.log("ERROR!" + errorMsg);
         }
     }
-    async function EditReg(){
-        console.log("Updating registration...."+updatedCountry);
-        const res = await fetch("/api/v1/registration-stats/"+params.country+"/"+params.year,
-			{
-				method: "PUT",
-				body: JSON.stringify({
-                    country: updatedCountry,
-                    year: updatedYear,
-                    primarylevel: updatedprimarylevel,
-                    secondarylevel: updatedsecondarylevel,
-                    tertiarylevel: updatedtertiarylevel
-                }),
-				headers: {
-					"Content-Type": "application/json"
+    async function updateReg() {
+        console.log("Updating data..." + JSON.stringify(params.country) + ", " + JSON.stringify(params.year));
+		let year = parseInt(params.year);
+		
+		
+        const res = await fetch(BASE_API_URL +"/registration-stats/" + params.country  +"/" + params.year, {
+            method: "PUT",
+            body: JSON.stringify({
+               	country: params.country,
+          		year: year,
+          		primarylevel: parseInt(upprimarylevel),
+          		secondarylevel: parseInt(upsecondarylevel),
+          		tertiarylevel: parseInt(uptertiarylevel),
+            }),
+            headers: {
+                "Content-Type": "application/json"
+            }
+        }).then(function (res) {
+			if(res.ok){
+				console.log("Ok.");
+				getReg();
+				okMsg = "Actualización correcta";
+				visibleOk=true;
+				visible=false;
+				
+			}else{
+				if(res.status === 404){
+					errorMsg ="El dato solicitado no existe";
+					visibleOk=false;
+					visible=true;
 				}
-			}); 
+			}
+			
+			getReg();
+			console.log("ERROR!" + errorMsg);
+            
+        });
     }
-    async function Errores(code,entrada){
-        
-        let msg;
-        if(code == 404){
-            msg = "La entrada "+entrada+" no existe"
-        }
-        if(code == 400){
-            msg = "La petición no está correctamente formulada"
-        }
-        if(code == 409){
-            msg = "El dato introducido ya existe"
-        }
-        if(code == 401){
-            msg = "No autorizado"
-        }
-        if(code == 405){
-            msg = "Método no permitido"
-        }
-        window.alert(msg)
-            return;
-    }
+	
+	
 </script>
 
 <main>
@@ -88,12 +118,12 @@
             </thead>
             <tbody>
                 <tr>
-                    <td>{updatedCountry}</td>
-                    <td>{updatedYear}</td>
-                    <td><input bind:value="{updatedprimarylevel}"></td>
-                    <td><input bind:value="{updatedsecondarylevel}"></td>
-                    <td><input bind:value="{updatedtertiarylevel}"></td>
-                    <td><Button outline color="primary" on:click="{EditReg}">
+                    <td>{upcountry}</td>
+                    <td>{upYear}</td>
+                    <td><input bind:value="{upprimarylevel}"></td>
+                    <td><input bind:value="{upsecondarylevel}"></td>
+                    <td><input bind:value="{uptertiarylevel}"></td>
+                    <td><Button outline color="dark" on:click="{updateReg}">
                         Editar
                         </Button>
                     </td>
