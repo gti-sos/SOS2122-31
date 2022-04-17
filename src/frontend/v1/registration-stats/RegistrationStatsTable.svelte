@@ -41,18 +41,18 @@
 			}); //con await esperemos a que haya conectado a la api
 	}
 
-	async function BorrarRegis(countryD, yearD) {
+	async function BorrarRegis(countryDel, yearDel) {
         
-        const res = await fetch(BASE_API_URL + "/registration-stats"+ "/" + countryD + "/" + yearD, {
+        const res = await fetch(BASE_API_URL + "/registration-stats"+ "/" + countryDel + "/" + yearDel, {
             method: "DELETE"
         }).then(function (res) {
             visible = true;
             getRegistrations();      
             if (res.status==200) {
-                errorMsg = "Recurso "+countryD+" "+yearD+ " borrado correctamente";
-                console.log("Deleted " + countryD);            
+                errorMsg = "Recurso "+countryDel +" " + yearDel+ " borrado correctamente";
+                console.log("Deleted " + countryDel);            
             } else if (res.status==404) {
-                errorMsg = "No se ha encontrado el objeto " + countryD;
+                errorMsg = "No se ha encontrado el objeto " + countryDel;
                 console.log("Resource NOT FOUND");            
             } else {
                 errorMsg= res.status + ": " + "No se pudo borrar el recurso";
@@ -60,7 +60,7 @@
             }      
         });
     }
-	async function BorrarRegistros(country, year) {
+	async function BorrarRegistros() {
     	console.log("Deleting all data");
    		
 		const res = await fetch(BASE_API_URL +"/registration-stats",{
