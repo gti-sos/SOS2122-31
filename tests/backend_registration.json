@@ -6,53 +6,6 @@
 	},
 	"item": [
 		{
-			"name": "registration-stats GET Cargar datos iniciales",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"pm.test(\"Status code is 200\", function () {\r",
-							"    pm.response.to.have.status(200);\r",
-							"});\r",
-							"\r",
-							"pm.test(\"Responsse is an Array\", function () {\r",
-							"    var jsonData = pm.response.json();\r",
-							"    pm.expect(Array.isArray(jsonData)).to.eql(true);\r",
-							"});"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"method": "GET",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "{{HOST}}{{API}}/loadInitialData",
-					"host": [
-						"{{HOST}}{{API}}"
-					],
-					"path": [
-						"loadInitialData"
-					]
-				}
-			},
-			"response": []
-		},
-		{
 			"name": "registration-stats FAIL GET a recurso inexistente",
 			"event": [
 				{
@@ -154,7 +107,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"country\": \"israel\",\r\n    \"year\": 210,\r\n    \"primarylevel\": 114,\r\n    \"secondarylevel\": 30,\r\n    \"tertiarylevel\": 0\r\n} \r\n",
+					"raw": "{\r\n    \"country\": \"olaaa\",\r\n    \"year\": 210,\r\n    \"primarylevel\": 114,\r\n    \"secondarylevel\": 30,\r\n    \"tertiarylevel\": 0\r\n} \r\n",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -306,13 +259,60 @@
 					}
 				},
 				"url": {
-					"raw": "{{HOST}}{{API}}/israel/210",
+					"raw": "{{HOST}}{{API}}/olaaa/210",
 					"host": [
 						"{{HOST}}{{API}}"
 					],
 					"path": [
-						"israel",
+						"olaaa",
 						"210"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "registration-stats GET Cargar datos iniciales",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Responsse is an Array\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(Array.isArray(jsonData)).to.eql(true);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{HOST}}{{API}}/loadInitialData",
+					"host": [
+						"{{HOST}}{{API}}"
+					],
+					"path": [
+						"loadInitialData"
 					]
 				}
 			},
