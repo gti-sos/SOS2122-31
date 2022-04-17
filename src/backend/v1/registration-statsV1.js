@@ -341,32 +341,25 @@ module.exports.register = (app,db) => {
         res.sendStatus(200, "OK");
     });
 
-    app.delete(BASE_API_URL + "/registration-stats/:country/:year",(req, res)=>{
-        var countryR = req.params.country;
-        var yearR = req.params.year;
-
-        db.find({country: countryR, year: parseInt(yearR)}, {}, (err, regisNew)=>{
-            if (err){
-                res.sendStatus(500,"ERROR EN CLIENTE");
-                return;
-            }
-            if(regisNew==0){
-                res.sendStatus(404,"NOT FOUND");
-                return;
-            }
-            db.remove({country: countryR, year: yearR}, {}, (err, numRemoved)=>{
-                if (err){
-                    res.sendStatus(500,"ERROR EN CLIENTE");
-                    return;
-                }
-            
-                res.sendStatus(200,"DELETED");
-                return;
-                
-            });
-        });
-
-    })
+    app.delete(BASE_API_URL+"/registration-stats/:country/:year", (req,res)=>{
+        var cityD = req.params.city;
+		var yearD =  parseInt(req.params.year);
+		db.remove({ $and: [{ country: cityD}, {year: yearD }] }, {}, (err, numUp)=>{
+		if (err){
+			console.error("ERROR deleting DB contacts in DELETE: "+err);
+			res.sendStatus(500);
+		}else{
+			
+			if(numUp==0){
+				console.error("No data found");
+				res.sendStatus(404);
+			}else{
+				console.log(`stat with city: <${cityD}> and year: <${yearD}> deleted`);
+				res.sendStatus(200);
+			}
+		}
+	    });
+    });
 
 
 
