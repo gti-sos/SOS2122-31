@@ -1,46 +1,10 @@
 {
 	"info": {
-		"_postman_id": "47b3a477-5a7d-48cb-9df8-c4ac9ce60851",
+		"_postman_id": "bdcb9bca-1c80-4341-9e17-5973dd7bd81e",
 		"name": "sos2122-3 Heroku",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
-		{
-			"name": "LoadInitialData",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"pm.test(\"Status code is 200\", function () {\r",
-							"    pm.response.to.have.status(200);\r",
-							"});"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "https://sos2122-31.herokuapp.com/api/v1/proportion-stats/loadInitialData",
-					"protocol": "https",
-					"host": [
-						"sos2122-31",
-						"herokuapp",
-						"com"
-					],
-					"path": [
-						"api",
-						"v1",
-						"proportion-stats",
-						"loadInitialData"
-					]
-				}
-			},
-			"response": []
-		},
 		{
 			"name": "GET Pais",
 			"event": [
@@ -96,7 +60,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://sos2122-31.herokuapp.com/api/v1/proportion-stats/argentina/1991",
+					"raw": "https://sos2122-31.herokuapp.com/api/v1/proportion-stats/argentina/2019",
 					"protocol": "https",
 					"host": [
 						"sos2122-31",
@@ -107,7 +71,7 @@
 						"api",
 						"v1",
 						"proportion-stats",
-						"Argentina",
+						"argentina",
 						"2019"
 					]
 				}
@@ -321,41 +285,6 @@
 			"response": []
 		},
 		{
-			"name": "DELETE Total",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"pm.test(\"Status code is 200\", function () {\r",
-							"    pm.response.to.have.status(200);\r",
-							"});"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "DELETE",
-				"header": [],
-				"url": {
-					"raw": "https://sos2122-31.herokuapp.com/api/v1/proportion-stats",
-					"protocol": "https",
-					"host": [
-						"sos2122-31",
-						"herokuapp",
-						"com"
-					],
-					"path": [
-						"api",
-						"v1",
-						"proportion-stats"
-					]
-				}
-			},
-			"response": []
-		},
-		{
 			"name": "DELETE Pais",
 			"event": [
 				{
@@ -422,7 +351,7 @@
 						"v1",
 						"proportion-stats",
 						"argentina",
-						"2019"
+						"1991"
 					]
 				}
 			},
@@ -483,7 +412,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n\"country\": \"Argentina\",\r\n\"year\": 2019,\r\n\"male\": 100,\r\n\"female\": 100,\r\n\"total\": 100\r\n}",
+					"raw": "{\r\n\"country\": \"eeuu\",\r\n\"year\": 1990,\r\n\"male\": 100,\r\n\"female\": 100,\r\n\"total\": 100\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -529,7 +458,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n\"country\": \"Argentina\",\r\n\"year\": 2019,\r\n\"male\": 100,\r\n\"female\": 100,\r\n\"total\": 100\r\n}",
+					"raw": "{\r\n\"country\": \"eeuu\",\r\n\"year\": 1990,\r\n\"male\": 100,\r\n\"female\": 100,\r\n\"total\": 100\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -548,8 +477,8 @@
 						"api",
 						"v1",
 						"proportion-stats",
-						"Argentina",
-						"2019"
+						"eeuu",
+						"1990"
 					]
 				}
 			},
@@ -591,6 +520,77 @@
 						"proportion-stats",
 						"argentina",
 						"1992"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE Total",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://sos2122-31.herokuapp.com/api/v1/proportion-stats",
+					"protocol": "https",
+					"host": [
+						"sos2122-31",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"proportion-stats"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "LoadInitialData",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://sos2122-31.herokuapp.com/api/v1/proportion-stats/loadInitialData",
+					"protocol": "https",
+					"host": [
+						"sos2122-31",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"proportion-stats",
+						"loadInitialData"
 					]
 				}
 			},
