@@ -94,9 +94,7 @@
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"Status code is 200\", function () {\r",
-							"    pm.response.to.have.status(200);\r",
-							"});"
+							""
 						],
 						"type": "text/javascript"
 					}
@@ -115,12 +113,12 @@
 					}
 				},
 				"url": {
-					"raw": "{{HOST}}{{API}}/macedonia11/210",
+					"raw": "{{HOST}}{{API}}/macedonia111/210",
 					"host": [
 						"{{HOST}}{{API}}"
 					],
 					"path": [
-						"macedonia11",
+						"macedonia111",
 						"210"
 					]
 				}
@@ -147,7 +145,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"country\": \"macedonia11\",\r\n    \"year\": 210,\r\n    \"primarylevel\": 114,\r\n    \"secondarylevel\": 30,\r\n    \"tertiarylevel\": 0\r\n} \r\n",
+					"raw": "{\r\n    \"country\": \"macedonia111\",\r\n    \"year\": 210,\r\n    \"primarylevel\": 114,\r\n    \"secondarylevel\": 30,\r\n    \"tertiarylevel\": 0\r\n} \r\n",
 					"options": {
 						"raw": {
 							"language": "json"
