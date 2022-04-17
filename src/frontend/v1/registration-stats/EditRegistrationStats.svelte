@@ -1,63 +1,56 @@
 <script>
     export let params = {};
+    import {pop} from "svelte-spa-router";
     import { onMount } from 'svelte';
     import Button from 'sveltestrap/src/Button.svelte';
     import Table from 'sveltestrap/src/Table.svelte';
-    import { pop } from "svelte-spa-router";
-
-
-    let registration = {};
+    let reg = {};
     let updatedCountry;
     let updatedYear;
-    let updatedPrimaryLevel;
-    let updateSecondaryLevel;
-    let updateTertiaryLevel;
-
+    let updatedprimarylevel;
+    let updatedsecondarylevel;
+    let updatedtertiarylevel;
     onMount(getRegistrations);
 
+
     async function getRegistrations(){
-        console.log("Fetching registrations....");
+        console.log("Fetching entries....");
         const res = await fetch("/api/v1/registration-stats/"+params.country+"/"+params.year); 
         if(res.ok){
             const data = await res.json();
-            registration = data;
-            updatedCountry = registration.country;
-            updatedYear = registration.year;
-            updatedPrimaryLevel = registration.primaryLevel;
-            updateSecondaryLevel = registration.secondaryLevel;
-            updateTertiaryLevel = registration.tertiaryLevel;
+            reg = data;
+            updatedCountry = reg.country;
+            updatedYear = reg.year;
+            updatedprimarylevel = reg.primarylevel;
+            updatedsecondarylevel = reg.secondarylevel;
+            updatedtertiarylevel = reg.tertiarylevel;
         }else{
-            Errores(res.status, params.country, params.year);
+            Errores(res.status,params.country+"/"+params.year);
             pop();
         }
     }
-    async function editRegistration(){
-        console.log("Updating registration...."+ updatedCountry);
-        const res = await fetch("/api/v1/registration-stats/"+ params.country+"/"+ params.year,
+    async function EditReg(){
+        console.log("Updating registration...."+updatedCountry);
+        const res = await fetch("/api/v1/registration-stats/"+params.country+"/"+params.year,
 			{
 				method: "PUT",
 				body: JSON.stringify({
                     country: updatedCountry,
                     year: updatedYear,
-                    primaryLevel: updatedPrimaryLevel,
-                    secondaryLevel: updateSecondaryLevel,
-                    tertiaryLevel: updateTertiaryLevel
+                    primarylevel: updatedprimarylevel,
+                    secondarylevel: updatedsecondarylevel,
+                    tertiarylevel: updatedtertiarylevel
                 }),
 				headers: {
 					"Content-Type": "application/json"
 				}
-			}).then(function(res){
-				window.alert("Actualizado con éxito");
-                window.location.href = `/#/registration-stats`; 
-			});
-            
-            
+			}); 
     }
-    async function Errores(code, country, year){
+    async function Errores(code,entrada){
         
         let msg;
         if(code == 404){
-            msg = "No existe un dato con el pais " + country + " en el año " + year
+            msg = "La entrada "+entrada+" no existe"
         }
         if(code == 400){
             msg = "La petición no está correctamente formulada"
@@ -77,10 +70,10 @@
 </script>
 
 <main>
-    <h1>Editar registro "{params.country}"/"{params.year}"</h1>
-    {#await registration}
+    <h1>Editar entrada "{params.country}"/"{params.year}"</h1>
+    {#await reg}
     loading
-        {:then registration}
+        {:then reg}
         
     
         <Table bordered>
@@ -97,10 +90,10 @@
                 <tr>
                     <td>{updatedCountry}</td>
                     <td>{updatedYear}</td>
-                    <td><input bind:value="{updatedPrimaryLevel}"></td>
-                    <td><input bind:value="{updateSecondaryLevel}"></td>
-                    <td><input bind:value="{updateTertiaryLevel}"></td>
-                    <td><Button outline color="primary" on:click="{editRegistration}">
+                    <td><input bind:value="{updatedprimarylevel}"></td>
+                    <td><input bind:value="{updatedsecondarylevel}"></td>
+                    <td><input bind:value="{updatedtertiarylevel}"></td>
+                    <td><Button outline color="primary" on:click="{EditReg}">
                         Editar
                         </Button>
                     </td>

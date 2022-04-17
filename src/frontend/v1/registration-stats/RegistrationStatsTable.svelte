@@ -2,7 +2,7 @@
 	import { onMount } from "svelte";
 	import Table from "sveltestrap/src/Table.svelte";
 	import Button from "sveltestrap/src/Button.svelte";
-	
+	const BASE_API_URL = "api/v1";
 	let registrations = [];
 	let newRegistration = {
 		country: "",
@@ -11,11 +11,14 @@
         secondarylevel:"",
         tertiarylevel:""
 	}
-	let loading = true;
+	let errorMsg = "";
+	let okMsg = "";
+	let visible = false;
+	let visibleOk = false;
 	onMount(getRegistrations);
 
 	async function getRegistrations(){
-		console.log("Fetching contacts....");
+		console.log("Fetching registrations....");
 		const res = await fetch("/api/v1/registration-stats"); //con await esperemos a que haya conectado a la api
 		if(res.ok){
 			const data = await res.json();
@@ -39,62 +42,37 @@
 	}
 
     async function BorrarRegistration(countryDelete, yearDelete){
-        console.log("Deleting registration....");
-        const res = await fetch("/api/v1/registration-stats/"+ countryDelete +"/"+ yearDelete,
+        console.log("Deleting entry....");
+        const res = await fetch("/api/v1/registration-stats/"+countryDelete+"/"+yearDelete,
 			{
 				method: "DELETE"
 			}).then(function (res){
-                if(res.status == 201){
-					getRegistrations();
-					window.alert("Entrada introducida con éxito");
-				}else{
-					Errores(res.status);
-				}
+				getRegistrations();
+				window.alert("Entrada eliminada con éxito");
 			});
     }
 	async function BorrarRegistrations(){
-        console.log("Deleting registrations....");
+        console.log("Deleting entries....");
         const res = await fetch("/api/v1/registration-stats/",
 			{
 				method: "DELETE"
 			}).then(function (res){
 				getRegistrations();
-                window.alert("Entradas elimidas con éxito");
+				window.alert("Entradas elimidas con éxito");
 			});
     }
 	async function CargarRegistrations(){
-        console.log("Loading registrations....");
+        console.log("Loading entries....");
         const res = await fetch("/api/v1/registration-stats/loadInitialData",
 			{
 				method: "GET"
 			}).then(function (res){
 				getRegistrations();
-                window.alert("Entradas cargadas con éxito");
+				window.alert("Entradas cargadas con éxito");
 			});
     }
 
 
-    async function Errores(code){
-        
-        let msg;
-        if(code == 404){
-            msg = "La entrada seleccionada no existe"
-        }
-        if(code == 400){
-            msg = "La petición no está correctamente formulada"
-        }
-        if(code == 409){
-            msg = "El dato introducido ya existe"
-        }
-        if(code == 401){
-            msg = "No autorizado"
-        }
-        if(code == 405){
-            msg = "Método no permitido"
-        }
-        window.alert(msg)
-            return;
-    }
 </script>
 
 <main>
