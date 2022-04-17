@@ -291,43 +291,56 @@ module.exports.register = (app,db) => {
             req.body.ar_ty == null);
     };
 
-    app.delete(BASE_API_URL + "/alphabetization-stats", (req, res) => {
-        alphabetization_stats = [];
-        res.sendStatus(200, "OK");
+    app.delete(BASE_API_URL + "/alphabetization-stats", (req,res)=>{
+        db.remove({}, {multi:true}, (err, numRegRemoved)=>{
+		if (err){
+			console.error("ERROR deleting DB registrations in DELETE: "+err);
+			res.sendStatus(500);
+		}else{
+			if(numRegRemoved==0){
+				console.error("registration-stats not found");
+				res.sendStatus(404);
+			}else{
+				res.sendStatus(200);
+			}
+		}
+			
+	    });
     });
 
 
     app.delete(BASE_API_URL + "/alphabetization-stats/:country", (req, res) => { //borrar todos los recursos
         var countryName = req.params.country;
-        alphabetization_stats.filter((cont) => {
+        registration_stats.filter((cont) => {
             return (cont.country != countryName);
         });
         res.sendStatus(200, "OK");
     });
 
-    app.delete(BASE_API_URL + "/alphabetization-stats/:country/:year",(req, res)=>{
+    app.delete(BASE_API_URL+"/alphabetization-stats/:country/:year",(req, res)=>{
         var countryR = req.params.country;
         var yearR = req.params.year;
-
-        db.find({country: countryR, year: parseInt(yearR)}, {}, (err, regisNew)=>{
+        db.find({country: countryR, year: parseInt(yearR)}, {}, (err, filteredList)=>{
             if (err){
                 res.sendStatus(500,"ERROR EN CLIENTE");
                 return;
             }
-            if(regisNew==0){
+            if(filteredList==0){
                 res.sendStatus(404,"NOT FOUND");
                 return;
             }
-            db.remove({country: countryR, year: yearR}, {}, (err, numRemoved)=>{
+            db.remove({country: countryR, year: parseInt(yearR)}, {}, (err, numRemoved)=>{
                 if (err){
                     res.sendStatus(500,"ERROR EN CLIENTE");
                     return;
                 }
+            
                 res.sendStatus(200,"DELETED");
                 return;
+                
             });
         });
-    })
+    });
 
     app.put(BASE_API_URL + "/alphabetization-stats", (req, res) => {
         res.sendStatus(405, "Method Not Allowed");
