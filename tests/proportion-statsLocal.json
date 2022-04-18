@@ -6,6 +6,39 @@
 	},
 	"item": [
 		{
+			"name": "LoadInitialData Copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{HOST}}:{{PORT}}/api/v1/proportion-stats",
+					"host": [
+						"{{HOST}}"
+					],
+					"port": "{{PORT}}",
+					"path": [
+						"api",
+						"v1",
+						"proportion-stats"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "GET Pais",
 			"event": [
 				{

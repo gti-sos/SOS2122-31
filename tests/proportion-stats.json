@@ -519,5 +519,37 @@
 			},
 			"response": []
 		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "HOST",
+			"value": "https://sos2122-31.herokuapp.com\n",
+			"type": "string"
+		},
+		{
+			"key": "API",
+			"value": "/api/v1/proportion-stats\n",
+			"type": "string"
+		}
 	]
 }
