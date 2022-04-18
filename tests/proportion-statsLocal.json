@@ -1,7 +1,7 @@
 {
 	"info": {
-		"_postman_id": "99554e80-8e60-42fc-adf7-7eb6dcda69e3",
-		"name": "sos2122-3 HEroku",
+		"_postman_id": "3b41a756-0218-4d7a-9216-3175896b7741",
+		"name": "sos2122-3 LOCAL",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -24,12 +24,15 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{HOST}}:{{API}}/Argentina",
+					"raw": "{{HOST}}:{{PORT}}/api/v1/proportion-stats/Argentina",
 					"host": [
 						"{{HOST}}"
 					],
-					"port": "{{API}}",
+					"port": "{{PORT}}",
 					"path": [
+						"api",
+						"v1",
+						"proportion-stats",
 						"Argentina"
 					]
 				}
@@ -55,12 +58,15 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{HOST}}:{{API}}/Argentina/2019",
+					"raw": "{{HOST}}:{{PORT}}/api/v1/proportion-stats/Argentina/2019",
 					"host": [
 						"{{HOST}}"
 					],
-					"port": "{{API}}",
+					"port": "{{PORT}}",
 					"path": [
+						"api",
+						"v1",
+						"proportion-stats",
 						"Argentina",
 						"2019"
 					]
@@ -87,11 +93,16 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{HOST}}:{{API}}",
+					"raw": "{{HOST}}:{{PORT}}/api/v1/proportion-stats",
 					"host": [
 						"{{HOST}}"
 					],
-					"port": "{{API}}"
+					"port": "{{PORT}}",
+					"path": [
+						"api",
+						"v1",
+						"proportion-stats"
+					]
 				}
 			},
 			"response": []
@@ -115,12 +126,15 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{HOST}}:{{API}}/ecuador",
+					"raw": "{{HOST}}:{{PORT}}/api/v1/proportion-stats/ecuador",
 					"host": [
 						"{{HOST}}"
 					],
-					"port": "{{API}}",
+					"port": "{{PORT}}",
 					"path": [
+						"api",
+						"v1",
+						"proportion-stats",
 						"ecuador"
 					]
 				}
@@ -155,11 +169,16 @@
 					}
 				},
 				"url": {
-					"raw": "{{HOST}}:{{API}}",
+					"raw": "{{HOST}}:{{PORT}}/api/v1/proportion-stats",
 					"host": [
 						"{{HOST}}"
 					],
-					"port": "{{API}}"
+					"port": "{{PORT}}",
+					"path": [
+						"api",
+						"v1",
+						"proportion-stats"
+					]
 				}
 			},
 			"response": []
@@ -192,12 +211,15 @@
 					}
 				},
 				"url": {
-					"raw": "{{HOST}}:{{API}}/afganistan",
+					"raw": "{{HOST}}:{{PORT}}/api/v1/proportion-stats/afganistan",
 					"host": [
 						"{{HOST}}"
 					],
-					"port": "{{API}}",
+					"port": "{{PORT}}",
 					"path": [
+						"api",
+						"v1",
+						"proportion-stats",
 						"afganistan"
 					]
 				}
@@ -232,11 +254,17 @@
 					}
 				},
 				"url": {
-					"raw": "{{HOST}}:{{API}}",
+					"raw": "{{HOST}}:{{PORT}}/api/v1/proportion-stats/",
 					"host": [
 						"{{HOST}}"
 					],
-					"port": "{{API}}"
+					"port": "{{PORT}}",
+					"path": [
+						"api",
+						"v1",
+						"proportion-stats",
+						""
+					]
 				}
 			},
 			"response": []
@@ -260,12 +288,15 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "{{HOST}}:{{API}}/argentina",
+					"raw": "{{HOST}}:{{PORT}}/api/v1/proportion-stats/argentina",
 					"host": [
 						"{{HOST}}"
 					],
-					"port": "{{API}}",
+					"port": "{{PORT}}",
 					"path": [
+						"api",
+						"v1",
+						"proportion-stats",
 						"argentina"
 					]
 				}
@@ -291,12 +322,15 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "{{HOST}}:{{API}}/Argentina/2020",
+					"raw": "{{HOST}}:{{PORT}}/api/v1/proportion-stats/Argentina/2020",
 					"host": [
 						"{{HOST}}"
 					],
-					"port": "{{API}}",
+					"port": "{{PORT}}",
 					"path": [
+						"api",
+						"v1",
+						"proportion-stats",
 						"Argentina",
 						"2020"
 					]
@@ -323,11 +357,16 @@
 				"method": "PUT",
 				"header": [],
 				"url": {
-					"raw": "{{HOST}}:{{API}}",
+					"raw": "{{HOST}}:{{PORT}}/api/v1/proportion-stats",
 					"host": [
 						"{{HOST}}"
 					],
-					"port": "{{API}}"
+					"port": "{{PORT}}",
+					"path": [
+						"api",
+						"v1",
+						"proportion-stats"
+					]
 				}
 			},
 			"response": []
@@ -360,12 +399,15 @@
 					}
 				},
 				"url": {
-					"raw": "{{HOST}}:{{API}}/Argentina/2017",
+					"raw": "{{HOST}}:{{PORT}}/api/v1/proportion-stats/Argentina/2017",
 					"host": [
 						"{{HOST}}"
 					],
-					"port": "{{API}}",
+					"port": "{{PORT}}",
 					"path": [
+						"api",
+						"v1",
+						"proportion-stats",
 						"Argentina",
 						"2017"
 					]
@@ -401,12 +443,15 @@
 					}
 				},
 				"url": {
-					"raw": "{{HOST}}:{{API}}/Argentina/2020",
+					"raw": "{{HOST}}:{{PORT}}/api/v1/proportion-stats/Argentina/2020",
 					"host": [
 						"{{HOST}}"
 					],
-					"port": "{{API}}",
+					"port": "{{PORT}}",
 					"path": [
+						"api",
+						"v1",
+						"proportion-stats",
 						"Argentina",
 						"2020"
 					]
@@ -437,12 +482,15 @@
 					"raw": "{\r\n\"country\": \"argentina\",\r\n\"year\": 1992,\r\n\"male\": 100,\r\n\"female\": 100,\r\n\"total\": 100\r\n}"
 				},
 				"url": {
-					"raw": "{{HOST}}:{{API}}/argentina/1992",
+					"raw": "{{HOST}}:{{PORT}}/api/v1/proportion-stats/argentina/1992",
 					"host": [
 						"{{HOST}}"
 					],
-					"port": "{{API}}",
+					"port": "{{PORT}}",
 					"path": [
+						"api",
+						"v1",
+						"proportion-stats",
 						"argentina",
 						"1992"
 					]
@@ -469,11 +517,16 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "{{HOST}}:{{API}}",
+					"raw": "{{HOST}}:{{PORT}}/api/v1/proportion-stats",
 					"host": [
 						"{{HOST}}"
 					],
-					"port": "{{API}}"
+					"port": "{{PORT}}",
+					"path": [
+						"api",
+						"v1",
+						"proportion-stats"
+					]
 				}
 			},
 			"response": []
@@ -497,11 +550,16 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{HOST}}:{{API}}",
+					"raw": "{{HOST}}:{{PORT}}/api/v1/proportion-stats",
 					"host": [
 						"{{HOST}}"
 					],
-					"port": "{{API}}"
+					"port": "{{PORT}}",
+					"path": [
+						"api",
+						"v1",
+						"proportion-stats"
+					]
 				}
 			},
 			"response": []
@@ -530,7 +588,7 @@
 	"variable": [
 		{
 			"key": "HOST",
-			"value": "https://sos2122-31.herokuapp.com\n",
+			"value": "localhost",
 			"type": "string"
 		},
 		{
