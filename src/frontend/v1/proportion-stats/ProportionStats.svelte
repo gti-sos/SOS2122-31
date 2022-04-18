@@ -137,7 +137,7 @@
 					}}>
 						Editar
 					</Button>
-					<td><Button outline color="danger" on:click={BorrarRegis(proportion.country,proportion.year)}>
+					<td><Button outline color="danger" on:click={BorrarRegistro(proportion.country,proportion.year)}>
 						Borrar
 					</Button>
 					</td>
