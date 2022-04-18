@@ -1,333 +1,66 @@
 {
 	"info": {
-		"_postman_id": "3b41a756-0218-4d7a-9216-3175896b7741",
-		"name": "sos2122-3 LOCAL",
+		"_postman_id": "f2f84a2d-c637-403c-b5e9-7867470fc902",
+		"name": "sos2122-31",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
-			"name": "GET Pais",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"pm.test(\"Status code is 200\", function () {\r",
-							"    pm.response.to.have.status(200);\r",
-							"});"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
+			"name": "http://localhost:8080/api/v1/proportion-stats/loadInitialData",
 			"request": {
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{HOST}}:{{PORT}}/api/v1/proportion-stats/Argentina",
+					"raw": "http://localhost:8080/api/v1/proportion-stats/loadInitialData",
+					"protocol": "http",
 					"host": [
-						"{{HOST}}"
+						"localhost"
 					],
-					"port": "{{PORT}}",
+					"port": "8080",
 					"path": [
 						"api",
 						"v1",
 						"proportion-stats",
-						"Argentina"
+						"loadInitialData"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "GET Pais Año",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"pm.test(\"Status code is 200\", function () {\r",
-							"    pm.response.to.have.status(200);\r",
-							"});"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
+			"name": "http://localhost:8080/api/v1/proportion-stats/eeuu",
 			"request": {
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{HOST}}:{{PORT}}/api/v1/proportion-stats/argentina/2019",
+					"raw": "http://localhost:8080/api/v1/proportion-stats/eeuu",
+					"protocol": "http",
 					"host": [
-						"{{HOST}}"
+						"localhost"
 					],
-					"port": "{{PORT}}",
+					"port": "8080",
 					"path": [
 						"api",
 						"v1",
 						"proportion-stats",
-						"argentina",
-						"2019"
+						"eeuu"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "GET Entero",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"pm.test(\"Status code is 200\", function () {\r",
-							"    pm.response.to.have.status(200);\r",
-							"});"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
+			"name": "http://localhost:8080/api/v1/proportion-stats/argentina/1991",
 			"request": {
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{HOST}}:{{PORT}}/api/v1/proportion-stats/2020",
+					"raw": "http://localhost:8080/api/v1/proportion-stats/argentina/1991",
+					"protocol": "http",
 					"host": [
-						"{{HOST}}"
+						"localhost"
 					],
-					"port": "{{PORT}}",
-					"path": [
-						"api",
-						"v1",
-						"proportion-stats",
-						"2020"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "GET Not Found",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"pm.test(\"Status code is 404\", function () {\r",
-							"    pm.response.to.have.status(404);\r",
-							"});"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "{{HOST}}:{{PORT}}/api/v1/proportion-stats/ecuador",
-					"host": [
-						"{{HOST}}"
-					],
-					"port": "{{PORT}}",
-					"path": [
-						"api",
-						"v1",
-						"proportion-stats",
-						"ecuador"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "POST Created",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"pm.test(\"Status code is 201\", function () {\r",
-							"    pm.response.to.have.status(201);\r",
-							"});"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n\"country\": \"rusia\",\r\n\"year\": 2005,\r\n\"male\": 99,\r\n\"female\": 97,\r\n\"total\": 98\r\n}\r\n",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "{{HOST}}:{{PORT}}/api/v1/proportion-stats",
-					"host": [
-						"{{HOST}}"
-					],
-					"port": "{{PORT}}",
-					"path": [
-						"api",
-						"v1",
-						"proportion-stats"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "POST Method Not Allowed",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"pm.test(\"Status code is 405\", function () {\r",
-							"    pm.response.to.have.status(405);\r",
-							"});"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n\"country\": \"afganistan\",\r\n\"year\": 2011,\r\n\"male\": 62,\r\n\"female\": 32,\r\n\"total\": 47\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "{{HOST}}:{{PORT}}/api/v1/proportion-stats/afganistan",
-					"host": [
-						"{{HOST}}"
-					],
-					"port": "{{PORT}}",
-					"path": [
-						"api",
-						"v1",
-						"proportion-stats",
-						"afganistan"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "POST Bad Request",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"pm.test(\"Status code is 400\", function () {\r",
-							"    pm.response.to.have.status(400);\r",
-							"});"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n\"country\": \"afganistan\",\r\n\"year\": 2011,\r\n\"male\": 62,\r\n\"female\": 32\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "{{HOST}}:{{PORT}}/api/v1/proportion-stats/",
-					"host": [
-						"{{HOST}}"
-					],
-					"port": "{{PORT}}",
-					"path": [
-						"api",
-						"v1",
-						"proportion-stats",
-						""
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "DELETE Pais",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"pm.test(\"Status code is 200\", function () {\r",
-							"    pm.response.to.have.status(200);\r",
-							"});"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "DELETE",
-				"header": [],
-				"url": {
-					"raw": "{{HOST}}:{{PORT}}/api/v1/proportion-stats/argentina",
-					"host": [
-						"{{HOST}}"
-					],
-					"port": "{{PORT}}",
-					"path": [
-						"api",
-						"v1",
-						"proportion-stats",
-						"argentina"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "DELETE Pais Año",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"pm.test(\"Status code is 200\", function () {\r",
-							"    pm.response.to.have.status(200);\r",
-							"});"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "DELETE",
-				"header": [],
-				"url": {
-					"raw": "{{HOST}}:{{PORT}}/api/v1/proportion-stats/argentina/1991",
-					"host": [
-						"{{HOST}}"
-					],
-					"port": "{{PORT}}",
+					"port": "8080",
 					"path": [
 						"api",
 						"v1",
@@ -340,29 +73,70 @@
 			"response": []
 		},
 		{
-			"name": "PUT Method Not Allowed",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"pm.test(\"Status code is 405\", function () {\r",
-							"    pm.response.to.have.status(405);\r",
-							"});"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
+			"name": "http://localhost:8080/api/v1/proportion-stats/",
 			"request": {
-				"method": "PUT",
+				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{HOST}}:{{PORT}}/api/v1/proportion-stats",
+					"raw": "http://localhost:8080/api/v1/proportion-stats/",
+					"protocol": "http",
 					"host": [
-						"{{HOST}}"
+						"localhost"
 					],
-					"port": "{{PORT}}",
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"proportion-stats",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/api/v1/proportion-stats/ecuador",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/proportion-stats/ecuador",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"proportion-stats",
+						"ecuador"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/api/v1/proportion-stats",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"country\": \"argentina\",\r\n\"year\": 1991,\r\n\"ar_ym\": 98,\r\n\"ar_yw\": 98,\r\n\"ar_ty\": 98\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/proportion-stats",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
 					"path": [
 						"api",
 						"v1",
@@ -373,7 +147,165 @@
 			"response": []
 		},
 		{
-			"name": "PUT Not Found",
+			"name": "http://localhost:8080/api/v1/proportion-stats/afganistan",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"country\": \"afganistan\",\r\n\"year\": 2011,\r\n\"ar_ym\": 62,\r\n\"ar_yw\": 32,\r\n\"ar_ty\": 47\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/proportion-stats/afganistan",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"proportion-stats",
+						"afganistan"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/api/v1/proportion-stats/",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"country\": \"afganistan\",\r\n\"year\": 2011,\r\n\"ar_ym\": 62,\r\n\"ar_yw\": 32\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/proportion-stats/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"proportion-stats",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/api/v1/proportion-stats",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/proportion-stats",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"proportion-stats"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/api/v1/proportion-stats/argentina",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/proportion-stats/argentina",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"proportion-stats",
+						"argentina"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/api/v1/proportion-stats/argentina/1991",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/proportion-stats/argentina/1991",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"proportion-stats",
+						"argentina",
+						"1991"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/api/v1/proportion-stats",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/proportion-stats",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"proportion-stats"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/api/v1/proportion-stats/eeuu/1990",
 			"event": [
 				{
 					"listen": "test",
@@ -392,7 +324,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n\"country\": \"eeuu\",\r\n\"year\": 1990,\r\n\"male\": 100,\r\n\"female\": 100,\r\n\"total\": 100\r\n}",
+					"raw": "{\r\n\"country\": \"eeuu\",\r\n\"year\": 1990,\r\n\"ar_ym\": 100,\r\n\"ar_yw\": 100,\r\n\"ar_ty\": 100\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -400,55 +332,12 @@
 					}
 				},
 				"url": {
-					"raw": "{{HOST}}:{{PORT}}/api/v1/proportion-stats/rusia/1990",
+					"raw": "http://localhost:8080/api/v1/proportion-stats/eeuu/1990",
+					"protocol": "http",
 					"host": [
-						"{{HOST}}"
+						"localhost"
 					],
-					"port": "{{PORT}}",
-					"path": [
-						"api",
-						"v1",
-						"proportion-stats",
-						"rusia",
-						"1990"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "PUT OK",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"pm.test(\"Status code is 200\", function () {\r",
-							"    pm.response.to.have.status(200);\r",
-							"});"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "PUT",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n\"country\": \"eeuu\",\r\n\"year\": 1990,\r\n\"male\": 100,\r\n\"female\": 100,\r\n\"total\": 100\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "{{HOST}}:{{PORT}}/api/v1/proportion-stats/eeuu/1990",
-					"host": [
-						"{{HOST}}"
-					],
-					"port": "{{PORT}}",
+					"port": "8080",
 					"path": [
 						"api",
 						"v1",
@@ -461,33 +350,21 @@
 			"response": []
 		},
 		{
-			"name": "PUT Bad Request",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"pm.test(\"Status code is 400\", function () {\r",
-							"    pm.response.to.have.status(400);\r",
-							"});"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
+			"name": "http://localhost:8080/api/v1/proportion-stats/argentina/1992",
 			"request": {
 				"method": "PUT",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n\"country\": \"argentina\",\r\n\"year\": 1992,\r\n\"male\": 100,\r\n\"female\": 100,\r\n\"total\": 100\r\n}"
+					"raw": "{\r\n\"country\": \"argentina\",\r\n\"year\": 1992,\r\n\"ar_ym\": 100,\r\n\"ar_yw\": 100,\r\n\"ar_ty\": 100\r\n}"
 				},
 				"url": {
-					"raw": "{{HOST}}:{{PORT}}/api/v1/proportion-stats/argentina/1992",
+					"raw": "http://localhost:8080/api/v1/proportion-stats/argentina/1992",
+					"protocol": "http",
 					"host": [
-						"{{HOST}}"
+						"localhost"
 					],
-					"port": "{{PORT}}",
+					"port": "8080",
 					"path": [
 						"api",
 						"v1",
@@ -498,104 +375,6 @@
 				}
 			},
 			"response": []
-		},
-		{
-			"name": "DELETE Total",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"pm.test(\"Status code is 200\", function () {\r",
-							"    pm.response.to.have.status(200);\r",
-							"});"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "DELETE",
-				"header": [],
-				"url": {
-					"raw": "{{HOST}}:{{PORT}}/api/v1/proportion-stats",
-					"host": [
-						"{{HOST}}"
-					],
-					"port": "{{PORT}}",
-					"path": [
-						"api",
-						"v1",
-						"proportion-stats"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "LoadInitialData",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"pm.test(\"Status code is 200\", function () {\r",
-							"    pm.response.to.have.status(200);\r",
-							"});"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "{{HOST}}:{{PORT}}/api/v1/proportion-stats",
-					"host": [
-						"{{HOST}}"
-					],
-					"port": "{{PORT}}",
-					"path": [
-						"api",
-						"v1",
-						"proportion-stats"
-					]
-				}
-			},
-			"response": []
-		}
-	],
-	"event": [
-		{
-			"listen": "prerequest",
-			"script": {
-				"type": "text/javascript",
-				"exec": [
-					""
-				]
-			}
-		},
-		{
-			"listen": "test",
-			"script": {
-				"type": "text/javascript",
-				"exec": [
-					""
-				]
-			}
-		}
-	],
-	"variable": [
-		{
-			"key": "HOST",
-			"value": "localhost",
-			"type": "string"
-		},
-		{
-			"key": "PORT",
-			"value": "8080",
-			"type": "string"
 		}
 	]
 }
