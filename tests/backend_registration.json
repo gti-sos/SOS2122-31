@@ -113,7 +113,7 @@
 					}
 				},
 				"url": {
-					"raw": "{{HOST}}{{API}}/macedonia1111/210",
+					"raw": "{{HOST}}{{API}}/poland/210",
 					"host": [
 						"{{HOST}}{{API}}"
 					],
@@ -145,7 +145,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"country\": \"macedonia11111\",\r\n    \"year\": 210,\r\n    \"primarylevel\": 114,\r\n    \"secondarylevel\": 30,\r\n    \"tertiarylevel\": 0\r\n} \r\n",
+					"raw": "{\r\n    \"country\": \"poland\",\r\n    \"year\": 210,\r\n    \"primarylevel\": 114,\r\n    \"secondarylevel\": 30,\r\n    \"tertiarylevel\": 0\r\n} \r\n",
 					"options": {
 						"raw": {
 							"language": "json"

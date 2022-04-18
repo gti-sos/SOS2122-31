@@ -318,6 +318,9 @@ module.exports.register = (app,db) => {
     app.post(BASE_API_URL + "/registration-stats/:year", (req, res) => {
         res.sendStatus(405, "Method not allowed");
     });
+    app.post(BASE_API_URL + "/registration-stats/:country/:year", (req, res) => {
+        res.sendStatus(405, "Method not allowed");
+    });
 
     function parametroscorrectos(req) {
         return (req.body.country == null |
