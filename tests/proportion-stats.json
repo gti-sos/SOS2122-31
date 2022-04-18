@@ -24,15 +24,12 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{HOST}}:{{API}}/api/v1/proportion-stats/Argentina",
+					"raw": "{{HOST}}:{{API}}/Argentina",
 					"host": [
 						"{{HOST}}"
 					],
 					"port": "{{API}}",
 					"path": [
-						"api",
-						"v1",
-						"proportion-stats",
 						"Argentina"
 					]
 				}
@@ -58,15 +55,12 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{HOST}}:{{API}}/api/v1/proportion-stats/Argentina/2019",
+					"raw": "{{HOST}}:{{API}}/Argentina/2019",
 					"host": [
 						"{{HOST}}"
 					],
 					"port": "{{API}}",
 					"path": [
-						"api",
-						"v1",
-						"proportion-stats",
 						"Argentina",
 						"2019"
 					]
@@ -93,16 +87,11 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{HOST}}:{{API}}/api/v1/proportion-stats",
+					"raw": "{{HOST}}:{{API}}",
 					"host": [
 						"{{HOST}}"
 					],
-					"port": "{{API}}",
-					"path": [
-						"api",
-						"v1",
-						"proportion-stats"
-					]
+					"port": "{{API}}"
 				}
 			},
 			"response": []
@@ -126,15 +115,12 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{HOST}}:{{API}}/api/v1/proportion-stats/ecuador",
+					"raw": "{{HOST}}:{{API}}/ecuador",
 					"host": [
 						"{{HOST}}"
 					],
 					"port": "{{API}}",
 					"path": [
-						"api",
-						"v1",
-						"proportion-stats",
 						"ecuador"
 					]
 				}
@@ -169,16 +155,11 @@
 					}
 				},
 				"url": {
-					"raw": "{{HOST}}:{{API}}/api/v1/proportion-stats",
+					"raw": "{{HOST}}:{{API}}",
 					"host": [
 						"{{HOST}}"
 					],
-					"port": "{{API}}",
-					"path": [
-						"api",
-						"v1",
-						"proportion-stats"
-					]
+					"port": "{{API}}"
 				}
 			},
 			"response": []
@@ -211,15 +192,12 @@
 					}
 				},
 				"url": {
-					"raw": "{{HOST}}:{{API}}/api/v1/proportion-stats/afganistan",
+					"raw": "{{HOST}}:{{API}}/afganistan",
 					"host": [
 						"{{HOST}}"
 					],
 					"port": "{{API}}",
 					"path": [
-						"api",
-						"v1",
-						"proportion-stats",
 						"afganistan"
 					]
 				}
@@ -254,17 +232,11 @@
 					}
 				},
 				"url": {
-					"raw": "{{HOST}}:{{API}}/api/v1/proportion-stats/",
+					"raw": "{{HOST}}:{{API}}",
 					"host": [
 						"{{HOST}}"
 					],
-					"port": "{{API}}",
-					"path": [
-						"api",
-						"v1",
-						"proportion-stats",
-						""
-					]
+					"port": "{{API}}"
 				}
 			},
 			"response": []
@@ -288,15 +260,12 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "{{HOST}}:{{API}}/api/v1/proportion-stats/argentina",
+					"raw": "{{HOST}}:{{API}}/argentina",
 					"host": [
 						"{{HOST}}"
 					],
 					"port": "{{API}}",
 					"path": [
-						"api",
-						"v1",
-						"proportion-stats",
 						"argentina"
 					]
 				}
@@ -322,15 +291,12 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "{{HOST}}:{{API}}/api/v1/proportion-stats/Argentina/2020",
+					"raw": "{{HOST}}:{{API}}/Argentina/2020",
 					"host": [
 						"{{HOST}}"
 					],
 					"port": "{{API}}",
 					"path": [
-						"api",
-						"v1",
-						"proportion-stats",
 						"Argentina",
 						"2020"
 					]
@@ -357,16 +323,11 @@
 				"method": "PUT",
 				"header": [],
 				"url": {
-					"raw": "{{HOST}}:{{API}}/api/v1/proportion-stats",
+					"raw": "{{HOST}}:{{API}}",
 					"host": [
 						"{{HOST}}"
 					],
-					"port": "{{API}}",
-					"path": [
-						"api",
-						"v1",
-						"proportion-stats"
-					]
+					"port": "{{API}}"
 				}
 			},
 			"response": []
@@ -399,15 +360,12 @@
 					}
 				},
 				"url": {
-					"raw": "{{HOST}}:{{API}}/api/v1/proportion-stats/Argentina/2017",
+					"raw": "{{HOST}}:{{API}}/Argentina/2017",
 					"host": [
 						"{{HOST}}"
 					],
 					"port": "{{API}}",
 					"path": [
-						"api",
-						"v1",
-						"proportion-stats",
 						"Argentina",
 						"2017"
 					]
@@ -443,15 +401,12 @@
 					}
 				},
 				"url": {
-					"raw": "{{HOST}}:{{API}}/api/v1/proportion-stats/Argentina/2020",
+					"raw": "{{HOST}}:{{API}}/Argentina/2020",
 					"host": [
 						"{{HOST}}"
 					],
 					"port": "{{API}}",
 					"path": [
-						"api",
-						"v1",
-						"proportion-stats",
 						"Argentina",
 						"2020"
 					]
@@ -482,15 +437,12 @@
 					"raw": "{\r\n\"country\": \"argentina\",\r\n\"year\": 1992,\r\n\"male\": 100,\r\n\"female\": 100,\r\n\"total\": 100\r\n}"
 				},
 				"url": {
-					"raw": "{{HOST}}:{{API}}/api/v1/proportion-stats/argentina/1992",
+					"raw": "{{HOST}}:{{API}}/argentina/1992",
 					"host": [
 						"{{HOST}}"
 					],
 					"port": "{{API}}",
 					"path": [
-						"api",
-						"v1",
-						"proportion-stats",
 						"argentina",
 						"1992"
 					]
@@ -517,16 +469,11 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "{{HOST}}:{{API}}/api/v1/proportion-stats",
+					"raw": "{{HOST}}:{{API}}",
 					"host": [
 						"{{HOST}}"
 					],
-					"port": "{{API}}",
-					"path": [
-						"api",
-						"v1",
-						"proportion-stats"
-					]
+					"port": "{{API}}"
 				}
 			},
 			"response": []
@@ -550,16 +497,11 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{HOST}}:{{API}}/api/v1/proportion-stats",
+					"raw": "{{HOST}}:{{API}}",
 					"host": [
 						"{{HOST}}"
 					],
-					"port": "{{API}}",
-					"path": [
-						"api",
-						"v1",
-						"proportion-stats"
-					]
+					"port": "{{API}}"
 				}
 			},
 			"response": []
