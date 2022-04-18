@@ -1,21 +1,542 @@
 {
-	"id": "df67a81e-1641-4b83-8b22-43c99a100a35",
-	"name": "HEROKU proportion",
-	"values": [
+	"info": {
+		"_postman_id": "99554e80-8e60-42fc-adf7-7eb6dcda69e3",
+		"name": "sos2122-3 HEroku",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GET Pais",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{HOST}}:{{API}}/Argentina",
+					"host": [
+						"{{HOST}}"
+					],
+					"port": "{{API}}",
+					"path": [
+						"Argentina"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Pais Año",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{HOST}}:{{API}}/Argentina/2019",
+					"host": [
+						"{{HOST}}"
+					],
+					"port": "{{API}}",
+					"path": [
+						"Argentina",
+						"2019"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Entero",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{HOST}}:{{API}}",
+					"host": [
+						"{{HOST}}"
+					],
+					"port": "{{API}}"
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Not Found",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{HOST}}:{{API}}/ecuador",
+					"host": [
+						"{{HOST}}"
+					],
+					"port": "{{API}}",
+					"path": [
+						"ecuador"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST Created",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"country\": \"Angonla\",\r\n\"year\": 2005,\r\n\"male\": 99,\r\n\"female\": 97,\r\n\"total\": 98\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{HOST}}:{{API}}",
+					"host": [
+						"{{HOST}}"
+					],
+					"port": "{{API}}"
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST Method Not Allowed",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 405\", function () {\r",
+							"    pm.response.to.have.status(405);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"country\": \"afganistan\",\r\n\"year\": 2011,\r\n\"male\": 62,\r\n\"female\": 32,\r\n\"total\": 47\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{HOST}}:{{API}}/afganistan",
+					"host": [
+						"{{HOST}}"
+					],
+					"port": "{{API}}",
+					"path": [
+						"afganistan"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST Bad Request",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"country\": \"afganistan\",\r\n\"year\": 2011,\r\n\"male\": 62,\r\n\"female\": 32\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{HOST}}:{{API}}",
+					"host": [
+						"{{HOST}}"
+					],
+					"port": "{{API}}"
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE Pais",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{HOST}}:{{API}}/argentina",
+					"host": [
+						"{{HOST}}"
+					],
+					"port": "{{API}}",
+					"path": [
+						"argentina"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE Pais Año",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{HOST}}:{{API}}/Argentina/2020",
+					"host": [
+						"{{HOST}}"
+					],
+					"port": "{{API}}",
+					"path": [
+						"Argentina",
+						"2020"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT Method Not Allowed",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 405\", function () {\r",
+							"    pm.response.to.have.status(405);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "{{HOST}}:{{API}}",
+					"host": [
+						"{{HOST}}"
+					],
+					"port": "{{API}}"
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT Not Found",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"country\": \"Argentina\",\r\n\"year\": 2017,\r\n\"male\": 100,\r\n\"female\": 100,\r\n\"total\": 100\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{HOST}}:{{API}}/Argentina/2017",
+					"host": [
+						"{{HOST}}"
+					],
+					"port": "{{API}}",
+					"path": [
+						"Argentina",
+						"2017"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT OK",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"country\": \"Argentina\",\r\n\"year\": 2020,\r\n\"male\": 100,\r\n\"female\": 100,\r\n\"total\": 100\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{HOST}}:{{API}}/Argentina/2020",
+					"host": [
+						"{{HOST}}"
+					],
+					"port": "{{API}}",
+					"path": [
+						"Argentina",
+						"2020"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT Bad Request",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"country\": \"argentina\",\r\n\"year\": 1992,\r\n\"male\": 100,\r\n\"female\": 100,\r\n\"total\": 100\r\n}"
+				},
+				"url": {
+					"raw": "{{HOST}}:{{API}}/argentina/1992",
+					"host": [
+						"{{HOST}}"
+					],
+					"port": "{{API}}",
+					"path": [
+						"argentina",
+						"1992"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE Total",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{HOST}}:{{API}}",
+					"host": [
+						"{{HOST}}"
+					],
+					"port": "{{API}}"
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "LoadInitialData",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{HOST}}:{{API}}",
+					"host": [
+						"{{HOST}}"
+					],
+					"port": "{{API}}"
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
 		{
 			"key": "HOST",
-			"value": "https://sos2122-31.herokuapp.com",
-			"type": "default",
-			"enabled": true
+			"value": "https://sos2122-31.herokuapp.com\n",
+			"type": "string"
 		},
 		{
 			"key": "API",
-			"value": "/api/v1/proportion-stats",
-			"type": "default",
-			"enabled": true
+			"value": "/api/v1/proportion-stats\n",
+			"type": "string"
 		}
-	],
-	"_postman_variable_scope": "environment",
-	"_postman_exported_at": "2022-04-18T11:00:06.807Z",
-	"_postman_exported_using": "Postman/9.15.13"
+	]
 }
