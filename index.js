@@ -18,9 +18,13 @@ registration_stats_V1.register(app,db_regitration_stats);
 
 //José Ortiz Roldán
 const proportion_statsV1 = require("./src/backend/v1/proportion-statsV1");
-var datafile2 = path.join(__dirname, 'proportion-stats.db');
+const Datastore1 = require('nedb');
+const path1 = require('path');
+var datafile2 = path1.join(__dirname, 'proportion-stats.db');
 
-db_proportion_stats = new Datastore({filename: datafile2, autoload:true});
+app.use(bodyParser.json());
+
+db_proportion_stats = new Datastore1({filename: datafile2, autoload:true});
 proportion_statsV1.register(app, db_proportion_stats);  
 
 

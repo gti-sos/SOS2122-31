@@ -9,7 +9,11 @@
     "start": "node index.js",
     "test": "npm run test-registration-stats && npm run test-alphabetization-stats && npm run test-proportion-stats",
     "test-registration-stats": "npx newman run ./tests/backend_registration.json -e ./tests/env/heroku_registration.json",
+<<<<<<< Updated upstream
     "test-proportion-stats": "npx newman run ./tests/proportion-stats.json -e ./tests/env/heroku_proportion.json",
+=======
+    "test-proportion-stats": "npx newman run ./tests/proportion-statsLocal.json -e ./tests/env/proportion-statsENV_Local.json",
+>>>>>>> Stashed changes
     "test-alphabetization-stats": "npx newman run ./tests/alphabetization-stats.json -e ./tests/env/alphabetization-statsENV.json"
   },
   "author": "sos2122-31",

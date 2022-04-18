@@ -1,11 +1,6 @@
 const BASE_API_URL = "/api/v1";
-var Datastore = require("nedb");
 
-var path = require('path');
-var datafile = path.join(__dirname, 'proportion-stats.db');
-var db = new Datastore({filename: datafile, autoload:true});
 
-const bodyParser = require("body-parser");
 var proportion_stats = [
     {
         country : "Argentina",
@@ -114,13 +109,18 @@ var proportion_stats = [
 ];
 
 module.exports.register = (app,db) => {
-    //GET:
-
-    app.get(BASE_API_URL + "/proportion-stats", (req,res)=>{
-        db.insert(proportion_stats);
-        res.send(JSON.stringify(proportion_stats, null,2));
+    app.get(BASE_API_URL+"/proportion-stats/docs",(req,res)=>{
+        res.redirect("https://documenter.getpostman.com/view/19589104/Uyr5pKku")
     });
 
+    //GET:
+    app.get(BASE_API_URL + "/proportion-stats/loadInitialData", (req, res) => {
+        db.insert(proportion_stats);
+        res.send(JSON.stringify(proportion_stats, null, 2));
+    });
+
+
+    
     //GET por año:
 
     app.get(BASE_API_URL + "/proportion-stats", (req,res)=>{
@@ -138,7 +138,7 @@ module.exports.register = (app,db) => {
         }
 
         //Comprobar si el from es menor que el to
-        if (from<to) {
+        if (from>to) {
             res.sendStatus(400, "BAD REQUEST");
             return;
         }
@@ -190,9 +190,10 @@ module.exports.register = (app,db) => {
 
     });
 
+    
     //GET por país:
 
-    app.get(BASE_API_URL + "/proportion-stats", (req,res)=>{
+    app.get(BASE_API_URL + "/proportion-stats/:country", (req,res)=>{
         var country = req.query.country;
         var from = req.query.from;
         var to = req.query.to;
@@ -207,7 +208,7 @@ module.exports.register = (app,db) => {
         }
 
         //Comprobar si el from es menor que el to
-        if (from<to) {
+        if (from>to) {
             res.sendStatus(400, "BAD REQUEST");
             return;
         }
@@ -264,7 +265,7 @@ module.exports.register = (app,db) => {
 
     //GET por país y año:
 
-    app.get(BASE_API_URL + "/proportion-stats", (req,res)=>{
+    app.get(BASE_API_URL + "/proportion-stats/:country/:year", (req,res)=>{
         var country = req.query.country;
         var year = req.query.year;
 
