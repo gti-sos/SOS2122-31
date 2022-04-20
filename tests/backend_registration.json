@@ -6,6 +6,146 @@
 	},
 	"item": [
 		{
+			"name": "registration-stats GET Cargar datos iniciales",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Responsse is an Array\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(Array.isArray(jsonData)).to.eql(true);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{HOST}}{{API}}/loadInitialData",
+					"host": [
+						"{{HOST}}{{API}}"
+					],
+					"path": [
+						"loadInitialData"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{HOST}}:{{PORT}}/api/v1/registration-stats",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{HOST}}{{API}}",
+					"host": [
+						"{{HOST}}{{API}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{HOST}}:{{PORT}}/api/v1/registration-stats/argentina/2010",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Responsse is an object\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(typeof jsonData == 'object').to.eql(true);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{HOST}}{{API}}/argentina/2010",
+					"host": [
+						"{{HOST}}{{API}}"
+					],
+					"path": [
+						"argentina",
+						"2010"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{HOST}}:{{PORT}}/api/v1/registration-stats/germany",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{HOST}}{{API}}/argentina",
+					"host": [
+						"{{HOST}}{{API}}"
+					],
+					"path": [
+						"argentina"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "registration-stats FAIL GET a recurso inexistente",
 			"event": [
 				{
@@ -88,44 +228,6 @@
 			"response": []
 		},
 		{
-			"name": "http://localhost:8080/api/v1/registration-stats",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							""
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "DELETE",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "{{HOST}}{{API}}/poland/210",
-					"host": [
-						"{{HOST}}{{API}}"
-					],
-					"path": [
-						"macedonia1111",
-						"210"
-					]
-				}
-			},
-			"response": []
-		},
-		{
 			"name": "registration-stats POST de una lista de resursos",
 			"event": [
 				{
@@ -145,7 +247,43 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"country\": \"poland\",\r\n    \"year\": 210,\r\n    \"primarylevel\": 114,\r\n    \"secondarylevel\": 30,\r\n    \"tertiarylevel\": 0\r\n} \r\n",
+					"raw": "{\r\n    \"country\": \"macedonia1111\",\r\n    \"year\": 210,\r\n    \"primarylevel\": 114,\r\n    \"secondarylevel\": 30,\r\n    \"tertiarylevel\": 0\r\n} \r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{HOST}}{{API}}",
+					"host": [
+						"{{HOST}}{{API}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "registration-stats POST de una lista de resursos Copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 409\", function () {\r",
+							"    pm.response.to.have.status(409);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"country\": \"macedonia1111\",\r\n    \"year\": 210,\r\n    \"primarylevel\": 114,\r\n    \"secondarylevel\": 30,\r\n    \"tertiarylevel\": 0\r\n} \r\n",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -204,8 +342,8 @@
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"Status code is 409\", function () {\r",
-							"    pm.response.to.have.status(400);\r",
+							"pm.test(\"Status code is 405\", function () {\r",
+							"    pm.response.to.have.status(405);\r",
 							"});"
 						],
 						"type": "text/javascript"
@@ -217,7 +355,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"country\": \"italy\",\r\n    \"year\": 2012,\r\n    \"primarylevel\": 88,\r\n    \"secondarylevel\": 30\r\n} \r\n",
+					"raw": "{\r\n    \"country\": \"italy\",\r\n    \"year\": 2012,\r\n    \"primarylevel\": 88,\r\n    \"secondarylevel\": 30,\r\n    \"tertiarylevel\":90\r\n} \r\n",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -225,92 +363,13 @@
 					}
 				},
 				"url": {
-					"raw": "{{HOST}}{{API}}",
-					"host": [
-						"{{HOST}}{{API}}"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "http://localhost:8080/api/v1/registration-stats",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"pm.test(\"Status code is 200\", function () {\r",
-							"    pm.response.to.have.status(200);\r",
-							"});"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "DELETE",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"country\": \"italy\",\r\n    \"year\": 2012,\r\n    \"primarylevel\": 88\r\n} \r\n",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "{{HOST}}{{API}}",
-					"host": [
-						"{{HOST}}{{API}}"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "registration-stats GET Cargar datos iniciales",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"pm.test(\"Status code is 200\", function () {\r",
-							"    pm.response.to.have.status(200);\r",
-							"});\r",
-							"\r",
-							"pm.test(\"Responsse is an Array\", function () {\r",
-							"    var jsonData = pm.response.json();\r",
-							"    pm.expect(Array.isArray(jsonData)).to.eql(true);\r",
-							"});"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"method": "GET",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "{{HOST}}{{API}}/loadInitialData",
+					"raw": "{{HOST}}{{API}}/italy/2012",
 					"host": [
 						"{{HOST}}{{API}}"
 					],
 					"path": [
-						"loadInitialData"
+						"italy",
+						"2012"
 					]
 				}
 			},
@@ -437,100 +496,7 @@
 			"response": []
 		},
 		{
-			"name": "{{HOST}}:{{PORT}}/api/v1/registration-stats",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"pm.test(\"Status code is 200\", function () {\r",
-							"    pm.response.to.have.status(200);\r",
-							"});"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "{{HOST}}{{API}}",
-					"host": [
-						"{{HOST}}{{API}}"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "{{HOST}}:{{PORT}}/api/v1/registration-stats/argentina/2010",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"pm.test(\"Status code is 200\", function () {\r",
-							"    pm.response.to.have.status(200);\r",
-							"});\r",
-							"\r",
-							"pm.test(\"Responsse is an object\", function () {\r",
-							"    var jsonData = pm.response.json();\r",
-							"    pm.expect(typeof jsonData == 'object').to.eql(true);\r",
-							"});"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "{{HOST}}{{API}}/argentina/2010",
-					"host": [
-						"{{HOST}}{{API}}"
-					],
-					"path": [
-						"argentina",
-						"2010"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "{{HOST}}:{{PORT}}/api/v1/registration-stats/germany",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"pm.test(\"Status code is 200\", function () {\r",
-							"    pm.response.to.have.status(200);\r",
-							"});"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "{{HOST}}{{API}}/argentina",
-					"host": [
-						"{{HOST}}{{API}}"
-					],
-					"path": [
-						"argentina"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "registration-stats PUT para un recurso",
+			"name": "registration-stats FAIL PUT para todos los recursos",
 			"event": [
 				{
 					"listen": "test",
@@ -548,6 +514,120 @@
 				"body": {
 					"mode": "raw",
 					"raw": "{\r\n\"country\": \"argentina\",\r\n\"year\": 2010,\r\n\"primarylevel\": 117,\r\n\"secondarylevel\": 100,\r\n\"tertiarylevel\": 71000\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{HOST}}{{API}}",
+					"host": [
+						"{{HOST}}{{API}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/api/v1/registration-stats",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{HOST}}{{API}}/macedonia1111/210",
+					"host": [
+						"{{HOST}}{{API}}"
+					],
+					"path": [
+						"macedonia1111",
+						"210"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/api/v1/registration-stats Copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{HOST}}{{API}}/macedonia1111/210",
+					"host": [
+						"{{HOST}}{{API}}"
+					],
+					"path": [
+						"macedonia1111",
+						"210"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/api/v1/registration-stats",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"country\": \"italy\",\r\n    \"year\": 2012,\r\n    \"primarylevel\": 88\r\n} \r\n",
 					"options": {
 						"raw": {
 							"language": "json"
