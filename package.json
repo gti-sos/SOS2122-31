@@ -7,7 +7,7 @@
     "build": "rollup -c",
     "dev": "rollup -c -w",
     "start": "node index.js",
-    "test": "npm run test-registration-stats && npm run test-alphabetization-stats",
+    "test": "npm run test-registration-stats && npm run test-alphabetization-stats && npm run test-proportion-stats",
     "test-registration-stats": "npx newman run ./tests/backend_registration.json -e ./tests/env/heroku_registration.json",
     "test-proportion-stats": "npx newman run ./tests/proportion-stats.json -e ./tests/env/proportion-statsENV.json",
     "test-alphabetization-stats": "npx newman run ./tests/alphabetization-stats.json -e ./tests/env/alphabetization-statsENV.json"
