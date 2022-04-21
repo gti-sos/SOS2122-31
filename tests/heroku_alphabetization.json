@@ -1,12 +1,12 @@
 {
 	"info": {
-		"_postman_id": "47b3a477-5a7d-48cb-9df8-c4ac9ce60851",
+		"_postman_id": "987a39be-3f30-45d8-a19b-7b0d14ebaabd",
 		"name": "sos2122-31 Heroku",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
-			"name": "LoadInitialData",
+			"name": "GET LoadInitialData",
 			"event": [
 				{
 					"listen": "test",
@@ -24,18 +24,40 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://sos2122-31.herokuapp.com/api/v1/alphabetization-stats/loadInitialData",
-					"protocol": "https",
+					"raw": "{{HOST}}{{PORT}}/loadInitialData/",
 					"host": [
-						"sos2122-31",
-						"herokuapp",
-						"com"
+						"{{HOST}}{{PORT}}"
 					],
 					"path": [
-						"api",
-						"v1",
-						"alphabetization-stats",
-						"loadInitialData"
+						"loadInitialData",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Entero",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{HOST}}{{PORT}}",
+					"host": [
+						"{{HOST}}{{PORT}}"
 					]
 				}
 			},
@@ -60,17 +82,11 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://sos2122-31.herokuapp.com/api/v1/alphabetization-stats/eeuu",
-					"protocol": "https",
+					"raw": "{{HOST}}{{PORT}}/eeuu",
 					"host": [
-						"sos2122-31",
-						"herokuapp",
-						"com"
+						"{{HOST}}{{PORT}}"
 					],
 					"path": [
-						"api",
-						"v1",
-						"alphabetization-stats",
 						"eeuu"
 					]
 				}
@@ -96,17 +112,11 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://sos2122-31.herokuapp.com/api/v1/alphabetization-stats/argentina/1991",
-					"protocol": "https",
+					"raw": "{{HOST}}{{PORT}}/argentina/1991",
 					"host": [
-						"sos2122-31",
-						"herokuapp",
-						"com"
+						"{{HOST}}{{PORT}}"
 					],
 					"path": [
-						"api",
-						"v1",
-						"alphabetization-stats",
 						"argentina",
 						"1991"
 					]
@@ -115,7 +125,27 @@
 			"response": []
 		},
 		{
-			"name": "GET Entero",
+			"name": "GET Año Concreto",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{HOST}}{{PORT}}?year=1991",
+					"host": [
+						"{{HOST}}{{PORT}}"
+					],
+					"query": [
+						{
+							"key": "year",
+							"value": "1991"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Entero Paginación",
 			"event": [
 				{
 					"listen": "test",
@@ -133,32 +163,33 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://sos2122-31.herokuapp.com/api/v1/alphabetization-stats/",
-					"protocol": "https",
+					"raw": "{{HOST}}{{PORT}}?offset=2&limit=3",
 					"host": [
-						"sos2122-31",
-						"herokuapp",
-						"com"
+						"{{HOST}}{{PORT}}"
 					],
-					"path": [
-						"api",
-						"v1",
-						"alphabetization-stats",
-						""
+					"query": [
+						{
+							"key": "offset",
+							"value": "2"
+						},
+						{
+							"key": "limit",
+							"value": "3"
+						}
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "GET Not Found",
+			"name": "GET Entero From/To",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"Status code is 404\", function () {\r",
-							"    pm.response.to.have.status(404);\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
 							"});"
 						],
 						"type": "text/javascript"
@@ -169,18 +200,19 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://sos2122-31.herokuapp.com/api/v1/alphabetization-stats/ecuador",
-					"protocol": "https",
+					"raw": "{{HOST}}{{PORT}}?from=1991&to=2018",
 					"host": [
-						"sos2122-31",
-						"herokuapp",
-						"com"
+						"{{HOST}}{{PORT}}"
 					],
-					"path": [
-						"api",
-						"v1",
-						"alphabetization-stats",
-						"ecuador"
+					"query": [
+						{
+							"key": "from",
+							"value": "1991"
+						},
+						{
+							"key": "to",
+							"value": "2018"
+						}
 					]
 				}
 			},
@@ -206,7 +238,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n\"country\": \"bielorrusiaaaa\",\r\n\"year\": 2005,\r\n\"ar_ym\": 99,\r\n\"ar_yw\": 97,\r\n\"ar_ty\": 98\r\n}\r\n",
+					"raw": "{\r\n\"country\": \"bielorrusia\",\r\n\"year\": 2005,\r\n\"ar_ym\": 99,\r\n\"ar_yw\": 97,\r\n\"ar_ty\": 98\r\n}\r\n",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -214,17 +246,9 @@
 					}
 				},
 				"url": {
-					"raw": "https://sos2122-31.herokuapp.com/api/v1/alphabetization-stats",
-					"protocol": "https",
+					"raw": "{{HOST}}{{PORT}}",
 					"host": [
-						"sos2122-31",
-						"herokuapp",
-						"com"
-					],
-					"path": [
-						"api",
-						"v1",
-						"alphabetization-stats"
+						"{{HOST}}{{PORT}}"
 					]
 				}
 			},
@@ -258,18 +282,110 @@
 					}
 				},
 				"url": {
-					"raw": "https://sos2122-31.herokuapp.com/api/v1/alphabetization-stats/afganistan",
-					"protocol": "https",
+					"raw": "{{HOST}}{{PORT}}/afganistan",
 					"host": [
-						"sos2122-31",
-						"herokuapp",
-						"com"
+						"{{HOST}}{{PORT}}"
 					],
 					"path": [
-						"api",
-						"v1",
-						"alphabetization-stats",
 						"afganistan"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT Method Not Allowed",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 405\", function () {\r",
+							"    pm.response.to.have.status(405);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "{{HOST}}{{PORT}}",
+					"host": [
+						"{{HOST}}{{PORT}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT Bad Request",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"country\": \"argentina\",\r\n\"year\": 1992,\r\n\"ar_ym\": 100,\r\n\"ar_yw\": 100,\r\n\"ar_ty\": 100\r\n}"
+				},
+				"url": {
+					"raw": "{{HOST}}{{PORT}}/argentina/1992",
+					"host": [
+						"{{HOST}}{{PORT}}"
+					],
+					"path": [
+						"argentina",
+						"1992"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST Conflict",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 409\", function () {\r",
+							"    pm.response.to.have.status(409);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"country\": \"bielorrusia\",\r\n\"year\": 2005,\r\n\"ar_ym\": 99,\r\n\"ar_yw\": 97,\r\n\"ar_ty\": 98\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{HOST}}{{PORT}}",
+					"host": [
+						"{{HOST}}{{PORT}}"
 					]
 				}
 			},
@@ -303,171 +419,9 @@
 					}
 				},
 				"url": {
-					"raw": "https://sos2122-31.herokuapp.com/api/v1/alphabetization-stats/",
-					"protocol": "https",
+					"raw": "{{HOST}}{{PORT}}",
 					"host": [
-						"sos2122-31",
-						"herokuapp",
-						"com"
-					],
-					"path": [
-						"api",
-						"v1",
-						"alphabetization-stats",
-						""
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "DELETE Total",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"pm.test(\"Status code is 200\", function () {\r",
-							"    pm.response.to.have.status(200);\r",
-							"});"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "DELETE",
-				"header": [],
-				"url": {
-					"raw": "https://sos2122-31.herokuapp.com/api/v1/alphabetization-stats",
-					"protocol": "https",
-					"host": [
-						"sos2122-31",
-						"herokuapp",
-						"com"
-					],
-					"path": [
-						"api",
-						"v1",
-						"alphabetization-stats"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "DELETE Pais Año",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"pm.test(\"Status code is 200\", function () {\r",
-							"    pm.response.to.have.status(200);\r",
-							"});"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "DELETE",
-				"header": [],
-				"url": {
-					"raw": "https://sos2122-31.herokuapp.com/api/v1/alphabetization-stats/bielorrusia/2005",
-					"protocol": "https",
-					"host": [
-						"sos2122-31",
-						"herokuapp",
-						"com"
-					],
-					"path": [
-						"api",
-						"v1",
-						"alphabetization-stats",
-						"bielorrusiaaaa",
-						"2005"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "PUT Method Not Allowed",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"pm.test(\"Status code is 405\", function () {\r",
-							"    pm.response.to.have.status(405);\r",
-							"});"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "PUT",
-				"header": [],
-				"url": {
-					"raw": "https://sos2122-31.herokuapp.com/api/v1/alphabetization-stats",
-					"protocol": "https",
-					"host": [
-						"sos2122-31",
-						"herokuapp",
-						"com"
-					],
-					"path": [
-						"api",
-						"v1",
-						"alphabetization-stats"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "PUT Not Found",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"pm.test(\"Status code is 404\", function () {\r",
-							"    pm.response.to.have.status(404);\r",
-							"});"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "PUT",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n\"country\": \"eeuu\",\r\n\"year\": 1990,\r\n\"ar_ym\": 100,\r\n\"ar_yw\": 100,\r\n\"ar_ty\": 100\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "https://sos2122-31.herokuapp.com/api/v1/alphabetization-stats/rusia/1990",
-					"protocol": "https",
-					"host": [
-						"sos2122-31",
-						"herokuapp",
-						"com"
-					],
-					"path": [
-						"api",
-						"v1",
-						"alphabetization-stats",
-						"rusia",
-						"1990"
+						"{{HOST}}{{PORT}}"
 					]
 				}
 			},
@@ -501,17 +455,11 @@
 					}
 				},
 				"url": {
-					"raw": "https://sos2122-31.herokuapp.com/api/v1/alphabetization-stats/eeuu/1990",
-					"protocol": "https",
+					"raw": "{{HOST}}{{PORT}}/eeuu/1990",
 					"host": [
-						"sos2122-31",
-						"herokuapp",
-						"com"
+						"{{HOST}}{{PORT}}"
 					],
 					"path": [
-						"api",
-						"v1",
-						"alphabetization-stats",
 						"eeuu",
 						"1990"
 					]
@@ -520,14 +468,14 @@
 			"response": []
 		},
 		{
-			"name": "PUT Bad Request",
+			"name": "PUT Not Found",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"Status code is 400\", function () {\r",
-							"    pm.response.to.have.status(400);\r",
+							"pm.test(\"Status code is 404\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
 							"});"
 						],
 						"type": "text/javascript"
@@ -539,22 +487,109 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n\"country\": \"argentina\",\r\n\"year\": 1992,\r\n\"ar_ym\": 100,\r\n\"ar_yw\": 100,\r\n\"ar_ty\": 100\r\n}"
+					"raw": "{\r\n\"country\": \"eeuu\",\r\n\"year\": 1990,\r\n\"ar_ym\": 100,\r\n\"ar_yw\": 100,\r\n\"ar_ty\": 100\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
 				},
 				"url": {
-					"raw": "https://sos2122-31.herokuapp.com/api/v1/alphabetization-stats/argentina/1992",
-					"protocol": "https",
+					"raw": "{{HOST}}{{PORT}}/rusia/1990",
 					"host": [
-						"sos2122-31",
-						"herokuapp",
-						"com"
+						"{{HOST}}{{PORT}}"
 					],
 					"path": [
-						"api",
-						"v1",
-						"alphabetization-stats",
-						"argentina",
-						"1992"
+						"rusia",
+						"1990"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Not Found",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{HOST}}{{PORT}}/ecuador",
+					"host": [
+						"{{HOST}}{{PORT}}"
+					],
+					"path": [
+						"ecuador"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE Pais Año",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{HOST}}{{PORT}}/bielorrusia/2005",
+					"host": [
+						"{{HOST}}{{PORT}}"
+					],
+					"path": [
+						"bielorrusia",
+						"2005"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE Total",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{HOST}}{{PORT}}",
+					"host": [
+						"{{HOST}}{{PORT}}"
 					]
 				}
 			},
