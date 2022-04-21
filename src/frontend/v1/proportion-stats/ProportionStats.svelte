@@ -44,8 +44,11 @@
 
     async function BorrarRegistro(countryD, yearD){
         console.log("Borrando registro...." + countryD + " " + yearD);
-        const res = await fetch(BASE_API_URL + "/proportion-stats"+ "/" + countryD + "/" + yearD, {
+        const res = await fetch("/api/v1/proportion-stats"+ "/" + countryD + "/" + yearD, 
+        {
             method: "DELETE"
+            
+
         }).then(function (res) {
             visible = true;
             getproportions();      
