@@ -206,7 +206,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n\"country\": \"bielorrusiaa\",\r\n\"year\": 2005,\r\n\"ar_ym\": 99,\r\n\"ar_yw\": 97,\r\n\"ar_ty\": 98\r\n}\r\n",
+					"raw": "{\r\n\"country\": \"bielorrusiaaaa\",\r\n\"year\": 2005,\r\n\"ar_ym\": 99,\r\n\"ar_yw\": 97,\r\n\"ar_ty\": 98\r\n}\r\n",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -385,7 +385,7 @@
 						"api",
 						"v1",
 						"alphabetization-stats",
-						"bielorrusia",
+						"bielorrusiaaaa",
 						"2005"
 					]
 				}

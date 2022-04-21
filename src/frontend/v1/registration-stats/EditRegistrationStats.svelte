@@ -81,12 +81,14 @@
 				okMsg = "Actualización correcta";
 				visibleOk=true;
 				visible=false;
+                console.log(okMsg);
 				
 			}else{
 				if(res.status === 404){
-					errorMsg ="El dato solicitado no existe";
+					errorMsg ="El dato solicitado ya existe";
 					visibleOk=false;
 					visible=true;
+                    window.alert(errorMsg);
 				}
 			}
 			

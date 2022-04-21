@@ -93,7 +93,6 @@ module.exports.register = (app,db) => {
         var from = req.query.from;
         var to = req.query.to;
 
-        //Comprobamos query
 
         for(var i = 0; i<Object.keys(req.query).length;i++){
             var element = Object.keys(req.query)[i];
@@ -103,7 +102,6 @@ module.exports.register = (app,db) => {
             }
         }
 
-        //Comprobamos si from es mas pequeño o igual a to
         if(from>to){
             res.sendStatus(400, "BAD REQUEST");
             return;
@@ -116,7 +114,6 @@ module.exports.register = (app,db) => {
                 return;
             }
 
-            // Apartado para búsqueda por año
             
             if(year != null){
                 var newRegis = newRegis.filter((reg)=>
@@ -129,7 +126,6 @@ module.exports.register = (app,db) => {
                 }
             }
     
-            // Apartado para from y to
             
             if(from != null && to != null){
                 newRegis = newRegis.filter((reg)=>
@@ -144,7 +140,6 @@ module.exports.register = (app,db) => {
 
                 
             }
-            // RESULTADO
     
             if(req.query.limit != undefined || req.query.offset != undefined){
                 newRegis = paginacion(req,newRegis);
@@ -159,7 +154,6 @@ module.exports.register = (app,db) => {
     app.get(BASE_API_URL+"/registration-stats/docs",(req,res)=>{
         res.redirect("https://documenter.getpostman.com/view/19505610/UVyn2Jnb")
     });
-    // GET por país
     
     app.get(BASE_API_URL + "/registration-stats/:country",(req, res)=>{
     
@@ -167,7 +161,6 @@ module.exports.register = (app,db) => {
         var from = req.query.from;
         var to = req.query.to;
 
-        //Comprobamos query
         for(var i = 0; i<Object.keys(req.query).length;i++){
             var element = Object.keys(req.query)[i];
             if(element != "from" && element != "to"){
@@ -175,8 +168,6 @@ module.exports.register = (app,db) => {
                 return;
             }
         }
-
-        //Comprobamos si from es mas pequeño o igual a to
         if(from>to){
             res.sendStatus(400, "BAD REQUEST");
             return;
@@ -193,12 +184,9 @@ module.exports.register = (app,db) => {
             {
                 return (reg.country == country);
             });
-        
-            // Apartado para from y to
             var from = req.query.from;
             var to = req.query.to;
     
-            //Comprobamos si from es mas pequeño o igual a to
             if(from>to){
                 res.sendStatus(400, "BAD REQUEST");
                 return;
@@ -211,12 +199,10 @@ module.exports.register = (app,db) => {
                 }); 
                 
             }
-            //COMPROBAMOS SI EXISTE
             if (newRegis==0){
                 res.sendStatus(404, "NO EXISTE");
                 return;
             }
-            //RESULTADO
             if(req.query.limit != undefined || req.query.offset != undefined){
                 newRegis = paginacion(req,newRegis);
             }
@@ -228,7 +214,6 @@ module.exports.register = (app,db) => {
 
     });
     
-    // GET por país y año
     
     app.get(BASE_API_URL+"/registration-stats/:country/:year",(req, res)=>{
     
@@ -250,10 +235,7 @@ module.exports.register = (app,db) => {
                 res.sendStatus(404, "NO EXISTE");
                 return;
             }
-    
-            //RESULTADO
-    
-            //Paginación
+        
             if(req.query.limit != undefined || req.query.offset != undefined){
                 newRegis = paginacion(req,newRegis);
                 res.send(JSON.stringify(newRegis,null,2));
@@ -316,6 +298,9 @@ module.exports.register = (app,db) => {
         res.sendStatus(405, "Method not allowed");
     });
     app.post(BASE_API_URL + "/registration-stats/:year", (req, res) => {
+        res.sendStatus(405, "Method not allowed");
+    });
+    app.post(BASE_API_URL + "/registration-stats/:country/:year", (req, res) => {
         res.sendStatus(405, "Method not allowed");
     });
 
@@ -390,8 +375,6 @@ module.exports.register = (app,db) => {
 
     app.put(BASE_API_URL+"/registration-stats/:country/:year",(req, res)=>{
         
-        //COMPROBAMOS FORMATO JSON
-
         if(parametroscorrectos(req)){
             res.sendStatus(400,"BAD REQUEST - Parametros incorrectos");
             return;
@@ -407,8 +390,6 @@ module.exports.register = (app,db) => {
                 return;
             }
 
-            //COMPROBAMOS SI EXISTE EL ELEMENTO
-
             filteredList = filteredList.filter((reg)=>
             {
                 return (reg.country == countryR && reg.year == yearR);
@@ -418,14 +399,10 @@ module.exports.register = (app,db) => {
                 return;
             }
 
-            //COMPROBAMOS SI LOS CAMPOS ACTUALIZADOS SON IGUALES
-
             if(countryR != body.country || yearR != body.year){
                 res.sendStatus(400,"BAD REQUEST");
                 return;
             }
-
-            //ACTUALIZAMOS VALOR
                 
             db.update({$and:[{country: String(countryR)}, {year: parseInt(yearR)}]}, {$set: body}, {},function(err, numUpdated) {
                 if (err) {

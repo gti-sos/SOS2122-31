@@ -37,7 +37,30 @@
 					"Content-Type": "application/json"
 				}
 			}).then(function(res){
-				getRegistrations();
+				if(res.ok){
+				console.log("Ok.");
+				getReg();
+				okMsg = "Actualización correcta";
+				visibleOk=true;
+				visible=false;
+				
+			}else{
+				if(res.status === 404){
+					errorMsg ="El dato no ha sido encontrado";
+					visibleOk=false;
+					visible=true;
+					window.alert("ERROR!" + errorMsg);
+				}
+				if(res.status===409){
+					errorMsg ="El dato solicitado ya existe";
+					visibleOk=false;
+					visible=true;
+					window.alert("ERROR!" + errorMsg);
+				}
+			}
+			
+			getReg();
+			window.alert("ERROR!" + errorMsg);
 			}); //con await esperemos a que haya conectado a la api
 	}
 
