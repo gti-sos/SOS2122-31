@@ -1,48 +1,40 @@
 <script>
     import {onMount} from "svelte";
     import {pop} from "svelte-spa-router";
+    import Alert from 'sveltestrap/src/Alert.svelte';
     import Table from "sveltestrap/src/Table.svelte";
     import Button from "sveltestrap/src/Button.svelte";
 	
-	const colors= [
-   	 	'primary',
-   		'secondary',
-   		 'success',
-   		 'danger',
-   		 'warning',
-   		 'info',
-   		 'light',
-   		 'dark'
- 	];
-	
 	const BASE_API_URL = "/api/v1";
     export let params = {};
-    let reg = {};
-	let upcountry = "XXXX";
-	let upYear;
-	let upprimarylevel;
-	let upsecondarylevel;
-	let uptertiarylevel;
+    let registration = {};
+	let upcountry = "";
+	let upyear = "";
+	let upprimarylevel = "";
+	let upsecondarylevel = "";
+	let uptertiarylevel = "";
     let errorMsg = "";
  	let okMsg = "";
 	let visible = false;
 	let visibleOk = false;
+
     onMount(getReg);
+
     async function getReg() {
         console.log("Fetching data..." + params.country + " " + params.year);
         const res = await fetch(BASE_API_URL +"/registration-stats/" + params.country +"/" + params.year);
         if (res.ok) {
             console.log("Ok:");
             const json = await res.json();
-            reg = json;
+            registration = json;
 			
-			upcountry = reg.country;
-	 		upYear = parseInt(reg.year);
-			upprimarylevel = parseInt(reg.primarylevel);
-	 		upsecondarylevel = parseInt(reg.secondarylevel);
-	 		uptertiarylevel = parseInt(reg.tertiarylevel);
+			upcountry = registration.country;
+            upyear = parseInt(registration.year);
+			upprimarylevel = parseInt(registration.primarylevel);
+            upsecondarylevel = parseInt(registration.secondarylevel);
+	 		uptertiarylevel = parseInt(registration.tertiarylevel);
 			
-			console.log(JSON.stringify(reg));
+			console.log(JSON.stringify(registration));
             console.log("Received data.");
         } else {
 			if(res.status === 404){
@@ -62,14 +54,14 @@
 		let year = parseInt(params.year);
 		
 		
-        const res = await fetch(BASE_API_URL +"/registration-stats/" + params.country  +"/" + params.year, {
+        const res = await fetch(BASE_API_URL +"/registration-stats/" + params.country +"/" + params.year, {
             method: "PUT",
             body: JSON.stringify({
                	country: params.country,
           		year: year,
           		primarylevel: parseInt(upprimarylevel),
           		secondarylevel: parseInt(upsecondarylevel),
-          		tertiarylevel: parseInt(uptertiarylevel),
+          		tertiarylevel: parseInt(uptertiarylevel)
             }),
             headers: {
                 "Content-Type": "application/json"
@@ -81,14 +73,12 @@
 				okMsg = "Actualización correcta";
 				visibleOk=true;
 				visible=false;
-                console.log(okMsg);
 				
 			}else{
 				if(res.status === 404){
-					errorMsg ="El dato solicitado ya existe";
+					errorMsg ="El dato solicitado no existe";
 					visibleOk=false;
 					visible=true;
-                    window.alert(errorMsg);
 				}
 			}
 			
@@ -99,40 +89,51 @@
     }
 	
 	
+	
 </script>
 
 <main>
-    <h1>Editar entrada "{params.country}"/"{params.year}"</h1>
-    {#await reg}
-    loading
-        {:then reg}
+    <h3>Editar campos <strong>{params.country}</strong><strong>{params.year}</strong></h3>
+    <Table bordered>
+        <thead>
+            <div>
+                <Alert color="danger" isOpen={visible} toggle={() => (visible = false)}>
+                    {#if errorMsg}
+                        <p>ERROR: {errorMsg}</p>
+                       {/if}
+                </Alert>
+                <Alert color="success" isOpen={visibleOk} toggle={() => (visibleOk = false)}>
+                    {#if okMsg}
+                        <p>Correcto: {okMsg}</p>
+                        {/if}
+                </Alert>
+            </div>
         
+        
+            <tr>
+                <th>Ciudad</th>
+                <th>Año</th>
+                <th>Medallas de oro</th>
+                <th>Medallas de plata</th>
+                <th>Medallas de bronce</th>
+                <th>Acción</th>
+            </tr>
+        </thead>
+        
+        <tbody>
+        
+            <tr>
+                <td>{upcountry}</td>
+                <td>{upyear}</td>
+                <td><input type=number bind:value="{upprimarylevel}"></td>
+                <td><input type=number bind:value="{upsecondarylevel}"></td>
+                <td><input type=number bind:value="{uptertiarylevel}"></td>
+                <td><Button on:click={updateReg}>Actualizar</Button></td>
+                
+            </tr>
+        </tbody>
+    </Table>
     
-        <Table bordered>
-            <thead>
-                <tr>
-                    <th>País</th>
-                    <th>Año</th>
-                    <th>Nivel Primario</th>
-                    <th>Nivel Secundario</th>
-                    <th>Nivel Terciario</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>{upcountry}</td>
-                    <td>{upYear}</td>
-                    <td><input bind:value="{upprimarylevel}"></td>
-                    <td><input bind:value="{upsecondarylevel}"></td>
-                    <td><input bind:value="{uptertiarylevel}"></td>
-                    <td><Button outline color="dark" on:click="{updateReg}">
-                        Editar
-                        </Button>
-                    </td>
-                </tr>
-            </tbody>
-        </Table>
-    {/await}
     
     <Button outline color="secondary" on:click="{pop}">Volver</Button>
 
