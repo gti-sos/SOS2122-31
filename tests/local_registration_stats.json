@@ -1,7 +1,7 @@
 {
 	"info": {
-		"_postman_id": "9f6c7784-c4d2-4820-b807-84f23cd7ba64",
-		"name": "sos2122-31",
+		"_postman_id": "22905117-1194-4507-8034-cb335cc9e26f",
+		"name": "sos2122-31 Copy",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -41,11 +41,15 @@
 					}
 				},
 				"url": {
-					"raw": "{{HOST}}{{API}}/loadInitialData",
+					"raw": "{{HOST}}:{{PORT}}/api/v1/registration-stats/loadInitialData",
 					"host": [
-						"{{HOST}}{{API}}"
+						"{{HOST}}"
 					],
+					"port": "{{PORT}}",
 					"path": [
+						"api",
+						"v1",
+						"registration-stats",
 						"loadInitialData"
 					]
 				}
@@ -71,9 +75,15 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{HOST}}{{API}}",
+					"raw": "{{HOST}}:{{PORT}}/api/v1/registration-stats",
 					"host": [
-						"{{HOST}}{{API}}"
+						"{{HOST}}"
+					],
+					"port": "{{PORT}}",
+					"path": [
+						"api",
+						"v1",
+						"registration-stats"
 					]
 				}
 			},
@@ -103,11 +113,15 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{HOST}}{{API}}/argentina/2010",
+					"raw": "{{HOST}}:{{PORT}}/api/v1/registration-stats/argentina/2010",
 					"host": [
-						"{{HOST}}{{API}}"
+						"{{HOST}}"
 					],
+					"port": "{{PORT}}",
 					"path": [
+						"api",
+						"v1",
+						"registration-stats",
 						"argentina",
 						"2010"
 					]
@@ -134,11 +148,15 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{HOST}}{{API}}/argentina",
+					"raw": "{{HOST}}:{{PORT}}/api/v1/registration-stats/argentina",
 					"host": [
-						"{{HOST}}{{API}}"
+						"{{HOST}}"
 					],
+					"port": "{{PORT}}",
 					"path": [
+						"api",
+						"v1",
+						"registration-stats",
 						"argentina"
 					]
 				}
@@ -176,11 +194,15 @@
 					}
 				},
 				"url": {
-					"raw": "{{HOST}}{{API}}/brazil",
+					"raw": "{{HOST}}:{{PORT}}/api/v1/registration-stats/brazil",
 					"host": [
-						"{{HOST}}{{API}}"
+						"{{HOST}}"
 					],
+					"port": "{{PORT}}",
 					"path": [
+						"api",
+						"v1",
+						"registration-stats",
 						"brazil"
 					]
 				}
@@ -206,11 +228,15 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{HOST}}{{API}}/?offset=2&limit=3",
+					"raw": "{{HOST}}:{{PORT}}/api/v1/registration-stats/?offset=2&limit=3",
 					"host": [
-						"{{HOST}}{{API}}"
+						"{{HOST}}"
 					],
+					"port": "{{PORT}}",
 					"path": [
+						"api",
+						"v1",
+						"registration-stats",
 						""
 					],
 					"query": [
@@ -255,9 +281,15 @@
 					}
 				},
 				"url": {
-					"raw": "{{HOST}}{{API}}",
+					"raw": "{{HOST}}:{{PORT}}/api/v1/registration-stats",
 					"host": [
-						"{{HOST}}{{API}}"
+						"{{HOST}}"
+					],
+					"port": "{{PORT}}",
+					"path": [
+						"api",
+						"v1",
+						"registration-stats"
 					]
 				}
 			},
@@ -291,9 +323,15 @@
 					}
 				},
 				"url": {
-					"raw": "{{HOST}}{{API}}",
+					"raw": "{{HOST}}:{{PORT}}/api/v1/registration-stats",
 					"host": [
-						"{{HOST}}{{API}}"
+						"{{HOST}}"
+					],
+					"port": "{{PORT}}",
+					"path": [
+						"api",
+						"v1",
+						"registration-stats"
 					]
 				}
 			},
@@ -327,9 +365,15 @@
 					}
 				},
 				"url": {
-					"raw": "{{HOST}}{{API}}",
+					"raw": "{{HOST}}:{{PORT}}/api/v1/registration-stats",
 					"host": [
-						"{{HOST}}{{API}}"
+						"{{HOST}}"
+					],
+					"port": "{{PORT}}",
+					"path": [
+						"api",
+						"v1",
+						"registration-stats"
 					]
 				}
 			},
@@ -363,11 +407,15 @@
 					}
 				},
 				"url": {
-					"raw": "{{HOST}}{{API}}/italy/2012",
+					"raw": "{{HOST}}:{{PORT}}/api/v1/registration-stats/italy/2012",
 					"host": [
-						"{{HOST}}{{API}}"
+						"{{HOST}}"
 					],
+					"port": "{{PORT}}",
 					"path": [
+						"api",
+						"v1",
+						"registration-stats",
 						"italy",
 						"2012"
 					]
@@ -403,11 +451,15 @@
 					}
 				},
 				"url": {
-					"raw": "{{HOST}}{{API}}/argentina/2010",
+					"raw": "{{HOST}}:{{PORT}}/api/v1/registration-stats/argentina/2010",
 					"host": [
-						"{{HOST}}{{API}}"
+						"{{HOST}}"
 					],
+					"port": "{{PORT}}",
 					"path": [
+						"api",
+						"v1",
+						"registration-stats",
 						"argentina",
 						"2010"
 					]
@@ -443,11 +495,15 @@
 					}
 				},
 				"url": {
-					"raw": "{{HOST}}{{API}}/argentina/2010",
+					"raw": "{{HOST}}:{{PORT}}/api/v1/registration-stats/argentina/2010",
 					"host": [
-						"{{HOST}}{{API}}"
+						"{{HOST}}"
 					],
+					"port": "{{PORT}}",
 					"path": [
+						"api",
+						"v1",
+						"registration-stats",
 						"argentina",
 						"2010"
 					]
@@ -483,11 +539,15 @@
 					}
 				},
 				"url": {
-					"raw": "{{HOST}}{{API}}/argentina/2010",
+					"raw": "{{HOST}}:{{PORT}}/api/v1/registration-stats/argentina/2010",
 					"host": [
-						"{{HOST}}{{API}}"
+						"{{HOST}}"
 					],
+					"port": "{{PORT}}",
 					"path": [
+						"api",
+						"v1",
+						"registration-stats",
 						"argentina",
 						"2010"
 					]
@@ -521,9 +581,15 @@
 					}
 				},
 				"url": {
-					"raw": "{{HOST}}{{API}}",
+					"raw": "{{HOST}}:{{PORT}}/api/v1/registration-stats",
 					"host": [
-						"{{HOST}}{{API}}"
+						"{{HOST}}"
+					],
+					"port": "{{PORT}}",
+					"path": [
+						"api",
+						"v1",
+						"registration-stats"
 					]
 				}
 			},
@@ -555,12 +621,16 @@
 					}
 				},
 				"url": {
-					"raw": "{{HOST}}{{API}}/macedonia1111/210",
+					"raw": "{{HOST}}:{{PORT}}/api/v1/registration-stats/croacia/210",
 					"host": [
-						"{{HOST}}{{API}}"
+						"{{HOST}}"
 					],
+					"port": "{{PORT}}",
 					"path": [
-						"macedonia1111",
+						"api",
+						"v1",
+						"registration-stats",
+						"croacia",
 						"210"
 					]
 				}
@@ -595,9 +665,15 @@
 					}
 				},
 				"url": {
-					"raw": "{{HOST}}{{API}}",
+					"raw": "{{HOST}}:{{PORT}}/api/v1/registration-stats",
 					"host": [
-						"{{HOST}}{{API}}"
+						"{{HOST}}"
+					],
+					"port": "{{PORT}}",
+					"path": [
+						"api",
+						"v1",
+						"registration-stats"
 					]
 				}
 			},
