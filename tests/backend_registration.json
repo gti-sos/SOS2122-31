@@ -555,12 +555,12 @@
 					}
 				},
 				"url": {
-					"raw": "{{HOST}}{{API}}/macedonia1111/210",
+					"raw": "{{HOST}}{{API}}/croacia/210",
 					"host": [
 						"{{HOST}}{{API}}"
 					],
 					"path": [
-						"macedonia1111",
+						"croacia",
 						"210"
 					]
 				}
