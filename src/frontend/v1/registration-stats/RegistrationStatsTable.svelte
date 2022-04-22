@@ -26,11 +26,11 @@
     let lastPage = 1;
     let total = 0;
 	
-	onMount(getOlimpic);
+	onMount(getReg);
 
 	const BASE_API_URL = "/api/v1";
 		  
-	async function getOlimpic(){
+	async function getReg(){
         console.log("Fetching entries....");
         const res = await fetch("/api/v1/registration-stats/"); 
         if(res.ok){
@@ -88,7 +88,7 @@
       if (page !== c_page) {
         c_offset = offset;
         c_page = page;
-        getOlimpic();
+        getReg();
 		getOlimpic1();
       }
     } 
@@ -107,7 +107,7 @@
 		).then((res) => {
 			
 			if(res.ok){
-				getOlimpic();
+				getReg();
 				getOlimpic1();
 				okMsg = "El dato se introdujo correctamente";
 				visibleOk=true;
@@ -133,7 +133,7 @@
 								method: "DELETE"
 								
 							}).then( function (res) {
-								getOlimpic();
+								getReg();
 								getOlimpic1();
 								okMsg = "Dato eliminado";
 								visibleOk=true;
@@ -149,7 +149,7 @@
 								
 							}).then( function (res) {
 							if(res.ok){
-								getOlimpic();
+								getReg();
 								getOlimpic1();
 								okMsg = "Todos los datos se han eliminado";
 								visibleOk=true;
@@ -168,7 +168,7 @@
 			{
 				method: "GET"
 			}).then(function (res){
-				getOlimpic();
+				getReg();
 				getOlimpic1();
 			});
     }
