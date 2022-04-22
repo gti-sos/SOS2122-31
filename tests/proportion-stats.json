@@ -24,6 +24,38 @@
 				"method": "GET",
 				"header": [],
 				"url": {
+					"raw": "{{HOST}}:{{API}}/loadInitialData/",
+					"host": [
+						"{{HOST}}"
+					],
+					"port": "{{API}}",
+					"path": [
+						"loadInitialData",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Entero",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
 					"raw": "{{HOST}}:{{API}}",
 					"host": [
 						"{{HOST}}"
@@ -92,34 +124,6 @@
 						"Argentina",
 						"2019"
 					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "GET Entero",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"pm.test(\"Status code is 200\", function () {\r",
-							"    pm.response.to.have.status(200);\r",
-							"});"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "{{HOST}}:{{API}}",
-					"host": [
-						"{{HOST}}"
-					],
-					"port": "{{API}}"
 				}
 			},
 			"response": []
@@ -220,13 +224,13 @@
 					}
 				},
 				"url": {
-					"raw": "{{HOST}}:{{API}}/afganistan",
+					"raw": "{{HOST}}:{{API}}/tunez",
 					"host": [
 						"{{HOST}}"
 					],
 					"port": "{{API}}",
 					"path": [
-						"afganistan"
+						"tunez"
 					]
 				}
 			},
