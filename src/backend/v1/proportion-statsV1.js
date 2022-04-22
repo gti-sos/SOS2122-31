@@ -386,7 +386,6 @@ module.exports.register = (app,db) => {
         var yearRegis = req.params.year;
         var body = req.body;  
 
-        
         db.find({},function(err,regisNew){
             if(err){
                 res.sendStatus(500, "ERROR EN CLIENTE");
