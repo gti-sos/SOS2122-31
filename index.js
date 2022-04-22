@@ -43,5 +43,5 @@ app.get("/cool", (req,res)=>{
 
 
 app.listen(port, () =>{
-    console.log(`server TRULY ready at the port ${port}`);
+    console.log(`server TRULY ready at the port ${port}!`);
 });

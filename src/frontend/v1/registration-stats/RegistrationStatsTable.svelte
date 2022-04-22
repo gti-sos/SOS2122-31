@@ -60,7 +60,6 @@
 					c.push(y);
 					registrations = c;
 				}
-				return registrations
 			}
 			paginacion();
 		}else{
