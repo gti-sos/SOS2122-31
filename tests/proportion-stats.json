@@ -24,11 +24,11 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{HOST}}:{{API}}/loadInitialData",
+					"raw": "{{HOST}}:{{PORT}}/loadInitialData/",
 					"host": [
 						"{{HOST}}"
 					],
-					"port": "{{API}}",
+					"port": "{{PORT}}",
 					"path": [
 						"loadInitialData",
 						""
@@ -56,11 +56,11 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{HOST}}:{{API}}",
+					"raw": "{{HOST}}:{{PORT}}",
 					"host": [
 						"{{HOST}}"
 					],
-					"port": "{{API}}"
+					"port": "{{PORT}}"
 				}
 			},
 			"response": []
@@ -84,11 +84,11 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{HOST}}:{{API}}/Argentina",
+					"raw": "{{HOST}}:{{PORT}}/Argentina",
 					"host": [
 						"{{HOST}}"
 					],
-					"port": "{{API}}",
+					"port": "{{PORT}}",
 					"path": [
 						"Argentina"
 					]
@@ -115,11 +115,11 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{HOST}}:{{API}}/Argentina/2019",
+					"raw": "{{HOST}}:{{PORT}}/Argentina/2019",
 					"host": [
 						"{{HOST}}"
 					],
-					"port": "{{API}}",
+					"port": "{{PORT}}",
 					"path": [
 						"Argentina",
 						"2019"
@@ -147,11 +147,11 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{HOST}}:{{API}}/ecuador",
+					"raw": "{{HOST}}:{{PORT}}/ecuador",
 					"host": [
 						"{{HOST}}"
 					],
-					"port": "{{API}}",
+					"port": "{{PORT}}",
 					"path": [
 						"ecuador"
 					]
@@ -187,11 +187,11 @@
 					}
 				},
 				"url": {
-					"raw": "{{HOST}}:{{API}}",
+					"raw": "{{HOST}}:{{PORT}}",
 					"host": [
 						"{{HOST}}"
 					],
-					"port": "{{API}}"
+					"port": "{{PORT}}"
 				}
 			},
 			"response": []
@@ -224,11 +224,11 @@
 					}
 				},
 				"url": {
-					"raw": "{{HOST}}:{{API}}/tunez",
+					"raw": "{{HOST}}:{{PORT}}/tunez",
 					"host": [
 						"{{HOST}}"
 					],
-					"port": "{{API}}",
+					"port": "{{PORT}}",
 					"path": [
 						"tunez"
 					]
@@ -264,11 +264,11 @@
 					}
 				},
 				"url": {
-					"raw": "{{HOST}}:{{API}}",
+					"raw": "{{HOST}}:{{PORT}}",
 					"host": [
 						"{{HOST}}"
 					],
-					"port": "{{API}}"
+					"port": "{{PORT}}"
 				}
 			},
 			"response": []
@@ -292,11 +292,11 @@
 				"method": "PUT",
 				"header": [],
 				"url": {
-					"raw": "{{HOST}}:{{API}}",
+					"raw": "{{HOST}}:{{PORT}}",
 					"host": [
 						"{{HOST}}"
 					],
-					"port": "{{API}}"
+					"port": "{{PORT}}"
 				}
 			},
 			"response": []
@@ -329,11 +329,11 @@
 					}
 				},
 				"url": {
-					"raw": "{{HOST}}:{{API}}/Argentina/2017",
+					"raw": "{{HOST}}:{{PORT}}/Argentina/2017",
 					"host": [
 						"{{HOST}}"
 					],
-					"port": "{{API}}",
+					"port": "{{PORT}}",
 					"path": [
 						"Argentina",
 						"2017"
@@ -370,11 +370,11 @@
 					}
 				},
 				"url": {
-					"raw": "{{HOST}}:{{API}}/Argentina/2020",
+					"raw": "{{HOST}}:{{PORT}}/Argentina/2020",
 					"host": [
 						"{{HOST}}"
 					],
-					"port": "{{API}}",
+					"port": "{{PORT}}",
 					"path": [
 						"Argentina",
 						"2020"
@@ -406,11 +406,11 @@
 					"raw": "{\r\n\"country\": \"argentina\",\r\n\"year\": 1992,\r\n\"male\": 100,\r\n\"female\": 100,\r\n\"total\": 100\r\n}"
 				},
 				"url": {
-					"raw": "{{HOST}}:{{API}}/argentina/1992",
+					"raw": "{{HOST}}:{{PORT}}/argentina/1992",
 					"host": [
 						"{{HOST}}"
 					],
-					"port": "{{API}}",
+					"port": "{{PORT}}",
 					"path": [
 						"argentina",
 						"1992"
@@ -438,11 +438,11 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "{{HOST}}:{{API}}/Argentina/2020",
+					"raw": "{{HOST}}:{{PORT}}/Argentina/2020",
 					"host": [
 						"{{HOST}}"
 					],
-					"port": "{{API}}",
+					"port": "{{PORT}}",
 					"path": [
 						"Argentina",
 						"2020"
@@ -470,11 +470,11 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "{{HOST}}:{{API}}/argentina",
+					"raw": "{{HOST}}:{{PORT}}/argentina",
 					"host": [
 						"{{HOST}}"
 					],
-					"port": "{{API}}",
+					"port": "{{PORT}}",
 					"path": [
 						"argentina"
 					]
@@ -501,11 +501,11 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "{{HOST}}:{{API}}",
+					"raw": "{{HOST}}:{{PORT}}",
 					"host": [
 						"{{HOST}}"
 					],
-					"port": "{{API}}"
+					"port": "{{PORT}}"
 				}
 			},
 			"response": []
