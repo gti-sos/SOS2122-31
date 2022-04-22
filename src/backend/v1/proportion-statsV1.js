@@ -407,6 +407,7 @@ module.exports.register = (app,db) => {
                 return;
             }
 
+            
             //ACTUALIZAMOS VALOR
             db.update({$and:[{country: String(countryRegis)}, {year: parseInt(yearRegis)}]}, {$set: body}, {},function(err, numUpdated) {
                 if (err) {
