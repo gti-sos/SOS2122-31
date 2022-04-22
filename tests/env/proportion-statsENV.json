@@ -6,6 +6,34 @@
 	},
 	"item": [
 		{
+			"name": "LoadInitialData",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{HOST}}:{{API}}",
+					"host": [
+						"{{HOST}}"
+					],
+					"port": "{{API}}"
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "GET Pais",
 			"event": [
 				{
@@ -242,69 +270,6 @@
 			"response": []
 		},
 		{
-			"name": "DELETE Pais",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"pm.test(\"Status code is 200\", function () {\r",
-							"    pm.response.to.have.status(200);\r",
-							"});"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "DELETE",
-				"header": [],
-				"url": {
-					"raw": "{{HOST}}:{{API}}/argentina",
-					"host": [
-						"{{HOST}}"
-					],
-					"port": "{{API}}",
-					"path": [
-						"argentina"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "DELETE Pais Año",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"pm.test(\"Status code is 200\", function () {\r",
-							"    pm.response.to.have.status(200);\r",
-							"});"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "DELETE",
-				"header": [],
-				"url": {
-					"raw": "{{HOST}}:{{API}}/Argentina/2020",
-					"host": [
-						"{{HOST}}"
-					],
-					"port": "{{API}}",
-					"path": [
-						"Argentina",
-						"2020"
-					]
-				}
-			},
-			"response": []
-		},
-		{
 			"name": "PUT Method Not Allowed",
 			"event": [
 				{
@@ -451,7 +416,7 @@
 			"response": []
 		},
 		{
-			"name": "DELETE Total",
+			"name": "DELETE Pais Año",
 			"event": [
 				{
 					"listen": "test",
@@ -469,17 +434,21 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "{{HOST}}:{{API}}",
+					"raw": "{{HOST}}:{{API}}/Argentina/2020",
 					"host": [
 						"{{HOST}}"
 					],
-					"port": "{{API}}"
+					"port": "{{API}}",
+					"path": [
+						"Argentina",
+						"2020"
+					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "LoadInitialData",
+			"name": "DELETE Pais",
 			"event": [
 				{
 					"listen": "test",
@@ -494,7 +463,38 @@
 				}
 			],
 			"request": {
-				"method": "GET",
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{HOST}}:{{API}}/argentina",
+					"host": [
+						"{{HOST}}"
+					],
+					"port": "{{API}}",
+					"path": [
+						"argentina"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE Total",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
 				"header": [],
 				"url": {
 					"raw": "{{HOST}}:{{API}}",
@@ -530,7 +530,7 @@
 	"variable": [
 		{
 			"key": "HOST",
-			"value": "https://sos2122-31.herokuapp.com\n",
+			"value": "https://sos2122-31.herokuapp.com",
 			"type": "string"
 		},
 		{
