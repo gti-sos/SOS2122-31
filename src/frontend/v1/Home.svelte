@@ -22,14 +22,21 @@
         </ul>
         
     
-    <h3><a href="https://sos2122-31.herokuapp.com/api/v1/registration-stats">BackEnd proportion-stats</a></h3>
-    <h3><a href="https://sos2122-31.herokuapp.com/#/registration-stats">FrontEnd proportion-stats</a></h3>
-    <h5>
-        Daniel Vega Vera:
-        <a href="https://sos2122-31.herokuapp.com/api/v1/alphabetization-stats">Enlace BackEnd</a>
-        <a href="https://sos2122-31.herokuapp.com/#/alphabetization-stats">Enlace FrontEnd</a>
-    </h5>
-    <h3><a href="https://sos2122-31.herokuapp.com/api/v1/proportion-stats">https://sos2122-31.herokuapp.com/api/v1/proportion-stats</a></h3><h3><a href="https://sos2122-31.herokuapp.com/#/registration-stats">https://sos2122-31.herokuapp.com/#/registration-stats</a></h3>
+        <h6>
+            Ismael Mesa Zyout:
+            <a href="https://sos2122-31.herokuapp.com/api/v1/registration-stats">Enlace BackEnd</a>
+            <a href="https://sos2122-31.herokuapp.com/#/registration-stats">Enlace FrontEnd</a>
+        </h6>
+        <h6>
+            Daniel Vega Vera:
+            <a href="https://sos2122-31.herokuapp.com/api/v1/alphabetization-stats">Enlace BackEnd</a>
+            <a href="https://sos2122-31.herokuapp.com/#/alphabetization-stats">Enlace FrontEnd</a>
+        </h6>
+        <h6>
+            José Ortiz Roldán:
+            <a href="https://sos2122-31.herokuapp.com/api/v1/proportion-stats">Enlace BackEnd</a>
+            <a href="https://sos2122-31.herokuapp.com/#/proportion-stats">Enlace FrontEnd</a>
+        </h6>
     
     </body>
 

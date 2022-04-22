@@ -391,12 +391,5 @@ module.exports.register = (app, db) => {
                 }
             });
         })
-
-
-
     })
-
-
-
-
 };
