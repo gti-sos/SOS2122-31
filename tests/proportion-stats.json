@@ -24,7 +24,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{HOST}}:{{API}}/loadInitialData/",
+					"raw": "{{HOST}}:{{API}}/loadInitialData",
 					"host": [
 						"{{HOST}}"
 					],
