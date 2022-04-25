@@ -289,7 +289,12 @@ module.exports.register = (app, db) => {
             req.body.year == null |
             req.body.ar_yw == null |
             req.body.ar_yw == null |
-            req.body.ar_ty == null);
+            req.body.ar_ty == null |
+            req.body.country === "" |
+            req.body.year === "" |
+            req.body.ar_ym === "" |
+            req.body.ar_yw === "" |
+            req.body.ar_ty === "");
     };
 
     app.delete(BASE_API_URL + "/alphabetization-stats/", (req, res) => {
@@ -310,7 +315,7 @@ module.exports.register = (app, db) => {
     });
 
 
-    app.delete(BASE_API_URL + "/alphabetization-stats/:country", (req, res) => { //borrar todos los recursos
+    app.delete(BASE_API_URL + "/alphabetization-stats/:country", (req, res) => {
         var countryName = req.params.country;
         alphabetization_stats.filter((cont) => {
             return (cont.country != countryName);

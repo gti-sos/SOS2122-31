@@ -3,6 +3,7 @@
     import { pop } from "svelte-spa-router";
     import Table from "sveltestrap/src/Table.svelte";
     import Button from "sveltestrap/src/Button.svelte";
+    import Alert from 'sveltestrap/src/Alert.svelte';
 
     const colors = [
         "primary",
@@ -92,53 +93,77 @@
                 },
             }
         ).then(function (res) {
-            if (res.ok) {
-                console.log("Ok.");
-                getReg();
+            visible = true;
+            getReg();
+            if (res.status == 200 || res.status == 201) {
                 okMsg = "Actualización correcta";
                 visibleOk = true;
-                visible = false;
             } else {
+                if (res.status === 400) {
+                    errorMsg = "Rellene los campos.";
+                    visibleOk = false;
+                }
+
                 if (res.status === 404) {
                     errorMsg = "El dato solicitado no existe";
                     visibleOk = false;
-                    visible = true;
+                    window.alert(errorMsg);
                 }
             }
-
-            getReg();
-            console.log("ERROR!" + errorMsg);
         });
     }
 </script>
 
 <main>
-    <h1>Editar entrada "{params.country}"/"{params.year}"</h1>
+    <h3>
+        Editar entrada <strong>{params.country}</strong><strong
+            >{params.year}</strong
+        >
+    </h3>
     {#await reg}
         loading
     {:then reg}
         <Table bordered>
             <thead>
+                <div>
+                    <Alert
+                        color="danger"
+                        isOpen={visible}
+                        toggle={() => (visible = false)}
+                    >
+                        {#if errorMsg}
+                            <p>ERROR: {errorMsg}</p>
+                        {/if}
+                    </Alert>
+                    <Alert
+                        color="success"
+                        isOpen={visibleOk}
+                        toggle={() => (visibleOk = false)}
+                    >
+                        {#if okMsg}
+                            <p>Correcto: {okMsg}</p>
+                        {/if}
+                    </Alert>
+                </div>
+
                 <tr>
-                    <th>País</th>
+                    <th>Pais</th>
                     <th>Año</th>
-                    <th>Hombres</th>
-                    <th>Mujeres</th>
+                    <th>Hombre</th>
+                    <th>Mujer</th>
                     <th>Total</th>
+                    <th>Acción</th>
                 </tr>
             </thead>
+
             <tbody>
                 <tr>
                     <td>{upcountry}</td>
                     <td>{upYear}</td>
-                    <td><input bind:value={upar_ym} /></td>
-                    <td><input bind:value={upar_yw} /></td>
-                    <td><input bind:value={upar_ty} /></td>
-                    <td
-                        ><Button outline color="dark" on:click={updateReg}>
-                            Actualizar
-                        </Button>
-                    </td>
+                    <td><input type="number" bind:value={upar_ym} /></td>
+                    <td><input type="number" bind:value={upar_yw} /></td>
+                    <td><input type="number" bind:value={upar_ty} /></td>
+                    <td><Button on:click={updateReg}>Actualizar</Button></td>
                 </tr>
             </tbody>
         </Table>
