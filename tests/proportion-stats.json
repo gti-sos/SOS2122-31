@@ -443,7 +443,7 @@
 			"request": {
 				"method": "DELETE",
 				"header": [],
-				"url": {
+				"url": { 
 					"raw": "{{HOST}}{{PORT}}/Tayikistan/2005",
 					"host": [
 						"{{HOST}}{{PORT}}"
