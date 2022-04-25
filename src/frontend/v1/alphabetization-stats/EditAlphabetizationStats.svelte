@@ -136,7 +136,7 @@
                     <td><input bind:value={upar_ty} /></td>
                     <td
                         ><Button outline color="dark" on:click={updateReg}>
-                            Editar
+                            Actualizar
                         </Button>
                     </td>
                 </tr>

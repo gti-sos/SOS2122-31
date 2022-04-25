@@ -1,88 +1,140 @@
 <script>
 	import { onMount } from "svelte";
+	import Alert from "sveltestrap/src/Alert.svelte";
 	import Table from "sveltestrap/src/Table.svelte";
 	import Button from "sveltestrap/src/Button.svelte";
-	const BASE_API_URL = "api/v1";
-	let alphabetizations = [];
-	let newalphabetization = {
-		country: "",
-		year: null,
-		ar_ym: null,
-		ar_yw: null,
-		ar_ty: null,
-	};
+	import { Pagination, PaginationItem, PaginationLink } from "sveltestrap";
+
 	let errorMsg = "";
 	let okMsg = "";
+	let registrations = [];
+	let newRegistration = {
+		country: "",
+		year: "",
+		ar_ym: "",
+		ar_yw: "",
+		ar_ty: "",
+	};
 	let visible = false;
 	let visibleOk = false;
-	onMount(getalphabetizations);
 
-	async function getalphabetizations() {
+	let offset1 = 0;
+	let offset2 = 0;
+	let limit = 10;
+	let page = 1;
+	let lastPage = 1;
+	let total = 0;
+	let from = null;
+	let to = null;
+	onMount(getReg1);
+
+	const BASE_API_URL = "/api/v1";
+
+	async function getReg() {
 		console.log("Fetching entries....");
-		const res = await fetch("/api/v1/alphabetization-stats/");
+		let cadena = `/api/v1/alphabetization-stats?from=${from}&&to=${to}&&`;
+		const res = await fetch(cadena);
 		if (res.ok) {
 			const data = await res.json();
-			alphabetizations = data;
-			console.log("Received entries: " + alphabetizations.length);
+			registrations = data;
+			console.log("Received entries: " + registrations.length);
+		} else {
+			console.log("Error");
 		}
 	}
 
-	async function insertalphabetization() {
-		console.log(
-			"Inserting alphabetization...." + JSON.stringify(newalphabetization)
-		);
-		const res = await fetch("/api/v1/alphabetization-stats/", {
+	async function getReg1() {
+		console.log("Fetching entries....");
+		let cadena =
+			"/api/v1/alphabetization-stats?limit=" + limit + "&offset=" + offset1;
+		const res = await fetch(cadena);
+		if (res.ok) {
+			//let cadenaPag = cadena.split("?limit=" + limit + "&offset=" + offset1);
+			paginacion();
+			const data = await res.json();
+			registrations = data;
+			console.log("Received entries: " + registrations.length);
+		}
+	}
+
+	async function paginacion() {
+		const data = await fetch(BASE_API_URL + "/alphabetization-stats");
+		if (data.status == 200) {
+			const json = await data.json();
+			total = json.length;
+			cambiapag(page, offset1);
+		}
+	}
+
+	function range(size, start = 0) {
+		return [...Array(size).keys()].map((i) => i + start);
+	}
+
+	function cambiapag(page1, offset2) {
+		lastPage = Math.ceil(total / 10);
+		console.log("Last page = " + lastPage);
+		if (page1 !== page) {
+			offset1 = offset2;
+			page = page1;
+			getReg1();
+			getReg();
+		}
+	}
+
+	async function insertRegistration() {
+		console.log("Inserting data " + JSON.stringify(newRegistration));
+
+		const res = await fetch(BASE_API_URL + "/alphabetization-stats", {
 			method: "POST",
-			body: JSON.stringify(newalphabetization),
+			body: JSON.stringify(newRegistration),
 			headers: {
 				"Content-Type": "application/json",
 			},
-		}).then(function (res) {
-			alert("Nueva entrada añadida");
-			getalphabetizations();
+		}).then((res) => {
+			if (res.ok) {
+				getReg1();
+				getReg();
+				okMsg = "El dato se introdujo correctamente";
+				visibleOk = true;
+				visible = false;
+			} else if (res.status === 409) {
+				errorMsg = "Ya existe ese dato";
+				visibleOk = false;
+				visible = true;
+			} else if (res.status === 400) {
+				errorMsg = "Campo mal introducido";
+				visibleOk = false;
+				visible = true;
+			}
 		});
 	}
 
-	async function BorrarRegis(countryD, yearD) {
+	async function BorrarRegis(country, year) {
+		console.log(`Deleting data with name ${country} and date ${year}`);
+
 		const res = await fetch(
-			BASE_API_URL +
-				"/alphabetization-stats" +
-				"/" +
-				countryD +
-				"/" +
-				yearD,
+			BASE_API_URL + "/alphabetization-stats/" + country + "/" + year,
 			{
 				method: "DELETE",
 			}
 		).then(function (res) {
-			visible = true;
-			getalphabetizations();
-			if (res.status == 200) {
-				errorMsg =
-					"Recurso " +
-					countryD +
-					" " +
-					yearD +
-					" borrado correctamente";
-				console.log("Deleted " + countryD);
-			} else if (res.status == 404) {
-				errorMsg = "No se ha encontrado el objeto " + countryD;
-				console.log("Resource NOT FOUND");
-			} else {
-				errorMsg = res.status + ": " + "No se pudo borrar el recurso";
-				console.log("ERROR!");
-			}
+			getReg1();
+			getReg();
+			okMsg = "Dato eliminado";
+			visibleOk = true;
+			visible = false;
 		});
 	}
-	async function BorrarRegistros(country, year) {
+
+	async function BorrarRegistros() {
 		console.log("Deleting all data");
 
 		const res = await fetch(BASE_API_URL + "/alphabetization-stats", {
 			method: "DELETE",
 		}).then(function (res) {
 			if (res.ok) {
-				alert("Todos los datos se han eliminado");
-				getalphabetizations();
+				getReg1();
+				getReg();
 				okMsg = "Todos los datos se han eliminado";
 				visibleOk = true;
 				visible = false;
@@ -93,100 +145,176 @@
 			}
 		});
 	}
-	async function Cargaralphabetizations() {
+
+	async function CargarRegistrations() {
 		console.log("Loading entries....");
-		const res = await fetch(
-			"/api/v1/alphabetization-stats/loadInitialData",
-			{
-				method: "GET",
-			}
-		).then(function (res) {
-			getalphabetizations();
+		const res = await fetch("/api/v1/alphabetization-stats/loadInitialData", {
+			method: "GET",
+		}).then(function (res) {
+			getReg1();
+			getReg();
 		});
 	}
 </script>
 
 <main>
-	{#await alphabetizations}
-		loading
-	{:then alphabetizations}
-		<Table bordered>
-			<thead>
-				<tr>
-					<th>Pais</th>
-					<th>Año</th>
-					<th>Hombres</th>
-					<th>Mujeres</th>
-					<th>Media Total</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td><input bind:value={newalphabetization.country} /></td>
-					<td><input bind:value={newalphabetization.year} /></td>
-					<td><input bind:value={newalphabetization.ar_ym} /></td>
-					<td><input bind:value={newalphabetization.ar_yw} /></td>
-					<td><input bind:value={newalphabetization.ar_ty} /></td>
-					<td
-						><Button
-							outline
-							color="primary"
-							on:click={insertalphabetization}>Añadir</Button	
-						></td
+	<Alert color="danger" isOpen={visible} toggle={() => (visible = false)}>
+		{#if errorMsg}
+			<p>ERROR: {errorMsg}</p>
+		{/if}
+	</Alert>
+	<Alert
+		color="success"
+		isOpen={visibleOk}
+		toggle={() => (visibleOk = false)}
+	>
+		{#if okMsg}
+			<p>Correcto: {okMsg}</p>
+		{/if}
+	</Alert>
+	<Table bordered>
+		<thead>
+			<tr>
+				<th>Fecha inicio</th>
+				<th>Fecha fin</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td><input type="number" min="1999" bind:value={from} /></td>
+				<td><input type="number" min="1999" bind:value={to} /></td>
+				<td align="center"
+					><Button
+						outline
+						color="dark"
+						on:click={() => {
+							if (from == null || to == null) {
+								window.alert(
+									"Los campos fecha inicio y fecha fin no pueden estar vacíos"
+								);
+							} else {
+								getReg();
+							}
+						}}
 					>
-				</tr>
-				{#each alphabetizations as alphabetization}
-					<tr>
-						<td>{alphabetization.country}</td>
-						<td>{alphabetization.year}</td>
-						<td>{alphabetization.ar_ym}</td>
-						<td>{alphabetization.ar_yw}</td>
-						<td>{alphabetization.ar_ty}</td>
-						<td
-							><Button
-								outline
-								color="warning"
-								on:click={function () {
-									window.location.href = `/#/alphabetization-stats/${alphabetization.country}/${alphabetization.year}`;
-								}}
-							>
-								Editar
-							</Button>
-						</td><td
-							><Button
-								outline
-								color="danger"
-								on:click={BorrarRegis(
-									alphabetization.country,
-									alphabetization.year
-								)}
-							>
-								Borrar
-							</Button>
-						</td>
-					</tr>
-				{/each}
+						Buscar
+					</Button>
+				</td>
+				<td align="center"
+					><Button
+						outline
+						color="primary"
+						on:click={() => {
+							from = null;
+							to = null;
+							getReg();
+						}}
+					>
+						Limpiar Búsqueda
+					</Button>
+				</td>
+			</tr>
+		</tbody>
+	</Table>
+	<Table bordered>
+		<thead>
+			<tr>
+				<td
+					><Button id="charge" on:click={CargarRegistrations}
+						>Cargar datos</Button
+					></td
+				>
+				<td
+					><Button id="delete" on:click={BorrarRegistros}
+						>Borrar datos</Button
+					></td
+				>
+			</tr>
+
+			<tr>
+				<th>Ciudad</th>
+				<th>Año</th>
+				<th>Nivel Primario</th>
+				<th>Nivel Secundario</th>
+				<th>Nivel Terciario</th>
+				<th>Acciones</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td><input bind:value={newRegistration.country} /></td>
+				<td><input bind:value={newRegistration.year} /></td>
+				<td><input bind:value={newRegistration.ar_ym} /></td>
+				<td><input bind:value={newRegistration.ar_yw} /></td>
+				<td><input bind:value={newRegistration.ar_ty} /></td>
+				<td
+					><Button
+						outline
+						color="primary"
+						on:click={insertRegistration}>Añadir</Button
+					></td
+				>
+			</tr>
+			{#each registrations as registration}
 				<tr>
+					<td>{registration.country}</td>
+					<td>{registration.year}</td>
+					<td>{registration.ar_ym}</td>
+					<td>{registration.ar_yw}</td>
+					<td>{registration.ar_ty}</td>
 					<td
 						><Button
 							outline
-							color="success"
-							on:click={Cargaralphabetizations}
+							color="warning"
+							on:click={function () {
+								window.location.href = `/#/alphabetization-stats/${registration.country}/${registration.year}`;
+							}}
 						>
-							Cargar datos
-						</Button></td
-					>
-					<td
+							Editar
+						</Button>
+					</td><td
 						><Button
 							outline
 							color="danger"
-							on:click={BorrarRegistros}
+							on:click={BorrarRegis(
+								registration.country,
+								registration.year
+							)}
 						>
-							Borrar todo
-						</Button></td
-					>
+							Borrar
+						</Button>
+					</td>
 				</tr>
-			</tbody>
-		</Table>
-	{/await}
+			{/each}
+		</tbody>
+		<div>
+			<Pagination ariaLabel="Web pagination">
+				<PaginationItem class={page === 1 ? "enable" : ""}>
+					<PaginationLink
+						previous
+						href="#/alphabetization-stats"
+						on:click={() => cambiapag(page - 1, offset1 - 10)}
+					/>
+				</PaginationItem>
+				{#each range(lastPage, 1) as page}
+					<PaginationItem class={page === page ? "active" : ""}>
+						<PaginationLink
+							previous
+							href="#/alphabetization-stats"
+							on:click={() => cambiapag(page, (page - 1) * 10)}
+						>
+							{page}
+						</PaginationLink>
+					</PaginationItem>
+				{/each}
+				<PaginationItem class={page === lastPage ? "disabled" : ""}>
+					<PaginationLink
+						next
+						href="#/alphabetization-stats"
+						on:click={() => cambiapag(page + 1, offset1 + 10)}
+					/>
+				</PaginationItem>
+			</Pagination>
+		</div>
+	</Table>
 </main>
