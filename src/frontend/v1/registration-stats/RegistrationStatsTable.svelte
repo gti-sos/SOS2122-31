@@ -62,7 +62,7 @@
             	errorMsg = "No se ha encontrado datos con los parámetros introducidos.";
         }
         	window.alert(errorMsg);
-		}
+		} 
     }
 
 	async function insertRegistration() {
