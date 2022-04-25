@@ -67,20 +67,23 @@
                 "Content-Type": "application/json"
             }
         }).then(function (res) {
-			if(res.ok){
-				console.log("Ok.");
-				okMsg = "Actualización correcta";
-                pop();
-				visibleOk=true;
-				visible=false;
-				
-			}else{
-				if(res.status === 404){
-					errorMsg ="El dato solicitado no existe";
-					visibleOk=false;
-					visible=true;
-				}
-			}
+			visible = true;
+            getReg();
+            if(res.status == 200 || res.status == 201){
+              okMsg = "Actualización correcta";
+              visibleOk=true;
+              }else{
+                  if(res.status === 400){
+                    errorMsg ="Rellene los campos.";
+                    visibleOk=false;
+                  }
+                
+                if(res.status === 404){
+                  errorMsg ="El dato solicitado no existe";
+                  visibleOk=false;
+                  window.alert(errorMsg);
+                }
+              }
             
         });
     }

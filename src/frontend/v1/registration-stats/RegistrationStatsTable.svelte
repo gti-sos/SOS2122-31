@@ -67,12 +67,14 @@
 							}
 		).then((res) => {
 			
-			if(res.ok){
+			if(res.status === 200 || res.status ===201){
 				getReg();
 				okMsg = "El dato se introdujo correctamente";
 				visibleOk=true;
 				visible=false;
-			}else if(res.status === 409){
+				window.alert(okMsg);
+			}else{
+				if(res.status === 409){
                 errorMsg = "Ya existe ese dato";
 				visibleOk=false;
 				visible=true;
@@ -81,6 +83,8 @@
 				visibleOk=false;
 				visible=true;
 			}
+			window.alert(errorMsg);
+		}
             
 		});
 	}	
