@@ -130,6 +130,7 @@ module.exports.register = (app,db) => {
                 res.sendStatus(400, "BAD REQUEST");
                 return;
             }
+            
         }
 
         //Comprobamos si from es mas pequeño o igual a to
