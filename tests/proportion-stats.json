@@ -425,13 +425,8 @@
 			"request": {
 				"method": "DELETE",
 				"header": [],
-<<<<<<< Updated upstream
-				"url": { 
-					"raw": "{{HOST}}{{PORT}}/Tayikistan/2005",
-=======
 				"url": {
 					"raw": "{{HOST}}{{PORT}}/argentina",
->>>>>>> Stashed changes
 					"host": [
 						"{{HOST}}{{PORT}}"
 					],
@@ -524,12 +519,12 @@
 	"variable": [
 		{
 			"key": "HOST",
-			"value": "localhost",
+			"value": "https://sos2122-31.herokuapp.com",
 			"type": "string"
 		},
 		{
 			"key": "PORT",
-			"value": "8080",
+			"value": "/api/v1/proportion-stats",
 			"type": "string"
 		}
 	]
