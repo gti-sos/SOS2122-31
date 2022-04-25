@@ -315,7 +315,7 @@ module.exports.register = (app,db) => {
             req.body.year === "" |
             req.body.primarylevel === "" |
             req.body.secondarylevel === "" |
-            req.body.tertiarylevel === "");  
+            req.body.tertiarylevel === "");   
     };
 
     app.delete(BASE_API_URL + "/registration-stats", (req,res)=>{
