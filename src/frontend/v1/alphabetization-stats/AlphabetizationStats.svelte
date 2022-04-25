@@ -181,8 +181,8 @@
 		</thead>
 		<tbody>
 			<tr>
-				<td><input type="number" min="1999" bind:value={from} /></td>
-				<td><input type="number" min="1999" bind:value={to} /></td>
+				<td><input type="number" min="1970" bind:value={from} /></td>
+				<td><input type="number" min="1970" bind:value={to} /></td>
 				<td align="center"
 					><Button
 						outline
@@ -234,9 +234,9 @@
 			<tr>
 				<th>Ciudad</th>
 				<th>Año</th>
-				<th>Nivel Primario</th>
-				<th>Nivel Secundario</th>
-				<th>Nivel Terciario</th>
+				<th>Hombre</th>
+				<th>Mujer</th>
+				<th>Total</th>
 				<th>Acciones</th>
 			</tr>
 		</thead>

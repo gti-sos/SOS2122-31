@@ -52,7 +52,7 @@
             console.log("Received data.");
         } else {
             if (res.status === 404) {
-                errorMsg = `No existe dato con Ciudad: ${params.country} y fecha: ${params.year}`;
+                errorMsg = `No existe dato con pais: ${params.country} y fecha: ${params.year}`;
                 console.log("ERROR!" + errorMsg);
                 visibleOk = false;
                 visible = true;
