@@ -25,8 +25,8 @@
     let page = 1;
     let lastPage = 1;
     let total = 0;
-	let from = null;
-	let to = null;
+	let from = "";
+	let to = "";
 	onMount(getReg1);
 
 	const BASE_API_URL = "/api/v1";
