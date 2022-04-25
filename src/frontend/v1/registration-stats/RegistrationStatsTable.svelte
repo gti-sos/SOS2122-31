@@ -171,7 +171,7 @@
 </script>
 
 
-<main>	
+<main>	 
 			<Alert color="danger" isOpen={visible} toggle={() => (visible = false)}>
 				{#if errorMsg}
 					<p>ERROR: {errorMsg}</p>
