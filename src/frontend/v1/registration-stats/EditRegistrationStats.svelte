@@ -54,8 +54,6 @@
     async function updateReg() {
         console.log("Updating data..." + JSON.stringify(params.country) + ", " + JSON.stringify(params.year));
 		let year = parseInt(params.year);
-		
-		
         const res = await fetch(BASE_API_URL +"/registration-stats/" + params.country +"/" + params.year, {
             method: "PUT",
             body: JSON.stringify({
@@ -93,6 +91,9 @@
 
 <main>
     <h3>Editar campos <strong>{params.country}</strong><strong>{params.year}</strong></h3>
+    {#await registration}
+    loading
+        {:then registration}
     <Table bordered>
         <thead>
             <div>
@@ -132,7 +133,7 @@
             </tr>
         </tbody>
     </Table>
-    
+    {/await}
     
     <Button outline color="secondary" on:click="{pop}">Volver</Button>
 
