@@ -24,13 +24,12 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{HOST}}{{PORT}}/loadInitialData/",
+					"raw": "{{HOST}}{{PORT}}/loadInitialData",
 					"host": [
 						"{{HOST}}{{PORT}}"
 					],
 					"path": [
-						"loadInitialData",
-						""
+						"loadInitialData"
 					]
 				}
 			},
@@ -174,7 +173,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n\"country\": \"Ucrania\",\r\n\"year\": 2005,\r\n\"male\": 99,\r\n\"female\": 97,\r\n\"total\": 98\r\n}\r\n",
+					"raw": "{\r\n\"country\": \"Uganda\",\r\n\"year\": 2005,\r\n\"male\": 99,\r\n\"female\": 97,\r\n\"total\": 98\r\n}\r\n",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -456,12 +455,12 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "{{HOST}}{{PORT}}/Ucrania/2005",
+					"raw": "{{HOST}}{{PORT}}/Uganda/2005",
 					"host": [
 						"{{HOST}}{{PORT}}"
 					],
 					"path": [
-						"Ucrania",
+						"Uganda",
 						"2005"
 					]
 				}

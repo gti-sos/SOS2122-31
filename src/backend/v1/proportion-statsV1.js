@@ -130,6 +130,7 @@ module.exports.register = (app,db) => {
                 res.sendStatus(400, "BAD REQUEST");
                 return;
             }
+            
         }
 
         //Comprobamos si from es mas pequeño o igual a to
@@ -333,13 +334,15 @@ module.exports.register = (app,db) => {
     };
 
     app.delete(BASE_API_URL + "/proportion-stats", (req, res) => {
+       
+        
         db.remove({}, { multi: true }, (err, numRegRemoved) => {
             if (err) {
-                console.error("ERROR deleting DB alphabetizations in DELETE: " + err);
+                console.error("ERROR deleting DB proportions in DELETE: " + err);
                 res.sendStatus(500);
             } else {
                 if (numRegRemoved == 0) {
-                    console.error("alphabetization-stats not found");
+                    console.error("proportion-stats not found");
                     res.sendStatus(404);
                 } else {
                     res.sendStatus(200);
