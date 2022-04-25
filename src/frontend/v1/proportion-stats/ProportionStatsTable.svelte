@@ -261,8 +261,8 @@
                         <input id="year" placeholder="Año" bind:value="{currentYear}" />
                     </td>
                     <td>
-                        <Button id= "search_button" outline color= "info" on:click{()=>BuscarProportion(currentCountry, currentYear)}>Buscar</Button>
-                        <Button style="background-color: darkgrey" on:click{()=>reset}>Restaurar</Button>
+                        <Button id= "search_button" outline color= "info" on:click={()=>BuscarProportion(currentCountry, currentYear)}>Buscar</Button>
+                        <Button style="background-color: darkgrey" on:click={()=>reset()}>Restaurar</Button>
                     </td>
                 </tr>
             </tbody>
@@ -285,10 +285,10 @@
             <tbody>
                 <tr>
                     <td><input id="insert_input_country" placeholder="Ej. España" bind:value="{newproportion.country}"></td>
-                    <td><input id="insert_input_year" placeholder="Ej. 2018" bind:value="{newproportion.year}"></td>
-                    <td><input id="insert_male" placeholder="Ej. 23" bind:value="{newproportion.male}"></td>
-                    <td><input id="insert_female" placeholder="Ej. 23" bind:value="{newproportion.female}"></td>
-                    <td><input id="insert_total" placeholder="Ej. 23" bind:value="{newproportion.total}"></td>
+                    <td><input id="insert_input_year" type="number" placeholder="Ej. 2018" bind:value="{newproportion.year}"></td>
+                    <td><input id="insert_male" type="number" placeholder="Ej. 23" bind:value="{newproportion.male}"></td>
+                    <td><input id="insert_female" type="number" placeholder="Ej. 23" bind:value="{newproportion.female}"></td>
+                    <td><input id="insert_total" type="number" placeholder="Ej. 23" bind:value="{newproportion.total}"></td>
 
                     <td><Button id="insert_button" outline color= "primary" on:click{insertproportion}>Insertar</Button></td>
 
@@ -301,8 +301,7 @@
                     <td>{searchData.year}</td>
                     <td><a href="#/proportion-stats/{searchData.country}/{searchData.date}">
                     <Button id="edit_button_{searchData.country}_{searchData.year}" style="background-color:yellowgreen">Editar</Button></a>
-                    <Button id="delete_button"_{searchData.country}_{searchData.year}" style="margin-right: 10px" color="danger" on:click{()=>BorrarRegistro(searchData.country, searchData.year)}>Borrar</Button>
-                </td>
+                    <Button id="delete_button_{searchData.country}_{searchData.year}" style="margin-right: 10px" color="danger" on:click={()=>BorrarRegistro(searchData.country, searchData.year)}>Borrar</Button>
 
                 
                 </tr>
@@ -316,14 +315,14 @@
                         <td>{proportion["female"]}</td>
                         <td>{proportion["total"]}</td>
 
-                        <td><a href="#/proportion-stats"{proportion.country}/{proportion.year}>
+                        <td><a href="#/proportion-stats{proportion.country}/{proportion.year}">
                             <Button 
                             id="edit_button_{proportion.country}_{proportion.year}" style="background-color: yellowgreen;"> Editar </Button>
                             </a>
-                            <Button id="delete_button_{proportion.country}_{proportion.year}" outline style="margin-right: 10px;"  color="danger" on:click={()=>deleteLifeStat(proportion.country, proportion.year)}>
+                            <Button id="delete_button_{proportion.country}_{proportion.year}" outline style="margin-right: 10px;"  color="danger" on:click={()=>BorrarRegistro(proportion.country, proportion.year)}>
                             Borrar </Button> 
-                            </td> 
-                        </td>
+                        </td> 
+                    
                         
                     {/each}
 
