@@ -50,7 +50,18 @@
 			numEntries = registrations.length;
             console.log("Received entries: "+registrations.length);
         }else{
-			Errores(res.status);
+			if(res.status == 200 || res.status == 201){
+            const data = await res.json();
+            registrations = data;
+            if(registrations.length == 1){
+                errorMsg = "Se ha encontrado "+ registrations.length + " dato";
+            } else {
+                errorMsg = "No se ha encontrado el dato con país:";
+            }
+        } else if (res.status == 404){
+            	errorMsg = "No se ha encontrado datos con los parámetros introducidos.";
+        }
+        	window.alert(errorMsg);
 		}
     }
 
