@@ -110,7 +110,7 @@ var proportion_stats = [
 
 module.exports.register = (app,db) => {
     app.get(BASE_API_URL+"/proportion-stats/docs",(req,res)=>{
-        res.redirect("https://documenter.getpostman.com/view/19594199/UVysxFuz")
+        res.redirect("https://documenter.getpostman.com/view/19589104/UyrBjwKw")
     });
 
     app.get(BASE_API_URL + "/proportion-stats/loadInitialData", (req, res) => {
