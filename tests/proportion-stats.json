@@ -438,7 +438,7 @@
 						],
 						"type": "text/javascript"
 					}
-				}
+				} 
 			],
 			"request": {
 				"method": "DELETE",
