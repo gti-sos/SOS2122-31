@@ -176,7 +176,7 @@
     
     }
 
-    async function BuscarProportion (country, year){
+    async function BuscarProportion(country, year){
         offset = 0;
         const res = await fetch(BASE_API_URL + "/" + country + "/" + year);
 
