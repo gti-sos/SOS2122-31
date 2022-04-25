@@ -305,16 +305,17 @@ module.exports.register = (app,db) => {
     });
 
     function parametroscorrectos(req) {
+        console.log(req.body);
         return (req.body.country == null |
             req.body.year == null |
             req.body.primarylevel == null |
             req.body.secondarylevel == null |
             req.body.tertiarylevel == null | 
-            req.body.country == "" |
-            req.body.year == "" |
-            req.body.primarylevel == "" |
-            req.body.secondarylevel == "" |
-            req.body.tertiarylevel == "");
+            req.body.country === "" |
+            req.body.year === "" |
+            req.body.primarylevel === "" |
+            req.body.secondarylevel === "" |
+            req.body.tertiarylevel === "");
     };
 
     app.delete(BASE_API_URL + "/registration-stats", (req,res)=>{
