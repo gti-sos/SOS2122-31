@@ -333,8 +333,20 @@ module.exports.register = (app,db) => {
     };
 
     app.delete(BASE_API_URL + "/proportion-stats", (req, res) => {
-        proportion_stats = [];
-        res.sendStatus(200, "OK");
+        db.remove({}, { multi: true }, (err, numRegRemoved) => {
+            if (err) {
+                console.error("ERROR deleting DB alphabetizations in DELETE: " + err);
+                res.sendStatus(500);
+            } else {
+                if (numRegRemoved == 0) {
+                    console.error("alphabetization-stats not found");
+                    res.sendStatus(404);
+                } else {
+                    res.sendStatus(200);
+                }
+            }
+
+        });
     });
 
 
