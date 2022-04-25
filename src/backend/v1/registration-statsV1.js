@@ -311,7 +311,7 @@ module.exports.register = (app,db) => {
             req.body.primarylevel == null |
             req.body.secondarylevel == null |
             req.body.tertiarylevel == null | 
-            req.body.country === "" |
+            req.body.country === ""  |
             req.body.year === "" |
             req.body.primarylevel === "" |
             req.body.secondarylevel === "" |
