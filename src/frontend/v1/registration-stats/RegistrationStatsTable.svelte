@@ -19,61 +19,51 @@
 	let visible = false;
 	let visibleOk = false;
 	
-	let c_offset = 0;
-    let offset = 0;
+	let offset1 = 0;
+    let offset2 = 0;
     let limit = 10;
-    let c_page = 1;
+    let page = 1;
     let lastPage = 1;
     let total = 0;
-	
-	onMount(getReg);
+	let from = null;
+	let to = null;
+	onMount(getReg1);
 
 	const BASE_API_URL = "/api/v1";
-		  
+	  
 	async function getReg(){
         console.log("Fetching entries....");
-        const res = await fetch("/api/v1/registration-stats/"); 
-        if(res.ok){
+		let cadena = `/api/v1/registration-stats?from=${from}&&to=${to}&&`;
+        const res = await fetch(cadena);
+		if(res.ok){
             const data = await res.json();
             registrations = data;
-			paginacion();
-            console.log("Received entries: "+registrations.length);
+            console.log("Received entries: "+ registrations.length);
         }else{
 			console.log("Error");
 			
 		}
     }
 
-	async function getOlimpic1() {
-    	console.log("Fetching data...");
-   		const res = await fetch(BASE_API_URL +"/registration-stats"+ "?limit=" + limit + "&offset=" + c_offset);
-		
+    async function getReg1(){
+        console.log("Fetching entries....");
+		let cadena = "/api/v1/registration-stats?limit=" + limit + "&offset=" + offset1;
+        const res = await fetch(cadena); 
         if(res.ok){
-			console.log("Ok.");
-			const json = await res.json();
-			registrations = json;
-			console.log(`We have ${registrations.length} olimpic.`);
-			for(let i=0; i<registrations.length ; i++){
-				let c = [];
-				let y = registrations[i].year;
-				if(y > yFrom && y<yTo){
-					c.push(y);
-					registrations = c;
-				}
-			}
+			//let cadenaPag = cadena.split("?limit=" + limit + "&offset=" + offset1);
 			paginacion();
-		}else{
-			console.log("Error");
-			
-		}
-  	}
+            const data = await res.json();
+            registrations = data;
+            console.log("Received entries: "+registrations.length);
+        }
+    }
 
 	async function paginacion() {
-      const data = await fetch(BASE_API_URL + "/registration-stats");
-      if (data.status == 200) {
+		const data = await fetch(BASE_API_URL + "/registration-stats");
+      	if(data.status == 200) {
         const json = await data.json();
         total = json.length;
-        cambiapag(c_page, c_offset);
+        cambiapag(page, offset1);
       } 
     }
 	
@@ -81,15 +71,14 @@
       return [...Array(size).keys()].map((i) => i + start);
 	}
 	 
-	function cambiapag(page, offset) {
-      
+	function cambiapag(page1, offset2) {      
       lastPage = Math.ceil(total/10);
       console.log("Last page = " + lastPage);
-      if (page !== c_page) {
-        c_offset = offset;
-        c_page = page;
-        getReg();
-		getOlimpic1();
+      if (page1 !== page) {
+        offset1 = offset2;
+        page = page1;
+		getReg1();
+		getReg();
       }
     } 
     
@@ -107,8 +96,8 @@
 		).then((res) => {
 			
 			if(res.ok){
+				getReg1();
 				getReg();
-				getOlimpic1();
 				okMsg = "El dato se introdujo correctamente";
 				visibleOk=true;
 				visible=false;
@@ -126,15 +115,15 @@
 	}	
 	
 	async function BorrarRegis(country, year) {
-    	console.log(`Deleting data with name ${city} and date ${year}`);
+    	console.log(`Deleting data with name ${country} and date ${year}`);
    		
 		const res = await fetch(BASE_API_URL +"/registration-stats/"+country+"/"+year,
 							{
 								method: "DELETE"
 								
 							}).then( function (res) {
+								getReg1();
 								getReg();
-								getOlimpic1();
 								okMsg = "Dato eliminado";
 								visibleOk=true;
 								visible=false;
@@ -149,8 +138,8 @@
 								
 							}).then( function (res) {
 							if(res.ok){
+								getReg1();
 								getReg();
-								getOlimpic1();
 								okMsg = "Todos los datos se han eliminado";
 								visibleOk=true;
 								visible=false;
@@ -168,21 +157,16 @@
 			{
 				method: "GET"
 			}).then(function (res){
+				getReg1();
 				getReg();
-				getOlimpic1();
 			});
     }
 
-	
-	var currentTime = new Date();
-	let yFrom = currentTime.getFullYear();
-	let yTo = currentTime.getFullYear()
 
 </script>
 
 
-<main>
-	
+<main>	
 			<Alert color="danger" isOpen={visible} toggle={() => (visible = false)}>
 				{#if errorMsg}
 					<p>ERROR: {errorMsg}</p>
@@ -192,7 +176,40 @@
 				{#if okMsg}
 					<p>Correcto: {okMsg}</p>
 				{/if}
-			</Alert>			
+			</Alert>
+			<Table bordered>
+				<thead>
+					<tr>
+						<th>Fecha inicio</th>
+						<th>Fecha fin</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td><input type="number" min="1999" bind:value="{from}"></td>
+						<td><input type="number" min="1999" bind:value="{to}"></td>
+						<td align="center"><Button outline color="dark" on:click="{()=>{
+							if (from == null || to == null) {
+								window.alert('Los campos fecha inicio y fecha fin no pueden estar vacíos')
+							}else{
+								getReg();
+							}
+						}}">
+							Buscar
+							</Button>
+						</td>
+						<td align="center"><Button outline color="primary" on:click="{()=>{
+							from = null;
+							to = null;
+							getReg();
+							
+						}}">
+							Limpiar Búsqueda
+							</Button>
+						</td>
+					</tr>
+				</tbody>
+			</Table>			
 			<Table bordered>
 			
 				<thead>
@@ -246,18 +263,18 @@
 		<div>
     		
 			<Pagination ariaLabel="Web pagination">
-			  <PaginationItem class = {c_page === 1 ? "enable" : ""}>
-					<PaginationLink previous href="#/registration-stats" on:click={() => cambiapag(c_page - 1, c_offset - 10)}/>
+			  <PaginationItem class = {page === 1 ? "enable" : ""}>
+					<PaginationLink previous href="#/registration-stats" on:click={() => cambiapag(page - 1, offset1 - 10)}/>
 			  </PaginationItem>
 			  {#each range(lastPage, 1) as page}
-					<PaginationItem class = {c_page === page ? "active" : ""}>
+					<PaginationItem class = {page === page ? "active" : ""}>
 					  <PaginationLink previous href="#/registration-stats" on:click={() => cambiapag(page, (page - 1) * 10)}>
 						  {page}
 					  </PaginationLink>
 					</PaginationItem>
 			  {/each}
-			  <PaginationItem class = {c_page === lastPage ? "disabled" : ""}>
-					<PaginationLink next href="#/registration-stats" on:click={() => cambiapag(c_page + 1, c_offset + 10)}/>
+			  <PaginationItem class = {page === lastPage ? "disabled" : ""}>
+					<PaginationLink next href="#/registration-stats" on:click={() => cambiapag(page + 1, offset1 + 10)}/>
 			  </PaginationItem>
 			</Pagination>
   
