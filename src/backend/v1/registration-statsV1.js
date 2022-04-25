@@ -330,13 +330,6 @@ module.exports.register = (app,db) => {
     });
 
 
-    app.delete(BASE_API_URL + "/registration-stats/:country", (req, res) => { //borrar todos los recursos
-        var countryName = req.params.country;
-        registration_stats.filter((cont) => {
-            return (cont.country != countryName);
-        });
-        res.sendStatus(200, "OK");
-    });
 
     app.delete(BASE_API_URL+"/registration-stats/:country/:year", (req,res)=>{
         var countryD = req.params.country;
@@ -351,7 +344,7 @@ module.exports.register = (app,db) => {
 				console.error("No data found");
 				res.sendStatus(404);
 			}else{
-				console.log(`stat with coutnry: <${countryD}> and year: <${yearD}> deleted`);
+				console.log(`stat with country: <${countryD}> and year: <${yearD}> deleted`);
 				res.sendStatus(200);
 			}
 		}

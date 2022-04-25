@@ -5,20 +5,16 @@
 	import Button from 'sveltestrap/src/Button.svelte';
 	import Alert from 'sveltestrap/src/Alert.svelte';
 
-	//Aquí se guardan todas las entradas de nuestra api
 
     let registrations = [];
-
-	//Variables para la utilización de la busqueda por fecha, paginación y limites
 
 	let from = null;
 	let to = null;
 	let offset = 0;
 	let limit = 10;
 	const BASE_API_URL = "/api/v1";
-	//Límite máximo de páginas
 
-	let maxPages = 0;
+	let paginasMax = 0;
 	let numEntries;
 
 	let errorMsg = "";
@@ -33,8 +29,6 @@
 	};
 	let visible = false;
 	let visibleOk = false;
-
-	//Al cargar la página llamamos a getEntries que devuelve todas las entradas
 
     onMount(getReg);
 
@@ -59,8 +53,6 @@
 			Errores(res.status);
 		}
     }
-
-	//Función para añadir una entrada
 
 	async function insertRegistration() {
     	console.log("Inserting data "+ JSON.stringify(newRegistration));
@@ -93,14 +85,13 @@
 		});
 	}	
 
-	//Función para borrar una entrada
-
 	async function BorrarRegis(countryDelete, yearDelete){
         const res = await fetch("/api/v1/registration-stats/"+countryDelete+"/"+yearDelete,
 			{
 				method: "DELETE"
 			}).then(function(res){
-				if(numEntries==1){
+				if(res.ok){
+					if(numEntries==1){
 					from = null;
 					to = null;
 				}
@@ -108,10 +99,10 @@
 				okMsg = "Dato eliminado";
 				visibleOk=true;
 				visible=false;
+				}
+
 			});
     }
-
-	//Función para borrar todas las entradas
 
 	async function BorrarRegistros(){
         console.log("Deleting registrations....");
@@ -135,8 +126,6 @@
 		
     }
 
-	//Función para cargar las entradas
-
 	async function CargarRegistrations(){
         console.log("Loading registrations....");
         const res = await fetch("/api/v1/registration-stats/loadInitialData",
@@ -148,10 +137,6 @@
 			});
     }
 
-	//Función auxiliar para imprimir errores
-
-	
-	//Función auxiliar para obtener el número máximo de páginas que se pueden ver
 
 	async function maxPagesFunction(cadena){
 		let num;
@@ -161,9 +146,9 @@
 			});
 			if(res.ok){
 				const data = await res.json();
-				maxPages = Math.floor(data.length/10);
-				if(maxPages === data.length/10){
-					maxPages = maxPages-1;
+				paginasMax = Math.floor(data.length/10);
+				if(paginasMax === data.length/10){
+					paginasMax = paginasMax-1;
 				}
         }
 	}
@@ -236,10 +221,10 @@
 				<tbody>
 					<tr>
 						<td><input bind:value="{newRegistration.country}"></td>
-						<td><input bind:value="{newRegistration.year}"></td>
-						<td><input bind:value="{newRegistration.primarylevel}"></td>
-						<td><input bind:value="{newRegistration.secondarylevel}"></td>
-						<td><input bind:value="{newRegistration.tertiarylevel}"></td>
+						<td><input type="number" bind:value="{newRegistration.year}"></td>
+						<td><input type="number" bind:value="{newRegistration.primarylevel}"></td>
+						<td><input type="number" bind:value="{newRegistration.secondarylevel}"></td>
+						<td><input type="number" bind:value="{newRegistration.tertiarylevel}"></td>
 						<td><Button 
 							outline 
 							color="primary"
@@ -270,7 +255,7 @@
   
 	  </div>
 	  <div align="left">
-		{#each Array(maxPages+1) as _,page}
+		{#each Array(paginasMax+1) as _,page}
 		
 			<Button outline color="secondary" on:click={()=>{
 				offset = page;
