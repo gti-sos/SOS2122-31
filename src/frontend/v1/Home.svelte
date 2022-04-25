@@ -5,7 +5,7 @@
         <h3>Team</h3>
         - [Ismael Mesa Zyout](https://github.com/IsmaelMesaZyout) : registration-stats
         - [Daniel Vega Vera](https://github.com/daniveg20) : alphabetization-stats
-        - [José Ortiz Roldán](https://github.com/madgIitch) : proportion-stats
+        - [José Ortiz Roldán](https://github.com/madgIitch) : proportion-stats 
         <h3>Project description:</h3> Nuestras fuentes de información esta orientadas a analizar la relación que existe entre los matriculados el los diferentes niveles escolares, la tasa de alfabetización y proporción sin educación, empleo ni capacitación en jóvenes
         <h3>Repository:</h3><a href="https://github.com/gti-sos/SOS2122-31">[gti-sos/SOS2122-31](https://github.com/gti-sos/SOS2122-31)</a>
         <h3>URL:</h3><a href="https://sos2122-31.herokuapp.com/">[http://sos2122-31.herokuapp.com](http://sos2122-31.herokuapp.com)</a>
