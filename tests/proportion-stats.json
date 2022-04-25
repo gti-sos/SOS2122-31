@@ -444,13 +444,13 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "{{HOST}}{{PORT}}/Argentina/2020",
+					"raw": "{{HOST}}{{PORT}}/Kazajistan/2005",
 					"host": [
 						"{{HOST}}{{PORT}}"
 					],
 					"path": [
-						"Argentina",
-						"2020"
+						"Kazajistan",
+						"2005"
 					]
 				}
 			},
