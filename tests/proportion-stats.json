@@ -155,33 +155,6 @@
 			"response": []
 		},
 		{
-			"name": "OFFSET y LIMIT",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "{{HOST}}{{PORT}}/?offset=3&limit=3",
-					"host": [
-						"{{HOST}}{{PORT}}"
-					],
-					"path": [
-						""
-					],
-					"query": [
-						{
-							"key": "offset",
-							"value": "3"
-						},
-						{
-							"key": "limit",
-							"value": "3"
-						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
 			"name": "POST Created",
 			"event": [
 				{

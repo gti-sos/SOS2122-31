@@ -15,7 +15,7 @@
    		 'dark'
  	];
 	
-	const BASE_API_URL = "/api/v1";
+	const BASE_API_URL = "/api/v1/proportion-stats";
     export let params = {};
     let reg = {};
 	let upcountry = "XXXX";
@@ -28,9 +28,11 @@
 	let visible = false;
 	let visibleOk = false;
     onMount(getReg);
+
+
     async function getReg() {
         console.log("Fetching data..." + params.country + " " + params.year);
-        const res = await fetch(BASE_API_URL +"/proportion-stats/" + params.country +"/" + params.year);
+        const res = await fetch(BASE_API_URL + params.country +"/" + params.year);
         if (res.ok) {
             console.log("Ok:");
             const json = await res.json();
@@ -130,7 +132,20 @@
                 </tr>
             </tbody>
         </Table>
+        <Button id="volver" style="background-color:darkgray" on:click="{pop}">Volver</Button>
     {/await}
+
+    {#if errorMsg}
+        <div class="alert alert-danger" role="alert">
+            {errorMsg}
+        </div>
+    {/if}
+    {#if okMsg}
+        <div class="alert alert-success" role="alert">
+            {okMsg}
+        </div>
+    {/if}
+   
     
     <Button outline color="secondary" on:click="{pop}">Volver</Button>
 
