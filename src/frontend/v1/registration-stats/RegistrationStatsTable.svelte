@@ -1,13 +1,28 @@
 <script>
-	import {onMount} from "svelte";
+
+    import { onMount } from 'svelte';
+	import Table from 'sveltestrap/src/Table.svelte';
+	import Button from 'sveltestrap/src/Button.svelte';
 	import Alert from 'sveltestrap/src/Alert.svelte';
-	import Table from "sveltestrap/src/Table.svelte";
-	import Button from "sveltestrap/src/Button.svelte";
-	import {Pagination, PaginationItem, PaginationLink } from "sveltestrap";
+
+	//Aquí se guardan todas las entradas de nuestra api
+
+    let registrations = [];
+
+	//Variables para la utilización de la busqueda por fecha, paginación y limites
+
+	let from = null;
+	let to = null;
+	let offset = 0;
+	let limit = 10;
+	const BASE_API_URL = "/api/v1";
+	//Límite máximo de páginas
+
+	let maxPages = 0;
+	let numEntries;
 
 	let errorMsg = "";
 	let okMsg = "";
-	let registrations = [];
 	let newRegistration = {
 		country: "",
 		year: "",
@@ -18,70 +33,35 @@
 	};
 	let visible = false;
 	let visibleOk = false;
-	
-	let offset1 = 0;
-    let offset2 = 0;
-    let limit = 10;
-    let page = 1;
-    let lastPage = 1;
-    let total = 0;
-	let from = "";
-	let to = "";
-	onMount(getReg1);
 
-	const BASE_API_URL = "/api/v1";
-	  
-	async function getReg(){
-        console.log("Fetching entries....");
-		let cadena = `/api/v1/registration-stats?from=${from}&&to=${to}&&`;
-        const res = await fetch(cadena);
-		if(res.ok){
+	//Al cargar la página llamamos a getEntries que devuelve todas las entradas
+
+    onMount(getReg);
+
+    async function getReg(){
+        console.log("Fetching registrations....");
+		let c = `/api/v1/registration-stats?limit=${limit}&&offset=${offset*10}&&`;
+		if (from != null) {
+			c = c + `from=${from}&&`
+		}
+		if (to != null) {
+			c = c + `to=${to}&&`
+		}
+        const res = await fetch(c); 
+        if(res.ok){
+			let cadenaPag = c.split(`limit=${limit}&&offset=${offset*10}`);
+			maxPagesFunction(cadenaPag[0]+cadenaPag[1]);
             const data = await res.json();
             registrations = data;
-            console.log("Received entries: "+ registrations.length);
+			numEntries = registrations.length;
+            console.log("Received entries: "+registrations.length);
         }else{
-			console.log("Error");
-			
+			Errores(res.status);
 		}
     }
 
-    async function getReg1(){
-        console.log("Fetching entries....");
-		let cadena = "/api/v1/registration-stats?limit=" + limit + "&offset=" + offset1;
-        const res = await fetch(cadena); 
-        if(res.ok){
-			//let cadenaPag = cadena.split("?limit=" + limit + "&offset=" + offset1);
-			paginacion();
-            const data = await res.json();
-            registrations = data;
-            console.log("Received entries: "+registrations.length);
-        }
-    }
+	//Función para añadir una entrada
 
-	async function paginacion() {
-		const data = await fetch(BASE_API_URL + "/registration-stats");
-      	if(data.status == 200) {
-        const json = await data.json();
-        total = json.length;
-        cambiapag(page, offset1);
-      } 
-    }
-	
-    function range(size, start = 0) {
-      return [...Array(size).keys()].map((i) => i + start);
-	}
-	 
-	function cambiapag(page1, offset2) {      
-      lastPage = Math.ceil(total/10);
-      console.log("Last page = " + lastPage);
-      if (page1 !== page) {
-        offset1 = offset2;
-        page = page1;
-		getReg1();
-		getReg();
-      }
-    } 
-    
 	async function insertRegistration() {
     	console.log("Inserting data "+ JSON.stringify(newRegistration));
    		
@@ -96,7 +76,6 @@
 		).then((res) => {
 			
 			if(res.ok){
-				getReg1();
 				getReg();
 				okMsg = "El dato se introdujo correctamente";
 				visibleOk=true;
@@ -113,32 +92,36 @@
             
 		});
 	}	
-	
-	async function BorrarRegis(country, year) {
-    	console.log(`Deleting data with name ${country} and date ${year}`);
-   		
-		const res = await fetch(BASE_API_URL +"/registration-stats/"+country+"/"+year,
-							{
-								method: "DELETE"
-								
-							}).then( function (res) {
-								getReg1();
-								getReg();
-								okMsg = "Dato eliminado";
-								visibleOk=true;
-								visible=false;
-							})
-	}
-	
-	async function BorrarRegistros() {
-    	console.log("Deleting all data");
-   		
-		const res = await fetch(BASE_API_URL +"/registration-stats",{
-								method: "DELETE"
-								
-							}).then( function (res) {
-							if(res.ok){
-								getReg1();
+
+	//Función para borrar una entrada
+
+	async function BorrarRegis(countryDelete, yearDelete){
+        const res = await fetch("/api/v1/registration-stats/"+countryDelete+"/"+yearDelete,
+			{
+				method: "DELETE"
+			}).then(function(res){
+				if(numEntries==1){
+					from = null;
+					to = null;
+				}
+				getReg();
+				okMsg = "Dato eliminado";
+				visibleOk=true;
+				visible=false;
+			});
+    }
+
+	//Función para borrar todas las entradas
+
+	async function BorrarRegistros(){
+        console.log("Deleting registrations....");
+        const res = await fetch("/api/v1/registration-stats/",
+			{
+				method: "DELETE"
+			}).then(function (res){
+				from = null;
+				to = null;
+				if(res.ok){
 								getReg();
 								okMsg = "Todos los datos se han eliminado";
 								visibleOk=true;
@@ -149,19 +132,41 @@
 								visible=true;
 							}
 							})
-	}
-	
+		
+    }
+
+	//Función para cargar las entradas
+
 	async function CargarRegistrations(){
-        console.log("Loading entries....");
+        console.log("Loading registrations....");
         const res = await fetch("/api/v1/registration-stats/loadInitialData",
 			{
 				method: "GET"
 			}).then(function (res){
-				getReg1();
 				getReg();
+				window.alert("TODO CARGADO");
 			});
     }
 
+	//Función auxiliar para imprimir errores
+
+	
+	//Función auxiliar para obtener el número máximo de páginas que se pueden ver
+
+	async function maxPagesFunction(cadena){
+		let num;
+        const res = await fetch(cadena,
+			{
+				method: "GET"
+			});
+			if(res.ok){
+				const data = await res.json();
+				maxPages = Math.floor(data.length/10);
+				if(maxPages === data.length/10){
+					maxPages = maxPages-1;
+				}
+        }
+	}
 
 </script>
 
@@ -262,23 +267,18 @@
 				</tbody>
 		<div>
     		
-			<Pagination ariaLabel="Web pagination">
-			  <PaginationItem class = {page === 1 ? "enable" : ""}>
-					<PaginationLink previous href="#/registration-stats" on:click={() => cambiapag(page - 1, offset1 - 10)}/>
-			  </PaginationItem>
-			  {#each range(lastPage, 1) as page}
-					<PaginationItem class = {page === page ? "active" : ""}>
-					  <PaginationLink previous href="#/registration-stats" on:click={() => cambiapag(page, (page - 1) * 10)}>
-						  {page}
-					  </PaginationLink>
-					</PaginationItem>
-			  {/each}
-			  <PaginationItem class = {page === lastPage ? "disabled" : ""}>
-					<PaginationLink next href="#/registration-stats" on:click={() => cambiapag(page + 1, offset1 + 10)}/>
-			  </PaginationItem>
-			</Pagination>
   
 	  </div>
+	  <div align="left">
+		{#each Array(maxPages+1) as _,page}
+		
+			<Button outline color="secondary" on:click={()=>{
+				offset = page;
+				getReg();
+			}}>{page} </Button>&nbsp
+	
+		{/each}
+		</div>
 		
 	</Table>
 </main>

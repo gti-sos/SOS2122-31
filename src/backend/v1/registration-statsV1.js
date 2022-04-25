@@ -255,7 +255,7 @@ module.exports.register = (app,db) => {
         const offset = req.query.offset;
         
         if(limit < 1 || offset < 0 || offset > lista.length){
-            res.push("ERROR EN PARAMETROS LIMIT Y/O OFFSET");
+            res.push("Error en parametros");
             return res;
         }
 
@@ -338,29 +338,24 @@ module.exports.register = (app,db) => {
         res.sendStatus(200, "OK");
     });
 
-    app.delete(BASE_API_URL+"/registration-stats/:country/:year",(req, res)=>{
-        var countryR = req.params.country;
-        var yearR = req.params.year;
-        db.find({country: countryR, year: parseInt(yearR)}, {}, (err, filteredList)=>{
-            if (err){
-                res.sendStatus(500,"ERROR EN CLIENTE");
-                return;
-            }
-            if(filteredList==0){
-                res.sendStatus(404,"NOT FOUND");
-                return;
-            }
-            db.remove({country: countryR, year: parseInt(yearR)}, {}, (err, numRemoved)=>{
-                if (err){
-                    res.sendStatus(500,"ERROR EN CLIENTE");
-                    return;
-                }
-            
-                res.sendStatus(200,"DELETED");
-                return;
-                
-            });
-        });
+    app.delete(BASE_API_URL+"/registration-stats/:country/:year", (req,res)=>{
+        var countryD = req.params.country;
+		var yearD =  parseInt(req.params.year);
+		db.remove({ $and: [{ country: countryD}, {year: yearD }] }, {}, (err, numRegRemoved)=>{
+		if (err){
+			console.error("ERROR deleting DB reg in DELETE: "+err);
+			res.sendStatus(500);
+		}else{
+			
+			if(numRegRemoved==0){
+				console.error("No data found");
+				res.sendStatus(404);
+			}else{
+				console.log(`stat with coutnry: <${countryD}> and year: <${yearD}> deleted`);
+				res.sendStatus(200);
+			}
+		}
+	});
     });
 
 
