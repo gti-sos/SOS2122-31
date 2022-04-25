@@ -333,23 +333,21 @@ module.exports.register = (app,db) => {
             req.body.total == null);
     };
 
-    app.delete(BASE_API_URL + "/proportion-stats", (req, res) => {
-       
-        
-        db.remove({}, { multi: true }, (err, numRegRemoved) => {
-            if (err) {
-                console.error("ERROR deleting DB proportions in DELETE: " + err);
-                res.sendStatus(500);
-            } else {
-                if (numRegRemoved == 0) {
-                    console.error("proportion-stats not found");
-                    res.sendStatus(404);
-                } else {
-                    res.sendStatus(200);
-                }
-            }
-
-        });
+    app.delete(BASE_API_URL + "/proportion-stats", (req,res)=>{
+        db.remove({}, {multi:true}, (err, numRegRemoved)=>{
+		if (err){
+			console.error("ERROR deleting DB proportions in DELETE: "+err);
+			res.sendStatus(500);
+		}else{
+			if(numRegRemoved==0){
+				console.error("registration-stats not found");
+				res.sendStatus(404);
+			}else{
+				res.sendStatus(200);
+			}
+		}
+			
+	    });
     });
 
 
