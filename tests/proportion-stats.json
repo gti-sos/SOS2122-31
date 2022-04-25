@@ -1,7 +1,7 @@
 {
 	"info": {
-		"_postman_id": "99554e80-8e60-42fc-adf7-7eb6dcda69e3",
-		"name": "sos2122-3 HEroku",
+		"_postman_id": "7559075e-9e5b-48dd-841c-0bc19f3e075d",
+		"name": "Heroku",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -31,33 +31,6 @@
 					"path": [
 						"loadInitialData",
 						""
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "GET Entero",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"pm.test(\"Status code is 200\", function () {\r",
-							"    pm.response.to.have.status(200);\r",
-							"});"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "{{HOST}}{{PORT}}",
-					"host": [
-						"{{HOST}}{{PORT}}"
 					]
 				}
 			},
@@ -125,6 +98,33 @@
 			"response": []
 		},
 		{
+			"name": "GET Entero",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{HOST}}{{PORT}}",
+					"host": [
+						"{{HOST}}{{PORT}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "GET Not Found",
 			"event": [
 				{
@@ -174,7 +174,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n\"country\": \"Tayikistan\",\r\n\"year\": 2005,\r\n\"male\": 99,\r\n\"female\": 97,\r\n\"total\": 98\r\n}\r\n",
+					"raw": "{\r\n\"country\": \"Ucrania\",\r\n\"year\": 2005,\r\n\"male\": 99,\r\n\"female\": 97,\r\n\"total\": 98\r\n}\r\n",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -218,12 +218,12 @@
 					}
 				},
 				"url": {
-					"raw": "{{HOST}}{{PORT}}/tunez",
+					"raw": "{{HOST}}{{PORT}}/afganistan",
 					"host": [
 						"{{HOST}}{{PORT}}"
 					],
 					"path": [
-						"tunez"
+						"afganistan"
 					]
 				}
 			},
@@ -260,64 +260,6 @@
 					"raw": "{{HOST}}{{PORT}}",
 					"host": [
 						"{{HOST}}{{PORT}}"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "FAIL POST a todos los recursos",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"url": {
-					"raw": "{{HOST}}{{PORT}}/Argentina/2020",
-					"host": [
-						"{{HOST}}{{PORT}}"
-					],
-					"path": [
-						"Argentina",
-						"2020"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "PUT OK",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"pm.test(\"Status code is 200\", function () {\r",
-							"    pm.response.to.have.status(200);\r",
-							"});"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "PUT",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n\"country\": \"Argentina\",\r\n\"year\": 2020,\r\n\"male\": 100,\r\n\"female\": 100,\r\n\"total\": 100\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "{{HOST}}{{PORT}}/Argentina/2020",
-					"host": [
-						"{{HOST}}{{PORT}}"
-					],
-					"path": [
-						"Argentina",
-						"2020"
 					]
 				}
 			},
@@ -391,6 +333,46 @@
 			"response": []
 		},
 		{
+			"name": "PUT OK",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"country\": \"Argentina\",\r\n\"year\": 2020,\r\n\"male\": 100,\r\n\"female\": 100,\r\n\"total\": 100\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{HOST}}{{PORT}}/Argentina/2020",
+					"host": [
+						"{{HOST}}{{PORT}}"
+					],
+					"path": [
+						"Argentina",
+						"2020"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "PUT Bad Request",
 			"event": [
 				{
@@ -426,37 +408,6 @@
 			"response": []
 		},
 		{
-			"name": "DELETE Pais Año",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"pm.test(\"Status code is 200\", function () {\r",
-							"    pm.response.to.have.status(200);\r",
-							"});"
-						],
-						"type": "text/javascript"
-					}
-				}  
-			],
-			"request": {
-				"method": "DELETE",
-				"header": [],
-				"url": { 
-					"raw": "{{HOST}}{{PORT}}/Tayikistan/2005",
-					"host": [
-						"{{HOST}}{{PORT}}"
-					],
-					"path": [
-						"Tayikistan",
-						"2005"
-					]
-				}
-			},
-			"response": []
-		},
-		{
 			"name": "DELETE Pais",
 			"event": [
 				{
@@ -474,13 +425,49 @@
 			"request": {
 				"method": "DELETE",
 				"header": [],
+<<<<<<< Updated upstream
+				"url": { 
+					"raw": "{{HOST}}{{PORT}}/Tayikistan/2005",
+=======
 				"url": {
 					"raw": "{{HOST}}{{PORT}}/argentina",
+>>>>>>> Stashed changes
 					"host": [
 						"{{HOST}}{{PORT}}"
 					],
 					"path": [
 						"argentina"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE Pais Año",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{HOST}}{{PORT}}/Ucrania/2005",
+					"host": [
+						"{{HOST}}{{PORT}}"
+					],
+					"path": [
+						"Ucrania",
+						"2005"
 					]
 				}
 			},
@@ -532,6 +519,18 @@
 					""
 				]
 			}
+		}
+	],
+	"variable": [
+		{
+			"key": "HOST",
+			"value": "localhost",
+			"type": "string"
+		},
+		{
+			"key": "PORT",
+			"value": "8080",
+			"type": "string"
 		}
 	]
 }
