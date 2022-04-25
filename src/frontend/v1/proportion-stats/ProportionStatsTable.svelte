@@ -1,362 +1,284 @@
 <script>
-    import{onMount} from "svelte";
-    import {pop} from "svelte-spa-router";
-    import {Table, Button} from "sveltestrap";
-    const BASE_API_URL = "api/v1/proportion-stats";
+
+    import { onMount } from 'svelte';
+	import Table from 'sveltestrap/src/Table.svelte';
+	import Button from 'sveltestrap/src/Button.svelte';
+	import Alert from 'sveltestrap/src/Alert.svelte';
 
 
     let proportions = [];
-    let errorMsg = "";
+
+	let from = null;
+	let to = null;
+	let offset = 0;
+	let limit = 10;
+	const BASE_API_URL = "/api/v1";
+
+	let paginasMax = 0;
+	let numEntries;
+
+	let errorMsg = "";
 	let okMsg = "";
-	let cargados = false;
-    onMount(getproportions);
-    
-    /*pagination*/
-    let limit = 10;
-    let offset = 0;
-    let numDataPages = 0;
-    let maxPage = false;
+	let newProportion = {
+		country: "",
+		year: "",
+		male: "",
+		female: "",
+		total: "",
+		
+	};
+	let visible = false;
+	let visibleOk = false;
 
-    /*insertando datos*/
-    let newproportion = {
-        country: "",
-        year: "",
-        male: "",
-        female: "",
-        total: "",
-    };
+    onMount(getProp);
 
-    /*busqueda*/
-    let currentCountry = "";
-    let currentYear = "";
-    let search = false;
-    let searchData = {
-        country: "",
-        year: "",
-        male: "", 
-        female: "",
-        tota: "",
-    };
-	
-    async function loadProportions(){
-        console.log("Loading data...");
-        const res = await fetch(BASE_API_URL + "loadInitialData");
-        cargados = true;
-        if (res.ok) {
-            console.log("OK :");
-            getproportions();
-            errorMsg = "";
-            okMsg = "Datos cargados correctamente";
-            
-        }
-        else{
-            console.log("ERROR!");
-        }
-    
-    }
-
-    async function getproportions() {
-        if (res.ok) {
-            cargados = true;
-            console.log("Ok loading data...");
-            const json = await res.json();
-            proportions = json;
-            numDataPages = proportions.length;
-            if(numDataPages < limit){
-                maxPage = true;
-            }else{
-                maxPage = false;
-            }
-            console.log('Received ${numDataPages} data.');
-        }
-        else if(res.status === 500){
-            errorMsg = "No se han podido acceder a la base de datos";
-            okMsg = "";
-        }
-        else if(res.status === 404){
-            errorMsg = "No existe dato con Ciudad: ${params.country} y fecha: ${params.year}";
-            okMsg = "";
-        }
-        else{
-            errorMsg = res.status + ": " + res.statusText;
-            okMsg = "";
-                }
-
-    }
-
-    
-
-    async function insertproportion(){
-        console.log("Inserting proportion...." +JSON.stringify(newproportion) + "...");
-        
-        if(!newproportion.country || !newproportion.year){
-            alert("Debe rellenar los campos de Pais y Año como mínimo");
-        }
-        else{
-            const res = await fetch(BASE_API_URL, {
-                method: 'POST',
-                body: JSON.stringify(newproportion),
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            }).then(function(res){
-                if(res,ok){
-                    console.log ("OK");
-                    getproportions();
-                    errorMsg = "";
-                    okMsg = "Datos insertados correctamente";
-                }
-                else if (res.status == 409){
-                    okMsg = "";
-                    errorMsg = "Ya existe un dato con esa combinación de País y Año";
-                    console.log("ERROR: " + res.status + ": " + res.statusText);
-                }
-                else{
-                    okMsg = "";
-                    errorMsg = "No se ha podido insertar el dato";
-                    console.log("ERROR: " + res.status + ": " + res.statusText);
-                }
-            });
-        }
-    }
-
-    async function BorrarRegistro(countryD, yearD){
-        console.log("Borrando registro...." + countryD + " " + yearD);
-        const res = await fetch(BASE_API_URL+ "/" + countryD + "/" + yearD, 
-        {
-            method: "DELETE"
-            
-
-        }).then(function (res) {
-            if(res.ok){
-                okMsg = 'El dato con país: ${countryD} y año: ${year} se ha eliminado correctamente';
-                errorMsg = "";
-                console.log("OK: " + res.status + ": " + res.statusText);
-                getproportions();
-            } 
-            else if(res.status == 404){
-                okMsg = "";
-                errorMsg = "No existe dato con esa combinación de País y Año";
-                console.log("ERROR: " + res.status + ": " + res.statusText);
-            }
-            else{
-                okMsg = "";
-                errorMsg = "No se ha podido acceder a la base de datos";
-                console.log("ERROR: " + res.status + ": " + res.statusText);
-            }
-        });
-    }
-
-    async function BorrarRegistros(){
-        console.log("Deleting all data");
-
-        cargados = false;
-        const res = await fetch(BASE_API_URL, {
-            method: "DELETE"
-        
-        }).then(function (res){
-            if(res.ok){
-                console.log("OK: " + res.status + ": " + res.statusText);
-                proportions = [];
-                errorMsg = "";
-                okMsg = "Datos eliminados correctamente";
-
-            }
-            else if(res.status == 404){
-                okMsg = "";
-                errorMsg = "No existe dato con esa combinación de País y Año";
-                console.log("ERROR: " + res.status + ": " + res.statusText);
-            }
-            else{
-                okMsg = "";
-                errorMsg = "No se ha podido acceder a la base de datos";
-                console.log("ERROR: " + res.status + ": " + res.statusText);
-            }
-        });
-    
-    }
-
-    async function BuscarProportion(country, year){
-        offset = 0;
-        const res = await fetch(BASE_API_URL + "/" + country + "/" + year);
-
+    async function getProp(){
+        console.log("Fetching proportions....");
+		let c = `/api/v1/proportion-stats?limit=${limit}&&offset=${offset*10}&&`;
+		if (from != null) {
+			c = c + `from=${from}&&`
+		}
+		if (to != null) {
+			c = c + `to=${to}&&`
+		}
+        const res = await fetch(c); 
         if(res.ok){
-            cargados = true;
-            search = true;
-            okMsg = "";
-            console.log("OK. Searching data...");
-            const json = await res.json();
-            searchData = json;
-            console.log("Dato recibido: " + JSON.stringify(searchData));
+			let cadenaPag = c.split(`limit=${limit}&&offset=${offset*10}`);
+			maxPagesFunction(cadenaPag[0]+cadenaPag[1]);
+            const data = await res.json();
+            proportions = data;
+			numEntries = proportions.length;
+            console.log("Received entries: "+proportions.length);
+        }else{
+			if(res.status == 200 || res.status == 201){
+            const data = await res.json();
+            proportions = data;
+            if(proportions.length == 1){
+                errorMsg = "Se ha encontrado "+ proportions.length + " dato";
+            } else {
+                errorMsg = "No se ha encontrado el dato con país:";
+            }
+        } else if (res.status == 404){
+            	errorMsg = "No se ha encontrado datos con los parámetros introducidos.";
         }
-        else if(res.status == 500){
-            okMsg = "";
-            errorMsg = "No se han podido acceder a la base de datos";
-            console.log("ERROR: " + res.status + ": " + res.statusText);
-        }
-        else if(res.status == 404){
-            okMsg = "";
-            errorMsg = "No existe dato con esa combinación de País y Año";
-            console.log("ERROR: " + res.status + ": " + res.statusText);
-        }
-        else{
-            okMsg = "";
-            errorMsg = "No se ha podido acceder a la base de datos";
-            console.log("ERROR: " + res.status + ": " + res.statusText);
-        }
+        	window.alert(errorMsg);
+		} 
     }
 
-    async function reset(){
-        search= false;
-    };
-
-    async function PrevPage(){
-        okMsg = "";
-        errorMsg = "";
-        if(offset >= 10){
-            offset = offset - limit;
+	async function insertProportion() {
+    	console.log("Inserting data "+ JSON.stringify(newProportion));
+   		
+		const res = await fetch(BASE_API_URL +"/proportion-stats",
+							{
+								method: "POST",
+								body: JSON.stringify(newProportion),
+								headers:{
+									"Content-Type": "application/json"
+								}
+							}
+		).then((res) => {
+			
+			if(res.status === 200 || res.status ===201){
+				getProp();
+				okMsg = "El dato se introdujo correctamente";
+				visibleOk=true;
+				visible=false;
+				window.alert(okMsg);
+			}else{
+				if(res.status === 409){
+                errorMsg = "Ya existe ese dato";
+				visibleOk=false;
+				visible=true;
+			}else if(res.status === 400){
+				errorMsg = "Campo mal introducido";
+				visibleOk=false;
+				visible=true;
+			}
+			window.alert(errorMsg);
+		}
             
+		});
+	}	
+
+	async function BorrarRegis(countryDelete, yearDelete){
+        const res = await fetch("/api/v1/proportion-stats/"+countryDelete+"/"+yearDelete,
+			{
+				method: "DELETE"
+			}).then(function(res){
+				if(res.ok){
+					if(numEntries==1){
+					from = null;
+					to = null;
+				}
+				getProp();
+				okMsg = "Dato eliminado";
+				visibleOk=true;
+				visible=false;
+				}
+
+			});
+    }
+
+	async function BorrarRegistros(){
+        console.log("Deleting proportions....");
+        const res = await fetch("/api/v1/proportion-stats/",
+			{
+				method: "DELETE"
+			}).then(function (res){
+				from = null;
+				to = null;
+				if(res.ok){
+								getProp();
+								okMsg = "Todos los datos se han eliminado";
+								visibleOk=true;
+								visible=false;
+							}else{
+								errorMsg = "No hay datos que borrar";
+								visibleOk=false;
+								visible=true;
+							}
+							})
+		
+    }
+
+	async function Cargarproportions(){
+        console.log("Loading proportions....");
+        const res = await fetch("/api/v1/proportion-stats/loadInitialData",
+			{
+				method: "GET"
+			}).then(function (res){
+				getProp();
+				window.alert("TODO CARGADO");
+			});
+    }
+
+
+	async function maxPagesFunction(cadena){
+		let num;
+        const res = await fetch(cadena,
+			{
+				method: "GET"
+			});
+			if(res.ok){
+				const data = await res.json();
+				paginasMax = Math.floor(data.length/10);
+				if(paginasMax === data.length/10){
+					paginasMax = paginasMax-1;
+				}
         }
-        getproportions();
-    }
-
-    async function NextPage(){
-        okMsg = "";
-        errorMsg = "";
-        offset = offset + limit;
-        getproportions();
-    }
-
-
+	}
 
 </script>
 
-<main>
-    <div>
-        {#if cargados}
-        <Button outline color = "primary" disabled> Cargar datos iniciales </Button>
-        {:else}
-        <Button outline color = "primary" on:click = {loadProportions}> Cargar datos iniciales </Button>
-        {/if}
-        <Button outline color = "danger" on:click = {BorrarRegistros}> Borrar todos los datos </Button>
 
-    </div>
-
-    <h4>Búsqueda por país y año</h4>
-        <Table bordered style= "text-align: center;">
-            <thead>
-                <tr>
-                    <th>País</th>
-                    <th>Año</th>
-                    <th>Acciones</th>
-                </tr>
-            </thead>
-
-            <tbody>
-                <tr>
-                    <td>
-                        <input id="country" placeholder="País" bind:value="{currentCountry}" />
-                    </td>
-                    <td>
-                        <input id="year" placeholder="Año" bind:value="{currentYear}" />
-                    </td>
-                    <td>
-                        <Button id= "search_button" outline color= "info" on:click={()=>BuscarProportion(currentCountry, currentYear)}>Buscar</Button>
-                        <Button style="background-color: darkgrey" on:click={()=>reset()}>Restaurar</Button>
-                    </td>
-                </tr>
-            </tbody>
-        </Table>
-
-        {#if proportions.length!= 0}
-        <br/>
-
-        <Table bordered style = "text-align: center;">
-            <thead>
-                <tr>
-                    <th>Pais</th>
-                    <th>Año</th>
-                    <th>Hombres</th>
-                    <th>Mujeres</th>
-                    <th>Total</th>
-                </tr>
-            </thead>
-
-            <tbody>
-                <tr>
-                    <td><input id="insert_input_country" placeholder="Ej. España" bind:value="{newproportion.country}"></td>
-                    <td><input id="insert_input_year" type="number" placeholder="Ej. 2018" bind:value="{newproportion.year}"></td>
-                    <td><input id="insert_male" type="number" placeholder="Ej. 23" bind:value="{newproportion.male}"></td>
-                    <td><input id="insert_female" type="number" placeholder="Ej. 23" bind:value="{newproportion.female}"></td>
-                    <td><input id="insert_total" type="number" placeholder="Ej. 23" bind:value="{newproportion.total}"></td>
-
-                    <td><Button id="insert_button" outline color= "primary" on:click{insertproportion}>Insertar</Button></td>
-
-
-                </tr>
-
-                {#if search}
-                <tr>
-                    <td>{searchData.country}</td>
-                    <td>{searchData.year}</td>
-                    <td><a href="#/proportion-stats/{searchData.country}/{searchData.date}">
-                    <Button id="edit_button_{searchData.country}_{searchData.year}" style="background-color:yellowgreen">Editar</Button></a>
-                    <Button id="delete_button_{searchData.country}_{searchData.year}" style="margin-right: 10px" color="danger" on:click={()=>BorrarRegistro(searchData.country, searchData.year)}>Borrar</Button>
-
-                
-                </tr>
-
-                {:else}
-                    {#each proportions as proportion} 
-                    <tr>
-                        <td>{proportion.country}</td>
-                        <td>{proportion.year}</td>
-                        <td>{proportion["male"]}</td>
-                        <td>{proportion["female"]}</td>
-                        <td>{proportion["total"]}</td>
-
-                        <td><a href="#/proportion-stats{proportion.country}/{proportion.year}">
-                            <Button 
-                            id="edit_button_{proportion.country}_{proportion.year}" style="background-color: yellowgreen;"> Editar </Button>
-                            </a>
-                            <Button id="delete_button_{proportion.country}_{proportion.year}" outline style="margin-right: 10px;"  color="danger" on:click={()=>BorrarRegistro(proportion.country, proportion.year)}>
-                            Borrar </Button> 
-                        </td> 
-                    
-                        
-                    {/each}
-
-                {/if}
-            </tbody>
-
-        </Table>
-
-
-        {#if maxPage} <!--si hemos llegado al maximo de paginas, no saldrá el botón siguiente-->
-            <Button color="info" on:click={PrevPage}>ANTERIOR</Button>        
-                Número de datos en esta página: {numDataPages}
-            
-        {:else}
-            <Button color="info" on:click={PrevPage}>ANTERIOR</Button>        
-            Número de datos en esta página: {numDataPages}       
-            <Button color="info" on:click={NextPage}>SIGUIENTE</Button>      
-            
-        {/if}
-
-        <br/> <br/><Button style="background-color:darkgray " on:click="{pop}"> Volver </Button>
-
-        {:else}
-            <br/>
-            <p class="inicio"> Para ver los datos cárguelos.</p>
-                
-            <Button style="background-color:darkgray" on:click="{pop}"> Volver </Button>
-        {/if}
-
-        {#if errorMsg}
-                <p class="error">ERROR: {errorMsg}</p>
-        {/if}
-        {#if okMsg}
-                <p class="correcto">{okMsg}</p>
-        {/if} 
-
+<main>	
+			<Alert color="danger" isOpen={visible} toggle={() => (visible = false)}>
+				{#if errorMsg}
+					<p>ERROR: {errorMsg}</p>
+				   {/if}
+			</Alert>
+			<Alert color="success" isOpen={visibleOk} toggle={() => (visibleOk = false)}>
+				{#if okMsg}
+					<p>Correcto: {okMsg}</p>
+				{/if}
+			</Alert>
+			<Table bordered>
+				<thead>
+					<tr>
+						<th>Fecha inicio</th>
+						<th>Fecha fin</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td><input type="number" min="1999" bind:value="{from}"></td>
+						<td><input type="number" min="1999" bind:value="{to}"></td>
+						<td align="center"><Button outline color="dark" on:click="{()=>{
+							if (from == null || to == null) {
+								window.alert('Los campos fecha inicio y fecha fin no pueden estar vacíos')
+							}else{
+								getProp();
+							}
+						}}">
+							Buscar
+							</Button>
+						</td>
+						<td align="center"><Button outline color="primary" on:click="{()=>{
+							from = null;
+							to = null;
+							getProp();
+							
+						}}">
+							Limpiar Búsqueda
+							</Button>
+						</td>
+					</tr>
+				</tbody>
+			</Table>			
+			<Table bordered>
+			
+				<thead>
+					<tr>
+						<td><Button id='charge' on:click={Cargarproportions}>Cargar datos</Button></td>
+						<td><Button id='delete' on:click={BorrarRegistros}>Borrar datos</Button></td>
+							
+					</tr>
+					
+					<tr>
+						<th>Ciudad</th>
+						<th>Año</th>
+						<th>Hombres</th>
+						<th>Mujeres</th>
+						<th>Total</th>
+						<th>Acciones</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td><input bind:value="{newProportion.country}"></td>
+						<td><input type="number" bind:value="{newProportion.year}"></td>
+						<td><input type="number" bind:value="{newProportion.male}"></td>
+						<td><input type="number" bind:value="{newProportion.female}"></td>
+						<td><input type="number" bind:value="{newProportion.total}"></td>
+						<td><Button 
+							outline 
+							color="primary"
+							on:click="{insertProportion}">Añadir</Button></td>
+					</tr>
+					{#each proportions as proportion}
+					<tr>
+						<td>{proportion.country}</td>
+						<td>{proportion.year}</td>
+						<td>{proportion.male}</td>
+						<td>{proportion.female}</td>
+						<td>{proportion.total}</td>
+						<td><Button outline color="warning" on:click={function (){
+							window.location.href = `/#/proportion-stats/${proportion.country}/${proportion.year}`
+						}}>
+							Editar
+						</Button>
+						<td><Button outline color="danger" on:click={BorrarRegis(proportion.country,proportion.year)}>
+							Borrar
+						</Button>
+						</td>
+					</tr>
+					{/each}
+					
+				</tbody>
+		<div>
+    		
+  
+	  </div>
+	  <div align="left">
+		{#each Array(paginasMax+1) as _,page}
+		
+			<Button outline color="secondary" on:click={()=>{
+				offset = page;
+				getProp();
+			}}>{page} </Button>&nbsp
+	
+		{/each}
+		</div>
+		
+	</Table>
 </main>
