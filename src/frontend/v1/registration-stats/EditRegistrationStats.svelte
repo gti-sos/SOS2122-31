@@ -42,8 +42,10 @@
             	console.log("ERROR!" + errorMsg);
 				visibleOk=false;
 				visible=true;
+                pop();
 			} else if (res.status === 500) {
         		errorMsg = "No se han podido acceder a la base de datos";
+                pop();
       		}
 			
       		console.log("ERROR!" + errorMsg);
@@ -69,8 +71,8 @@
         }).then(function (res) {
 			if(res.ok){
 				console.log("Ok.");
-				getReg();
 				okMsg = "Actualización correcta";
+                pop();
 				visibleOk=true;
 				visible=false;
 				
@@ -81,9 +83,6 @@
 					visible=true;
 				}
 			}
-			
-			getReg();
-			console.log("ERROR!" + errorMsg);
             
         });
     }
