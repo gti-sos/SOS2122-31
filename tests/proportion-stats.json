@@ -1,7 +1,7 @@
 {
 	"info": {
-		"_postman_id": "7559075e-9e5b-48dd-841c-0bc19f3e075d",
-		"name": "Heroku",
+		"_postman_id": "7642bfe4-9bee-454d-b3a5-6df8845b2554",
+		"name": "sos2122-3 LOCAL Copy",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -24,12 +24,43 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{HOST}}{{PORT}}/loadInitialData",
+					"raw": "{{HOST}}:{{PORT}}/api/v1/proportion-stats/loadInitialData",
+					"host": [
+						"{{HOST}}"
+					],
+					"port": "{{PORT}}",
+					"path": [
+						"api",
+						"v1",
+						"proportion-stats",
+						"loadInitialData"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Entero",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{HOST}}{{PORT}}",
 					"host": [
 						"{{HOST}}{{PORT}}"
-					],
-					"path": [
-						"loadInitialData"
 					]
 				}
 			},
@@ -54,12 +85,12 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{HOST}}{{PORT}}/Argentina",
+					"raw": "{{HOST}}{{PORT}}/argentina",
 					"host": [
 						"{{HOST}}{{PORT}}"
 					],
 					"path": [
-						"Argentina"
+						"argentina"
 					]
 				}
 			},
@@ -91,33 +122,6 @@
 					"path": [
 						"Argentina",
 						"2019"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "GET Entero",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"pm.test(\"Status code is 200\", function () {\r",
-							"    pm.response.to.have.status(200);\r",
-							"});"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "{{HOST}}{{PORT}}",
-					"host": [
-						"{{HOST}}{{PORT}}"
 					]
 				}
 			},
@@ -173,7 +177,11 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
+<<<<<<< Updated upstream
 					"raw": "{\r\n\"country\": \"Uganda\",\r\n\"year\":2005,\r\n\"male\": 99,\r\n\"female\": 97,\r\n\"total\": 98\r\n}\r\n",
+=======
+					"raw": "{\r\n\"country\": \"Ucrania\",\r\n\"year\": 2005,\r\n\"male\": 99,\r\n\"female\": 97,\r\n\"total\": 98\r\n}\r\n",
+>>>>>>> Stashed changes
 					"options": {
 						"raw": {
 							"language": "json"
@@ -455,12 +463,12 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "{{HOST}}{{PORT}}/Uganda/2005",
+					"raw": "{{HOST}}{{PORT}}/Ucrania/2005",
 					"host": [
 						"{{HOST}}{{PORT}}"
 					],
 					"path": [
-						"Uganda",
+						"Ucrania",
 						"2005"
 					]
 				}
@@ -518,13 +526,15 @@
 	"variable": [
 		{
 			"key": "HOST",
-			"value": "https://sos2122-31.herokuapp.com",
-			"type": "string"
+			"value": "localhost",
+			"type": "string",
+			"disabled": true
 		},
 		{
 			"key": "PORT",
-			"value": "/api/v1/proportion-stats",
-			"type": "string"
+			"value": "8080",
+			"type": "string",
+			"disabled": true
 		}
 	]
 }
