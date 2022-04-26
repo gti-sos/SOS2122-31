@@ -177,11 +177,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-<<<<<<< Updated upstream
-					"raw": "{\r\n\"country\": \"Uganda\",\r\n\"year\":2005,\r\n\"male\": 99,\r\n\"female\": 97,\r\n\"total\": 98\r\n}\r\n",
-=======
 					"raw": "{\r\n\"country\": \"Ucrania\",\r\n\"year\": 2005,\r\n\"male\": 99,\r\n\"female\": 97,\r\n\"total\": 98\r\n}\r\n",
->>>>>>> Stashed changes
 					"options": {
 						"raw": {
 							"language": "json"
