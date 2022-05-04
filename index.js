@@ -28,11 +28,16 @@ db_proportion_stats = new Datastore1({filename: datafile2, autoload:true});
 proportion_statsV1.register(app, db_proportion_stats);  
 
 
-//Daniel Vega Vera:
+//Daniel Vega Vera V1:
 const alphabetization_stats_V1 = require("./src/backend/v1/alphabetization-statsV1");
-var datafile = path.join(__dirname, 'alphabetization-stats.db');
+var datafile = path.join(__dirname, 'alphabetization-statsV1.db');
 db_alphabetization_stats = new Datastore({filename: datafile, autoload:true});
 alphabetization_stats_V1.register(app,db_alphabetization_stats);
+//Daniel Vega Vera V2:
+const alphabetization_stats_V2 = require("./src/backend/v2/alphabetization-statsV2");
+var datafile = path.join(__dirname, 'alphabetization-statsV2.db');
+db_alphabetization_stats = new Datastore({filename: datafile, autoload:true});
+alphabetization_stats_V2.register(app,db_alphabetization_stats);
 
 app.use("/", express.static("public"));
 

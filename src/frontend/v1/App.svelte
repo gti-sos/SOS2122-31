@@ -8,8 +8,9 @@
 	import EditProportionStats from "./proportion-stats/EditProportionStats.svelte";
 	import Home from "./Home.svelte";
 	import Info from "./Info.svelte";
+	//Gráficos:
+	import GraphAlphabetization from "./GraphAlphabetization.svelte";
 
-	//import EditContact from "./EditContact.svelte"
 	const routes = {
 		"/": Home,
 		"/registration-stats": RegistrationStatsTable,
@@ -18,7 +19,8 @@
 		"/alphabetization-stats/:country/:year": EditAlphabetizationStats,
 		"/proportion-stats": ProportionStatsTable,
 		"/proportion-stats/:country/:year": EditProportionStats,
-		"/info" : Info 
+		"/info" : Info,
+		"/graphAlphabetization/:country" : GraphAlphabetization
 	};
 </script>
 

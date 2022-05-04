@@ -151,7 +151,7 @@
                     <th>Año</th>
                     <th>Hombre</th>
                     <th>Mujer</th>
-                    <th>Total</th>
+                    <th>Media</th>
                     <th>Acción</th>
                 </tr>
             </thead>
