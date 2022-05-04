@@ -14,7 +14,7 @@
     let ar_ty = [];
 
     async function getData() {
-        const res1 = await fetch(`api/v2/alphabetization-stats/${country}`);
+        const res1 = await fetch(`api/v1/alphabetization-stats/${country}`);
         if (res1.ok) {
             const arrayData = await res1.json();
             apiData = arrayData;

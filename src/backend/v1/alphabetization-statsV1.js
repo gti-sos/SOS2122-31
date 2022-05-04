@@ -2,30 +2,287 @@ const BASE_API_URL = "/api/v1";
 
 var alphabetization_stats = [
     //Datos:
+    //Año : 2000
     {
         country: "argentina",
-        year: 1991,
+        year: 2000,
         ar_ym: 98,
         ar_yw: 98,
         ar_ty: 98
     },
     {
         country: "burkina faso",
-        year: 2005,
+        year: 2000,
         ar_ym: 40,
         ar_yw: 26,
         ar_ty: 33
     },
     {
         country: "eeuu",
-        year: 1990,
+        year: 2000,
         ar_ym: 97,
         ar_yw: 91,
         ar_ty: 94
     },
     {
         country: "bangladesh",
-        year: 2013,
+        year: 2000,
+        ar_ym: 84,
+        ar_yw: 87,
+        ar_ty: 85
+    },
+    {
+        country: "chad",
+        year: 2000,
+        ar_ym: 41,
+        ar_yw: 22,
+        ar_ty: 31
+    },
+    {
+        country: "guatemala",
+        year: 2000,
+        ar_ym: 95,
+        ar_yw: 94,
+        ar_ty: 95
+    },
+    {
+        country: "indonesia",
+        year: 2000,
+        ar_ym: 100,
+        ar_yw: 100,
+        ar_ty: 100
+    },
+    {
+        country: "liberia",
+        year: 2000,
+        ar_ym: 65,
+        ar_yw: 46,
+        ar_ty: 55
+    },
+    {
+        country: "mauritania",
+        year: 2000,
+        ar_ym: 71,
+        ar_yw: 57,
+        ar_ty: 64
+    },
+    //Año : 2004
+    {
+        country: "argentina",
+        year: 2004,
+        ar_ym: 98,
+        ar_yw: 98,
+        ar_ty: 98
+    },
+    {
+        country: "burkina faso",
+        year: 2004,
+        ar_ym: 40,
+        ar_yw: 26,
+        ar_ty: 33
+    },
+    {
+        country: "eeuu",
+        year: 2004,
+        ar_ym: 97,
+        ar_yw: 91,
+        ar_ty: 94
+    },
+    {
+        country: "bangladesh",
+        year: 2004,
+        ar_ym: 84,
+        ar_yw: 87,
+        ar_ty: 85
+    },
+    {
+        country: "chad",
+        year: 2004,
+        ar_ym: 41,
+        ar_yw: 22,
+        ar_ty: 31
+    },
+    {
+        country: "guatemala",
+        year: 2004,
+        ar_ym: 95,
+        ar_yw: 94,
+        ar_ty: 95
+    },
+    {
+        country: "indonesia",
+        year: 2004,
+        ar_ym: 100,
+        ar_yw: 100,
+        ar_ty: 100
+    },
+    {
+        country: "liberia",
+        year: 2004,
+        ar_ym: 65,
+        ar_yw: 46,
+        ar_ty: 55
+    },
+    {
+        country: "mauritania",
+        year: 2004,
+        ar_ym: 71,
+        ar_yw: 57,
+        ar_ty: 64
+    },
+    //Año : 2008
+    {
+        country: "argentina",
+        year: 2008,
+        ar_ym: 98,
+        ar_yw: 98,
+        ar_ty: 98
+    },
+    {
+        country: "burkina faso",
+        year: 2008,
+        ar_ym: 40,
+        ar_yw: 26,
+        ar_ty: 33
+    },
+    {
+        country: "eeuu",
+        year: 2008,
+        ar_ym: 97,
+        ar_yw: 91,
+        ar_ty: 94
+    },
+    {
+        country: "bangladesh",
+        year: 2008,
+        ar_ym: 84,
+        ar_yw: 87,
+        ar_ty: 85
+    },
+    {
+        country: "chad",
+        year: 2008,
+        ar_ym: 41,
+        ar_yw: 22,
+        ar_ty: 31
+    },
+    {
+        country: "guatemala",
+        year: 2008,
+        ar_ym: 95,
+        ar_yw: 94,
+        ar_ty: 95
+    },
+    {
+        country: "indonesia",
+        year: 2008,
+        ar_ym: 100,
+        ar_yw: 100,
+        ar_ty: 100
+    },
+    {
+        country: "liberia",
+        year: 2008,
+        ar_ym: 65,
+        ar_yw: 46,
+        ar_ty: 55
+    },
+    {
+        country: "mauritania",
+        year: 2008,
+        ar_ym: 71,
+        ar_yw: 57,
+        ar_ty: 64
+    },
+    //Año : 2012
+    {
+        country: "argentina",
+        year: 2012,
+        ar_ym: 98,
+        ar_yw: 98,
+        ar_ty: 98
+    },
+    {
+        country: "burkina faso",
+        year: 2012,
+        ar_ym: 40,
+        ar_yw: 26,
+        ar_ty: 33
+    },
+    {
+        country: "eeuu",
+        year: 2012,
+        ar_ym: 97,
+        ar_yw: 91,
+        ar_ty: 94
+    },
+    {
+        country: "bangladesh",
+        year: 2012,
+        ar_ym: 84,
+        ar_yw: 87,
+        ar_ty: 85
+    },
+    {
+        country: "chad",
+        year: 2012,
+        ar_ym: 41,
+        ar_yw: 22,
+        ar_ty: 31
+    },
+    {
+        country: "guatemala",
+        year: 2012,
+        ar_ym: 95,
+        ar_yw: 94,
+        ar_ty: 95
+    },
+    {
+        country: "indonesia",
+        year: 2012,
+        ar_ym: 100,
+        ar_yw: 100,
+        ar_ty: 100
+    },
+    {
+        country: "liberia",
+        year: 2012,
+        ar_ym: 65,
+        ar_yw: 46,
+        ar_ty: 55
+    },
+    {
+        country: "mauritania",
+        year: 2012,
+        ar_ym: 71,
+        ar_yw: 57,
+        ar_ty: 64
+    },
+    //Año : 2016
+    {
+        country: "argentina",
+        year: 2016,
+        ar_ym: 98,
+        ar_yw: 98,
+        ar_ty: 98
+    },
+    {
+        country: "burkina faso",
+        year: 2016,
+        ar_ym: 40,
+        ar_yw: 26,
+        ar_ty: 33
+    },
+    {
+        country: "eeuu",
+        year: 2016,
+        ar_ym: 97,
+        ar_yw: 91,
+        ar_ty: 94
+    },
+    {
+        country: "bangladesh",
+        year: 2016,
         ar_ym: 84,
         ar_yw: 87,
         ar_ty: 85
@@ -39,32 +296,34 @@ var alphabetization_stats = [
     },
     {
         country: "guatemala",
-        year: 2018,
+        year: 2016,
         ar_ym: 95,
         ar_yw: 94,
         ar_ty: 95
     },
     {
         country: "indonesia",
-        year: 2020,
+        year: 2016,
         ar_ym: 100,
         ar_yw: 100,
         ar_ty: 100
     },
     {
         country: "liberia",
-        year: 2017,
+        year: 2016,
         ar_ym: 65,
         ar_yw: 46,
         ar_ty: 55
     },
     {
         country: "mauritania",
-        year: 2017,
+        year: 2016,
         ar_ym: 71,
         ar_yw: 57,
         ar_ty: 64
     }
+
+
 ];
 module.exports.register = (app, db) => {
 
