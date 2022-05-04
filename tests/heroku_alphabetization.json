@@ -112,13 +112,13 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{HOST}}{{PORT}}/argentina/1991",
+					"raw": "{{HOST}}{{PORT}}/argentina/2000",
 					"host": [
 						"{{HOST}}{{PORT}}"
 					],
 					"path": [
 						"argentina",
-						"1991"
+						"2000"
 					]
 				}
 			},
@@ -447,7 +447,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n\"country\": \"eeuu\",\r\n\"year\": 1990,\r\n\"ar_ym\": 100,\r\n\"ar_yw\": 100,\r\n\"ar_ty\": 100\r\n}",
+					"raw": "{\r\n\"country\": \"eeuu\",\r\n\"year\": 2000,\r\n\"ar_ym\": 100,\r\n\"ar_yw\": 100,\r\n\"ar_ty\": 100\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -455,13 +455,13 @@
 					}
 				},
 				"url": {
-					"raw": "{{HOST}}{{PORT}}/eeuu/1990",
+					"raw": "{{HOST}}{{PORT}}/eeuu/2000",
 					"host": [
 						"{{HOST}}{{PORT}}"
 					],
 					"path": [
 						"eeuu",
-						"1990"
+						"2000"
 					]
 				}
 			},
