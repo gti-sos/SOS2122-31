@@ -21,9 +21,9 @@
                 nivelTerciario.push(data.tertiarylevel)
             });
         }else{
-            //window.alert("No hay datos para este pais");
+            window.alert("No hay datos para este pais");
             console.log("INTERNAL FATAL ERROR");
-            //window.location.href = `/#/registration-stats`;
+            window.location.href = `/#/registration-stats`;
         }
         Highcharts.chart('container', {
     chart: {
