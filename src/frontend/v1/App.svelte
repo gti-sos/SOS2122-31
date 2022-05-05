@@ -9,8 +9,8 @@
 	import Home from "./Home.svelte";
 	import Info from "./Info.svelte";
 	//Gráficos:
-	import GraphAlphabetization from "./GraphAlphabetization.svelte";
-import GraphRegistration from "./GraphRegistration.svelte";
+	import GraphAlphabetization from "./alphabetization-stats/GraphAlphabetization.svelte";
+import GraphRegistration from "./registration-stats/GraphRegistration.svelte";
 
 	const routes = {
 		"/": Home,
