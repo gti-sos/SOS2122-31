@@ -10,6 +10,7 @@
 	import Info from "./Info.svelte";
 	//Gráficos:
 	import GraphAlphabetization from "./GraphAlphabetization.svelte";
+import GraphRegistration from "./GraphRegistration.svelte";
 
 	const routes = {
 		"/": Home,
@@ -20,7 +21,8 @@
 		"/proportion-stats": ProportionStatsTable,
 		"/proportion-stats/:country/:year": EditProportionStats,
 		"/info" : Info,
-		"/graphAlphabetization/:country" : GraphAlphabetization
+		"/graphAlphabetization/:country" : GraphAlphabetization,
+		"/graphRegistration" : GraphRegistration
 	};
 </script>
 
