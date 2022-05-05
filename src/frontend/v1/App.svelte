@@ -10,8 +10,9 @@
 	import Info from "./Info.svelte";
 	//Gráficos:
 	import GraphAlphabetization from "./alphabetization-stats/GraphAlphabetization.svelte";
-import GraphRegistration from "./registration-stats/GraphRegistration.svelte";
-
+	import GraphRegistration from "./registration-stats/GraphRegistration.svelte";
+	import GraphGeneral from "./GraphGeneral.svelte";
+	
 	const routes = {
 		"/": Home,
 		"/registration-stats": RegistrationStatsTable,
@@ -22,7 +23,8 @@ import GraphRegistration from "./registration-stats/GraphRegistration.svelte";
 		"/proportion-stats/:country/:year": EditProportionStats,
 		"/info" : Info,
 		"/graphAlphabetization/:country" : GraphAlphabetization,
-		"/graphRegistration" : GraphRegistration
+		"/graphRegistration" : GraphRegistration,	
+		"/graphGeneral" : GraphGeneral
 	};
 </script>
 
