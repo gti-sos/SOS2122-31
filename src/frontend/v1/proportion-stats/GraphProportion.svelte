@@ -78,13 +78,16 @@
         colorByPoint: true,
         data: [{
             name: 'male',
+            x: year,
             y: male
             
         }, {
             name: 'female',
+            x: year,
             y: female
         }, {
             name: 'total',
+            x: year,
             y: total
         }]
     }]
