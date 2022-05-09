@@ -45,58 +45,50 @@
     }
 
     async function loadGraph() {
-        Highcharts.chart("container", {
-            chart: {
-                type: "pie",
-            },
-            title: {
-                text: `Gráfica para el pais: ${country}`,
-            },
-            subtitle: {
-                text: "Fuente de datos: Banco Mundial de Datos",
-            },
-            xAxis: {
-                categories: year,
-                tickmarkPlacement: "on",
-                title: {
-                    enabled: false,
-                },
-            },
-            yAxis: {
-                title: {
-                    text: "Percentage",
-                },
-            },
-            tooltip: {
-                split: true,
-                valueSuffix: "%",
-            },
-            plotOptions: {
-                area: {
-                    stacking: "normal",
-                    lineColor: "#666666",
-                    lineWidth: 1,
-                    marker: {
-                        lineWidth: 1,
-                        lineColor: "#666666",
-                    },
-                },
-            },
-            series: [
-                {
-                    name: "Hombres",
-                    data: male,
-                },
-                {
-                    name: "Mujeres",
-                    data: female,
-                },
-                {
-                    name: "Total",
-                    data: total,
-                },
-            ],
-        });
+        Highcharts.chart('container', {
+    chart: {
+        plotBackgroundColor: null,
+        plotBorderWidth: null,
+        plotShadow: false,
+        type: 'pie'
+    },
+    title: {
+        text: 'Browser market shares in January, 2018'
+    },
+    tooltip: {
+        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+    },
+    accessibility: {
+        point: {
+            valueSuffix: '%'
+        }
+    },
+    plotOptions: {
+        pie: {
+            allowPointSelect: true,
+            cursor: 'pointer',
+            dataLabels: {
+                enabled: true,
+                format: '<b>{point.name}</b>: {point.percentage:.1f} %'
+            }
+        }
+    },
+    series: [{
+        name: 'Equality',
+        colorByPoint: true,
+        data: [{
+            name: 'male',
+            y: male
+            
+        }, {
+            name: 'female',
+            y: female
+        }, {
+            name: 'total',
+            y: total
+        }]
+    }]
+});
     }
 
     onMount(getData);
