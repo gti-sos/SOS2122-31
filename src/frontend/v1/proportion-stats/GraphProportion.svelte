@@ -49,16 +49,16 @@
         Highcharts.chart('container', {
 
 title: {
-    text: 'Solar Employment Growth by Sector, 2010-2016'
+    text: 'Proportion of  young people without studies work or capacitation, 2015-2020'
 },
 
 subtitle: {
-    text: 'Source: thesolarfoundation.com'
+    text: 'Source: www.worldbank.org'
 },
 
 yAxis: {
     title: {
-        text: 'Number of Employees'
+        text: 'Proportion'
     }
 },
 
@@ -148,8 +148,8 @@ responsive: {
     <figure class="highcharts-figure">
         <div id="container" />
         <p class="highcharts-description">
-            En esta gráfica se muestra para el pais seleccionado el avance que ha
-            tenido en materia de igualdad a lo largo de los años.
+            En esta gráfica se muestra para el pais seleccionado el avance de la
+            tasa de empleo, educación o capacitación de los jóvenes.
         </p>
     </figure>
 </main>
