@@ -11,6 +11,7 @@
 	//Gráficos:
 	import GraphAlphabetization from "./alphabetization-stats/GraphAlphabetization.svelte";
 	import GraphRegistration from "./registration-stats/GraphRegistration.svelte";
+	import GraphProportion from "./proportion-stats/GraphProportion.svelte";
 	import GraphGeneral from "./GraphGeneral.svelte";
 	
 	const routes = {
@@ -21,6 +22,7 @@
 		"/alphabetization-stats/:country/:year": EditAlphabetizationStats,
 		"/proportion-stats": ProportionStatsTable,
 		"/proportion-stats/:country/:year": EditProportionStats,
+		"/proportion-stats/:country/:year": GraphProportion,
 		"/info" : Info,
 		"/graphAlphabetization/:country" : GraphAlphabetization,
 		"/graphRegistration" : GraphRegistration,	
