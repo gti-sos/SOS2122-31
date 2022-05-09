@@ -45,58 +45,71 @@
     }
 
     async function loadGraph() {
-        Highcharts.chart("container", {
-            chart: {
-                type: "area",
-            },
-            title: {
-                text: `Gráfica para el pais: ${country}`,
-            },
-            subtitle: {
-                text: "Fuente de datos: Banco Mundial de Datos",
-            },
-            xAxis: {
-                categories: year,
-                tickmarkPlacement: "on",
-                title: {
-                    enabled: false,
-                },
-            },
-            yAxis: {
-                title: {
-                    text: "Percentage",
-                },
-            },
-            tooltip: {
-                split: true,
-                valueSuffix: "%",
-            },
-            plotOptions: {
-                area: {
-                    stacking: "normal",
-                    lineColor: "#666666",
-                    lineWidth: 1,
-                    marker: {
-                        lineWidth: 1,
-                        lineColor: "#666666",
-                    },
-                },
-            },
-            series: [
-                {
-                    name: "Hombres",
-                    data: male,
-                },
-                {
-                    name: "Mujeres",
-                    data: female,
-                },
-                {
-                    name: "Total",
-                    data: total,
-                },
-            ],
-        });
+       
+        Highcharts.chart('container', {
+
+title: {
+    text: 'Proportion of  young people without studies work or capacitation, 2015-2020'
+},
+
+subtitle: {
+    text: 'Source: www.worldbank.org'
+},
+
+yAxis: {
+    title: {
+        text: 'Proportion'
+    }
+},
+
+xAxis: {
+    accessibility: {
+        rangeDescription: 'Range: 2015 to 2020'
+    }
+},
+
+legend: {
+    layout: 'vertical',
+    align: 'right',
+    verticalAlign: 'middle'
+},
+
+plotOptions: {
+    series: {
+        label: {
+            connectorAllowed: false
+        },
+        pointStart: 2015
+    }
+},
+
+series: [{
+    name: 'Male',
+    data: male
+}, {
+    name: 'Female',
+    data: female
+}, {
+    name: 'Total',
+    data: total
+}],
+
+responsive: {
+    rules: [{
+        condition: {
+            maxWidth: 500
+        },
+        chartOptions: {
+            legend: {
+                layout: 'horizontal',
+                align: 'center',
+                verticalAlign: 'bottom'
+            }
+        }
+    }]
+}
+
+});
     }
 
     onMount(getData);
@@ -135,8 +148,8 @@
     <figure class="highcharts-figure">
         <div id="container" />
         <p class="highcharts-description">
-            En esta gráfica se muestra para el pais seleccionado el avance que ha
-            tenido en materia de igualdad a lo largo de los años.
+            En esta gráfica se muestra para el pais seleccionado el avance de la
+            tasa de empleo, educación o capacitación de los jóvenes.
         </p>
     </figure>
 </main>
