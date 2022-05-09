@@ -512,7 +512,14 @@ var proportion_stats = [
         
     },
 
-   
+    {
+        country : "Argentina",
+        year : 2020,
+        male : 19.2, 
+        female : 21.7,
+        total : 16.83
+        
+    },
 
    
 
