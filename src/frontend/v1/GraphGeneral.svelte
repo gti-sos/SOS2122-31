@@ -18,7 +18,7 @@
     let res1;
     let res2;
     async function loadGraph() {
-        res = await fetch("/api/v1/registration-stats"); //alphabetization
+        res = await fetch("/api/v2/registration-stats"); //alphabetization
         res1 = await fetch("/api/v1/alphabetization-stats"); //alphabetization
         res2 = await fetch("/api/v1/proportion-stats"); //proportion
         if (res.ok && res1.ok && res2.ok) {

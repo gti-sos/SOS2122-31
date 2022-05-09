@@ -10,7 +10,7 @@
 		},
 		{
 			"key": "API",
-			"value": "/api/v1/registration-stats",
+			"value": "/api/v2/registration-stats",
 			"type": "default",
 			"enabled": true
 		}

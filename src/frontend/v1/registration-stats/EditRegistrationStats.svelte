@@ -5,7 +5,7 @@
     import Table from "sveltestrap/src/Table.svelte";
     import Button from "sveltestrap/src/Button.svelte";
 	
-	const BASE_API_URL = "/api/v1";
+	const BASE_API_URL = "/api/v2";
     export let params = {};
     let registration = {};
 	let upcountry = "";

@@ -13,7 +13,7 @@
         </p>
         
         <ul>
-            <li><a href="https://documenter.getpostman.com/view/19505610/UVyn2Jnb">[https://sos2122-31.herokuapp.com/api/v1/registration-stats/docs]</a>(developed by [Ismael Mesa Zyout] <a href="https://github.com/IsmaelMesaZyout">
+            <li><a href="https://sos2122-31.herokuapp.com/api/v2/registration-stats/docs">[https://sos2122-31.herokuapp.com/api/v2/registration-stats/docs]</a>(developed by [Ismael Mesa Zyout] <a href="https://github.com/IsmaelMesaZyout">
             </a>)</li>
             <li><a href="https://sos2122-31.herokuapp.com/api/v1/alphabetization-stats/docs">[https://sos2122-31.herokuapp.com/api/v1/alphabetization-stats/docs]</a>(developed by [Daniel Vega Vera] <a href="https://github.com/daniveg20">
             </a>)</li>
@@ -22,7 +22,7 @@
         </ul>
         <h6>
             Ismael Mesa Zyout:
-            <a href="https://sos2122-31.herokuapp.com/api/v1/registration-stats">Enlace BackEnd</a>
+            <a href="https://sos2122-31.herokuapp.com/api/v2/registration-stats">Enlace BackEnd</a>
             <a href="https://sos2122-31.herokuapp.com/#/registration-stats">Enlace FrontEnd</a>
         </h6>
         <h6>

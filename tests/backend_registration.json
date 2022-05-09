@@ -41,9 +41,9 @@
 					}
 				},
 				"url": {
-					"raw": "{{HOST}}{{API}}/loadInitialData",
+					"raw": "{{HOST}}{{APIV2}}/loadInitialData",
 					"host": [
-						"{{HOST}}{{API}}"
+						"{{HOST}}{{APIV2}}"
 					],
 					"path": [
 						"loadInitialData"
@@ -71,9 +71,9 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{HOST}}{{API}}",
+					"raw": "{{HOST}}{{APIV2}}",
 					"host": [
-						"{{HOST}}{{API}}"
+						"{{HOST}}{{APIV2}}"
 					]
 				}
 			},
@@ -103,9 +103,9 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{HOST}}{{API}}/argentina/2010",
+					"raw": "{{HOST}}{{APIV2}}/argentina/2010",
 					"host": [
-						"{{HOST}}{{API}}"
+						"{{HOST}}{{APIV2}}"
 					],
 					"path": [
 						"argentina",
@@ -134,9 +134,9 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{HOST}}{{API}}/argentina",
+					"raw": "{{HOST}}{{APIV2}}/argentina",
 					"host": [
-						"{{HOST}}{{API}}"
+						"{{HOST}}{{APIV2}}"
 					],
 					"path": [
 						"argentina"
@@ -176,9 +176,9 @@
 					}
 				},
 				"url": {
-					"raw": "{{HOST}}{{API}}/brazil",
+					"raw": "{{HOST}}{{APIV2}}/brazil",
 					"host": [
-						"{{HOST}}{{API}}"
+						"{{HOST}}{{APIV2}}"
 					],
 					"path": [
 						"brazil"
@@ -206,9 +206,9 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{HOST}}{{API}}/?offset=2&limit=3",
+					"raw": "{{HOST}}{{APIV2}}/?offset=2&limit=3",
 					"host": [
-						"{{HOST}}{{API}}"
+						"{{HOST}}{{APIV2}}"
 					],
 					"path": [
 						""
@@ -255,9 +255,9 @@
 					}
 				},
 				"url": {
-					"raw": "{{HOST}}{{API}}",
+					"raw": "{{HOST}}{{APIV2}}",
 					"host": [
-						"{{HOST}}{{API}}"
+						"{{HOST}}{{APIV2}}"
 					]
 				}
 			},
@@ -291,9 +291,9 @@
 					}
 				},
 				"url": {
-					"raw": "{{HOST}}{{API}}",
+					"raw": "{{HOST}}{{APIV2}}",
 					"host": [
-						"{{HOST}}{{API}}"
+						"{{HOST}}{{APIV2}}"
 					]
 				}
 			},
@@ -327,9 +327,9 @@
 					}
 				},
 				"url": {
-					"raw": "{{HOST}}{{API}}",
+					"raw": "{{HOST}}{{APIV2}}",
 					"host": [
-						"{{HOST}}{{API}}"
+						"{{HOST}}{{APIV2}}"
 					]
 				}
 			},
@@ -363,9 +363,9 @@
 					}
 				},
 				"url": {
-					"raw": "{{HOST}}{{API}}/italy/2012",
+					"raw": "{{HOST}}{{APIV2}}/italy/2012",
 					"host": [
-						"{{HOST}}{{API}}"
+						"{{HOST}}{{APIV2}}"
 					],
 					"path": [
 						"italy",
@@ -395,7 +395,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n\"country\": \"argentina\",\r\n\"year\": 2010,\r\n\"primarylevel\": 117,\r\n\"secondarylevel\": 100,\r\n\"tertiarylevel\": 71000\r\n}\r\n",
+					"raw": "{\r\n\"country\": \"croacia\",\r\n\"year\": 210,\r\n\"primarylevel\": 1171111111,\r\n\"secondarylevel\": 111111111111111111100,\r\n\"tertiarylevel\": 71000\r\n}\r\n",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -403,13 +403,13 @@
 					}
 				},
 				"url": {
-					"raw": "{{HOST}}{{API}}/argentina/2010",
+					"raw": "{{HOST}}{{APIV2}}/croacia/210",
 					"host": [
-						"{{HOST}}{{API}}"
+						"{{HOST}}{{APIV2}}"
 					],
 					"path": [
-						"argentina",
-						"2010"
+						"croacia",
+						"210"
 					]
 				}
 			},
@@ -443,9 +443,9 @@
 					}
 				},
 				"url": {
-					"raw": "{{HOST}}{{API}}/argentina/2010",
+					"raw": "{{HOST}}{{APIV2}}/argentina/2010",
 					"host": [
-						"{{HOST}}{{API}}"
+						"{{HOST}}{{APIV2}}"
 					],
 					"path": [
 						"argentina",
@@ -483,9 +483,9 @@
 					}
 				},
 				"url": {
-					"raw": "{{HOST}}{{API}}/argentina/2010",
+					"raw": "{{HOST}}{{APIV2}}/argentina/2010",
 					"host": [
-						"{{HOST}}{{API}}"
+						"{{HOST}}{{APIV2}}"
 					],
 					"path": [
 						"argentina",
@@ -521,9 +521,9 @@
 					}
 				},
 				"url": {
-					"raw": "{{HOST}}{{API}}",
+					"raw": "{{HOST}}{{APIV2}}",
 					"host": [
-						"{{HOST}}{{API}}"
+						"{{HOST}}{{APIV2}}"
 					]
 				}
 			},
@@ -555,9 +555,9 @@
 					}
 				},
 				"url": {
-					"raw": "{{HOST}}{{API}}/croacia/210",
+					"raw": "{{HOST}}{{APIV2}}/croacia/210",
 					"host": [
-						"{{HOST}}{{API}}"
+						"{{HOST}}{{APIV2}}"
 					],
 					"path": [
 						"croacia",
@@ -595,9 +595,9 @@
 					}
 				},
 				"url": {
-					"raw": "{{HOST}}{{API}}",
+					"raw": "{{HOST}}{{APIV2}}",
 					"host": [
-						"{{HOST}}{{API}}"
+						"{{HOST}}{{APIV2}}"
 					]
 				}
 			},

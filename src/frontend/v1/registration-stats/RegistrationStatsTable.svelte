@@ -12,7 +12,7 @@
 	let to = null;
 	let offset = 0;
 	let limit = 10;
-	const BASE_API_URL = "/api/v1";
+	const BASE_API_URL = "/api/v2";
 
 	let paginasMax = 0;
 	let numEntries;
@@ -34,7 +34,7 @@
 
     async function getReg(){
         console.log("Fetching registrations....");
-		let c = `/api/v1/registration-stats?limit=${limit}&&offset=${offset*10}&&`;
+		let c = `/api/v2/registration-stats?limit=${limit}&&offset=${offset*10}&&`;
 		if (from != null) {
 			c = c + `from=${from}&&`
 		}
@@ -101,7 +101,7 @@
 	}	
 
 	async function BorrarRegis(countryDelete, yearDelete){
-        const res = await fetch("/api/v1/registration-stats/"+countryDelete+"/"+yearDelete,
+        const res = await fetch("/api/v2/registration-stats/"+countryDelete+"/"+yearDelete,
 			{
 				method: "DELETE"
 			}).then(function(res){
@@ -121,7 +121,7 @@
 
 	async function BorrarRegistros(){
         console.log("Deleting registrations....");
-        const res = await fetch("/api/v1/registration-stats/",
+        const res = await fetch("/api/v2/registration-stats/",
 			{
 				method: "DELETE"
 			}).then(function (res){
@@ -143,7 +143,7 @@
 
 	async function CargarRegistrations(){
         console.log("Loading registrations....");
-        const res = await fetch("/api/v1/registration-stats/loadInitialData",
+        const res = await fetch("/api/v2/registration-stats/loadInitialData",
 			{
 				method: "GET"
 			}).then(function (res){

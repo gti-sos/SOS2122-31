@@ -9,7 +9,7 @@
     let nivelTerciario = [];
 
     async function loadGraph(){
-        const res = await fetch("/api/v1/registration-stats");
+        const res = await fetch("/api/v2/registration-stats");
         if(res.ok){
             datos = await res.json();
             console.log(datos);

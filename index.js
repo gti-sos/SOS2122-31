@@ -5,6 +5,7 @@ const bodyParser = require("body-parser");
 const app = express();
 const port = process.env.PORT || 8080;
 
+const registration_stats_V2 = require("./src/backend/v2/registration-statsV2");
 const registration_stats_V1 = require("./src/backend/v1/registration-statsV1");
 const Datastore = require('nedb');
 const path = require('path');
@@ -12,6 +13,8 @@ var datafile = path.join(__dirname, 'registration-stats.db');
 db_regitration_stats = new Datastore({filename: datafile, autoload:true});
 
 app.use(bodyParser.json());
+
+registration_stats_V2.register(app,db_regitration_stats);
 
 registration_stats_V1.register(app,db_regitration_stats);
 
