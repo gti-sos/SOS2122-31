@@ -195,14 +195,8 @@ var proportion_stats = [
 
 },
 
-{
-    country : "Argentina",
-    year : 2017,
-    male : 19.3, 
-    female : 22.8,
-    total : 15.78
-    
-},
+
+
 
 {
     country : "Japan",
