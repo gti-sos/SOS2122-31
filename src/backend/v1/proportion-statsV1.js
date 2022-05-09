@@ -2,109 +2,586 @@ const BASE_API_URL = "/api/v1";
 
 
 var proportion_stats = [
+   
+   //2015
+
+   {
+    country : "Albania",
+    year : 2015,
+    male : 28.5, 
+    female : 31.3,
+    total : 22.3
+    
+    },
+
     {
-        country : "Argentina",
-        year : 2020,
-        total : 22.3, 
-        male : 21, 
-        female : 23.7
+        country : "Japan",
+        year : 2015,
+        male : 28.5, 
+        female : 31.3,
+        total : 2.6
+        
+    },
+
+    {
+        country : "Cyprus",
+        year : 2015,
+        male : 28.5, 
+        female : 31.3,
+        total : 15.93
+        
+    },
+
+    {
+        country : "Colombia",
+        year : 2015,
+        male : 28.5, 
+        female : 31.3,
+        total : 12.03
+        
+    },
+
+    {
+        country : "Honduras",
+        year : 2015,
+        male : 28.5, 
+        female : 31.3,
+        total : 11.6
+        
+    },
+
+    {
+        country : "Spain",
+        year : 2015,
+        male : 28.5, 
+        female : 31.3,
+        total : 16.37
+        
+    },
+
+    {
+        country : "Israel",
+        year : 2015,
+        male : 28.5, 
+        female : 31.3,
+        total : 12.58
+        
+    },
+
+    {
+        country : "Mauricio",
+        year : 2015,
+        male : 28.5, 
+        female : 31.3,
+        total : 15.69
+        
+    },
+
+    {
+        country : "Mexico",
+        year : 2015,
+        male : 28.5, 
+        female : 31.3,
+        total : 8.8
+        
+    },
+
+    //2016
+
+    {
+    country : "Albania",
+    year : 2016,
+    male : 28.5, 
+    female : 31.3,
+    total : 27.19
+    
+    },
+
+    {
+        country : "Japan",
+        year : 2016,
+        male : 28.5, 
+        female : 31.3,
+        total : 2.58
+        
+    },
+
+    {
+        country : "Cyprus",
+        year : 2016,
+        male : 28.5, 
+        female : 31.3,
+        total : 15.02
+        
+    },
+
+    {
+        country : "Colombia",
+        year : 2016,
+        male : 28.5, 
+        female : 31.3,
+        total : 12.75
+        
+    },
+
+    {
+        country : "Honduras",
+        year : 2016,
+        male : 28.5, 
+        female : 31.3,
+        total : 12.67
+        
+    },
+
+    {
+        country : "Spain",
+        year : 2016,
+        male : 28.5, 
+        female : 31.3,
+        total : 15.07
+        
+    },
+
+    {
+        country : "Israel",
+        year : 2016,
+        male : 28.5, 
+        female : 31.3,
+        total : 12.34
+        
+    },
+
+    {
+        country : "Maldivas",
+        year : 2016,
+        male : 28.5, 
+        female : 31.3,
+        total : 21.52
+        
+    },
+
+    {
+        country : "Mauricio",
+        year : 2016,
+        male : 28.5, 
+        female : 31.3,
+        total : 15.09
+        
+    },
+
+    {
+        country : "Mexico",
+        year : 2016,
+        male : 28.5, 
+        female : 31.3,
+        total : 8.6
+        
+    },
+
+    //2017
+
+    {
+    country : "Albania",
+    year : 2017,
+    male : 28.5, 
+    female : 31.3,
+    total : 25.08
+    
     },
 
     {
         country : "Argentina",
-        year : 2019,
-        total : 24.3, 
-        male : 22, 
-        female : 26.7
+        year : 2017,
+        male : 28.5, 
+        female : 31.3,
+        total : 15.78
+        
+    },
+
+    {
+        country : "Japan",
+        year : 2017,
+        male : 28.5, 
+        female : 31.3,
+        total : 2.42
+        
+    },
+
+    {
+        country : "Cyprus",
+        year : 2017,
+        male : 28.5, 
+        female : 31.3,
+        total : 16.15
+        
+    },
+
+    {
+        country : "Afganistan",
+        year : 2017,
+        male : 28.5, 
+        female : 31.3,
+        total : 18.15
+        
+    },
+
+    {
+        country : "Colombia",
+        year : 2017,
+        male : 28.5, 
+        female : 31.3,
+        total : 13.3
+        
+    },
+
+    {
+        country : "Honduras",
+        year : 2017,
+        male : 28.5, 
+        female : 31.3,
+        total : 12.11
+        
+    },
+
+    {
+        country : "Spain",
+        year : 2017,
+        male : 28.5, 
+        female : 31.3,
+        total : 13.77
+        
+    },
+
+    {
+        country : "Israel",
+        year : 2017,
+        male : 28.5, 
+        female : 31.3,
+        total : 12.14
+        
+    },
+
+    {
+        country : "Mauricio",
+        year : 2017,
+        male : 28.5, 
+        female : 31.3,
+        total : 14.84
+        
+    },
+
+    {
+        country : "Mexico",
+        year : 2017,
+        male : 28.5, 
+        female : 31.3,
+        total : 8.6
+        
+    },
+
+    {
+        country : "Rwanda",
+        year : 2017,
+        male : 28.5, 
+        female : 31.3,
+        total : 25
+        
+    },
+
+    //2018
+
+    {
+    country : "Albania",
+    year : 2018,
+    male : 28.5, 
+    female : 31.3,
+    total : 25.53
+    
+    },
+
+    {
+        country : "Argentina",
+        year : 2018,
+        male : 28.5, 
+        female : 31.3,
+        total : 15.52
+        
     },
 
     {
         country : "Chad",
         year : 2018,
-        total : 37, 
-        male : 24.8, 
-        female : 46.4
+        male : 28.5, 
+        female : 31.3,
+        total : 24.81
+        
+    },
+
+    {
+        country : "Japan",
+        year : 2018,
+        male : 28.5, 
+        female : 31.3,
+        total : 2.23
+        
+    },
+
+    {
+        country : "Cyprus",
+        year : 2018,
+        male : 28.5, 
+        female : 31.3,
+        total : 14.81
+        
+    },
+
+    {
+        country : "Colombia",
+        year : 2018,
+        male : 28.5, 
+        female : 31.3,
+        total : 14.14
+        
+    },
+
+    {
+        country : "Honduras",
+        year : 2018,
+        male : 28.5, 
+        female : 31.3,
+        total : 11.56
+        
+    },
+
+    {
+        country : "Spain",
+        year : 2018,
+        male : 28.5, 
+        female : 31.3,
+        total : 13.01
+        
+    },
+
+    {
+        country : "Israel",
+        year : 2018,
+        male : 28.5, 
+        female : 31.3,
+        total : 14.36
+        
+    },
+
+    {
+        country : "Mauricio",
+        year : 2018,
+        male : 28.5, 
+        female : 31.3,
+        total : 17.04
+        
+    },
+
+    {
+        country : "Mexico",
+        year : 2018,
+        male : 28.5, 
+        female : 31.3,
+        total : 8.6
+        
+    },
+
+    {
+        country : "Rwanda",
+        year : 2018,
+        male : 28.5, 
+        female : 31.3,
+        total : 24.59
+        
+    },
+
+    //2019
+
+    {
+        country : "Albania",
+        year : 2019,
+        male : 28.5, 
+        female : 31.3,
+        total : 26.2
+    
+    },
+
+    {
+        country : "Argentina",
+        year : 2019,
+        male : 28.5, 
+        female : 31.3,
+        total : 16.83
+        
     },
 
     {
         country : "Japan",
         year : 2019,
-        total : 3.1, 
-        male : 2.7, 
-        female : 3.7
+        male : 28.5, 
+        female : 31.3,
+        total : 2.7
+        
     },
 
     {
-        contry: "Afganistan",
-        year: 2020,
-        total: 53.8, 
-        male: 32.2,
-        female: 74.0
+        country : "Cyprus",
+        year : 2019,
+        male : 28.5, 
+        female : 31.3,
+        total : 14.22
+        
     },
 
     {
-        contry: "Albania",
-        year: 2019,
-        total: 25.8, 
-        male: 26.2,
-        female: 25.5
+        country : "Colombia",
+        year : 2019,
+        male : 28.5, 
+        female : 31.3,
+        total : 15.55
+        
     },
 
     {
-        contry: "Chipre",
-        year: 2020,
-        total: 14.4, 
-        male: 15.3,
-        female: 13.5
+        country : "Honduras",
+        year : 2019,
+        male : 28.5, 
+        female : 31.3,
+        total : 12.33
+        
     },
 
     {
-        contry: "Colombia",
-        year: 2019,
-        total: 24.0, 
-        male: 15.6,
-        female: 32.4
+        country : "Spain",
+        year : 2019,
+        male : 28.5, 
+        female : 31.3,
+        total : 12.52
+        
     },
 
     {
-        contry: "Honduras",
-        year: 2019,
-        total: 28.1, 
-        male: 12.3,
-        female: 43.4
+        country : "Israel",
+        year : 2019,
+        male : 28.5, 
+        female : 31.3,
+        total : 15.4
+        
     },
 
     {
-        contry: "Israel",
-        year: 2020,
-        total: 17.3, 
-        male: 17.4,
-        female: 17.1
+        country : "Maldivas",
+        year : 2019,
+        male : 28.5, 
+        female : 31.3,
+        total : 25.21
+        
     },
 
     {
-        contry: "Mauricio",
-        year: 2020,
-        total: 41.7, 
-        male: 36.4,
-        female: 47.7
+        country : "Mauricio",
+        year : 2019,
+        male : 28.5, 
+        female : 31.3,
+        total : 14.95
+        
     },
 
     {
-        contry: "Mexico",
-        year: 2020,
-        total: 20.4, 
-        male: 11.8,
-        female: 29.1
+        country : "Mexico",
+        year : 2019,
+        male : 28.5, 
+        female : 31.3,
+        total : 8.88
+        
     },
 
     {
-        contry: "Rwanda",
-        year: 2020,
-        total: 31.0, 
-        male: 26.6,
-        female: 35.3
+        country : "Rwanda",
+        year : 2019,
+        male : 28.5, 
+        female : 31.3,
+        total : 27.59
+        
+    },
+
+    //2020
+    
+    {
+        country : "Afganistan",
+        year : 2020,
+        male : 28.5, 
+        female : 31.3,
+        total : 32.51
+        
+    },
+
+   
+
+   
+
+    {
+        country : "Cyprus",
+        year : 2020,
+        male : 28.5, 
+        female : 31.3,
+        total : 15.3
+        
+    },
+
+    {
+        country : "Spain",
+        year : 2020,
+        male : 28.5, 
+        female : 31.3,
+        total : 14.77
+        
+    },
+
+    {
+        country : "Israel",
+        year : 2020,
+        male : 28.5, 
+        female : 31.3,
+        total : 17.39
+        
+    },
+
+    {
+        country : "Mauricio",
+        year : 2020,
+        male : 28.5, 
+        female : 31.3,
+        total : 36.13
+        
+    },
+
+    {
+        country : "Mexico",
+        year : 2020,
+        male : 28.5, 
+        female : 31.3,
+        total : 11.81
+        
+    },
+
+    {
+        country : "Rwanda",
+        year : 2020,
+        male : 28.5, 
+        female : 31.3,
+        total : 26.59
+        
     }
+
+
+
+
+    
+
 
 ];
 
