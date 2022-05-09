@@ -45,52 +45,70 @@
     }
 
     async function loadGraph() {
+       
         Highcharts.chart('container', {
-    chart: {
-        plotBackgroundColor: null,
-        plotBorderWidth: null,
-        plotShadow: false,
-        type: 'pie'
-    },
+
+title: {
+    text: 'Solar Employment Growth by Sector, 2010-2016'
+},
+
+subtitle: {
+    text: 'Source: thesolarfoundation.com'
+},
+
+yAxis: {
     title: {
-        text: 'Browser market shares in January, 2018'
-    },
-    tooltip: {
-        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
-    },
+        text: 'Number of Employees'
+    }
+},
+
+xAxis: {
     accessibility: {
-        point: {
-            valueSuffix: '%'
-        }
-    },
-    plotOptions: {
-        pie: {
-            allowPointSelect: true,
-            cursor: 'pointer',
-            dataLabels: {
-                enabled: true,
-                format: '<b>{point.name}</b>: {point.percentage:.1f} %'
+        rangeDescription: 'Range: 2015 to 2020'
+    }
+},
+
+legend: {
+    layout: 'vertical',
+    align: 'right',
+    verticalAlign: 'middle'
+},
+
+plotOptions: {
+    series: {
+        label: {
+            connectorAllowed: false
+        },
+        pointStart: 2015
+    }
+},
+
+series: [{
+    name: 'Male',
+    data: male
+}, {
+    name: 'Female',
+    data: female
+}, {
+    name: 'Total',
+    data: total
+}],
+
+responsive: {
+    rules: [{
+        condition: {
+            maxWidth: 500
+        },
+        chartOptions: {
+            legend: {
+                layout: 'horizontal',
+                align: 'center',
+                verticalAlign: 'bottom'
             }
         }
-    },
-    series: [{
-        name: 'Equality',
-        colorByPoint: true,
-        data: [{
-            name: 'male',
-            x: year,
-            y: male
-            
-        }, {
-            name: 'female',
-            x: year,
-            y: female
-        }, {
-            name: 'total',
-            x: year,
-            y: total
-        }]
     }]
+}
+
 });
     }
 
