@@ -32,7 +32,7 @@
             //window.alert("No hay datos para este pais");
             console.log("INTERNAL FATAL ERROR");
             //window.location.href = `/#/registration-stats`;
-        }
+        } 
 
         Highcharts.chart("container", {
             title: {
