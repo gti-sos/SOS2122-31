@@ -9,7 +9,7 @@
 			"enabled": true
 		},
 		{
-			"key": "API",
+			"key": "APIV2",
 			"value": "/api/v2/registration-stats",
 			"type": "default",
 			"enabled": true
