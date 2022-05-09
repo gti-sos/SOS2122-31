@@ -22,7 +22,7 @@
 		"/alphabetization-stats/:country/:year": EditAlphabetizationStats,
 		"/proportion-stats": ProportionStatsTable,
 		"/proportion-stats/:country/:year": EditProportionStats,
-		"/proportion-stats/:country/:year": GraphProportion,
+		"/proportion-stats/:country": GraphProportion,
 		"/info" : Info,
 		"/graphAlphabetization/:country" : GraphAlphabetization,
 		"/graphRegistration" : GraphRegistration,	
