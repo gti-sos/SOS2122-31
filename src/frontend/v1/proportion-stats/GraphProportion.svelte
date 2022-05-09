@@ -47,7 +47,7 @@
     async function loadGraph() {
         Highcharts.chart("container", {
             chart: {
-                type: "area",
+                type: "pie",
             },
             title: {
                 text: `Gráfica para el pais: ${country}`,
