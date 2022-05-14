@@ -384,7 +384,7 @@ module.exports.register = (app, db) => {
     });
 
     app.get(BASE_API_URL + "/alphabetization-stats/docs", (req, res) => {
-        res.redirect("https://documenter.getpostman.com/view/19594199/UyrADvvo")
+        res.redirect("https://documenter.getpostman.com/view/19594199/UyxjEkWE")
     });
 
     app.get(BASE_API_URL + "/alphabetization-stats/:country", (req, res) => {

@@ -1,0 +1,599 @@
+{
+	"info": {
+		"_postman_id": "8d1f7bec-6057-458d-b3c5-7a2658222ef8",
+		"name": "sos2122-31 Heroku V2",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GET LoadInitialData",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{HOST}}{{PORTV2}}/loadInitialData/",
+					"host": [
+						"{{HOST}}{{PORTV2}}"
+					],
+					"path": [
+						"loadInitialData",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Entero",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{HOST}}{{PORTV2}}",
+					"host": [
+						"{{HOST}}{{PORTV2}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Pais",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{HOST}}{{PORTV2}}/eeuu",
+					"host": [
+						"{{HOST}}{{PORTV2}}"
+					],
+					"path": [
+						"eeuu"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Pais Año",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{HOST}}{{PORTV2}}/argentina/2000",
+					"host": [
+						"{{HOST}}{{PORTV2}}"
+					],
+					"path": [
+						"argentina",
+						"2000"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Año Concreto",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{HOST}}{{PORTV2}}?year=1991",
+					"host": [
+						"{{HOST}}{{PORTV2}}"
+					],
+					"query": [
+						{
+							"key": "year",
+							"value": "1991"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Entero Paginación",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{HOST}}{{PORTV2}}?offset=2&limit=3",
+					"host": [
+						"{{HOST}}{{PORTV2}}"
+					],
+					"query": [
+						{
+							"key": "offset",
+							"value": "2"
+						},
+						{
+							"key": "limit",
+							"value": "3"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Entero From/To",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{HOST}}{{PORTV2}}?from=1991&to=2018",
+					"host": [
+						"{{HOST}}{{PORTV2}}"
+					],
+					"query": [
+						{
+							"key": "from",
+							"value": "1991"
+						},
+						{
+							"key": "to",
+							"value": "2018"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST Created",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"country\": \"bielorrusia\",\r\n\"year\": 2005,\r\n\"ar_ym\": 99,\r\n\"ar_yw\": 97,\r\n\"ar_ty\": 98\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{HOST}}{{PORTV2}}",
+					"host": [
+						"{{HOST}}{{PORTV2}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST Method Not Allowed",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 405\", function () {\r",
+							"    pm.response.to.have.status(405);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"country\": \"afganistan\",\r\n\"year\": 2011,\r\n\"ar_ym\": 62,\r\n\"ar_yw\": 32,\r\n\"ar_ty\": 47\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{HOST}}{{PORTV2}}/afganistan",
+					"host": [
+						"{{HOST}}{{PORTV2}}"
+					],
+					"path": [
+						"afganistan"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT Method Not Allowed",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 405\", function () {\r",
+							"    pm.response.to.have.status(405);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "{{HOST}}{{PORTV2}}",
+					"host": [
+						"{{HOST}}{{PORTV2}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT Bad Request",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"country\": \"argentina\",\r\n\"year\": 1992,\r\n\"ar_ym\": 100,\r\n\"ar_yw\": 100,\r\n\"ar_ty\": 100\r\n}"
+				},
+				"url": {
+					"raw": "{{HOST}}{{PORTV2}}/argentina/1992",
+					"host": [
+						"{{HOST}}{{PORTV2}}"
+					],
+					"path": [
+						"argentina",
+						"1992"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST Conflict",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 409\", function () {\r",
+							"    pm.response.to.have.status(409);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"country\": \"bielorrusia\",\r\n\"year\": 2005,\r\n\"ar_ym\": 99,\r\n\"ar_yw\": 97,\r\n\"ar_ty\": 98\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{HOST}}{{PORTV2}}",
+					"host": [
+						"{{HOST}}{{PORTV2}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST Bad Request",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"country\": \"afganistan\",\r\n\"year\": 2011,\r\n\"ar_ym\": 62,\r\n\"ar_yw\": 32\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{HOST}}{{PORTV2}}",
+					"host": [
+						"{{HOST}}{{PORTV2}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT OK",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"country\": \"eeuu\",\r\n\"year\": 2000,\r\n\"ar_ym\": 100,\r\n\"ar_yw\": 100,\r\n\"ar_ty\": 100\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{HOST}}{{PORTV2}}/eeuu/2000",
+					"host": [
+						"{{HOST}}{{PORTV2}}"
+					],
+					"path": [
+						"eeuu",
+						"2000"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT Not Found",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"country\": \"eeuu\",\r\n\"year\": 1990,\r\n\"ar_ym\": 100,\r\n\"ar_yw\": 100,\r\n\"ar_ty\": 100\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{HOST}}{{PORTV2}}/rusia/1990",
+					"host": [
+						"{{HOST}}{{PORTV2}}"
+					],
+					"path": [
+						"rusia",
+						"1990"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Not Found",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{HOST}}{{PORTV2}}/ecuador",
+					"host": [
+						"{{HOST}}{{PORTV2}}"
+					],
+					"path": [
+						"ecuador"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE Pais Año",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{HOST}}{{PORTV2}}/bielorrusia/2005",
+					"host": [
+						"{{HOST}}{{PORTV2}}"
+					],
+					"path": [
+						"bielorrusia",
+						"2005"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE Total",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{HOST}}{{PORTV2}}",
+					"host": [
+						"{{HOST}}{{PORTV2}}"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

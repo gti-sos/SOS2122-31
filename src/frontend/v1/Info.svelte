@@ -15,7 +15,9 @@
         <ul>
             <li><a href="https://sos2122-31.herokuapp.com/api/v2/registration-stats/docs">[https://sos2122-31.herokuapp.com/api/v2/registration-stats/docs]</a>(developed by [Ismael Mesa Zyout] <a href="https://github.com/IsmaelMesaZyout">
             </a>)</li>
-            <li><a href="https://sos2122-31.herokuapp.com/api/v1/alphabetization-stats/docs">[https://sos2122-31.herokuapp.com/api/v1/alphabetization-stats/docs]</a>(developed by [Daniel Vega Vera] <a href="https://github.com/daniveg20">
+            <li><a href="https://sos2122-31.herokuapp.com/api/v1/alphabetization-stats/docs">[https://sos2122-31.herokuapp.com/api/v1/alphabetization-stats/docs]</a>V1(developed by [Daniel Vega Vera] <a href="https://github.com/daniveg20">
+            </a>)</li>
+            <li><a href="https://sos2122-31.herokuapp.com/api/v2/alphabetization-stats/docs">[https://sos2122-31.herokuapp.com/api/v2/alphabetization-stats/docs]</a>V2(developed by [Daniel Vega Vera] <a href="https://github.com/daniveg20">
             </a>)</li>
             <li><a href="https://sos2122-31.herokuapp.com/api/v1/proportion-stats/docs">[https://sos2122-31.herokuapp.com/api/v1/proportion-stats/docs]</a>(developed by [José Ortiz Roldán] <a href="https://github.com/madgIitch">
             </a>)</li>
@@ -27,7 +29,8 @@
         </h6>
         <h6>
             Daniel Vega Vera:
-            <a href="https://sos2122-31.herokuapp.com/api/v1/alphabetization-stats">Enlace BackEnd</a>
+            <a href="https://sos2122-31.herokuapp.com/api/v1/alphabetization-stats">Enlace BackEnd V1</a>
+            <a href="https://sos2122-31.herokuapp.com/api/v2/alphabetization-stats">Enlace BackEnd V2</a>
             <a href="https://sos2122-31.herokuapp.com/#/alphabetization-stats">Enlace FrontEnd</a>
         </h6>
         <h6>
