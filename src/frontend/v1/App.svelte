@@ -13,10 +13,11 @@
 	import GraphRegistration from "./registration-stats/GraphRegistration.svelte";
 	import GraphProportion from "./proportion-stats/GraphProportion.svelte";
 	import GraphGeneral from "./GraphGeneral.svelte";
-	import GraphCanvasJs from "./registration-stats/GraphCanvasJS.svelte";
+	import GraphCanvaJs from "./registration-stats/graphCanvaJS.svelte";
 	import GraphCo2Stats from "./registration-stats/GraphCo2Stats.svelte";
 	import GraphPublic from "./registration-stats/graphPublic.svelte";
 	import Integrations from "../Integrations.svelte";
+import GraphPopulation from "./registration-stats/graphPopulation.svelte";
 
 	const routes = {
 		"/": Home,
@@ -31,10 +32,11 @@
 		"/graphAlphabetization/:country": GraphAlphabetization,
 		"/graphRegistration": GraphRegistration,
 		"/graphGeneral": GraphGeneral,
-		"/graphCanvaJS": GraphCanvasJs,
+		"/graphCanvaJS": GraphCanvaJs,
 		"/graphCo2Stats": GraphCo2Stats,
 		"/graphPublicStats": GraphPublic,
-		"/integrations": Integrations,
+		"/graphPopulation": GraphPopulation,
+		"/integrations": Integrations
 	};
 </script>
 

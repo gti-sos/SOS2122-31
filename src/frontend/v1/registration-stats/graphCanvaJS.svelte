@@ -1,15 +1,11 @@
 <script>
     import {onMount} from 'svelte';
-
-
     let datos = [];
     let fechas = [];
     let nivelPrimario = [];
     let nivelSecundario = [];
     let nivelTerciario = [];
-
     onMount(loadGraph);
-
     async function loadGraph(){
         const res = await fetch("/api/v2/registration-stats");
         if(res.ok){

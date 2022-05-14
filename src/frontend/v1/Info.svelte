@@ -24,7 +24,8 @@
         </ul>
         <h6> 
             Ismael Mesa Zyout:
-            <a href="https://sos2122-31.herokuapp.com/api/v2/registration-stats">Enlace BackEnd</a>
+            <a href="https://sos2122-31.herokuapp.com/api/v1/registration-stats">Enlace BackEnd V1</a>
+            <a href="https://sos2122-31.herokuapp.com/api/v2/alphabetization-stats">Enlace BackEnd V2</a>
             <a href="https://sos2122-31.herokuapp.com/#/registration-stats">Enlace FrontEnd</a>
             <li><strong>Gráficas Ismael Mesa</strong>:<ul>
                 <li><a href="https://sos2122-31.herokuapp.com/#/graphRegistration">/#/graphRegistration</a> (developed by <a href="https://github.com/IsmaelMesaZyout">Ismael Mesa Zyout</a>)</li>
