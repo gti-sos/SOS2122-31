@@ -1,4 +1,20 @@
 const BASE_API_URL = "/api/v2";
+const request = require('request');
+const cors = require('cors'); 
+const express = require("express");
+const app = express();
+
+app.use(cors());
+
+//Proxy
+var paths='/remoteAPI';
+var apiServerHost = 'https://sos2122-31.herokuapp.com/api/v2/alphabetization-stats';
+
+app.use(paths, function(req, res) {
+  var url = apiServerHost + req.url;
+  console.log('piped: ' + req.url);
+  req.pipe(request(url)).pipe(res);
+});
 
 var alphabetization_stats = [
     //Datos:

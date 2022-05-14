@@ -16,8 +16,8 @@
 	import GraphCanvasJs from "./registration-stats/GraphCanvasJS.svelte";
 	import GraphCo2Stats from "./registration-stats/GraphCo2Stats.svelte";
 	import GraphPublic from "./registration-stats/graphPublic.svelte";
-import Integrations from "../Integrations.svelte";
-	
+	import Integrations from "../Integrations.svelte";
+
 	const routes = {
 		"/": Home,
 		"/registration-stats": RegistrationStatsTable,
@@ -27,14 +27,14 @@ import Integrations from "../Integrations.svelte";
 		"/proportion-stats": ProportionStatsTable,
 		"/proportion-stats/:country/:year": EditProportionStats,
 		"/proportion-stats/:country": GraphProportion,
-		"/info" : Info,
-		"/graphAlphabetization/:country" : GraphAlphabetization,
-		"/graphRegistration" : GraphRegistration,	
-		"/graphGeneral" : GraphGeneral,
-		"/graphCanvaJS" : GraphCanvasJs,
-		"/graphCo2Stats" : GraphCo2Stats,
+		"/info": Info,
+		"/graphAlphabetization/:country": GraphAlphabetization,
+		"/graphRegistration": GraphRegistration,
+		"/graphGeneral": GraphGeneral,
+		"/graphCanvaJS": GraphCanvasJs,
+		"/graphCo2Stats": GraphCo2Stats,
 		"/graphPublicStats": GraphPublic,
-		"/integrations": Integrations
+		"/integrations": Integrations,
 	};
 </script>
 

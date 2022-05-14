@@ -9,3 +9,13 @@
         <li><a href="https://sos2122-31.herokuapp.com/#/graphCo2Stats">/#/graphCo2Stats</a> (developed by <a href="https://github.com/jesvencam">Jesus Vena Campos</a>)</li>
         </ul>
 </h6>
+
+<h6> 
+    Daniel Vega Vera:
+    <a href="https://sos2122-31.herokuapp.com/api/v1/alphabetization-stats">Enlace BackEnd V1</a>
+    <a href="https://sos2122-31.herokuapp.com/api/v2/alphabetization-stats">Enlace BackEnd V2</a>
+    <a href="https://sos2122-31.herokuapp.com/#/alphabetization-stats">Enlace FrontEnd</a>
+    <li><strong>Gráficas Daniel Vega</strong>:<ul>
+        <li><a href="https://sos2122-31.herokuapp.com/#/graphAlphabetization/:country">/#/graphAlphabetization/:country</a> (developed by <a href="https://github.com/daniveg20">Daniel Vega Vera</a>)</li>
+        </ul>
+</h6>
