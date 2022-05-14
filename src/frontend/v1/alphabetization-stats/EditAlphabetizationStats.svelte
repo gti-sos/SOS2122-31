@@ -16,7 +16,7 @@
         "dark",
     ];
 
-    const BASE_API_URL = "/api/v1";
+    const BASE_API_URL = "/api/v2";
     export let params = {};
     let reg = {};
     let upcountry = "XXXX";

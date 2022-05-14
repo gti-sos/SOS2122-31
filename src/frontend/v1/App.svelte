@@ -17,7 +17,8 @@
 	import GraphCo2Stats from "./registration-stats/GraphCo2Stats.svelte";
 	import GraphPublic from "./registration-stats/graphPublic.svelte";
 	import Integrations from "../Integrations.svelte";
-import GraphPopulation from "./registration-stats/graphPopulation.svelte";
+	import GraphPopulation from "./registration-stats/graphPopulation.svelte";
+	import GraphApexCharts from "./alphabetization-stats/GraphApexCharts.svelte";
 
 	const routes = {
 		"/": Home,
@@ -36,7 +37,8 @@ import GraphPopulation from "./registration-stats/graphPopulation.svelte";
 		"/graphCo2Stats": GraphCo2Stats,
 		"/graphPublicStats": GraphPublic,
 		"/graphPopulation": GraphPopulation,
-		"/integrations": Integrations
+		"/integrations": Integrations,
+		"/graphApexCharts/:country": GraphApexCharts,
 	};
 </script>
 
