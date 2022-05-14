@@ -16,6 +16,7 @@
 	import GraphCanvasJs from "./registration-stats/GraphCanvasJS.svelte";
 	import GraphCo2Stats from "./registration-stats/GraphCo2Stats.svelte";
 	import GraphPublic from "./registration-stats/graphPublic.svelte";
+import Integrations from "../Integrations.svelte";
 	
 	const routes = {
 		"/": Home,
@@ -32,7 +33,8 @@
 		"/graphGeneral" : GraphGeneral,
 		"/graphCanvaJS" : GraphCanvasJs,
 		"/graphCo2Stats" : GraphCo2Stats,
-		"/graphPublicStats": GraphPublic
+		"/graphPublicStats": GraphPublic,
+		"/integrations": Integrations
 	};
 </script>
 
