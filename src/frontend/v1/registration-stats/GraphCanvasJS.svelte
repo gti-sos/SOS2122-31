@@ -62,7 +62,7 @@
                     { label: fechas[7], y: nivelTerciario[7]},
                     { label: fechas[8], y: nivelTerciario[8]},
                     { label: fechas[9], y: nivelTerciario[9]},
-                    { label: fechas[10], y: nivelTerciario[10]},
+                    { label: fechas[10], y: nivelTerciario[10]}, 
                     
                 ]
             }]
