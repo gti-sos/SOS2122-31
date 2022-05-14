@@ -14,6 +14,8 @@
 	import GraphProportion from "./proportion-stats/GraphProportion.svelte";
 	import GraphGeneral from "./GraphGeneral.svelte";
 	import GraphCanvasJs from "./registration-stats/GraphCanvasJS.svelte";
+	import GraphCo2Stats from "./registration-stats/GraphCo2Stats.svelte";
+	import GraphPublic from "./registration-stats/graphPublic.svelte";
 	
 	const routes = {
 		"/": Home,
@@ -28,7 +30,9 @@
 		"/graphAlphabetization/:country" : GraphAlphabetization,
 		"/graphRegistration" : GraphRegistration,	
 		"/graphGeneral" : GraphGeneral,
-		"/graphCanvaJS" : GraphCanvasJs
+		"/graphCanvaJS" : GraphCanvasJs,
+		"/graphCo2Stats" : GraphCo2Stats,
+		"/graphPublicStats": GraphPublic
 	};
 </script>
 
