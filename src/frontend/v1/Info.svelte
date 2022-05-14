@@ -22,7 +22,7 @@
             <li><a href="https://sos2122-31.herokuapp.com/api/v1/proportion-stats/docs">[https://sos2122-31.herokuapp.com/api/v1/proportion-stats/docs]</a>(developed by [José Ortiz Roldán] <a href="https://github.com/madgIitch">
             </a>)</li>
         </ul>
-        <h6>
+        <h6> 
             Ismael Mesa Zyout:
             <a href="https://sos2122-31.herokuapp.com/api/v2/registration-stats">Enlace BackEnd</a>
             <a href="https://sos2122-31.herokuapp.com/#/registration-stats">Enlace FrontEnd</a>
