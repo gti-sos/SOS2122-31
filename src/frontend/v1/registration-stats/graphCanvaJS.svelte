@@ -46,8 +46,7 @@
                 type: "column",
                  yValueFormatString: "Porcentaje de matriculados: #,##0.00",
                 
-                dataPoints: [
-                                        
+                dataPoints: [                
                     { label: fechas[0], y: nivelTerciario[0]},
                     { label: fechas[1], y: nivelTerciario[1]},
                     { label: fechas[2], y: nivelTerciario[2]},
@@ -58,7 +57,13 @@
                     { label: fechas[7], y: nivelTerciario[7]},
                     { label: fechas[8], y: nivelTerciario[8]},
                     { label: fechas[9], y: nivelTerciario[9]},
-                    { label: fechas[10], y: nivelTerciario[10]}, 
+                    { label: fechas[10], y: nivelTerciario[10]},
+                    { label: fechas[11], y: nivelTerciario[11]},
+                    { label: fechas[12], y: nivelTerciario[12]},
+                    { label: fechas[13], y: nivelTerciario[13]},
+                    { label: fechas[14], y: nivelTerciario[14]},
+                    { label: fechas[15], y: nivelTerciario[15]},
+                    { label: fechas[16], y: nivelTerciario[16]} 
                     
                 ]
             }]
