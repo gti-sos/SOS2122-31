@@ -1,7 +1,7 @@
 const cool = require("cool-ascii-faces");
 const express = require("express");
 const bodyParser = require("body-parser");
-
+const cors = require("cors");
 const app = express();
 const port = process.env.PORT || 8080;
 
@@ -12,6 +12,7 @@ const path = require('path');
 var datafile = path.join(__dirname, 'registration-stats.db');
 db_regitration_stats = new Datastore({filename: datafile, autoload:true});
 
+app.use(cors());
 app.use(bodyParser.json());
 
 registration_stats_V2.register(app,db_regitration_stats);

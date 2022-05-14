@@ -13,6 +13,8 @@
 	import GraphRegistration from "./registration-stats/GraphRegistration.svelte";
 	import GraphProportion from "./proportion-stats/GraphProportion.svelte";
 	import GraphGeneral from "./GraphGeneral.svelte";
+import GraphRGraph from "./registration-stats/GraphCanvasJS.svelte";
+import GraphCanvasJs from "./registration-stats/GraphCanvasJS.svelte";
 	
 	const routes = {
 		"/": Home,
@@ -26,7 +28,8 @@
 		"/info" : Info,
 		"/graphAlphabetization/:country" : GraphAlphabetization,
 		"/graphRegistration" : GraphRegistration,	
-		"/graphGeneral" : GraphGeneral
+		"/graphGeneral" : GraphGeneral,
+		"/graphRGraph" : GraphCanvasJs
 	};
 </script>
 
