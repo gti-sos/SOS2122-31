@@ -13,8 +13,7 @@
 	import GraphRegistration from "./registration-stats/GraphRegistration.svelte";
 	import GraphProportion from "./proportion-stats/GraphProportion.svelte";
 	import GraphGeneral from "./GraphGeneral.svelte";
-import GraphRGraph from "./registration-stats/GraphCanvasJS.svelte";
-import GraphCanvasJs from "./registration-stats/GraphCanvasJS.svelte";
+	import GraphCanvasJs from "./registration-stats/GraphCanvasJS.svelte";
 	
 	const routes = {
 		"/": Home,
@@ -29,7 +28,7 @@ import GraphCanvasJs from "./registration-stats/GraphCanvasJS.svelte";
 		"/graphAlphabetization/:country" : GraphAlphabetization,
 		"/graphRegistration" : GraphRegistration,	
 		"/graphGeneral" : GraphGeneral,
-		"/graphRGraph" : GraphCanvasJs
+		"/graphCanvaJS" : GraphCanvasJs
 	};
 </script>
 
