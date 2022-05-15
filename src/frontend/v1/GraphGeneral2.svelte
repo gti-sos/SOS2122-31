@@ -32,45 +32,60 @@
             //window.alert("No hay datos para este pais");
             console.log("INTERNAL FATAL ERROR");
             //window.location.href = `/#/registration-stats`;
-        } 
+        }
 
         Highcharts.chart("container", {
+            chart: {
+                type: "bar",
+            },
             title: {
-                text: "GRÁFICAS NIVELES EDUCACIÓN MUNDIAL",
+                text: "Historic World Population by Region",
             },
-
             subtitle: {
-                text: "",
+                text: 'Source: <a href="https://en.wikipedia.org/wiki/World_population">Wikipedia.org</a>',
             },
+            xAxis: {
 
-            yAxis: {
                 title: {
-                    text: "Number of Employees",
+                    text: null,
                 },
             },
-
-            xAxis: {
-                accessibility: {
-                    title: {
-                        text: "Año",
+            yAxis: {
+                min: 0,
+                title: {
+                    text: "Population (millions)",
+                    align: "high",
+                },
+                labels: {
+                    overflow: "justify",
+                },
+            },
+            tooltip: {
+                valueSuffix: " millions",
+            },
+            plotOptions: {
+                bar: {
+                    dataLabels: {
+                        enabled: true,
                     },
                 },
             },
-
             legend: {
                 layout: "vertical",
                 align: "right",
-                verticalAlign: "middle",
+                verticalAlign: "top",
+                x: -40,
+                y: 80,
+                floating: true,
+                borderWidth: 1,
+                backgroundColor:
+                    Highcharts.defaultOptions.legend.backgroundColor ||
+                    "#FFFFFF",
+                shadow: true,
             },
-
-            plotOptions: {
-                series: {
-                    label: {
-                        connectorAllowed: false,
-                    },
-                },
+            credits: {
+                enabled: false,
             },
-
             series: [
                 {
                     name: "% Matriculados Nivel Primario",
@@ -109,23 +124,6 @@
                     data: pro3,
                 },
             ],
-
-            responsive: {
-                rules: [
-                    {
-                        condition: {
-                            maxWidth: 500,
-                        },
-                        chartOptions: {
-                            legend: {
-                                layout: "horizontal",
-                                align: "center",
-                                verticalAlign: "bottom",
-                            },
-                        },
-                    },
-                ],
-            },
         });
     }
 
@@ -234,7 +232,10 @@
         <figure class="highcharts-figure">
             <div id="container" />
             <p class="highcharts-description">
-                Nuestras fuentes de información esta orientadas a analizar la relación que existe entre los matriculados el los diferentes niveles escolares, la tasa de alfabetización y proporción sin educación, empleo ni capacitación en jóvenes
+                Nuestras fuentes de información esta orientadas a analizar la
+                relación que existe entre los matriculados el los diferentes
+                niveles escolares, la tasa de alfabetización y proporción sin
+                educación, empleo ni capacitación en jóvenes
             </p>
         </figure>
     </div>

@@ -13,6 +13,7 @@
 	import GraphRegistration from "./registration-stats/GraphRegistration.svelte";
 	import GraphProportion from "./proportion-stats/GraphProportion.svelte";
 	import GraphGeneral from "./GraphGeneral.svelte";
+	import GraphGeneral2 from "./GraphGeneral2.svelte"
 	import GraphCanvaJs from "./registration-stats/graphCanvaJS.svelte";
 	import GraphCo2Stats from "./registration-stats/GraphCo2Stats.svelte";
 	import GraphPublic from "./registration-stats/graphPublic.svelte";
@@ -37,6 +38,7 @@
 		"/graphAlphabetization/:country": GraphAlphabetization,
 		"/graphRegistration": GraphRegistration,
 		"/graphGeneral": GraphGeneral,
+		"/analytics" : GraphGeneral2,
 		"/graphCanvaJS": GraphCanvaJs,
 		"/graphCo2Stats": GraphCo2Stats,
 		"/graphPublicStats": GraphPublic,
