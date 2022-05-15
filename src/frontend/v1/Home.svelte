@@ -32,7 +32,8 @@
                 <li><a href="https://sos2122-31.herokuapp.com/#/graphCanvaJS">/#/graphCanvaJS</a> (developed by <a href="https://github.com/IsmaelMesaZyout">Ismael Mesa Zyout</a>)</li>
                 <li><a href="https://sos2122-31.herokuapp.com/#/graphPublicStats">/#/graphPublicStats</a> (developed by <a href="https://github.com/roque-fernandez">Roque Fernandez Iglesias</a>)</li>
                 <li><a href="https://sos2122-31.herokuapp.com/#/graphCo2Stats">/#/graphCo2Stats</a> (developed by <a href="https://github.com/jesvencam">Jesus Vena Campos</a>)</li>
-                <li><a href="https://sos2122-31.herokuapp.com/#/graphPopulation">/#/graphPopulation</a> (developed by <a href="https://github.com/AlejandroMolinosEligio">Alejandro Molinos Eligio</a>)</li>
+                <li><a href="https://sos2122-31.herokuapp.com/#/graphExternalApi">/#/graphExternalApi</a> (developed by <a href="https://github.com/IsmaelMesaZyout">Ismael Mesa Zyout</a>)</li>
+                <li><a href="https://sos2122-31.herokuapp.com/#/graphExternalApi2">/#/graphExternalApi2</a> (developed by <a href="https://github.com/IsmaelMesaZyout">Ismael Mesa Zyout</a>)</li>
 
                 </ul>
         </h6>

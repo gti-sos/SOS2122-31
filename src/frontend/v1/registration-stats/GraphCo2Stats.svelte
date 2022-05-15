@@ -1,7 +1,7 @@
 <script>
     import Button from "sveltestrap/src/Button.svelte";
     import Highcharts from "highcharts";
-
+    import { pop } from "svelte-spa-router";
     let datos = [];
     let datos1 = [];
     let fechas = [];
@@ -121,7 +121,7 @@
 <main>        
     <br>
     <br>
-    <Button id='back' outline color="secondary" onclick="window.location.href='#/registration-stats'">Volver</Button>
+    <Button id="back" outline color="secondary" on:click="{pop}"> Atrás</Button>
         <div style="margin:auto;"> 
         <figure class="highcharts-figure">
             <div id="container"></div>
