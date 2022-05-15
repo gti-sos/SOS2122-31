@@ -18,7 +18,9 @@
 	import GraphPublic from "./registration-stats/graphPublic.svelte";
 	import Integrations from "../Integrations.svelte";
 	import GraphPopulation from "./registration-stats/graphPopulation.svelte";
-	import GraphApexCharts from "./alphabetization-stats/GraphApexCharts.svelte";
+	import GraphJSCharting from "./alphabetization-stats/GraphJSCharting.svelte";
+	import GraphApiext1Dvv from "./alphabetization-stats/GraphAPIEXT1_DVV.svelte";
+	import GraphApiext2Dvv from "./alphabetization-stats/GraphAPIEXT2_DVV.svelte";
 
 	const routes = {
 		"/": Home,
@@ -38,7 +40,9 @@
 		"/graphPublicStats": GraphPublic,
 		"/graphPopulation": GraphPopulation,
 		"/integrations": Integrations,
-		"/graphApexCharts/:country": GraphApexCharts,
+		"/graphJSCharting/:country": GraphJSCharting,
+		"/graphAPIEXT1_DVV": GraphApiext1Dvv,
+		"/graphAPIEXT2_DVV": GraphApiext2Dvv,
 	};
 </script>
 

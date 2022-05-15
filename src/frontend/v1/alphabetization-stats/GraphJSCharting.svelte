@@ -1,7 +1,7 @@
 <script>
     import { onMount } from "svelte";
     import Button from "sveltestrap/src/Button.svelte";
-    import ApexCharts from "apexcharts";
+    import JSC from "jscharting";
 
     export let params = {};
     //const delay = (ms) => new Promise((res) => setTimeout(res, ms));
@@ -14,7 +14,7 @@
     let ar_ty = [];
 
     async function getData() {
-        const res1 = await fetch(`/api/v2/alphabetization-stats/${country}`);
+        const res1 = await fetch(`api/v2/alphabetization-stats/${country}`);
         if (res1.ok) {
             const arrayData = await res1.json();
             apiData = arrayData;
@@ -27,7 +27,7 @@
                 if (keyA > keyB) return 1;
                 return 0;
             });
-            console.log(apiData);
+            console.log(apiData.length);
             apiData.forEach((element) => {
                 year.push(element.year);
                 ar_ym.push(element.ar_ym);
@@ -44,25 +44,32 @@
     }
 
     async function loadGraph() {
-        var options = {
-            chart: {
-                type: "bar",
+        // JS
+        JSC.chart("chartDiv", {
+            debug: true,
+            legend_position: "bottom right",
+            type: "area spline",
+            defaultSeries: { shape_opacity: 0.5 },
+            xAxis: {
+                crosshair_enabled: true,
+                scale: { type: "auto" },
             },
+            yAxis: { formatString: "c" },
             series: [
                 {
-                    name: "sales",
-                    data: [30, 40, 35, 50, 49, 60, 70, 91, 125],
+                    name: "% Hombres",
+                    points: ar_ym,
+                },
+                {
+                    name: "% Mujeres",
+                    points: ar_yw,
+                },
+                {
+                    name: "% Media",
+                    points: ar_ty,
                 },
             ],
-            xaxis: {
-                categories: [
-                    1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999,
-                ],
-            },
-        };
-
-        var chart = new ApexCharts(document.querySelector("#chart"), options);
-        chart.render();
+        });
     }
 
     onMount(getData);
@@ -70,7 +77,7 @@
 
 <svelte:head>
     <script
-        src="https://cdn.jsdelivr.net/npm/apexcharts"
+        src="https://code.jscharting.com/latest/jscharting.js"
         on:load={loadGraph}></script>
 </svelte:head>
 
@@ -83,7 +90,7 @@
             outline
             color="info"
             on:click={() => {
-                window.location.href = `/#/graphApexCharts/${country}`;
+                window.location.href = `/#/graphJSCharting/${country}`;
                 location.reload();
             }}
         >
@@ -91,6 +98,10 @@
         </Button>
     </div>
     <br />
+    <div
+        id="chartDiv"
+        style="max-width: 740px;height: 400px;margin: 0px auto;"
+    />
     <p>
         Gráfica donde se muestra para el pais indicado el avance que ha tenido
         la alfabetización a lo largo de los años.
