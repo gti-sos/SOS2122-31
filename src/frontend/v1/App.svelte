@@ -16,7 +16,7 @@
 	import GraphCanvaJs from "./registration-stats/graphCanvaJS.svelte";
 	import GraphCo2Stats from "./registration-stats/GraphCo2Stats.svelte";
 	import GraphPublic from "./registration-stats/graphPublic.svelte";
-	import Integrations from "../Integrations.svelte";
+	import Integrations from "./Integrations.svelte";
 	import GraphPopulation from "./registration-stats/graphPopulation.svelte";
 	import GraphJSCharting from "./alphabetization-stats/GraphJSCharting.svelte";
 	import GraphExternalApi from "./registration-stats/graphExternalApi.svelte";
