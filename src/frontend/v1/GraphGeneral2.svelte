@@ -29,62 +29,52 @@
             guardaDatosEnergy(datos1);
             guardaDatosInternet(datos);
         } else {
-            //window.alert("No hay datos para este pais");
             console.log("INTERNAL FATAL ERROR");
-            //window.location.href = `/#/registration-stats`;
         }
 
         Highcharts.chart("container", {
             chart: {
-                type: "bar",
+                type: "areaspline",
             },
             title: {
-                text: "Historic World Population by Region",
-            },
-            subtitle: {
-                text: 'Source: <a href="https://en.wikipedia.org/wiki/World_population">Wikipedia.org</a>',
-            },
-            xAxis: {
-
-                title: {
-                    text: null,
-                },
-            },
-            yAxis: {
-                min: 0,
-                title: {
-                    text: "Population (millions)",
-                    align: "high",
-                },
-                labels: {
-                    overflow: "justify",
-                },
-            },
-            tooltip: {
-                valueSuffix: " millions",
-            },
-            plotOptions: {
-                bar: {
-                    dataLabels: {
-                        enabled: true,
-                    },
-                },
+                text: "Porcentajes de las 3 gráficas unidas",
             },
             legend: {
                 layout: "vertical",
-                align: "right",
+                align: "left",
                 verticalAlign: "top",
-                x: -40,
-                y: 80,
+                x: 150,
+                y: 100,
                 floating: true,
                 borderWidth: 1,
                 backgroundColor:
                     Highcharts.defaultOptions.legend.backgroundColor ||
                     "#FFFFFF",
-                shadow: true,
+            },
+            xAxis: {
+                plotBands: [
+                    {
+                        from: 4.5,
+                        to: 6.5,
+                        color: "rgba(68, 170, 213, .2)",
+                    },
+                ],
+            },
+            yAxis: {
+                title: {
+                    text: "Percentage",
+                },
+            },
+            tooltip: {
+                shared: true,
             },
             credits: {
                 enabled: false,
+            },
+            plotOptions: {
+                areaspline: {
+                    fillOpacity: 0.5,
+                },
             },
             series: [
                 {

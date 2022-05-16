@@ -13,7 +13,7 @@
 	import GraphRegistration from "./registration-stats/GraphRegistration.svelte";
 	import GraphProportion from "./proportion-stats/GraphProportion.svelte";
 	import GraphGeneral from "./GraphGeneral.svelte";
-	import GraphGeneral2 from "./GraphGeneral2.svelte"
+	import GraphGeneral2 from "./GraphGeneral2.svelte";
 	import GraphCanvaJs from "./registration-stats/graphCanvaJS.svelte";
 	import GraphCo2Stats from "./registration-stats/GraphCo2Stats.svelte";
 	import GraphPublic from "./registration-stats/graphPublic.svelte";
@@ -24,9 +24,13 @@
 	import GraphExternalApi2 from "./registration-stats/graphExternalApi2.svelte";
 	import GraphApiext1Dvv from "./alphabetization-stats/GraphAPIEXT1_DVV.svelte";
 	import GraphApiext2Dvv from "./alphabetization-stats/GraphAPIEXT2_DVV.svelte";
-
+	import About from "./About.svelte";
+	import GraphApisos1Dvv from "./alphabetization-stats/GraphAPISOS1_DVV.svelte";
+	import GraphApisos2Dvv from "./alphabetization-stats/GraphAPISOS2_DVV.svelte";
+	
 	const routes = {
 		"/": Home,
+		"/about": About,
 		"/registration-stats": RegistrationStatsTable,
 		"/registration-stats/:country/:year": EditRegistrationStats,
 		"/alphabetization-stats": AlphabetizationStats,
@@ -38,7 +42,7 @@
 		"/graphAlphabetization/:country": GraphAlphabetization,
 		"/graphRegistration": GraphRegistration,
 		"/graphGeneral": GraphGeneral,
-		"/analytics" : GraphGeneral2,
+		"/analytics": GraphGeneral2,
 		"/graphCanvaJS": GraphCanvaJs,
 		"/graphCo2Stats": GraphCo2Stats,
 		"/graphPublicStats": GraphPublic,
@@ -49,6 +53,8 @@
 		"/graphJSCharting/:country": GraphJSCharting,
 		"/graphAPIEXT1_DVV": GraphApiext1Dvv,
 		"/graphAPIEXT2_DVV": GraphApiext2Dvv,
+		"/graphAPISOS1_DVV": GraphApisos1Dvv,
+		"/graphAPISOS2_DVV": GraphApisos2Dvv,
 	};
 </script>
 

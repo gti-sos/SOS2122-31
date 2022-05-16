@@ -82,197 +82,194 @@ var alphabetization_stats = [
         ar_yw: 57,
         ar_ty: 64
     },
-    //Año : 2004
     {
         country: "argentina",
-        year: 2004,
-        ar_ym: 98,
-        ar_yw: 98,
+        year: 2003,
+        ar_ym: 99,
+        ar_yw: 97,
         ar_ty: 98
     },
     {
         country: "burkina faso",
-        year: 2004,
-        ar_ym: 40,
-        ar_yw: 26,
-        ar_ty: 33
+        year: 2002,
+        ar_ym: 50,
+        ar_yw: 36,
+        ar_ty: 43
     },
     {
         country: "eeuu",
         year: 2004,
-        ar_ym: 97,
-        ar_yw: 91,
-        ar_ty: 94
+        ar_ym: 99,
+        ar_yw: 95,
+        ar_ty: 97
     },
     {
         country: "bangladesh",
-        year: 2004,
-        ar_ym: 84,
-        ar_yw: 87,
-        ar_ty: 85
+        year: 2007,
+        ar_ym: 90,
+        ar_yw: 90,
+        ar_ty: 90
     },
     {
         country: "chad",
-        year: 2004,
-        ar_ym: 41,
-        ar_yw: 22,
-        ar_ty: 31
+        year: 2009,
+        ar_ym: 44,
+        ar_yw: 44,
+        ar_ty: 44
     },
     {
         country: "guatemala",
-        year: 2004,
-        ar_ym: 95,
-        ar_yw: 94,
-        ar_ty: 95
-    },
-    {
-        country: "indonesia",
-        year: 2004,
+        year: 2014,
         ar_ym: 100,
         ar_yw: 100,
         ar_ty: 100
     },
     {
-        country: "liberia",
-        year: 2004,
-        ar_ym: 65,
-        ar_yw: 46,
-        ar_ty: 55
-    },
-    {
-        country: "mauritania",
-        year: 2004,
-        ar_ym: 71,
-        ar_yw: 57,
-        ar_ty: 64
-    },
-    //Año : 2008
-    {
-        country: "argentina",
-        year: 2008,
+        country: "indonesia",
+        year: 2001,
         ar_ym: 98,
         ar_yw: 98,
         ar_ty: 98
     },
     {
-        country: "burkina faso",
-        year: 2008,
-        ar_ym: 40,
-        ar_yw: 26,
-        ar_ty: 33
-    },
-    {
-        country: "eeuu",
-        year: 2008,
-        ar_ym: 97,
-        ar_yw: 91,
-        ar_ty: 94
-    },
-    {
-        country: "bangladesh",
-        year: 2008,
-        ar_ym: 84,
-        ar_yw: 87,
-        ar_ty: 85
-    },
-    {
-        country: "chad",
-        year: 2008,
-        ar_ym: 41,
-        ar_yw: 22,
-        ar_ty: 31
-    },
-    {
-        country: "guatemala",
-        year: 2008,
-        ar_ym: 95,
-        ar_yw: 94,
-        ar_ty: 95
-    },
-    {
-        country: "indonesia",
-        year: 2008,
-        ar_ym: 100,
-        ar_yw: 100,
-        ar_ty: 100
-    },
-    {
         country: "liberia",
-        year: 2008,
-        ar_ym: 65,
-        ar_yw: 46,
-        ar_ty: 55
+        year: 2013,
+        ar_ym: 66,
+        ar_yw: 47,
+        ar_ty: 56
     },
     {
         country: "mauritania",
-        year: 2008,
-        ar_ym: 71,
-        ar_yw: 57,
-        ar_ty: 64
+        year: 2004,
+        ar_ym: 70,
+        ar_yw: 50,
+        ar_ty: 60
     },
-    //Año : 2012
     {
         country: "argentina",
-        year: 2012,
-        ar_ym: 98,
+        year: 2007,
+        ar_ym: 96,
         ar_yw: 98,
-        ar_ty: 98
+        ar_ty: 97
     },
     {
         country: "burkina faso",
-        year: 2012,
-        ar_ym: 40,
-        ar_yw: 26,
-        ar_ty: 33
+        year: 2010,
+        ar_ym: 75,
+        ar_yw: 25,
+        ar_ty: 50
     },
     {
         country: "eeuu",
-        year: 2012,
-        ar_ym: 97,
-        ar_yw: 91,
+        year: 2008,
+        ar_ym: 99,
+        ar_yw: 90,
         ar_ty: 94
     },
     {
         country: "bangladesh",
-        year: 2012,
-        ar_ym: 84,
+        year: 2019,
+        ar_ym: 87,
         ar_yw: 87,
+        ar_ty: 87
+    },
+    {
+        country: "chad",
+        year: 2022,
+        ar_ym: 45,
+        ar_yw: 23,
+        ar_ty: 34
+    },
+    {
+        country: "guatemala",
+        year: 2008,
+        ar_ym: 99,
+        ar_yw: 94,
+        ar_ty: 97
+    },
+    {
+        country: "indonesia",
+        year: 1994,
+        ar_ym: 85,
+        ar_yw: 85,
         ar_ty: 85
+    },
+    {
+        country: "liberia",
+        year: 1997,
+        ar_ym: 63,
+        ar_yw: 43,
+        ar_ty: 53
+    },
+    {
+        country: "mauritania",
+        year: 1996,
+        ar_ym: 61,
+        ar_yw: 47,
+        ar_ty: 54
+    },
+    {
+        country: "argentina",
+        year: 1998,
+        ar_ym: 90,
+        ar_yw: 90,
+        ar_ty: 90
+    },
+    {
+        country: "burkina faso",
+        year: 1993,
+        ar_ym: 50,
+        ar_yw: 36,
+        ar_ty: 43
+    },
+    {
+        country: "eeuu",
+        year: 2018,
+        ar_ym: 90,
+        ar_yw: 90,
+        ar_ty: 90
+    },
+    {
+        country: "bangladesh",
+        year: 2010,
+        ar_ym: 85,
+        ar_yw: 90,
+        ar_ty: 87
     },
     {
         country: "chad",
         year: 2012,
-        ar_ym: 41,
-        ar_yw: 22,
-        ar_ty: 31
+        ar_ym: 51,
+        ar_yw: 52,
+        ar_ty: 51
     },
     {
         country: "guatemala",
-        year: 2012,
-        ar_ym: 95,
-        ar_yw: 94,
-        ar_ty: 95
+        year: 2015,
+        ar_ym: 96,
+        ar_yw: 96,
+        ar_ty: 96
     },
     {
         country: "indonesia",
-        year: 2012,
-        ar_ym: 100,
-        ar_yw: 100,
-        ar_ty: 100
+        year: 2021,
+        ar_ym: 99,
+        ar_yw: 99,
+        ar_ty: 99
     },
     {
         country: "liberia",
-        year: 2012,
-        ar_ym: 65,
-        ar_yw: 46,
-        ar_ty: 55
+        year: 2015,
+        ar_ym: 60,
+        ar_yw: 40,
+        ar_ty: 50
     },
     {
         country: "mauritania",
-        year: 2012,
-        ar_ym: 71,
-        ar_yw: 57,
-        ar_ty: 64
+        year: 2014,
+        ar_ym: 70,
+        ar_yw: 50,
+        ar_ty: 60
     },
     //Año : 2016
     {

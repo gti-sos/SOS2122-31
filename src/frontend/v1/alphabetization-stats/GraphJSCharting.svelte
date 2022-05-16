@@ -35,6 +35,7 @@
                 ar_ty.push(element.ar_ty);
             });
             //await delay(1000);
+            console.log(ar_ty);
             loadGraph();
         } else {
             window.alert("No hay datos para este pais");
@@ -44,34 +45,22 @@
     }
 
     async function loadGraph() {
-        // JS
-        JSC.chart("chartDiv", {
+        var chart = JSC.chart("chartDiv", {
             debug: true,
-            legend_position: "bottom right",
-            type: "area spline",
-            defaultSeries: { shape_opacity: 0.5 },
+            defaultSeries_type: "column",
+            title_label_text: "Acme Tool Sales",
+            yAxis: { label_text: "Units Sold" },
             xAxis: {
-                crosshair_enabled: true,
-                scale: { type: "auto" },
+                label_text: "Quarter",
+                categories: year,
             },
-            yAxis: { formatString: "c" },
             series: [
-                {
-                    name: "% Hombres",
-                    points: ar_ym,
-                },
-                {
-                    name: "% Mujeres",
-                    points: ar_yw,
-                },
-                {
-                    name: "% Media",
-                    points: ar_ty,
-                },
+                { name: "% Hombres", points: ar_ym },
+                { name: "% Mujeres", points: ar_yw },
+                { name: "% Media", points: ar_ty },
             ],
         });
     }
-
     onMount(getData);
 </script>
 
