@@ -9,11 +9,23 @@ const registration_stats_V2 = require("./src/backend/v2/registration-statsV2");
 const registration_stats_V1 = require("./src/backend/v1/registration-statsV1");
 const Datastore = require('nedb');
 const path = require('path');
+const request = require('request');
 var datafile = path.join(__dirname, 'registration-stats.db');
 db_regitration_stats = new Datastore({filename: datafile, autoload:true});
 
 app.use(cors());
 app.use(bodyParser.json());
+
+//Proxys
+var paths='/remoteAPI';
+var apiServerHost = 'https://sos2122-27.herokuapp.com/api/v2/public-expenditure-stats';
+
+app.use(paths, function(req, res) {
+  var url = apiServerHost + req.url;
+  console.log('piped: ' + req.url);
+  req.pipe(request(url)).pipe(res);
+});
+
 
 registration_stats_V2.register(app,db_regitration_stats);
 

@@ -10,7 +10,7 @@ app.use(cors());
 //Proxy
 
 var paths='/remoteAPI';
-var apiServerHost = 'https://sos2122-31.herokuapp.com/api/v2/registration-stats';
+var apiServerHost = 'https://sos2122-27.herokuapp.com/api/v2/public-expenditure-stats';
 
 app.use(paths, function(req, res) {
   var url = apiServerHost + req.url;
