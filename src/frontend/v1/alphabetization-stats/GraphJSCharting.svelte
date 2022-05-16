@@ -4,7 +4,7 @@
     import JSC from "jscharting";
 
     export let params = {};
-    //const delay = (ms) => new Promise((res) => setTimeout(res, ms));
+    const delay = (ms) => new Promise((res) => setTimeout(res, ms));
 
     let apiData = [];
     let country = params.country;
@@ -34,8 +34,7 @@
                 ar_yw.push(element.ar_yw);
                 ar_ty.push(element.ar_ty);
             });
-            //await delay(1000);
-            console.log(ar_ty);
+            await delay(1000);
             loadGraph();
         } else {
             window.alert("No hay datos para este pais");
@@ -45,22 +44,34 @@
     }
 
     async function loadGraph() {
-        var chart = JSC.chart("chartDiv", {
+        // JS
+        JSC.chart("chartDiv", {
             debug: true,
-            defaultSeries_type: "column",
-            title_label_text: "Acme Tool Sales",
-            yAxis: { label_text: "Units Sold" },
+            legend_position: "bottom right",
+            type: "area spline",
+            defaultSeries: { shape_opacity: 0.5 },
             xAxis: {
-                label_text: "Quarter",
-                categories: year,
+                crosshair_enabled: true,
+                scale: { type: "auto" },
             },
+            yAxis: { formatString: "" },
             series: [
-                { name: "% Hombres", points: ar_ym },
-                { name: "% Mujeres", points: ar_yw },
-                { name: "% Media", points: ar_ty },
+                {
+                    name: "% Hombres",
+                    points: ar_ym,
+                },
+                {
+                    name: "% Mujeres",
+                    points: ar_yw,
+                },
+                {
+                    name: "% Media",
+                    points: ar_ty,
+                },
             ],
         });
     }
+
     onMount(getData);
 </script>
 
