@@ -7,6 +7,17 @@ const app = express();
 
 app.use(cors());
 
+//Proxy
+
+var paths='/remoteAPI';
+var apiServerHost = 'https://sos2122-27.herokuapp.com/api/v2/public-expenditure-stats';
+
+app.use(paths, function(req, res) {
+  var url = apiServerHost + req.url;
+  console.log('piped: ' + req.url);
+  req.pipe(request(url)).pipe(res);
+});
+
 
 var registration_stats = [{
     country: "germany",
