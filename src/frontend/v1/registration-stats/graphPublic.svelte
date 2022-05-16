@@ -12,8 +12,6 @@
     let nivelSecundario = ["nivelSecundario"];
     let nivelTerciario = ["nivelTerciario"];
 
-    const delay = ms => new Promise(res => setTimeout(res, ms));
-
     async function loadGraph2() {
         var chart = bb.generate({
             data: { 
@@ -60,7 +58,6 @@
         }, 0);
     }
     async function loadGraph() {
-        await delay(2000)
         const res = await fetch("/remoteAPI");
         const res1 = await fetch("/api/v2/registration-stats");
         if (res.ok) {
