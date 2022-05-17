@@ -96,7 +96,7 @@
 </script>
 
 <svelte:head>
-    <script src="https://d3js.org/d3.v5.min.js"></script> 
+    <script src="https://d3js.org/d3.v5.min.js"></script>  
     <link
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/billboard.js/3.4.1/billboard.min.css"/>
