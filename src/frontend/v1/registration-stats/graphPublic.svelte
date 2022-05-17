@@ -12,6 +12,57 @@
     let nivelSecundario = ["nivelSecundario"];
     let nivelTerciario = ["nivelTerciario"];
 
+    async function loadGraph2(){
+        var chart = bb.generate({
+            data: { 
+                columns: [
+                ],
+                type: "bar", // for ESM specify as: bar()
+            },
+            bar: {
+                width: {
+                    ratio: 0.5,
+                },
+            },
+            bindto: "#barChart_1",
+        });
+        setTimeout(function () {
+            chart.load({
+                columns: [nivelPrimario],
+                type: "bar"
+            });
+        }, 1000);
+        setTimeout(function () {
+            chart.load({
+                columns: [nivelSecundario],
+                type: "bar"
+            });
+        }, 2000);
+        setTimeout(function () {
+            chart.load({
+                columns: [nivelTerciario],
+                type: "bar"
+            });
+        }, 3000);
+        setTimeout(function () {
+            chart.load({
+                columns: [public_expenditure],
+                type: "bar"
+            });
+        }, 4000);
+        setTimeout(function () {
+            chart.load({
+                columns: [pe_to_gdp],
+                type: "bar"
+            });
+        }, 5000);
+        setTimeout(function () {
+            chart.load({
+                columns: [pe_on_defence],
+                type: "bar"
+            });
+        }, 6000);
+    }
 
     async function loadGraph() {
         const res = await fetch("/remoteAPI");
@@ -35,55 +86,7 @@
                 nivelSecundario.push(data.secondarylevel);
                 nivelTerciario.push(data.tertiarylevel);
             });
-    var chart = bb.generate({
-            data: { 
-                columns: [
-                ],
-                type: "bar", // for ESM specify as: bar()
-            },
-            bar: {
-                width: {
-                    ratio: 0.5,
-                },
-            },
-            bindto: "#barChart_1",
-        });
-        setTimeout(function () {
-            chart.load({
-                columns: [public_expenditure],
-                type: "bar"
-            });
-        }, 0);
-        setTimeout(function () {
-            chart.load({
-                columns: [pe_to_gdp],
-                type: "bar"
-            });
-        }, 0);
-        setTimeout(function () {
-            chart.load({
-                columns: [pe_on_defence],
-                type: "bar"
-            });
-        }, 0);
-        setTimeout(function () {
-            chart.load({
-                columns: [nivelPrimario],
-                type: "bar"
-            });
-        }, 0);
-        setTimeout(function () {
-            chart.load({
-                columns: [nivelSecundario],
-                type: "bar"
-            });
-        }, 0);
-        setTimeout(function () {
-            chart.load({
-                columns: [nivelTerciario],
-                type: "bar"
-            });
-        }, 0);
+            loadGraph2();
         } else {
             window.alert("No hay datos para este pais");
             console.log("INTERNAL FATAL ERROR");
@@ -107,5 +110,4 @@
     <br />
     <Button id="back" outline color="secondary" on:click={pop}>Atrás</Button>
     <div id="barChart_1"></div>
-    <div id="barChart_2"></div>
 </main>
