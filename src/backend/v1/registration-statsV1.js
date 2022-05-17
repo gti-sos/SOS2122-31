@@ -152,7 +152,7 @@ module.exports.register = (app,db) => {
     });
 
     app.get(BASE_API_URL+"/registration-stats/docs",(req,res)=>{
-        res.redirect("https://documenter.getpostman.com/view/19505610/UVyn2Jnb")
+        res.redirect("https://documenter.getpostman.com/view/19505610/Uyxkkkbo")
     });
     
     app.get(BASE_API_URL + "/registration-stats/:country",(req, res)=>{

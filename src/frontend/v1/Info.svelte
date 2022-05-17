@@ -15,6 +15,8 @@
         <ul>
             <li><a href="https://sos2122-31.herokuapp.com/api/v2/registration-stats/docs">[https://sos2122-31.herokuapp.com/api/v2/registration-stats/docs]</a>(developed by [Ismael Mesa Zyout] <a href="https://github.com/IsmaelMesaZyout">    
             </a>)</li>
+            <li><a href="https://sos2122-31.herokuapp.com/api/v1/registration-stats/docs">[https://sos2122-31.herokuapp.com/api/v1/registration-stats/docs]</a>(developed by [Ismael Mesa Zyout] <a href="https://github.com/IsmaelMesaZyout">    
+            </a>)</li>
             <li><a href="https://sos2122-31.herokuapp.com/api/v1/alphabetization-stats/docs">[https://sos2122-31.herokuapp.com/api/v1/alphabetization-stats/docs]</a>V1(developed by [Daniel Vega Vera] <a href="https://github.com/daniveg20">
             </a>)</li>
             <li><a href="https://sos2122-31.herokuapp.com/api/v2/alphabetization-stats/docs">[https://sos2122-31.herokuapp.com/api/v2/alphabetization-stats/docs]</a>V2(developed by [Daniel Vega Vera] <a href="https://github.com/daniveg20">
