@@ -18,6 +18,7 @@
   "dependencies": {
     "apexcharts": "^3.35.2",
     "billboard": "^1.0.0",
+    "billboard.js": "^3.4.1",
     "body-parser": "^1.19.2",
     "canvasjs": "^1.8.3",
     "chartist": "^0.11.4",
