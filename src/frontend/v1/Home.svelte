@@ -51,6 +51,21 @@
             <a href="https://sos2122-31.herokuapp.com/api/v1/proportion-stats">Enlace BackEnd</a>
             <a href="https://sos2122-31.herokuapp.com/#/proportion-stats">Enlace FrontEnd</a>
         </h6>
+        <br>
+        <br>
+        <h6> 
+            <li><strong>Gráficas Generales</strong>:<ul>
+                <li><a href="https://sos2122-31.herokuapp.com/#/graphGeneral">/#/graphGeneral</a></li>
+                <li><a href="https://sos2122-31.herokuapp.com/#/analytics">/#/analytics</a></li>
+                </ul>
+        </h6>
+        <br>
+        <br>
+        <h6> 
+            <li><strong>Todas las Integraciones</strong>:<ul>
+                <li><a href="https://sos2122-31.herokuapp.com/#/integrations">/#/integrations</a></li>
+                </ul>
+        </h6>
     
     </body>
 
