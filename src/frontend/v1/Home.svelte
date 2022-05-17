@@ -59,7 +59,7 @@
                 <li><a href="https://sos2122-31.herokuapp.com/#/analytics">/#/analytics</a></li>
                 </ul>
         </h6>
-        <br>
+        <br> 
         <br>
         <h6> 
             <li><strong>Todas las Integraciones</strong>:<ul>
