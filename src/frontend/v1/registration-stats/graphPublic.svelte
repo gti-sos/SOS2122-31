@@ -61,7 +61,7 @@
                 columns: [pe_on_defence],
                 type: "bar"
             });
-        }, 6000);
+        }, 6000); 
     }
 
     async function loadGraph() {
