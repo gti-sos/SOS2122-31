@@ -29,8 +29,8 @@
     <li><strong>Gráficas Daniel Vega</strong>:
         <ul>
         <h8>Individuales:</h8>
-        <li><a href="https://sos2122-31.herokuapp.com/#/graphAlphabetization/:country">/#/graphAlphabetization/:country</a> (developed by <a href="https://github.com/daniveg20">Daniel Vega Vera</a>)</li>
-        <li><a href="https://sos2122-31.herokuapp.com/#/graphJSCharting/:country">/#/graphJSCharting/:country</a> (developed by <a href="https://github.com/daniveg20">Daniel Vega Vera</a>)</li>
+        <li><a href="https://sos2122-31.herokuapp.com/#/graphAlphabetization/chad">/#/graphAlphabetization/chad</a> (developed by <a href="https://github.com/daniveg20">Daniel Vega Vera</a>)</li>
+        <li><a href="https://sos2122-31.herokuapp.com/#/graphJSCharting/chad">/#/graphJSCharting/chad</a> (developed by <a href="https://github.com/daniveg20">Daniel Vega Vera</a>)</li>
         <h8>Integraciones SOS:</h8>
         <li><a href="https://sos2122-31.herokuapp.com/#/graphAPISOS1_DVV">/#/graphAPISOS1_DVV</a> (developed by <a href="https://github.com/gabriellb99">Gabriel López Bellido</a>)</li>
         <li><a href="https://sos2122-31.herokuapp.com/#/graphAPISOS2_DVV">/#/graphAPISOS2_DVV</a> (developed by <a href="https://github.com/Rgm13">Raúl Gómez Morales</a>)</li>
