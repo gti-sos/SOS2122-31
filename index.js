@@ -26,8 +26,8 @@ app.use(paths, function (req, res) {
   req.pipe(request(url)).pipe(res);
 });
 
-var paths2 = '/remoteApiEnergy';
-var apiServerHost2 = 'https://sos2122-31.herokuapp.com/api/v2/registration-stats';
+var paths2 = '/remoteApiCancer';
+var apiServerHost2 = 'https://sos2122-24.herokuapp.com/api/v1/cancerdeaths-stats';
 
 app.use(paths2, function (req, res) {
   var url = apiServerHost2 + req.url;

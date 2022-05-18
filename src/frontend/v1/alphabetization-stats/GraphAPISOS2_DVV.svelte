@@ -20,7 +20,7 @@
 
     //API EXTERNA:
     async function loadAPISOS1() {
-        const resEXT = await fetch("/remoteApiEnergy");
+        const resEXT = await fetch("/remoteApiCancer");
         if (resEXT.ok) {
             const arrayEXT = await resEXT.json();
             apiEXT = arrayEXT;
@@ -29,9 +29,9 @@
             apiEXT.forEach((element) => {
                 cSOS.push(element.country);
                 ySOS.push(element.year);
-                azfSOS.push(element.primarylevel);
-                afsSOS.push(element.secondarylevel);
-                asSOS.push(element.tertiarylevel);
+                azfSOS.push(element.ages_zero_fifty);
+                afsSOS.push(element.ages_fifty_seventy);
+                asSOS.push(element.ages_seventy);
             });
             //await delay(1000);
             loadGraph();
@@ -78,74 +78,65 @@
     async function loadGraph() {
         Highcharts.chart("container", {
             chart: {
-                plotBackgroundColor: null,
-                plotBorderWidth: null,
-                plotShadow: false,
-                type: "pie",
+                type: "areaspline",
             },
             title: {
-                text: "Browser market shares in January, 2018",
+                text: `Gráfica con todos los paises`,
             },
-            tooltip: {
-                pointFormat: "{series.name}: <b>{point.percentage:.1f}%</b>",
+            subtitle: {
+                text: "Fuente de datos: Banco Mundial de Datos",
             },
-            accessibility: {
-                point: {
-                    valueSuffix: "%",
+            xAxis: {
+                categories: year,
+                tickmarkPlacement: "on",
+                title: {
+                    enabled: false,
                 },
             },
+            yAxis: {
+                title: {
+                    text: "Percentage",
+                },
+            },
+            tooltip: {
+                split: true,
+                valueSuffix: "%",
+            },
             plotOptions: {
-                pie: {
-                    allowPointSelect: true,
-                    cursor: "pointer",
-                    dataLabels: {
-                        enabled: true,
-                        format: "<b>{point.name}</b>: {point.percentage:.1f} %",
+                area: {
+                    stacking: "normal",
+                    lineColor: "#666666",
+                    lineWidth: 1,
+                    marker: {
+                        lineWidth: 1,
+                        lineColor: "#666666",
                     },
                 },
             },
             series: [
                 {
-                    name: "Brands",
-                    colorByPoint: true,
-                    data: [
-                        {
-                            name: "Chrome",
-                            y: 61.41,
-                        },
-                        {
-                            name: "Internet Explorer",
-                            y: 11.84,
-                        },
-                        {
-                            name: "Firefox",
-                            y: 10.85,
-                        },
-                        {
-                            name: "Edge",
-                            y: 4.67,
-                        },
-                        {
-                            name: "Safari",
-                            y: 4.18,
-                        },
-                        {
-                            name: "Sogou Explorer",
-                            y: 1.64,
-                        },
-                        {
-                            name: "Opera",
-                            y: 1.6,
-                        },
-                        {
-                            name: "QQ",
-                            y: 1.2,
-                        },
-                        {
-                            name: "Other",
-                            y: 2.61,
-                        },
-                    ],
+                    name: "Hombres",
+                    data: ar_ym,
+                },
+                {
+                    name: "Mujeres",
+                    data: ar_yw,
+                },
+                {
+                    name: "Media",
+                    data: ar_ty,
+                },
+                {
+                    name: "Edad 0-50",
+                    data: azfSOS,
+                },
+                {
+                    name: "Edad 50-70",
+                    data: afsSOS,
+                },
+                {
+                    name: "Edad 70",
+                    data: asSOS,
                 },
             ],
         });
@@ -156,6 +147,7 @@
 
 <svelte:head>
     <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/heatmap.js"></script>
     <script src="https://code.highcharts.com/modules/exporting.js"></script>
     <script src="https://code.highcharts.com/modules/export-data.js"></script>
     <script
