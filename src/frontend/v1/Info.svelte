@@ -75,6 +75,16 @@
                 <li><a href="https://sos2122-31.herokuapp.com/#/integrations">/#/integrations</a></li>
                 </ul>
         </h6>
+        <h6> 
+            <li><strong>Todos los videos</strong>:<ul>
+                <li><a href="https://sos2122-31.herokuapp.com/#/about">/#/about</a></li>
+                </ul>
+        </h6>
+        <h6> 
+            <li><strong>VIDEO D03 ISMAEL MESA</strong>:<ul>
+                <li><a href="https://youtu.be/RWCtaOQ6Flg">VIDEO-SOS-ISMAELMESA</a></li>
+                </ul>
+        </h6>
         
     </body>
 
