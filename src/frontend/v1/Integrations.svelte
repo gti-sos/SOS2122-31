@@ -26,7 +26,8 @@
     <a href="https://sos2122-31.herokuapp.com/api/v1/alphabetization-stats">Enlace BackEnd V1</a>
     <a href="https://sos2122-31.herokuapp.com/api/v2/alphabetization-stats">Enlace BackEnd V2</a>
     <a href="https://sos2122-31.herokuapp.com/#/alphabetization-stats">Enlace FrontEnd</a>
-    <li><strong>Gráficas Daniel Vega</strong>:<ul>
+    <li><strong>Gráficas Daniel Vega</strong>:
+        <ul>
         <h8>Individuales:</h8>
         <li><a href="https://sos2122-31.herokuapp.com/#/graphAlphabetization/:country">/#/graphAlphabetization/:country</a> (developed by <a href="https://github.com/daniveg20">Daniel Vega Vera</a>)</li>
         <li><a href="https://sos2122-31.herokuapp.com/#/graphJSCharting/:country">/#/graphJSCharting/:country</a> (developed by <a href="https://github.com/daniveg20">Daniel Vega Vera</a>)</li>
@@ -37,4 +38,5 @@
         <li><a href="https://sos2122-31.herokuapp.com/#/graphAPIEXT1_DVV">/#/graphAPIEXT1_DVV</a> (developed by <a href="https://github.com/daniveg20">Daniel Vega Vera</a>)</li>
         <li><a href="https://sos2122-31.herokuapp.com/#/graphAPIEXT2_DVV">/#/graphAPIEXT2_DVV</a> (developed by <a href="https://github.com/daniveg20">Daniel Vega Vera</a>)</li>
         </ul>
+    </li>
 </h6>
