@@ -12,7 +12,7 @@
 	import GraphAlphabetization from "./alphabetization-stats/GraphAlphabetization.svelte";
 	import GraphRegistration from "./registration-stats/GraphRegistration.svelte";
 	import GraphProportion from "./proportion-stats/GraphProportion.svelte";
-	import GraphExternalAPI_JOR from "./external-api/graphExternalAPI_JOR.svelte";
+	import GraphExternalAPI_JOR from "./proportion-stats/graphExternalAPI_JOR.svelte";
 	import GraphGeneral from "./GraphGeneral.svelte";
 	import GraphGeneral2 from "./GraphGeneral2.svelte";
 	import GraphCanvaJs from "./registration-stats/graphCanvaJS.svelte";
