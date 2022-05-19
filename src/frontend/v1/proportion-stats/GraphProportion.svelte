@@ -13,43 +13,27 @@
     let female = [];
     let total = [];
 
-    
-    async function getData() {
-        const res1 = await fetch(`api/v1/proportion-stats/${country}`);
-        if (res1.ok) {
-            const arrayData = await res1.json();
-            apiData = arrayData;
-            //Ordenamos valores:
-            apiData.sort(function (a, b) {
-                var keyA = new Date(a.year),
-                    keyB = new Date(b.year);
-                // Compare the 2 dates
-                if (keyA < keyB) return -1;
-                if (keyA > keyB) return 1;
-                return 0;
+    async function loadGraph(){
+        const res = await fetch("/api/v1/proportion-stats");
+        if (res.ok){
+            apiData = await res.json();
+            console.log(apiData);
+            console.lof(JSON.stringify(apiData, null, 2))
+            apiData.forEach(v =>{
+                year.push(v.year);
+                male.push(v.male);
+                female.push(v.female);
+                total.push(v.total)
             });
-            console.log(apiData.length);
-            apiData.forEach((element) => {
-                year.push(element.year);
-                male.push(element.male);
-                female.push(element.female);
-                total.push(element.total);
-            });
-            //await delay(1000);
-            loadGraph();
-        } else {
+        }else{
             window.alert("No hay datos para este pais");
-            console.log("INTERNAL FATAL ERROR");
-            window.location.href = `/#/proportion-stats`;
+            console.log("INTERNAL FATAL HORROR");
+            window.location.href = '/#/proportion-stats';
         }
-    }
-
-    async function loadGraph() {
-       
         Highcharts.chart('container', {
 
 title: {
-    text: 'Proportion of  young people without studies work or capacitation, 2015-2020'
+    text: 'Proportion fo young people without studies, work or capacitation, 2015-2020'
 },
 
 subtitle: {
@@ -79,7 +63,7 @@ plotOptions: {
         label: {
             connectorAllowed: false
         },
-        pointStart: 2015
+        pointStart: 2010
     }
 },
 
@@ -110,9 +94,7 @@ responsive: {
 }
 
 });
-    }
-
-    onMount(getData);
+ }
 </script>
 
 <svelte:head>
@@ -121,7 +103,7 @@ responsive: {
     <script src="https://code.highcharts.com/modules/export-data.js"></script>
     <script
         src="https://code.highcharts.com/modules/accessibility.js"
-        on:load={loadGraph}></script>
+        on:load="{loadGraph}"></script>
 </svelte:head>
 
 <main>
@@ -153,3 +135,48 @@ responsive: {
         </p>
     </figure>
 </main>
+
+<style>
+    .highcharts-figure,
+.highcharts-data-table table {
+    min-width: 360px;
+    max-width: 800px;
+    margin: 1em auto;
+}
+
+.highcharts-data-table table {
+    font-family: Verdana, sans-serif;
+    border-collapse: collapse;
+    border: 1px solid #ebebeb;
+    margin: 10px auto;
+    text-align: center;
+    width: 100%;
+    max-width: 500px;
+}
+
+.highcharts-data-table caption {
+    padding: 1em 0;
+    font-size: 1.2em;
+    color: #555;
+}
+
+.highcharts-data-table th {
+    font-weight: 600;
+    padding: 0.5em;
+}
+
+.highcharts-data-table td,
+.highcharts-data-table th,
+.highcharts-data-table caption {
+    padding: 0.5em;
+}
+
+.highcharts-data-table thead tr,
+.highcharts-data-table tr:nth-child(even) {
+    background: #f8f8f8;
+}
+
+.highcharts-data-table tr:hover {
+    background: #f1f7ff;
+}
+</style>

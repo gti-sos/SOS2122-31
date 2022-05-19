@@ -23,6 +23,8 @@
             </a>)</li>
             <li><a href="https://sos2122-31.herokuapp.com/api/v1/proportion-stats/docs">[https://sos2122-31.herokuapp.com/api/v1/proportion-stats/docs]</a>(developed by [José Ortiz Roldán] <a href="https://github.com/madgIitch">
             </a>)</li>
+            <li><a href="https://sos2122-31.herokuapp.com/api/v2/proportion-stats/docs">[https://sos2122-31.herokuapp.com/api/v2/proportion-stats/docs]</a>(developed by [José Ortiz Roldán] <a href="https://github.com/madgIitch">
+            </a>)</li>
         </ul>
         <h6>
             Ismael Mesa Zyout:
@@ -61,8 +63,19 @@
         </h6>
         <h6>
             José Ortiz Roldán:
-            <a href="https://sos2122-31.herokuapp.com/api/v1/proportion-stats">Enlace BackEnd</a>
+            <a href="https://sos2122-31.herokuapp.com/api/v1/proportion-stats">Enlace BackEnd v1</a>
+            <a href="https://sos2122-31.herokuapp.com/api/v2/proportion-stats">Enlace BackEnd v2</a>
             <a href="https://sos2122-31.herokuapp.com/#/proportion-stats">Enlace FrontEnd</a>
+            <li><strong>Gráficas José Ortiz Roldán</strong>:
+            <ul>
+                <h8>Individuales:</h8>
+                <li><a href="https://sos2122-31.herokuapp.com/#/graphProportion">/#/graphProportion</a> (developed by <a href="https_//github.com/madgIitch">Jose Ortiz Roldán</a>)</li>
+                <h8>Integraciones SOS:</h8>
+                <h8>Integraciones Esternas:</h8>
+                <li><a href="https://sos2122-31.herokuapp.com/#/graphExternalAPI_JOR">/#//graphExternalAPI_JOR</a>(developed by <a href="https_//github.com/madgIitch">Jose Ortiz Roldán</a>)</li>
+            </ul>
+            </li>
+
         </h6>
         <br>
         <br>
