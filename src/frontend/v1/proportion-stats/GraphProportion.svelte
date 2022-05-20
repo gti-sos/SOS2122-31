@@ -116,7 +116,7 @@ responsive: {
     <script src="https://code.highcharts.com/modules/export-data.js"></script>
     <script
         src="https://code.highcharts.com/modules/accessibility.js"
-        on:load="{loadGraph}"></script>
+        on:load="{getData}"></script>
 </svelte:head>
 
 <main>
