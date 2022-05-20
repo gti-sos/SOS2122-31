@@ -46,8 +46,8 @@
 }
 
 async function getSearch(){
-        const res2 = await fetch('api/v1/proportion-stats/${country}');
-        if (res2.ok){
+    const res2 = await fetch(`api/v2/alphabetization-stats/${country}`);
+        if (res2.ok) {
             const arrayData = await res2.json();
             apiData = arrayData;
             //Ordenamos valores:
@@ -60,12 +60,12 @@ async function getSearch(){
                 return 0;
             });
             console.log(apiData.length);
-            apiData.forEach((v) => {
-                year.push(v.year);
-                male.push(v.male);
-                female.push(v.female);
-                total.push(v.total);
-        });
+            apiData.forEach((element) => {
+                year.push(element.year);
+                male.push(element.male);
+                female.push(element.female);
+                total.push(element.total);
+            });
 
         loadGraph();
     }else{
@@ -141,6 +141,8 @@ responsive: {
 
 });
  }
+
+ onMount(getData);
 </script>
 
 <svelte:head>
