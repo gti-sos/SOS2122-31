@@ -34,6 +34,39 @@
                 female.push(v.female);
                 total.push(v.total);
         });
+
+        
+
+        loadGraph();
+    }else{
+        window.alert("No hay datos cargados");
+        console.log("INTERNAL FATAL ERROR");
+        window.location.href ='/#/proportion-stats';
+    }
+}
+
+async function getSearch(){
+        const res2 = await fetch('api/v1/proportion-stats/${country}');
+        if (res2.ok){
+            const arrayData = await res2.json();
+            apiData = arrayData;
+            //Ordenamos valores:
+            apiData.sort(function (a, b) {
+                var keyA = new Date(a.year),
+                    keyB = new Date(b.year);
+                // Compare the 2 dates
+                if (keyA < keyB) return -1;
+                if (keyA > keyB) return 1;
+                return 0;
+            });
+            console.log(apiData.length);
+            apiData.forEach((v) => {
+                year.push(v.year);
+                male.push(v.male);
+                female.push(v.female);
+                total.push(v.total);
+        });
+
         loadGraph();
     }else{
         window.alert("No hay datos cargados");
@@ -128,8 +161,7 @@ responsive: {
             outline
             color="info"
             on:click={() => {
-                window.location.href = `/#/graphProportion/${country}`;
-                location.reload();
+                getSearch();
             }}
         >
             Buscar
