@@ -178,6 +178,7 @@ responsive: {
     padding: 0.5em;
 }
 
+
 .highcharts-data-table td,
 .highcharts-data-table th,
 .highcharts-data-table caption {
