@@ -46,7 +46,7 @@
 }
 
 async function getSearch(){
-    const res2 = await fetch(`api/v2/alphabetization-stats/${country}`);
+    const res2 = await fetch(`api/v2/proportion-stats/${country}`);
         if (res2.ok) {
             const arrayData = await res2.json();
             apiData = arrayData;
