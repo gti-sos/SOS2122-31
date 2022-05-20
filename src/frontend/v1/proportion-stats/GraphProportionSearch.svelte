@@ -116,7 +116,7 @@ responsive: {
 });
  }
 
- onMount(getData);
+ onMount(getSearch);
 </script>
 
 <svelte:head>
