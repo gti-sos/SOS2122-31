@@ -66,7 +66,11 @@ async function getSearch(){
                 male.push(element.male);
                 female.push(element.female);
                 total.push(element.total);
-                pais.push(element.country);
+                //pais.push if element.country is not in the list
+                if(!pais.includes(element.country)){
+                    pais.push(element.country);
+                }
+
             });
 
         loadGraph();
@@ -115,16 +119,27 @@ plotOptions: {
     }
 },
 
-series: [{
-    name: pais,
-    data: male
-}, {
-    name: pais,
-    data: female
-}, {
-    name: pais,
-    data: total
-}],
+series: [
+    apiData.forEach(c => {
+        return {
+            name: c.country,
+            data: c.male
+        }
+    }),
+    apiData.forEach(c =>{
+        return {
+            name: c.country,
+            data: c.female
+        }
+    }),
+    apiData.forEach(c =>{
+        return {
+            name: c.country,
+            data: c.total
+        }
+    })
+
+],
 responsive: {
     rules: [{
         condition: {
