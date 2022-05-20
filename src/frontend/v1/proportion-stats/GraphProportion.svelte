@@ -13,23 +13,36 @@
     let female = [];
     let total = [];
 
-    async function loadGraph(){
-        const res = await fetch("/api/v1/proportion-stats");
-        if (res.ok){
-            apiData = await res.json();
-            console.log(apiData);
-            console.lof(JSON.stringify(apiData, null, 2))
-            apiData.forEach(v =>{
+    async function getData(){
+        const res1 = await fetch('/api/v1/proportion-stats');
+        if (res1.ok){
+            const arrayData = await res1.json();
+            apiData = arrayData;
+            //Ordenamos valores:
+            apiData.sort(function (a, b) {
+                var keyA = new Date(a.year),
+                    keyB = new Date(b.year);
+                // Compare the 2 dates
+                if (keyA < keyB) return -1;
+                if (keyA > keyB) return 1;
+                return 0;
+            });
+            console.log(apiData.length);
+            apiData.forEach((v) => {
                 year.push(v.year);
                 male.push(v.male);
                 female.push(v.female);
-                total.push(v.total)
-            });
-        }else{
-            window.alert("No hay datos para este pais");
-            console.log("INTERNAL FATAL HORROR");
-            window.location.href = '/#/proportion-stats';
-        }
+                total.push(v.total);
+        });
+        loadGraph();
+    }else{
+        window.alert("No hay datos cargados");
+        console.log("INTERNAL FATAL ERROR");
+        window.location.href ='/#/proportion-stats';
+    }
+}
+    
+    async function loadGraph(){
         Highcharts.chart('container', {
 
 title: {
