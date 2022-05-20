@@ -39,6 +39,7 @@
 		"/proportion-stats": ProportionStatsTable,
 		"/proportion-stats/:country/:year": EditProportionStats,
 		"/graphProportion": GraphProportion,
+		"/graphProportion/:country": GraphProportion,
 		"/graphExternalAPI_JOR": GraphExternalAPI_JOR,
 		"/info": Info,
 		"/graphAlphabetization/:country": GraphAlphabetization,
