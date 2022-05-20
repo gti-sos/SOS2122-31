@@ -3,7 +3,7 @@
     import Highcharts from "highcharts";
     import { pop } from "svelte-spa-router";
 async function getData(){
-    const res = await fetch("http://ddragon.leagueoflegends.com/cdn/12.9.1/data/en_US/champion.json");
+    const res = await fetch("https://ddragon.leagueoflegends.com/cdn/12.9.1/data/en_US/champion.json");
     const p = await res.json();
     //use each champion as the key and the value is a list of all tags that the champion has
     console.log(p);
