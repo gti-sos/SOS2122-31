@@ -162,6 +162,8 @@ responsive: {
             color="info"
             on:click={() => {
                 getSearch();
+                window.location.href = '/#/grapProportion'/${country};
+                location.reload();
             }}
         >
             Buscar
