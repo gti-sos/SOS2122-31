@@ -8,6 +8,7 @@
 
     let apiData = [];
     let country = params.country;
+    let pais = [];
     let year = [];
     let male = [];
     let female = [];
@@ -65,6 +66,7 @@ async function getSearch(){
                 male.push(element.male);
                 female.push(element.female);
                 total.push(element.total);
+                pais.push(element.country);
             });
 
         loadGraph();
@@ -114,16 +116,15 @@ plotOptions: {
 },
 
 series: [{
-    name: 'Male',
+    name: pais,
     data: male
 }, {
-    name: 'Female',
+    name: pais,
     data: female
 }, {
-    name: 'Total',
+    name: pais,
     data: total
 }],
-
 responsive: {
     rules: [{
         condition: {
