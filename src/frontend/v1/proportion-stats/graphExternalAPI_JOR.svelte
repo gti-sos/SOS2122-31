@@ -2,11 +2,7 @@
     import Button from "sveltestrap/src/Button.svelte";
     import Highcharts from "highcharts";
     import { pop } from "svelte-spa-router";
-async function getData(){
-    const res = await fetch("https://ddragon.leagueoflegends.com/cdn/12.9.1/data/en_US/champion.json");
-    const p = await res.json();
-    //use each champion as the key and the value is a list of all tags that the champion has
-    console.log(p);
+import { onMount } from "svelte";
 
     let champions = [];
     let tagAssasin = [];
@@ -18,14 +14,22 @@ async function getData(){
     let tags = [];
     let partype = [];
 
+    let p = [];
+
     let c_partype = {};
 
     let c={};
-
-
+   
+    async function getData(){
+    const res = await fetch("https://ddragon.leagueoflegends.com/cdn/12.9.1/data/en_US/champion.json");
     
+    if (res.ok){
+        const arrayData = await res.json();
+        p = arrayData.data;
 
-    p.data.forEach((v) =>{
+        console.log(p.length);
+
+        p.data.forEach((v) =>{
         if(v.tags.includes("Assassin")){
             tagAssasin.push(v.id);
         }
@@ -72,10 +76,7 @@ async function getData(){
             c_partype[champions[i]].push(v.partype);
         }
 
-
-        
-    });
-    tags.forEach((tag) =>{
+        tags.forEach((tag) =>{
         if (tag == "Assasin"){
             c[tag] = tagAssasin;
         }
@@ -94,12 +95,22 @@ async function getData(){
         else if(tag == "Tank"){
             c[tag] = tagTank;
         }
+    
+
+        
+        });
     });
+    loadGraph();
 
-    console.log(c);
+    }else{
+        window.alert("No hay datos cargados");
+        console.log("INTERNAL FATAL ERROR");
+        window.location.href ='/#/proportion-stats';
+    }
 
 
-
+async function loadGraph(){
+    
     Highcharts.chart('container', {
     chart: {
         type: 'packedbubble',
@@ -175,16 +186,25 @@ async function getData(){
 });
 
 }
+}
+
+
+        
+   
+    
+   
+
+onMount(getData); 
 
 
    
 </script>
 
 <svelte:head>
-    <script src="https://code.highcharts.com/highcharts.js" on:load={getData}></script>
+    <script src="https://code.highcharts.com/highcharts.js" ></script>
     <script src="https://code.highcharts.com/highcharts-more.js"></script>
     <script src="https://code.highcharts.com/modules/exporting.js"></script>
-    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"on:load={loadGraph}></script>
 </svelte:head>
 
 <main>
