@@ -1,6 +1,5 @@
 <script>
     import { onMount } from "svelte";
-    import Highcharts from "highcharts";
 
     //Atributos API Externa:
     let apiEXT = [];
@@ -20,6 +19,7 @@
                 population.push(element.population);
             });
             loadGraph();
+            console.log(population[0]);
         } else {
             window.alert("ERROR AL CONECTAR CON LA BASE DE DATOS");
             console.log("INTERNAL FATAL ERROR");
@@ -27,66 +27,27 @@
     }
 
     async function loadGraph() {
-        Highcharts.chart("container", {
-            chart: {
-                type: "column",
-            },
-            title: {
-                text: "INTEGRACIÓN API 2 EXTERNA",
-            },
-            subtitle: {
-                text: "Población por país",
-            },
-            xAxis: {
-                categories: name,
-                crosshair: true,
-            },
-            yAxis: {
-                min: 0,
-                title: {
-                    text: "Número habitantes por país",
-                },
-            },
-            tooltip: {
-                headerFormat:
-                    '<span style="font-size:10px">{point.key}</span><table>',
-                pointFormat:
-                    '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
-                    '<td style="padding:0"><b>{point.y:.1f} habitantes</b></td></tr>',
-                footerFormat: "</table>",
-                shared: true,
-                useHTML: true,
-            },
-            plotOptions: {
-                column: {
-                    pointPadding: 0.2,
-                    borderWidth: 0,
-                },
-            },
-            series: [
-                {
-                    name: "Población de cada país",
-                    data: population
-                },
-            ],
-        });
+        var habPaises = {
+            x: name,
+            y: population,
+            mode: "lines+markers",
+            type: "scatter",
+            name: "Nº Habitantes por país",
+        };
+
+        var dataPlot = [habPaises];
+        Plotly.newPlot("myDiv", dataPlot);
     }
 
     onMount(getData);
 </script>
 
 <svelte:head>
-    <script src="https://code.highcharts.com/highcharts.js"></script>
-    <script src="https://code.highcharts.com/modules/exporting.js"></script>
-    <script src="https://code.highcharts.com/modules/export-data.js"></script>
     <script
-        src="https://code.highcharts.com/modules/accessibility.js"
+        src="https://cdn.plot.ly/plotly-2.11.1.min.js"
         on:load={loadGraph}></script>
 </svelte:head>
+
 <main>
-    <figure class="highcharts-figure">
-        <div id="container" />
-        <p class="highcharts-description" />
-    </figure>
-    <br />
+    <div id="myDiv"><!-- Plotly chart will be drawn inside this DIV --></div>
 </main>

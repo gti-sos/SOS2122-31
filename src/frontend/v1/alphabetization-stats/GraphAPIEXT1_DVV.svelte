@@ -76,52 +76,40 @@
     async function loadGraph() {
         Highcharts.chart("container", {
             chart: {
-                type: "bar",
+                type: "column",
             },
             title: {
-                text: "INTEGRACIÓN API 1 EXTERNA",
+                text: "INTEGRACIÓN API 2 EXTERNA",
             },
             subtitle: {
-                text: "Porcentaje alfabetización por sexo // Datos covid",
+                text: "Población por país",
             },
             xAxis: {
-                categories: year,
-                title: {
-                    text: null,
-                },
+                categories: name,
+                crosshair: true,
+                categories : year
             },
             yAxis: {
                 min: 0,
                 title: {
-                    text: "",
-                    align: "high",
+                    text: "Integración datos propios y externos",
                 },
-                labels: {
-                    overflow: "justify",
-                },
+            },
+            tooltip: {
+                headerFormat:
+                    '<span style="font-size:10px">{point.key}</span><table>',
+                pointFormat:
+                    '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                    '<td style="padding:0"><b>{point.y:.1f} habitantes</b></td></tr>',
+                footerFormat: "</table>",
+                shared: true,
+                useHTML: true,
             },
             plotOptions: {
-                bar: {
-                    dataLabels: {
-                        enabled: true,
-                    },
+                column: {
+                    pointPadding: 0.2,
+                    borderWidth: 0,
                 },
-            },
-            legend: {
-                layout: "vertical",
-                align: "right",
-                verticalAlign: "top",
-                x: -40,
-                y: 80,
-                floating: true,
-                borderWidth: 1,
-                backgroundColor:
-                    Highcharts.defaultOptions.legend.backgroundColor ||
-                    "#FFFFFF",
-                shadow: true,
-            },
-            credits: {
-                enabled: false,
             },
             series: [
                 {

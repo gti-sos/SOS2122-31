@@ -1,6 +1,5 @@
 <script>
     import { onMount } from "svelte";
-    import Highcharts from "highcharts";
 
     //Atributos API Propia:
     let apiData = [];
@@ -78,92 +77,58 @@
     }
 
     async function loadGraph() {
-        Highcharts.chart("container", {
-            chart: {
-                type: "area",
-                inverted: true,
-            },
-            title: {
-                text: "Average fruit consumption during one week",
-            },
-            accessibility: {
-                keyboardNavigation: {
-                    seriesNavigation: {
-                        mode: "serialize",
-                    },
-                },
-            },
-            legend: {
-                layout: "vertical",
-                align: "right",
-                verticalAlign: "top",
-                x: -150,
-                y: 100,
-                floating: true,
-                borderWidth: 1,
-                backgroundColor:
-                    Highcharts.defaultOptions.legend.backgroundColor ||
-                    "#FFFFFF",
-            },
-            xAxis: {
-                categories: year,
-            },
-            yAxis: {
-                title: {
-                    text: "Number of units",
-                },
-                allowDecimals: false,
-                min: 0,
-            },
-            plotOptions: {
-                area: {
-                    fillOpacity: 0.5,
-                },
-            },
-            series: [
-                {
-                    name: "% Hombres",
-                    data: ar_ym,
-                },
-                {
-                    name: "% Mujeres",
-                    data: ar_yw,
-                },
-                {
-                    name: "% Media",
-                    data: ar_ty,
-                },
-                {
-                    name: "% Acceso Electricidad",
-                    data: paeSOS,
-                },
-                {
-                    name: "% Energías no renovables",
-                    data: nrecSOS,
-                },
-                {
-                    name: "% Energías renovables",
-                    data: renSOS,
-                },
-            ],
-        });
+        var porcHombres = {
+            x: country,
+            y: ar_ym,
+            name: "% Hombres",
+            type: "bar",
+        };
+        var porcMujeres = {
+            x: country,
+            y: ar_yw,
+            name: "% Mujeres",
+            type: "bar",
+        };        
+        var porcMedia = {
+            x: country,
+            y: ar_ty,
+            name: "% Media",
+            type: "bar",
+        };
+        var porcAcElec = {
+            x: cSOS,
+            y: paeSOS,
+            name: "% Acceso Electricidad",
+            type: "bar",
+        };
+        var porcENR = {
+            x: cSOS,
+            y: nrecSOS,
+            name: "% Consumo Energía No Renovable",
+            type: "bar",
+        };        
+        var porcER = {
+            x: cSOS,
+            y: renSOS,
+            name: "% Consumo Energía Renovable",
+            type: "bar",
+        };
+
+        var data = [porcHombres, porcMujeres, porcMedia, porcAcElec, porcENR, porcER];
+
+        var layout = { barmode: "group" };
+
+        Plotly.newPlot("myDiv", data, layout);
     }
 
     onMount(getData);
 </script>
 
 <svelte:head>
-    <script src="https://code.highcharts.com/highcharts.js"></script>
-    <script src="https://code.highcharts.com/modules/exporting.js"></script>
-    <script src="https://code.highcharts.com/modules/export-data.js"></script>
     <script
-        src="https://code.highcharts.com/modules/accessibility.js"
+        src="https://cdn.plot.ly/plotly-2.11.1.min.js"
         on:load={loadGraph}></script>
 </svelte:head>
 <main>
-    <figure class="highcharts-figure">
-        <div id="container" />
-        <p class="highcharts-description" />
-    </figure>
-    <br />
+    <div id="myDiv"><!-- Plotly chart will be drawn inside this DIV --></div>
 </main>
