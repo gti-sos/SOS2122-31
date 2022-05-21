@@ -23,90 +23,90 @@ import { onMount } from "svelte";
     async function getData(){
     const res = await fetch("https://ddragon.leagueoflegends.com/cdn/12.9.1/data/en_US/champion.json");
     
-    if (res.ok){
-        const arrayData = await res.json();
-        p = arrayData;
+        if (res.ok){
+            const arrayData = await res.json();
+            p = arrayData;
 
-        console.log(p.length);
+            console.log(p.length);
 
-        p.forEach((v) =>{
-        if(v.tags.includes("Assassin")){
-            tagAssasin.push(v.id);
-        }
-        else if(v.tags.includes("Fighter")){
-            tagFighter.push(v.id);
-        }
-        else if(v.tags.includes("Mage")){
-            tagMage.push(v.id);
-        }
-        else if(v.tags.includes("Marksman")){
-            tagMarksman.push(v.id);
-        }
-        else if(v.tags.includes("Support")){
-            tagSupport.push(v.id);
-        }
-        else if(v.tags.includes("Tank")){
-            tagTank.push(v.id);
-        }
-
-        //añado el tag a la lista de tags si no esta
-        if(!tags.includes(v.tags)){
-            tags.push(v.tags);
-        }
-        
-        //añado el partype a la lista de partypes si no esta
-        if(!partype.includes(v.partype)){
-            partype.push(v.partype);
-        }
-
-        //añado el id a la lista de ids si no esta
-        if(!champions.includes(v.id)){
-            champions.push(v.id);
-        }
-
-        //por cada i en champions añado una key con el id del campeon y una lista vacia
-        for(let i = 0; i < champions.length; i++){
-            if(!(champions[i] in c)){
-                c_partype[champions[i]] = [];
+            p.forEach((v) =>{
+            if(v.tags.includes("Assassin")){
+                tagAssasin.push(v.id);
             }
-        }
+            else if(v.tags.includes("Fighter")){
+                tagFighter.push(v.id);
+            }
+            else if(v.tags.includes("Mage")){
+                tagMage.push(v.id);
+            }
+            else if(v.tags.includes("Marksman")){
+                tagMarksman.push(v.id);
+            }
+            else if(v.tags.includes("Support")){
+                tagSupport.push(v.id);
+            }
+            else if(v.tags.includes("Tank")){
+                tagTank.push(v.id);
+            }
 
-        //por cada i en champions añado como valor a la key el partype del campeon
-        for(let i = 0; i < champions.length; i++){
-            c_partype[champions[i]].push(v.partype);
-        }
+            //añado el tag a la lista de tags si no esta
+            if(!tags.includes(v.tags)){
+                tags.push(v.tags);
+            }
+            
+            //añado el partype a la lista de partypes si no esta
+            if(!partype.includes(v.partype)){
+                partype.push(v.partype);
+            }
 
-        tags.forEach((tag) =>{
-        if (tag == "Assasin"){
-            c[tag] = tagAssasin;
-        }
-        else if(tag == "Fighter"){
-            c[tag] = tagFighter;
-        }
-        else if(tag == "Mage"){
-            c[tag] = tagMage;
-        }
-        else if(tag == "Marksman"){
-            c[tag] = tagMarksman;
-        }
-        else if(tag == "Support"){
-            c[tag] = tagSupport;
-        }
-        else if(tag == "Tank"){
-            c[tag] = tagTank;
-        }
-    
+            //añado el id a la lista de ids si no esta
+            if(!champions.includes(v.id)){
+                champions.push(v.id);
+            }
 
+            //por cada i en champions añado una key con el id del campeon y una lista vacia
+            for(let i = 0; i < champions.length; i++){
+                if(!(champions[i] in c)){
+                    c_partype[champions[i]] = [];
+                }
+            }
+
+            //por cada i en champions añado como valor a la key el partype del campeon
+            for(let i = 0; i < champions.length; i++){
+                c_partype[champions[i]].push(v.partype);
+            }
+
+            tags.forEach((tag) =>{
+            if (tag == "Assasin"){
+                c[tag] = tagAssasin;
+            }
+            else if(tag == "Fighter"){
+                c[tag] = tagFighter;
+            }
+            else if(tag == "Mage"){
+                c[tag] = tagMage;
+            }
+            else if(tag == "Marksman"){
+                c[tag] = tagMarksman;
+            }
+            else if(tag == "Support"){
+                c[tag] = tagSupport;
+            }
+            else if(tag == "Tank"){
+                c[tag] = tagTank;
+            }
         
-        });
-    });
-    loadGraph();
 
-    }else{
-        window.alert("No hay datos cargados");
-        console.log("INTERNAL FATAL ERROR");
-        window.location.href ='/#/proportion-stats';
-    }
+            
+            });
+        });
+        loadGraph();
+
+        }else{
+            window.alert("No hay datos cargados");
+            console.log("INTERNAL FATAL ERROR");
+            window.location.href ='/#/proportion-stats';
+        }
 
 
 
