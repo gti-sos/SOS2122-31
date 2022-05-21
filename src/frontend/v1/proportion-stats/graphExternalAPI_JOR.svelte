@@ -22,6 +22,7 @@ async function getData(){
 
     let c={};
 
+
     
 
     p.data.forEach((v) =>{
