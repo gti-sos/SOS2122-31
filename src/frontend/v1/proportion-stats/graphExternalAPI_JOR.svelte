@@ -109,6 +109,9 @@ import { onMount } from "svelte";
     }
 
 
+
+
+}
 async function loadGraph(){
     
     Highcharts.chart('container', {
@@ -184,8 +187,6 @@ async function loadGraph(){
 
     
 });
-
-}
 }
 
 
@@ -204,7 +205,7 @@ onMount(getData);
     <script src="https://code.highcharts.com/highcharts.js" ></script>
     <script src="https://code.highcharts.com/highcharts-more.js"></script>
     <script src="https://code.highcharts.com/modules/exporting.js"></script>
-    <script src="https://code.highcharts.com/modules/accessibility.js"on:load={loadGraph}></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"on:load="{loadGraph}"></script>
 </svelte:head>
 
 <main>
