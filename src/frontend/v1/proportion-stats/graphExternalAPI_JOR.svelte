@@ -29,7 +29,7 @@ import { onMount } from "svelte";
 
             console.log(p.length);
 
-            p.forEach((v) =>{
+            p.data.forEach((v) =>{
             if(v.tags.includes("Assassin")){
                 tagAssasin.push(v.id);
             }
