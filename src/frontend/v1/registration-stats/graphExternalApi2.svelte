@@ -126,3 +126,15 @@
         </p>
     </figure>
 </main>
+
+<style>
+    #container {
+        height: 600px;
+        width: 900px;
+    }
+    .highcharts-figure {
+        min-width: 350px;
+        max-width: 900px;
+        margin: 1em auto;
+    }
+    </style>
