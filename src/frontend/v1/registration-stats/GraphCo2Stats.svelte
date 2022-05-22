@@ -1,8 +1,6 @@
 <script>
     import Button from "sveltestrap/src/Button.svelte";
-    import Highcharts from "highcharts";
     import { pop } from "svelte-spa-router";
-    import ApexCharts from "apexcharts";
 
     let datos = [];
     let datos1 = [];
