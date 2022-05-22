@@ -79,7 +79,7 @@
                 type: "column",
             },
             title: {
-                text: "INTEGRACIÓN API 2 EXTERNA",
+                text: "INTEGRACIÓN API 1 EXTERNA",
             },
             subtitle: {
                 text: "Población por país",

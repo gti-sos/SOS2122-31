@@ -32,15 +32,19 @@
             <a href="https://sos2122-31.herokuapp.com/api/v2/registration-stats">Enlace BackEnd V2</a>
             <a href="https://sos2122-31.herokuapp.com/#/registration-stats">Enlace FrontEnd</a>
             <li><strong>Gráficas Ismael Mesa</strong>:<ul>
+                
+                <h8>Individuales:</h8>
                 <li><a href="https://sos2122-31.herokuapp.com/#/graphRegistration">/#/graphRegistration</a> (developed by <a href="https://github.com/IsmaelMesaZyout">Ismael Mesa Zyout</a>)</li>
                 <li><a href="https://sos2122-31.herokuapp.com/#/graphCanvaJS">/#/graphCanvaJS</a> (developed by <a href="https://github.com/IsmaelMesaZyout">Ismael Mesa Zyout</a>)</li>
+                <h8>Integraciones SOS:</h8>
                 <li><a href="https://sos2122-31.herokuapp.com/#/graphPublicStats">/#/graphPublicStats</a> (developed by <a href="https://github.com/roque-fernandez">Roque Fernandez Iglesias</a>)</li>
                 <li><a href="https://sos2122-31.herokuapp.com/#/graphCo2Stats">/#/graphCo2Stats</a> (developed by <a href="https://github.com/jesvencam">Jesus Vena Campos</a>)</li>
                 <li><a href="https://sos2122-31.herokuapp.com/#/graphPopulation">/#/graphPopulation</a> (developed by <a href="https://github.com/AlejandroMolinosEligio">Alejandro Molinos Eligio</a>)</li>
+                <h8>Integraciones Externas:</h8>
                 <li><a href="https://sos2122-31.herokuapp.com/#/graphExternalApi">/#/graphExternalApi</a> (developed by <a href="https://github.com/IsmaelMesaZyout">Ismael Mesa Zyout</a>)</li>
                 <li><a href="https://sos2122-31.herokuapp.com/#/graphExternalApi2">/#/graphExternalApi2</a> (developed by <a href="https://github.com/IsmaelMesaZyout">Ismael Mesa Zyout</a>)</li>
-
                 </ul>
+            </li>
         </h6>
         <h6>
             Daniel Vega Vera:
@@ -101,7 +105,7 @@
         </h6>
         <h6> 
             <li><strong>VIDEO D03 ISMAEL MESA</strong>:<ul>
-                <li><a href="https://youtu.be/RWCtaOQ6Flg">VIDEO-SOS-ISMAELMESA</a></li>
+                <li><a href="https://www.youtube.com/watch?v=CYbkNh5CECE">VIDEO-SOS-ISMAELMESA</a></li>
                 </ul>
         </h6>
     

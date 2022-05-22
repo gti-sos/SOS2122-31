@@ -1,5 +1,6 @@
 <script>
     import Button from "sveltestrap/src/Button.svelte";
+    import { pop } from "svelte-spa-router";
     import Highcharts from "highcharts";
 
     let reg1 = [];
@@ -213,11 +214,14 @@
     <br />
     <br />
     <Button
-        id="back"
         outline
-        color="secondary"
-        onclick="window.location.href='#/registration-stats'">Volver</Button
+        color="dark"
+        on:click={() => {
+            pop();
+        }}
     >
+        Volver
+    </Button>
     <div style="margin:auto;">
         <figure class="highcharts-figure">
             <div id="container" />
