@@ -2,128 +2,115 @@
     import Button from "sveltestrap/src/Button.svelte";
     import Highcharts from "highcharts";
     import { pop } from "svelte-spa-router";
-async function getData(){
-    const res = await fetch("https://ddragon.leagueoflegends.com/cdn/12.9.1/data/en_US/champion.json");
-    const p = await res.json();
-    //use each champion as the key and the value is a list of all tags that the champion has
-    console.log(p);
+    import { onMount } from "svelte";
 
-    let champions = [];
-    let tagAssasin = [];
-    let tagFighter = [];
-    let tagMage = [];
-    let tagMarksman = [];
-    let tagSupport = [];
-    let tagTank = [];
+    let apiData = [];
+    let data = [];
+    let name = [];
     let tags = [];
     let partype = [];
-
-    let c_partype = {};
-
-    let c={};
+    let dificulty = {};
+    let assasin = [];
+    let tank = [];
+    let fighter = [];
+    let mage = [];
+    let marksman = [];
+    let support = [];
 
 
     
+    async function getData(){
+        const res = await fetch('https://ddragon.leagueoflegends.com/cdn/12.9.1/data/en_US/champion.json');
+        if (res.ok){
+            const arrayData = await res.json();
+            apiData = arrayData;
+            data = apiData.data;
+            console.log(data.length);
 
-    p.data.forEach((v) =>{
-        if(v.tags.includes("Assassin")){
-            tagAssasin.push(v.id);
+            getLists();
+
         }
-        else if(v.tags.includes("Fighter")){
-            tagFighter.push(v.id);
-        }
-        else if(v.tags.includes("Mage")){
-            tagMage.push(v.id);
-        }
-        else if(v.tags.includes("Marksman")){
-            tagMarksman.push(v.id);
-        }
-        else if(v.tags.includes("Support")){
-            tagSupport.push(v.id);
-        }
-        else if(v.tags.includes("Tank")){
-            tagTank.push(v.id);
+        else{
+            window.alert("No hay datos cargados en" + window.location.href );
+            console.log("INTERNAL FATAL ERROR en" + window.location.href);
+            
         }
 
-        //añado el tag a la lista de tags si no esta
-        if(!tags.includes(v.tags)){
+    }
+    
+
+    async function getLists(){
+        data.forEach((v) =>{
+            name.push(v.name);
             tags.push(v.tags);
-        }
-        
-        //añado el partype a la lista de partypes si no esta
-        if(!partype.includes(v.partype)){
             partype.push(v.partype);
-        }
-
-        //añado el id a la lista de ids si no esta
-        if(!champions.includes(v.id)){
-            champions.push(v.id);
-        }
-
-        //por cada i en champions añado una key con el id del campeon y una lista vacia
-        for(let i = 0; i < champions.length; i++){
-            if(!(champions[i] in c)){
-                c_partype[champions[i]] = [];
+            
+            if(v.tags.includes("Assassin")){
+                assasin.push(v.name);
             }
-        }
+            if(v.tags.includes("Fighter")){
+                fighter.push(v.name);
+            }
+            if(v.tags.includes("Mage")){
+                mage.push(v.name);
+            }
+            if(v.tags.includes("Marksman")){
+                marksman.push(v.name);
+            }
+            if(v.tags.includes("Support")){
+                support.push(v.name);
+            }
+            if(v.tags.includes("Tank")){
+                tank.push(v.name);
+            }
+            //use v.name as key and v.info.difficulty as value
+            dificulty[v.name] = v.info.difficulty;
 
-        //por cada i en champions añado como valor a la key el partype del campeon
-        for(let i = 0; i < champions.length; i++){
-            c_partype[champions[i]].push(v.partype);
-        }
+        })
+        loadGraph();
+    }
 
-
-        
-    });
-    tags.forEach((tag) =>{
-        if (tag == "Assasin"){
-            c[tag] = tagAssasin;
-        }
-        else if(tag == "Fighter"){
-            c[tag] = tagFighter;
-        }
-        else if(tag == "Mage"){
-            c[tag] = tagMage;
-        }
-        else if(tag == "Marksman"){
-            c[tag] = tagMarksman;
-        }
-        else if(tag == "Support"){
-            c[tag] = tagSupport;
-        }
-        else if(tag == "Tank"){
-            c[tag] = tagTank;
-        }
-    });
-
-    console.log(c);
-
-
-
-    Highcharts.chart('container', {
-    chart: {
-        type: 'packedbubble',
-        height: '100%'
-    },
-    title: {
-        text: 'League of Legends Champions for each role'
-    },
-    tooltip: {
-        useHTML: true,
-        pointFormat: '<b>{point.name}:</b> {point.value}m CO<sub>2</sub>'
-    },
-    plotOptions: {
-        packedbubble: {
-            minSize: '20%',
-            maxSize: '100%',
-            zMin: 0,
-            zMax: 1000,
-            layoutAlgorithm: {
-                gravitationalConstant: 0.05,
-                splitSeries: true,
-                seriesInteraction: false,
-                dragBetweenSeries: true,
-                parentNodeLimit: true
+    async function loadGraph(){
+        Highcharts.chart('container',{
+            chart: {
+                type: 'packedbubble',
+                height: '100%'
+            },
+            title: {
+                text: 'Proportion of champions by type'
+            },
+            tooltip: {
+                useHTML: true,
+                pointFormat: '<b>{point.name}:</b> {point.value}dificulty'
+            },
+            plotOptions: {
+                packedbubble: {
+                    minSize: '20%',
+                    maxSize: '100%',
+                    zMin: 0,
+                    zMax: 1000,
+                    layoutAlgorithm: {
+                        gravitationalConstant: 0.05,
+                        splitSeries: true,
+                        seriesInteraction: false,
+                        dragBetweenSeries: true,
+                        parentNodeLimit: true
+                    },
+                    dataLabels: {
+                        enabled: true,
+                        format: '{point.name}',
+                        filter: {
+                            property: 'y',
+                            operator: '>',
+                            value: 250
+                        },
+                        style: {
+                            color: 'black',
+                            textOutline: 'none',
+                            fontWeight: 'normal'
+                        }
+                    }
+                }
             },
             dataLabels: {
                 enabled: true,
@@ -138,53 +125,72 @@ async function getData(){
                     textOutline: 'none',
                     fontWeight: 'normal'
                 }
-            }
-        }
-    },
-    series: [{
-        name : 'Assasin',
-        //select the values from c with the key Assasin 
-        data : c.Assasin,
-        //select the key of c_partype if the value of the key includes c.Assasin
-        value: c_partype[c.Assasin]
-    },{
+            },
+            series: [{
+                name: 'Assasin',
+                data: [assasin.forEach((v) => {
+                    return {
+                        name: v,
+                        value: dificulty[v]
+                    }
+                })]
+            },{
+                name: 'Fighter',
+                data: [fighter.forEach((v) => {
+                    return {
+                        name: v, 
+                        value: dificulty[v]
+                    }
+                })]
+            },{
+                name: 'Mage',
+                data: [mage.forEach((v) => {
+                    return {
+                        name: v, 
+                        value: dificulty[v]
+                    }
+                })]
+            },{
+                name: 'Marksman',
+                data: [marksman.forEach((v) => {
+                    return {
+                        name: v, 
+                        value: dificulty[v]
+                    }
+                })]
+            },{
+                name: 'Support',
+                data: [support.forEach((v) => {
+                    return {
+                        name: v, 
+                        value: dificulty[v]
+                    }
+                })]
+            },{
+                name: 'Tank',
+                data: [tank.forEach((v) => {
+                    return {
+                        name: v, 
+                        value: dificulty[v]
+                    }
+                })]
+            }]
 
-        name : 'Fighter',
-        data : c.Fighter,
-        value: c_partype[c.Fighter]
-    },{
-        name : 'Mage',
-        data : c.Mage,
-        value: c_partype[c.Mage]
-    },{
-        name : 'Marksman',
-        data : c.Marksman,
-        value: c_partype[c.Marksman]
-    },{
-        name : 'Support',
-        data : c.Support,
-        value: c_partype[c.Support]
-    },{
-        name : 'Tank',
-        data : c.Tank,
-        value: c_partype[c.Tank]
-    }]
-        
 
+        });
+    }
     
-});
-
-}
+onMount(getData);
 
 
    
 </script>
 
 <svelte:head>
-    <script src="https://code.highcharts.com/highcharts.js" on:load={getData}></script>
+    <script src="https://code.highcharts.com/highcharts.js" ></script>
     <script src="https://code.highcharts.com/highcharts-more.js"></script>
     <script src="https://code.highcharts.com/modules/exporting.js"></script>
-    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"on:load="{loadGraph}"></script>
 </svelte:head>
 
 <main>
