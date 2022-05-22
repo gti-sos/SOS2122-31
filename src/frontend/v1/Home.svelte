@@ -105,7 +105,7 @@
         </h6>
         <h6> 
             <li><strong>VIDEO D03 ISMAEL MESA</strong>:<ul>
-                <li><a href="https://youtu.be/RWCtaOQ6Flg">VIDEO-SOS-ISMAELMESA</a></li>
+                <li><a href="https://www.youtube.com/watch?v=CYbkNh5CECE">VIDEO-SOS-ISMAELMESA</a></li>
                 </ul>
         </h6>
     
