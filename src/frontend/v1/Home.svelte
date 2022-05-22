@@ -70,11 +70,11 @@
             <ul>
                 <h8>Individuales:</h8>
                 <li><a href="https://sos2122-31.herokuapp.com/#/graphProportion">/#/graphProportion</a> (developed by <a href="https_//github.com/madgIitch">Jose Ortiz Roldán</a>)</li>
-                <li><a href="https://sos2122-31.herokuapp.com/#/graphProportionSearch/Argentina">/#/graphProportionSearch</a> (developed by <a href="https_//github.com/madgIitch">Jose Ortiz Roldán</a>)</li>
 
                 <h8>Integraciones SOS:</h8>
                 <h8>Integraciones Esternas:</h8>
                 <li><a href="https://sos2122-31.herokuapp.com/#/graphExternalAPI_JOR">/#//graphExternalAPI_JOR</a>(developed by <a href="https_//github.com/madgIitch">Jose Ortiz Roldán</a>)</li>
+                <li><a href="https://sos2122-31.herokuapp.com/#/graphExternalAPI2_JOR">/#/graphExternalAPI2_JOR</a>(developed by <a href="https_//github.com/madgIitch">Jose Ortiz Roldán</a>)</li>
             </ul>
             </li>
 
