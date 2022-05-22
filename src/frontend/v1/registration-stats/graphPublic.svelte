@@ -1,22 +1,24 @@
 <script>
     import Button from "sveltestrap/src/Button.svelte";
     import { pop } from "svelte-spa-router";
+    import { onMount } from "svelte";
 
     let datos = [];
     let datos1 = [];
     let fechas = [];
     let public_expenditure = ["public_expenditure"];
     let pe_to_gdp = ["pe_to_gdp"];
+    let ejeX = ["x"];
     let pe_on_defence = ["pe_on_defence"];
     let nivelPrimario = ["nivelPrimario"];
     let nivelSecundario = ["nivelSecundario"];
     let nivelTerciario = ["nivelTerciario"];
 
-    async function loadGraph2(){
+    onMount(loadGraph);
+    async function loadGraph2() {
         var chart = bb.generate({
-            data: { 
-                columns: [
-                ],
+            data: {
+                columns: [nivelPrimario, nivelSecundario, nivelTerciario],
                 type: "bar", // for ESM specify as: bar()
             },
             bar: {
@@ -26,42 +28,37 @@
             },
             bindto: "#barChart_1",
         });
-        setTimeout(function () {
-            chart.load({
-                columns: [nivelPrimario],
-                type: "bar"
-            });
-        }, 1000);
-        setTimeout(function () {
-            chart.load({
-                columns: [nivelSecundario],
-                type: "bar"
-            });
-        }, 2000);
-        setTimeout(function () {
-            chart.load({
-                columns: [nivelTerciario],
-                type: "bar"
-            });
-        }, 3000);
-        setTimeout(function () {
-            chart.load({
-                columns: [public_expenditure],
-                type: "bar"
-            });
-        }, 4000);
-        setTimeout(function () {
-            chart.load({
-                columns: [pe_to_gdp],
-                type: "bar"
-            });
-        }, 5000);
-        setTimeout(function () {
-            chart.load({
-                columns: [pe_on_defence],
-                type: "bar"
-            });
-        }, 6000); 
+        var chart1 = bb.generate({
+            data: {
+                columns: [public_expenditure, pe_to_gdp, pe_on_defence],
+                type: "bar", // for ESM specify as: bar()
+            },
+            bar: {
+                width: {
+                    ratio: 0.5,
+                },
+            },
+            bindto: "#barChart_11",
+        });
+        var chart3 = bb.generate({
+            data: {
+                columns: [
+                    nivelPrimario,
+                    nivelSecundario,
+                    nivelTerciario,
+                    public_expenditure,
+                    pe_to_gdp,
+                    pe_on_defence,
+                ],
+                type: "bar", // for ESM specify as: bar()
+            },
+            bar: {
+                width: {
+                    ratio: 0.5,
+                },
+            },
+            bindto: "#barChart_111",
+        });
     }
 
     async function loadGraph() {
@@ -73,6 +70,7 @@
             console.log(JSON.stringify(datos, null, 2));
             datos.forEach((data) => {
                 fechas.push(data["country"] + "-" + data.year);
+                ejeX.push(data.year);
                 public_expenditure.push(data.public_expenditure);
                 pe_to_gdp.push(data.pe_to_gdp);
                 pe_on_defence.push(data.pe_on_defence);
@@ -82,6 +80,7 @@
             console.log(JSON.stringify(datos1, null, 2));
             datos1.forEach((data) => {
                 fechas.push(data["country"] + "-" + data.year);
+                ejeX.push(data.country);
                 nivelPrimario.push(data.primarylevel);
                 nivelSecundario.push(data.secondarylevel);
                 nivelTerciario.push(data.tertiarylevel);
@@ -96,10 +95,11 @@
 </script>
 
 <svelte:head>
-    <script src="https://d3js.org/d3.v6.min.js"></script>  
+    <script src="https://d3js.org/d3.v6.min.js"></script>
     <link
         rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/billboard.js/3.4.1/billboard.min.css"/>
+        href="https://cdnjs.cloudflare.com/ajax/libs/billboard.js/3.4.1/billboard.min.css"
+    />
     <script
         src="https://cdnjs.cloudflare.com/ajax/libs/billboard.js/3.4.1/billboard.min.js"
         on:load={loadGraph}></script>
@@ -107,7 +107,17 @@
 
 <main>
     <br />
-    <br />
-    <Button id="back" outline color="secondary" on:click={pop}>Atrás</Button>
-    <div id="barChart_1"></div>
+    <div id="barChart_1" />
+    <div id="barChart_11" />
+    <div id="barChart_111" />
+    <Button
+        outline
+        color="dark"
+        on:click={() => {
+            pop();
+        }}
+    >
+        Volver
+    </Button>
+    <br /><br />
 </main>

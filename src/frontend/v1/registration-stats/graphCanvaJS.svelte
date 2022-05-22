@@ -1,5 +1,7 @@
 <script>
     import {onMount} from 'svelte';
+    import Button from "sveltestrap/src/Button.svelte";
+    import { pop } from "svelte-spa-router";
     let datos = [];
     let fechas = [];
     let nivelPrimario = [];
@@ -79,4 +81,5 @@
 
 <main> 
     <div id="chartContainer" style="height: 300px; width: 100%;"></div>
+    <Button id="back" outline color="secondary" on:click="{pop}"> Atrás</Button>
 </main>
