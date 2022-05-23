@@ -90,54 +90,41 @@
     }
 
     async function getLists(){
-        apiData.forEach(v => {
-            title.push(v.Title);
-            year.push(v.Year);
-            ratingIMDB.push(v.Ratings[0].Value);
-            ratingRotten.push(v.Ratings[1].Value);
-            ratingMetacritic.push(v.Ratings[2].Value);
-            boxOffice.push(v.BoxOffice);
-        });
-        apiData1.forEach(v => {
-            title.push(v.Title);
-            year.push(v.Year);
-            ratingIMDB.push(v.Ratings[0].Value);
-            ratingRotten.push(v.Ratings[1].Value);
-            ratingMetacritic.push(v.Ratings[2].Value);
-            boxOffice.push(v.BoxOffice);
-        });
-        apiData2.forEach(v => {
-            title.push(v.Title);
-            year.push(v.Year);
-            ratingIMDB.push(v.Ratings[0].Value);
-            ratingRotten.push(v.Ratings[1].Value);
-            ratingMetacritic.push(v.Ratings[2].Value);
-            boxOffice.push(v.BoxOffice);
-        });
-        apiData3.forEach(v => {
-            title.push(v.Title);
-            year.push(v.Year);
-            ratingIMDB.push(v.Ratings[0].Value);
-            ratingRotten.push(v.Ratings[1].Value);
-            ratingMetacritic.push(v.Ratings[2].Value);
-            boxOffice.push(v.BoxOffice);
-        });
-        apiData4.forEach(v => {
-            title.push(v.Title);
-            year.push(v.Year);
-            ratingIMDB.push(v.Ratings[0].Value);
-            ratingRotten.push(v.Ratings[1].Value);
-            ratingMetacritic.push(v.Ratings[2].Value);
-            boxOffice.push(v.BoxOffice);
-        });
-        apiData5.forEach(v => {
-            title.push(v.Title);
-            year.push(v.Year);
-            ratingIMDB.push(v.Ratings[0].Value);
-            ratingRotten.push(v.Ratings[1].Value);
-            ratingMetacritic.push(v.Ratings[2].Value);
-            boxOffice.push(v.BoxOffice);
-        });
+        title.push(apiData.Title);
+        title.push(apiData1.Title);
+        title.push(apiData2.Title);
+        title.push(apiData3.Title);
+        title.push(apiData4.Title);
+        title.push(apiData5.Title);
+
+        year.push(apiData.Year);
+        year.push(apiData1.Year);
+        year.push(apiData2.Year);
+        year.push(apiData3.Year);
+        year.push(apiData4.Year);
+        year.push(apiData5.Year);
+
+        ratingIMDB.push(apiData.Ratings[0].Value);
+        ratingIMDB.push(apiData1.Ratings[0].Value);
+        ratingIMDB.push(apiData2.Ratings[0].Value);
+        ratingIMDB.push(apiData3.Ratings[0].Value);
+        ratingIMDB.push(apiData4.Ratings[0].Value);
+        ratingIMDB.push(apiData5.Ratings[0].Value);
+
+        ratingRotten.push(apiData.Ratings[1].Value);
+        ratingRotten.push(apiData1.Ratings[1].Value);
+        ratingRotten.push(apiData2.Ratings[1].Value);
+        ratingRotten.push(apiData3.Ratings[1].Value);
+        ratingRotten.push(apiData4.Ratings[1].Value);
+        ratingRotten.push(apiData5.Ratings[1].Value);
+
+        ratingMetacritic.push(apiData.Ratings[2].Value);
+        ratingMetacritic.push(apiData1.Ratings[2].Value);
+        ratingMetacritic.push(apiData2.Ratings[2].Value);
+        ratingMetacritic.push(apiData3.Ratings[2].Value);
+        ratingMetacritic.push(apiData4.Ratings[2].Value);
+        ratingMetacritic.push(apiData5.Ratings[2].Value);
+
 
         loadGraph();
         
