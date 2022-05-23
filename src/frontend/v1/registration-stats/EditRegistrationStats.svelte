@@ -22,7 +22,7 @@
 
     async function getReg() {
         console.log("Fetching data..." + params.country + " " + params.year);
-        const res = await fetch("https://sos2122-31.herokuapp.com" + BASE_API_URL +"/registration-stats/" + params.country +"/" + params.year);
+        const res = await fetch(BASE_API_URL +"/registration-stats/" + params.country +"/" + params.year);
         if (res.ok) {
             console.log("Ok:");
             const json = await res.json();
@@ -54,7 +54,7 @@
     async function updateReg() {
         console.log("Updating data..." + JSON.stringify(params.country) + ", " + JSON.stringify(params.year));
 		let year = parseInt(params.year);
-        const res = await fetch("https://sos2122-31.herokuapp.com" + BASE_API_URL +"/registration-stats/" + params.country +"/" + params.year, {
+        const res = await fetch(BASE_API_URL +"/registration-stats/" + params.country +"/" + params.year, {
             method: "PUT",
             body: JSON.stringify({
                	country: params.country,

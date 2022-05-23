@@ -19,13 +19,13 @@
     let boxOffice = [];
 
     async function getData(){
-        const res = await fetch('http://www.omdbapi.com/?i=tt0068646&apikey=fb80765d');
-        const res1 = await fetch('http://www.omdbapi.com/?i=tt0071562&apikey=fb80765d');
-        const res2 = await fetch('http://www.omdbapi.com/?i=tt0099674&apikey=fb80765d');
+        const res = await fetch('https://www.omdbapi.com/?i=tt0068646&apikey=fb80765d');
+        const res1 = await fetch('https://www.omdbapi.com/?i=tt0071562&apikey=fb80765d');
+        const res2 = await fetch('https://www.omdbapi.com/?i=tt0099674&apikey=fb80765d');
 
-        const res3 = await fetch('http://www.omdbapi.com/?i=tt1119646&apikey=fb80765d');
-        const res4 = await fetch('http://www.omdbapi.com/?i=tt1411697&apikey=fb80765d');
-        const res5 = await fetch('http://www.omdbapi.com/?i=tt1951261&apikey=fb80765d');
+        const res3 = await fetch('https://www.omdbapi.com/?i=tt1119646&apikey=fb80765d');
+        const res4 = await fetch('https://www.omdbapi.com/?i=tt1411697&apikey=fb80765d');
+        const res5 = await fetch('https://www.omdbapi.com/?i=tt1951261&apikey=fb80765d');
 
         if(res.ok){
             const arrayData = await res.json();
@@ -90,109 +90,81 @@
     }
 
     async function getLists(){
-        apiData.forEach((v) => {
-            title.push(v.Title);
-            year.push(v.Year);
-            ratingIMDB.push(v.Ratings[0].Value);
-            ratingRotten.push(v.Ratings[1].Value);
-            ratingMetacritic.push(v.Ratings[2].Value);
-            boxOffice.push(v.BoxOffice);
-        });
-        apiData1.forEach((v) => {
-            title.push(v.Title);
-            year.push(v.Year);
-            ratingIMDB.push(v.Ratings[0].Value);
-            ratingRotten.push(v.Ratings[1].Value);
-            ratingMetacritic.push(v.Ratings[2].Value);
-            boxOffice.push(v.BoxOffice);
-        });
-        apiData2.forEach((v) => {
-            title.push(v.Title);
-            year.push(v.Year);
-            ratingIMDB.push(v.Ratings[0].Value);
-            ratingRotten.push(v.Ratings[1].Value);
-            ratingMetacritic.push(v.Ratings[2].Value);
-            boxOffice.push(v.BoxOffice);
-        });
-        apiData3.forEach((v) => {
-            title.push(v.Title);
-            year.push(v.Year);
-            ratingIMDB.push(v.Ratings[0].Value);
-            ratingRotten.push(v.Ratings[1].Value);
-            ratingMetacritic.push(v.Ratings[2].Value);
-            boxOffice.push(v.BoxOffice);
-        });
-        apiData4.forEach((v) => {
-            title.push(v.Title);
-            year.push(v.Year);
-            ratingIMDB.push(v.Ratings[0].Value);
-            ratingRotten.push(v.Ratings[1].Value);
-            ratingMetacritic.push(v.Ratings[2].Value);
-            boxOffice.push(v.BoxOffice);
-        });
-        apiData5.forEach((v) => {
-            title.push(v.Title);
-            year.push(v.Year);
-            ratingIMDB.push(v.Ratings[0].Value);
-            ratingRotten.push(v.Ratings[1].Value);
-            ratingMetacritic.push(v.Ratings[2].Value);
-            boxOffice.push(v.BoxOffice);
-        });
+        title.push(apiData.Title);
+        title.push(apiData1.Title);
+        title.push(apiData2.Title);
+        title.push(apiData3.Title);
+        title.push(apiData4.Title);
+        title.push(apiData5.Title);
+
+        year.push(apiData.Year);
+        year.push(apiData1.Year);
+        year.push(apiData2.Year);
+        year.push(apiData3.Year);
+        year.push(apiData4.Year);
+        year.push(apiData5.Year);
+
+        ratingIMDB.push(apiData.Ratings[0].Value);
+        ratingIMDB.push(apiData1.Ratings[0].Value);
+        ratingIMDB.push(apiData2.Ratings[0].Value);
+        ratingIMDB.push(apiData3.Ratings[0].Value);
+        ratingIMDB.push(apiData4.Ratings[0].Value);
+        ratingIMDB.push(apiData5.Ratings[0].Value);
+
+        ratingRotten.push(apiData.Ratings[1].Value);
+        ratingRotten.push(apiData1.Ratings[1].Value);
+        ratingRotten.push(apiData2.Ratings[1].Value);
+        ratingRotten.push(apiData3.Ratings[1].Value);
+        ratingRotten.push(apiData4.Ratings[1].Value);
+        ratingRotten.push(apiData5.Ratings[1].Value);
+
+        ratingMetacritic.push(apiData.Ratings[2].Value);
+        ratingMetacritic.push(apiData1.Ratings[2].Value);
+        ratingMetacritic.push(apiData2.Ratings[2].Value);
+        ratingMetacritic.push(apiData3.Ratings[2].Value);
+        ratingMetacritic.push(apiData4.Ratings[2].Value);
+        ratingMetacritic.push(apiData5.Ratings[2].Value);
+
 
         loadGraph();
-        
+        google.charts.setOnLoadCallback(loadGraph);
+
 
     }
 
     async function loadGraph(){
-        var chart = new CanvasJS.Chart("chartContainer", {
-            animationEnabled: true,
-            exportEnabled: true,
-            theme: "light1", // "light1", "light2", "dark1", "dark2"
-            title:{
-                text: "Simple Column Chart with Index Labels"
-            },
-            axisY: {
-            includeZero: true
-            },
-            data: [{
-                type: "column", //change type to bar, line, area, pie, etc
-                //indexLabel: "{y}", //Shows y value on all Data Points
-                indexLabelFontColor: "#5A5757",
-                indexLabelFontSize: 16,
-                indexLabelPlacement: "outside",
-                dataPoints: [
-                    { x: title[0] + year[0] + "IMDB", y: ratingIMDB[0] },
-                    { x: title[0] + year[0] + "Rotten" , y: ratingRotten[0] },
-                    { x: title[0] + year[0] + "Metacritic", y: ratingMetacritic[0] },
-                    {x : title[1] + year[1] + "IMDB", y: ratingIMDB[1] },
-                    { x: title[1] + year[1] + "Rotten" , y: ratingRotten[1] },
-                    { x: title[1] + year[1] + "Metacritic", y: ratingMetacritic[1] },
-                    {x : title[2] + year[2] + "IMDB", y: ratingIMDB[2] },
-                    { x: title[2] + year[2] + "Rotten" , y: ratingRotten[2] },
-                    { x: title[2] + year[2] + "Metacritic", y: ratingMetacritic[2] },
-                    {x : title[3] + year[3] + "IMDB", y: ratingIMDB[3] },
-                    { x: title[3] + year[3] + "Rotten" , y: ratingRotten[3] },
-                    { x: title[3] + year[3] + "Metacritic", y: ratingMetacritic[3] },
-                    {x : title[4] + year[4] + "IMDB", y: ratingIMDB[4] },
-                    { x: title[4] + year[4] + "Rotten" , y: ratingRotten[4] },
-                    { x: title[4] + year[4] + "Metacritic", y: ratingMetacritic[4] },
-                    {x : title[5] + year[5] + "IMDB", y: ratingIMDB[5] },
-                    { x: title[5] + year[5] + "Rotten" , y: ratingRotten[5] },
-                    { x: title[5] + year[5] + "Metacritic", y: ratingMetacritic[5] }
-                ]
-            }]
-        });
-        chart.render();
+        google.charts.load('current', {'packages':['bar']});
+        var data = google.visualization.arrayToDataTable([
+            ['Film', 'IMDB', 'Rotten', 'Metacritic'],
+            [title[0], ratingIMDB[0], ratingRotten[0], ratingMetacritic[0]],
+            [title[1], ratingIMDB[1], ratingRotten[1], ratingMetacritic[1]],
+            [title[2], ratingIMDB[2], ratingRotten[2], ratingMetacritic[2]],
+            [title[3], ratingIMDB[3], ratingRotten[3], ratingMetacritic[3]],
+            [title[4], ratingIMDB[4], ratingRotten[4], ratingMetacritic[4]],
+            [title[5], ratingIMDB[5], ratingRotten[5], ratingMetacritic[5]]
+        ]);
+
+        var options = {
+          chart: {
+            title: 'Company Performance',
+            subtitle: 'Sales, Expenses, and Profit: 2014-2017',
+          }
+        };
+
+        var chart = new google.charts.Bar(document.getElementById('columnchart_material'));
+
+        chart.draw(data, google.charts.Bar.convertOptions(options));
+      
+
     }
 
 onMount(getData);
 </script>
 
 <svelte:head>
-    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"on:load="{loadGraph}"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"on:load="{loadGraph}"></script>
 </svelte:head>
 
 <main>
-    <div id="chartContainer" style="height: 370px; width: 100%;"></div>
+    <div div id="columnchart_material" style="width: 800px; height: 500px;"></div>
 </main>
