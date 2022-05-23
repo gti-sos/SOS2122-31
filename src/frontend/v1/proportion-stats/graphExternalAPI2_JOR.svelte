@@ -135,11 +135,10 @@
     async function loadGraph(){
         google.charts.load('current', {'packages':['bar']});
         var data = google.visualization.arrayToDataTable([
-          ['Year', 'Sales', 'Expenses', 'Profit'],
-          ['2014', 1000, 400, 200],
-          ['2015', 1170, 460, 250],
-          ['2016', 660, 1120, 300],
-          ['2017', 1030, 540, 350]
+            ['Film', 'IMDB', 'Rotten', 'Metacritic'],
+            [title[0], ratingIMDB[0], ratingRotten[0], ratingMetacritic[0]],
+            [title[1], ratingIMDB[1], ratingRotten[1], ratingMetacritic[1]],
+            [title[2], ratingIMDB[2], ratingRotten[2], ratingMetacritic[2]],
         ]);
 
         var options = {
