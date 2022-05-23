@@ -149,7 +149,7 @@
                 indexLabelFontSize: 16,
                 indexLabelPlacement: "outside",
                 dataPoints: [
-                    { x: title[0] , y: ratingIMDB[0] },
+                    { x: "Hola" , y: 32 },
                     { x: title[0] , y: ratingRotten[0] },
                     { x: title[0], y: ratingMetacritic[0] },
                     {x : title[1], y: ratingIMDB[1] },
