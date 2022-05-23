@@ -153,7 +153,7 @@
           chart: {
             title: 'The final VS of triologies',
             subtitle: 'The Goodfather vs The Hangover',
-            hAxis: {
+            vAxis: {
               direction: -1
             }
           }
