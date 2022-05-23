@@ -134,43 +134,87 @@
     async function loadGraph(){
         var chart = new CanvasJS.Chart("chartContainer", {
             animationEnabled: true,
-            exportEnabled: true,
-            theme: "light1", // "light1", "light2", "dark1", "dark2"
             title:{
-                text: "Simple Column Chart with Index Labels"
-            },
+                text: "The Goodfather triology vs The Hangover triology" 
+            },	
             axisY: {
-            includeZero: true
+                title: "Score over 10 points",
+                titleFontColor: "#4F81BC",
+                lineColor: "#4F81BC",
+                labelFontColor: "#4F81BC",
+                tickColor: "#4F81BC"
+            },
+            axisY2: {
+                title: "Percent",
+                titleFontColor: "#C0504E",
+                lineColor: "#C0504E",
+                labelFontColor: "#C0504E",
+                tickColor: "#C0504E"
+            },	
+            toolTip: {
+                shared: true
+            },
+            legend: {
+                cursor:"pointer",
+                itemclick: toggleDataSeries
             },
             data: [{
-                type: "column", //change type to bar, line, area, pie, etc
-                //indexLabel: "{y}", //Shows y value on all Data Points
-                indexLabelFontColor: "#5A5757",
-                indexLabelFontSize: 16,
-                indexLabelPlacement: "outside",
-                dataPoints: [
-                    { x: "Hola" , y: 32 },
-                    { x: title[0] , y: ratingRotten[0] },
-                    { x: title[0], y: ratingMetacritic[0] },
-                    {x : title[1], y: ratingIMDB[1] },
-                    { x: title[1] , y: ratingRotten[1] },
-                    { x: title[1], y: ratingMetacritic[1] },
-                    {x : title[2], y: ratingIMDB[2] },
-                    { x: title[2] , y: ratingRotten[2] },
-                    { x: title[2], y: ratingMetacritic[2] },
-                    {x : title[3], y: ratingIMDB[3] },
-                    { x: title[3] , y: ratingRotten[3] },
-                    { x: title[3], y: ratingMetacritic[3] },
-                    {x : title[4], y: ratingIMDB[4] },
-                    { x: title[4] , y: ratingRotten[4] },
-                    { x: title[4], y: ratingMetacritic[4] },
-                    {x : title[5], y: ratingIMDB[5] },
-                    { x: title[5] , y: ratingRotten[5] },
-                    { x: title[5], y: ratingMetacritic[5] }
+                type: "column",
+                name: "Proven Oil Reserves (bn)",
+                legendText: "Proven Oil Reserves",
+                showInLegend: true, 
+                dataPoints:[
+                    { label: "Saudi", y: 266.21 },
+                    { label: "Venezuela", y: 302.25 },
+                    { label: "Iran", y: 157.20 },
+                    { label: "Iraq", y: 148.77 },
+                    { label: "Kuwait", y: 101.50 },
+                    { label: "UAE", y: 97.8 }
+                ]
+            },
+            {
+                type: "column",	
+                name: "Oil Production (million/day)",
+                legendText: "Oil Production",
+                axisYType: "secondary",
+                showInLegend: true,
+                dataPoints:[
+                    { label: "Saudi", y: 10.46 },
+                    { label: "Venezuela", y: 2.27 },
+                    { label: "Iran", y: 3.99 },
+                    { label: "Iraq", y: 4.45 },
+                    { label: "Kuwait", y: 2.92 },
+                    { label: "UAE", y: 3.1 }
+                ]
+            },
+            {
+                type: "column",
+                name: "Oil Production (million/day)",
+                legendText: "Oil Production",
+                axisYType: "secondary",
+                showInLegend: true,
+                dataPoints:[
+                    { label: "Saudi", y: 10.46 },
+                    { label: "Venezuela", y: 2.27 },
+                    { label: "Iran", y: 3.99 },
+                    { label: "Iraq", y: 4.45 },
+                    { label: "Kuwait", y: 2.92 },
+                    { label: "UAE", y: 3.1 }
                 ]
             }]
         });
         chart.render();
+
+        function toggleDataSeries(e) {
+            if (typeof(e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
+                e.dataSeries.visible = false;
+            }
+            else {
+                e.dataSeries.visible = true;
+            }
+            chart.render();
+        }
+
     }
 
 onMount(getData);
