@@ -134,8 +134,10 @@
 
     }
 
+    
     async function loadGraph(){
-        google.charts.load('current', {'packages':['corechart', 'bar']});        
+        google.charts.load('current', {'packages':['corechart', 'bar']});       
+        google.charts.setOnLoadCallback(drawStuff); 
         var data = google.visualization.arrayToDataTable([
             ['Film', 'IMDB', 'Rotten', 'Metacritic'],
             [title[0], ratingIMDB[0], ratingRotten[0], ratingMetacritic[0]],
