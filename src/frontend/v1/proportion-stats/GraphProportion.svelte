@@ -14,6 +14,27 @@
     let female = [];
     let total = [];
 
+    let male2015 = [];
+    let male2016 = [];
+    let male2017 = [];
+    let male2018 = [];
+    let male2019 = [];
+    let male2020 = [];
+
+    let female2015 = [];
+    let female2016 = [];
+    let female2017 = [];
+    let female2018 = [];
+    let female2019 = [];
+    let female2020 = [];
+
+    let total2015 = [];
+    let total2016 = [];
+    let total2017 = [];
+    let total2018 = [];
+    let total2019 = [];
+    let total2020 = [];
+
     async function getData(){
         const res1 = await fetch('/api/v1/proportion-stats');
         if (res1.ok){
@@ -30,10 +51,36 @@
             });
             console.log(apiData.length);
             apiData.forEach((v) => {
-                year.push(v.year);
-                male.push(v.male);
-                female.push(v.female);
-                total.push(v.total);
+                if(v.year = "2015"){
+                    male2015.push(v.male);
+                    female2015.push(v.female);
+                    total2015.push(v.total);
+                }
+                else if(v.year = "2016"){
+                    male2016.push(v.male);
+                    female2016.push(v.female);
+                    total2016.push(v.total);
+                }
+                else if(v.year = "2017"){
+                    male2017.push(v.male);
+                    female2017.push(v.female);
+                    total2017.push(v.total);
+                }
+                else if(v.year = "2018"){
+                    male2018.push(v.male);
+                    female2018.push(v.female);
+                    total2018.push(v.total);
+                }
+                else if(v.year = "2019"){
+                    male2019.push(v.male);
+                    female2019.push(v.female);
+                    total2019.push(v.total);
+                }
+                else if(v.year = "2020"){
+                    male2020.push(v.male);
+                    female2020.push(v.female);
+                    total2020.push(v.total);
+                }
         });
 
         
@@ -52,58 +99,142 @@
         Highcharts.chart('container', {
 
             chart: {
-                polar: true,
-                type: 'line'
+                height: '100%',
+                type: 'packedbubble'
             },
 
             title: {
-                text: 'Proportion fo young people without studies, work or capacitation, 2015-2020',
-                x: -80
+                text: 'Proportion fo young people without studies, work or capacitation, 2015-2020'
+                
             },
-            pane: {
-                size: '80%'
+           
+            tooltip: {
+                useHTML: true,
+                pointFormat: '<b>{point.name}:</b> {point.value}m CO<sub>2</sub>'
             },
 
-            xAxis: {
-                categories: ['2015', '2016', '2017', '2018', '2019', '2020'],
-                tickmarkPlacement: 'on',
-                lineWidth: 0
-            },
-            yAxis: {
-                gridLineInterpolation: 'polygon',
-                lineWidth: 0,
-                min: 0
+            plotOptions: {
+                packedbubble: {
+                    minSize: '20%',
+                    maxSize: '100%',
+                    zMin: 0,
+                    zMax: 1000,
+                    layoutAlgorithm: {
+                        gravitationalConstant: 0.05,
+                        splitSeries: true,
+                        seriesInteraction: false,
+                        dragBetweenSeries: true,
+                        parentNodeLimit: true
+                    },
+                    dataLabels: {
+                        enabled: true,
+                        format: '{point.name}',
+                        filter: {
+                            property: 'y',
+                            operator: '>',
+                            value: 250
+                        },
+                        style: {
+                            color: 'black',
+                            textOutline: 'none',
+                            fontWeight: 'normal'
+                        }
+                    }
+                }
             },
 
             
-
-            tooltip: {
-                shared: true,
-                pointFormat: '<span style="color:{series.color}">{series.name}: <b>${point.y:,.0f}</b><br/>'
-            },
-
-            legend: {
-                layout: 'vertical',
-                align: 'right',
-                verticalAlign: 'middle'
-            },
 
             
 
             series: [{
-                name: 'Male',
-                data: male,
-                pointPlacement: 'on'
+                name: '2015',
+                data: [{
+                    name: 'Male',
+                    value: male2015
+                },
+                {
+                    name: 'Female',
+                    value: female2015
+                },
+                {
+                    name : 'Total',
+                    value: total2015
+                }]    
+            },{
+                name: '2016',
+                data: [{
+                    name: 'Male',
+                    value: male2016
+                },
+                {
+                    name: 'Female',
+                    value: female2016
+                },
+                {
+                    name : 'Total',
+                    value: total2016
+                }] 
+            },{
+                name: '2017',
+                data: [{
+                    name: 'Male',
+                    value: male2017
+                },
+                {
+                    name: 'Female',
+                    value: female2017
+                },
+                {
+                    name : 'Total',
+                    value: total2017
+                }] 
+            },{
+                name: '2018',
+                data: [{
+                    name: 'Male',
+                    value: male2018
+                },
+                {
+                    name: 'Female',
+                    value: female2018
+                },
+                {
+                    name : 'Total',
+                    value: total2018
+                }] 
+            },{
+                name: '2019',
+                data: [{
+                    name: 'Male',
+                    value: male2019
+                },
+                {
+                    name: 'Female',
+                    value: female2019
+                },
+                {
+                    name : 'Total',
+                    value: total2019
+                }] 
+            },{
+                name: '2020',
+                data: [{
+                    name: 'Male',
+                    value: male2020
+                },
+                {
+                    name: 'Female',
+                    value: female2020
+                },
+                {
+                    name : 'Total',
+                    value: total2020
+                }] 
+            }
+                
 
-            }, {
-                name: 'Female',
-                data: female,
-                pointPlacement: 'on'
-            }, {
-                name: 'Total',
-                data: total,
-                pointPlacement: 'on'
-            }],
+            ],
             responsive: {
                 rules: [{
                     condition: {
@@ -138,9 +269,8 @@
     <figure class="highcharts-figure">
         <div id="container"></div>
         <p class="highcharts-description">
-            A spiderweb chart or radar chart is a variant of the polar chart.
-            Spiderweb charts are commonly used to compare multivariate data sets,
-            like this demo using six variables of comparison.
+            This chart shows how packed bubble charts can be grouped by series,
+            creating a hierarchy.
         </p>
     </figure>
 
@@ -181,7 +311,7 @@
     .highcharts-figure,
     .highcharts-data-table table {
         min-width: 320px;
-        max-width: 700px;
+        max-width: 800px;
         margin: 1em auto;
     }
 
@@ -220,4 +350,5 @@
     .highcharts-data-table tr:hover {
         background: #f1f7ff;
     }
+
 </style>
