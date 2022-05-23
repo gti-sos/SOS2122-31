@@ -127,93 +127,32 @@
 
 
         loadGraph();
-        
+        google.charts.setOnLoadCallback(loadGraph);
+
 
     }
 
     async function loadGraph(){
-        var chart = new CanvasJS.Chart("chartContainer", {
-            animationEnabled: true,
-            title:{
-                text: "The Goodfather triology vs The Hangover triology" 
-            },	
-            axisY: {
-                title: "Score over 10 points",
-                titleFontColor: "#4F81BC",
-                lineColor: "#4F81BC",
-                labelFontColor: "#4F81BC",
-                tickColor: "#4F81BC"
-            },
-            axisY2: {
-                title: "Percent",
-                titleFontColor: "#C0504E",
-                lineColor: "#C0504E",
-                labelFontColor: "#C0504E",
-                tickColor: "#C0504E"
-            },	
-            toolTip: {
-                shared: true
-            },
-            legend: {
-                cursor:"pointer",
-                itemclick: toggleDataSeries
-            },
-            data: [{
-                type: "column",
-                name: "Proven Oil Reserves (bn)",
-                legendText: "Proven Oil Reserves",
-                showInLegend: true, 
-                dataPoints:[
-                    { label: "Saudi", y: 266.21 },
-                    { label: "Venezuela", y: 302.25 },
-                    { label: "Iran", y: 157.20 },
-                    { label: "Iraq", y: 148.77 },
-                    { label: "Kuwait", y: 101.50 },
-                    { label: "UAE", y: 97.8 }
-                ]
-            },
-            {
-                type: "column",	
-                name: "Oil Production (million/day)",
-                legendText: "Oil Production",
-                axisYType: "secondary",
-                showInLegend: true,
-                dataPoints:[
-                    { label: "Saudi", y: 10.46 },
-                    { label: "Venezuela", y: 2.27 },
-                    { label: "Iran", y: 3.99 },
-                    { label: "Iraq", y: 4.45 },
-                    { label: "Kuwait", y: 2.92 },
-                    { label: "UAE", y: 3.1 }
-                ]
-            },
-            {
-                type: "column",
-                name: "Oil Production (million/day)",
-                legendText: "Oil Production",
-                axisYType: "secondary",
-                showInLegend: true,
-                dataPoints:[
-                    { label: "Saudi", y: 10.46 },
-                    { label: "Venezuela", y: 2.27 },
-                    { label: "Iran", y: 3.99 },
-                    { label: "Iraq", y: 4.45 },
-                    { label: "Kuwait", y: 2.92 },
-                    { label: "UAE", y: 3.1 }
-                ]
-            }]
-        });
-        chart.render();
+        google.charts.load('current', {'packages':['bar']});
+        var data = google.visualization.arrayToDataTable([
+          ['Year', 'Sales', 'Expenses', 'Profit'],
+          ['2014', 1000, 400, 200],
+          ['2015', 1170, 460, 250],
+          ['2016', 660, 1120, 300],
+          ['2017', 1030, 540, 350]
+        ]);
 
-        function toggleDataSeries(e) {
-            if (typeof(e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
-                e.dataSeries.visible = false;
-            }
-            else {
-                e.dataSeries.visible = true;
-            }
-            chart.render();
-        }
+        var options = {
+          chart: {
+            title: 'Company Performance',
+            subtitle: 'Sales, Expenses, and Profit: 2014-2017',
+          }
+        };
+
+        var chart = new google.charts.Bar(document.getElementById('columnchart_material'));
+
+        chart.draw(data, google.charts.Bar.convertOptions(options));
+      
 
     }
 
@@ -221,9 +160,9 @@ onMount(getData);
 </script>
 
 <svelte:head>
-    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"on:load="{loadGraph}"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"on:load="{loadGraph}"></script>
 </svelte:head>
 
 <main>
-    <div id="chartContainer" style="height: 370px; width: 100%;"></div>
+    <div div id="columnchart_material" style="width: 800px; height: 500px;"></div>
 </main>
