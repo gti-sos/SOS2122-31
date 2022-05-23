@@ -90,7 +90,7 @@
     }
 
     async function getLists(){
-        apiData.forEach((v) => {
+        apiData.forEach(v => {
             title.push(v.Title);
             year.push(v.Year);
             ratingIMDB.push(v.Ratings[0].Value);
@@ -98,7 +98,7 @@
             ratingMetacritic.push(v.Ratings[2].Value);
             boxOffice.push(v.BoxOffice);
         });
-        apiData1.forEach((v) => {
+        apiData1.forEach(v => {
             title.push(v.Title);
             year.push(v.Year);
             ratingIMDB.push(v.Ratings[0].Value);
@@ -106,7 +106,7 @@
             ratingMetacritic.push(v.Ratings[2].Value);
             boxOffice.push(v.BoxOffice);
         });
-        apiData2.forEach((v) => {
+        apiData2.forEach(v => {
             title.push(v.Title);
             year.push(v.Year);
             ratingIMDB.push(v.Ratings[0].Value);
@@ -114,7 +114,7 @@
             ratingMetacritic.push(v.Ratings[2].Value);
             boxOffice.push(v.BoxOffice);
         });
-        apiData3.forEach((v) => {
+        apiData3.forEach(v => {
             title.push(v.Title);
             year.push(v.Year);
             ratingIMDB.push(v.Ratings[0].Value);
@@ -122,7 +122,7 @@
             ratingMetacritic.push(v.Ratings[2].Value);
             boxOffice.push(v.BoxOffice);
         });
-        apiData4.forEach((v) => {
+        apiData4.forEach(v => {
             title.push(v.Title);
             year.push(v.Year);
             ratingIMDB.push(v.Ratings[0].Value);
@@ -130,7 +130,7 @@
             ratingMetacritic.push(v.Ratings[2].Value);
             boxOffice.push(v.BoxOffice);
         });
-        apiData5.forEach((v) => {
+        apiData5.forEach(v => {
             title.push(v.Title);
             year.push(v.Year);
             ratingIMDB.push(v.Ratings[0].Value);
