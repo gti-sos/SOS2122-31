@@ -27,6 +27,8 @@
         const res4 = await fetch('https://www.omdbapi.com/?i=tt1411697&apikey=fb80765d');
         const res5 = await fetch('https://www.omdbapi.com/?i=tt1951261&apikey=fb80765d');
 
+        
+
         if(res.ok){
             const arrayData = await res.json();
             apiData = arrayData;
@@ -133,8 +135,8 @@
     }
 
     async function loadGraph(){
-        google.charts.load('current', {'packages':['bar']});
-        var data = google.visualization.arrayToDataTable([
+        google.charts.load('current', {'packages':['corechart', 'bar']});        
+        var data = google.visualization([
             ['Film', 'IMDB', 'Rotten', 'Metacritic'],
             [title[0], ratingIMDB[0], ratingRotten[0], ratingMetacritic[0]],
             [title[1], ratingIMDB[1], ratingRotten[1], ratingMetacritic[1]],
@@ -144,12 +146,41 @@
             [title[5], ratingIMDB[5], ratingRotten[5], ratingMetacritic[5]]
         ]);
 
-        var options = {
+        var materialOptions = {
+          width: 900,
           chart: {
-            title: 'Company Performance',
-            subtitle: 'Sales, Expenses, and Profit: 2014-2017',
+            title: 'The definitive triology',
+            subtitle: 'IMDB on the left, Rotten Tomatoes and Metacritic on the right',
+          },
+          series: {
+            0: { axis: 'IMDB' }, // Bind series 0 to an axis named 'IMDB'.
+            1: { axis: 'Rotten' }, // Bind series 1 to an axis named 'Rotten'.
+            2: { axis: 'Metacritic' } // Bind series 2 to an axis named 'Metacritic'.
+          },
+          axes: {
+            y: {
+              distance: {label: 'Over 10 points'}, // Left y-axis.
+              brightness: {side: 'right', label: 'Over 100 points'} // Right y-axis.
+            }
           }
         };
+
+        function drawMaterialChart() {
+          var materialChart = new google.charts.Bar(chartDiv);
+          materialChart.draw(data, google.charts.Bar.convertOptions(materialOptions));
+          button.innerText = 'Change to Classic';
+          button.onclick = drawClassicChart;
+        }
+
+        function drawClassicChart() {
+          var classicChart = new google.visualization.ColumnChart(chartDiv);
+          classicChart.draw(data, classicOptions);
+          button.innerText = 'Change to Material';
+          button.onclick = drawMaterialChart;
+        }
+
+        drawMaterialChart();
+
 
         var chart = new google.charts.Bar(document.getElementById('columnchart_material'));
 
