@@ -51,65 +51,79 @@
     async function loadGraph(){
         Highcharts.chart('container', {
 
-title: {
-    text: 'Proportion fo young people without studies, work or capacitation, 2015-2020'
-},
+            chart: {
+                polar: true,
+                type: 'line'
+            },
 
-subtitle: {
-    text: 'Source: www.worldbank.org'
-},
+            title: {
+                text: 'Proportion fo young people without studies, work or capacitation, 2015-2020',
+                x: -80
+            },
+            pane: {
+                size: '80%'
+            },
 
-yAxis: {
-    title: {
-        text: 'Proportion'
-    }
-},
+            subtitle: {
+                text: 'Source: www.worldbank.org'
+            },
 
-xAxis: {
-    accessibility: {
-        rangeDescription: 'Range: 2015 to 2020'
-    }
-},
+            yAxis: {
+                gridLineInterpolation: 'polygon',
+                lineWidth: 0,
+                min: 0
+            },
 
-legend: {
-    layout: 'vertical',
-    align: 'right',
-    verticalAlign: 'middle'
-},
+            xAxis: {
+                categories: ['2015', '2016', '2017', '2018', '2019', '2020'],
+                tickmarkPlacement: 'on',
+                lineWidth: 0
+            },
 
-plotOptions: {
-    series: {
-        label: {
-            connectorAllowed: false
-        },
-        pointStart: 2010
-    }
-},
+            tooltip: {
+                shared: true,
+                pointFormat: '<span style="color:{series.color}">{series.name}: <b>${point.y:,.0f}</b><br/>'
+            },
 
-series: [{
-    name: 'Male',
-    data: male
-}, {
-    name: 'Female',
-    data: female
-}, {
-    name: 'Total',
-    data: total
-}],
-responsive: {
-    rules: [{
-        condition: {
-            maxWidth: 500
-        },
-        chartOptions: {
             legend: {
-                layout: 'horizontal',
-                align: 'center',
-                verticalAlign: 'bottom'
+                layout: 'vertical',
+                align: 'right',
+                verticalAlign: 'middle'
+            },
+
+            
+
+            series: [{
+                name: 'Male',
+                data: male,
+                pointPlacement: 'on'
+
+            }, {
+                name: 'Female',
+                data: female,
+                pointPlacement: 'on'
+            }, {
+                name: 'Total',
+                data: total,
+                pointPlacement: 'on'
+            }],
+            responsive: {
+                rules: [{
+                    condition: {
+                        maxWidth: 500
+                    },
+                    chartOptions: {
+                        legend: {
+                            layout: 'horizontal',
+                            align: 'center',
+                            verticalAlign: 'bottom'
+                        }
+                    },
+                    pane : {
+                        size: '70%'
+                    }
+                }]
             }
-        }
-    }]
-}
 
 });
  }
