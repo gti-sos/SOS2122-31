@@ -19,13 +19,13 @@
     let boxOffice = [];
 
     async function getData(){
-        const res = await fetch('http://www.omdbapi.com/?i=tt0068646&apikey=fb80765d');
-        const res1 = await fetch('http://www.omdbapi.com/?i=tt0071562&apikey=fb80765d');
-        const res2 = await fetch('http://www.omdbapi.com/?i=tt0099674&apikey=fb80765d');
+        const res = await fetch('https://www.omdbapi.com/?i=tt0068646&apikey=fb80765d');
+        const res1 = await fetch('https://www.omdbapi.com/?i=tt0071562&apikey=fb80765d');
+        const res2 = await fetch('https://www.omdbapi.com/?i=tt0099674&apikey=fb80765d');
 
-        const res3 = await fetch('http://www.omdbapi.com/?i=tt1119646&apikey=fb80765d');
-        const res4 = await fetch('http://www.omdbapi.com/?i=tt1411697&apikey=fb80765d');
-        const res5 = await fetch('http://www.omdbapi.com/?i=tt1951261&apikey=fb80765d');
+        const res3 = await fetch('https://www.omdbapi.com/?i=tt1119646&apikey=fb80765d');
+        const res4 = await fetch('https://www.omdbapi.com/?i=tt1411697&apikey=fb80765d');
+        const res5 = await fetch('https://www.omdbapi.com/?i=tt1951261&apikey=fb80765d');
 
         if(res.ok){
             const arrayData = await res.json();
