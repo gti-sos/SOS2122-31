@@ -11,9 +11,13 @@
 	//Gráficos:
 	import GraphAlphabetization from "./alphabetization-stats/GraphAlphabetization.svelte";
 	import GraphRegistration from "./registration-stats/GraphRegistration.svelte";
+
+//José Ortiz Roldan
 	import GraphProportion from "./proportion-stats/GraphProportion.svelte";
 	import GraphProportionSearch from "./proportion-stats/GraphProportionSearch.svelte";
 	import GraphExternalAPI_JOR from "./proportion-stats/graphExternalAPI_JOR.svelte";
+	import GraphExternalAPI2_JOR from "./proportion-stats/graphExternalAPI2_JOR.svelte";
+//	
 	import GraphGeneral from "./GraphGeneral.svelte";
 	import GraphGeneral2 from "./GraphGeneral2.svelte";
 	import GraphCanvaJs from "./registration-stats/graphCanvaJS.svelte";
@@ -42,6 +46,7 @@
 		"/graphProportion": GraphProportion,
 		"/graphProportionSearch/:country": GraphProportionSearch,
 		"/graphExternalAPI_JOR": GraphExternalAPI_JOR,
+		"/graphExternalAPI2_JOR": GraphExternalAPI2_JOR,
 		"/info": Info,
 		"/graphAlphabetization/:country": GraphAlphabetization,
 		"/graphRegistration": GraphRegistration,
