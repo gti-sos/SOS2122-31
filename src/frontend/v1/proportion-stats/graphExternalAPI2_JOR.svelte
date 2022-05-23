@@ -136,7 +136,7 @@
 
     async function loadGraph(){
         google.charts.load('current', {'packages':['corechart', 'bar']});        
-        var data = google.visualization([
+        var data = google.visualization.arrayToDataTable([
             ['Film', 'IMDB', 'Rotten', 'Metacritic'],
             [title[0], ratingIMDB[0], ratingRotten[0], ratingMetacritic[0]],
             [title[1], ratingIMDB[1], ratingRotten[1], ratingMetacritic[1]],
