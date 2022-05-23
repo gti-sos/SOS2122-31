@@ -23,9 +23,11 @@
         const res = await fetch('https://ddragon.leagueoflegends.com/cdn/12.9.1/data/en_US/champion.json');
         if (res.ok){
             const arrayData = await res.json();
-            apiData = arrayData;
-            data = apiData.data;
-            console.log("Data reciebes:" + data.length);
+            apiData = await (arrayData);
+            console.log("api data : " + apiData);
+
+            data = await (apiData.data);
+            console.log("Data recieved :" + data.length);
 
             getLists();
 
@@ -40,7 +42,7 @@
 
 
     async function getLists(){
-        data.forEach((v) =>{
+        data.forEach(v =>{
             name.push(v.name);
             tags.push(v.tags);
             partype.push(v.partype);
