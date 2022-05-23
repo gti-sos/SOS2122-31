@@ -1,6 +1,6 @@
 <script>
     import { onMount } from "svelte";
-    import Highcharts from "highcharts";
+    import JSC from "jscharting";
 
     //Atributos API Propia:
     let apiData = [];
@@ -76,67 +76,50 @@
     }
 
     async function loadGraph() {
-        Highcharts.chart("container", {
-            chart: {
-                type: "areaspline",
-            },
-            title: {
-                text: `Gráfica con todos los paises`,
-            },
-            subtitle: {
-                text: "Fuente de datos: Banco Mundial de Datos",
-            },
+        JSC.chart("chartDiv", {
+            debug: true,
+            type: "line",
+            legend_visible: false,
             xAxis: {
-                categories: year,
-                tickmarkPlacement: "on",
-                title: {
-                    enabled: false,
-                },
+                crosshair_enabled: true,
             },
             yAxis: {
-                title: {
-                    text: "Percentage",
+                orientation: "opposite",
+                formatString: "",
+            },
+            defaultSeries: {
+                defaultPoint_marker: {
+                    type: "circle",
+                    size: 8,
+                    fill: "white",
+                    outline: { width: 2, color: "currentColor" },
                 },
             },
-            tooltip: {
-                split: true,
-                valueSuffix: "%",
-            },
-            plotOptions: {
-                area: {
-                    stacking: "normal",
-                    lineColor: "#666666",
-                    lineWidth: 1,
-                    marker: {
-                        lineWidth: 1,
-                        lineColor: "#666666",
-                    },
-                },
-            },
+            title_label_text: "Costs (Last 6 Months)",
             series: [
                 {
                     name: "Hombres",
-                    data: ar_ym,
+                    points: ar_ym,
                 },
                 {
                     name: "Mujeres",
-                    data: ar_yw,
+                    points: ar_yw,
                 },
                 {
                     name: "Media",
-                    data: ar_ty,
+                    points: ar_ty,
                 },
                 {
                     name: "Edad 0-50",
-                    data: azfSOS,
+                    points: azfSOS,
                 },
                 {
                     name: "Edad 50-70",
-                    data: afsSOS,
+                    points: afsSOS,
                 },
                 {
                     name: "Edad 70",
-                    data: asSOS,
+                    points: asSOS,
                 },
             ],
         });
@@ -146,18 +129,13 @@
 </script>
 
 <svelte:head>
-    <script src="https://code.highcharts.com/highcharts.js"></script>
-    <script src="https://code.highcharts.com/modules/heatmap.js"></script>
-    <script src="https://code.highcharts.com/modules/exporting.js"></script>
-    <script src="https://code.highcharts.com/modules/export-data.js"></script>
     <script
-        src="https://code.highcharts.com/modules/accessibility.js"
+        src="https://code.jscharting.com/latest/jscharting.js"
         on:load={loadGraph}></script>
 </svelte:head>
 <main>
-    <figure class="highcharts-figure">
-        <div id="container" />
-        <p class="highcharts-description" />
-    </figure>
-    <br />
+    <div
+        id="chartDiv"
+        style="max-width: 740px;height: 400px;margin: 0px auto;"
+    />
 </main>
