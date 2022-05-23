@@ -40,6 +40,7 @@
         if (res1.ok){
             const arrayData = await res1.json();
             apiData = arrayData;
+            console.log("api data : " + apiData);
             //Ordenamos valores:
             apiData.sort(function (a, b) {
                 var keyA = new Date(a.year),
