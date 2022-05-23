@@ -25,7 +25,7 @@
             const arrayData = await res.json();
             apiData = arrayData;
             data = apiData.data;
-            console.log(data.length);
+            console.log("Data reciebes:" + data.length);
 
             getLists();
 
