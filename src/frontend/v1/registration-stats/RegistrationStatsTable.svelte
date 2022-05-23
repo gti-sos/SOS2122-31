@@ -34,7 +34,7 @@
 
     async function getReg(){
         console.log("Fetching registrations....");
-		let c = `https://sos2122-31.herokuapp.com/api/v2/registration-stats?limit=${limit}&&offset=${offset*10}&&`;
+		let c = `/api/v2/registration-stats?limit=${limit}&&offset=${offset*10}&&`;
 		if (from != null) {
 			c = c + `from=${from}&&`
 		}
@@ -68,7 +68,7 @@
 	async function insertRegistration() {
     	console.log("Inserting data "+ JSON.stringify(newRegistration));
    		
-		const res = await fetch("https://sos2122-31.herokuapp.com"+ BASE_API_URL +"/registration-stats",
+		const res = await fetch(BASE_API_URL +"/registration-stats",
 							{
 								method: "POST",
 								body: JSON.stringify(newRegistration),
@@ -101,7 +101,7 @@
 	}	
 
 	async function BorrarRegis(countryDelete, yearDelete){
-        const res = await fetch("https://sos2122-31.herokuapp.com/api/v2/registration-stats/"+countryDelete+"/"+yearDelete,
+        const res = await fetch("/api/v2/registration-stats/"+countryDelete+"/"+yearDelete,
 			{
 				method: "DELETE"
 			}).then(function(res){
@@ -121,7 +121,7 @@
 
 	async function BorrarRegistros(){
         console.log("Deleting registrations....");
-        const res = await fetch("https://sos2122-31.herokuapp.com/api/v2/registration-stats/",
+        const res = await fetch("/api/v2/registration-stats/",
 			{
 				method: "DELETE"
 			}).then(function (res){
@@ -143,7 +143,7 @@
 
 	async function CargarRegistrations(){
         console.log("Loading registrations....");
-        const res = await fetch("https://sos2122-31.herokuapp.com/api/v2/registration-stats/loadInitialData",
+        const res = await fetch("/api/v2/registration-stats/loadInitialData",
 			{
 				method: "GET"
 			}).then(function (res){
