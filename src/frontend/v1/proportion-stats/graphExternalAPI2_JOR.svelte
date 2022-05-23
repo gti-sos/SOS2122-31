@@ -138,6 +138,9 @@
     async function loadGraph(){
         google.charts.load('current', {'packages':['corechart', 'bar']});       
         
+        var button = document.getElementById('change-chart');
+        var chartDiv = document.getElementById('chart_div');
+
         var data = google.visualization.arrayToDataTable([
             ['Film', 'IMDB', 'Rotten', 'Metacritic'],
             [title[0], ratingIMDB[0], ratingRotten[0], ratingMetacritic[0]],
