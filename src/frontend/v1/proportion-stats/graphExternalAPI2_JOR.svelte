@@ -154,8 +154,8 @@
             title: 'The final VS of triologies',
             subtitle: 'The Goodfather vs The Hangover',
             hAxis: {
-              direction: -1,
-            },
+              direction: -1
+            }
           }
         };
 
@@ -175,5 +175,5 @@ onMount(getData);
 </svelte:head>
 
 <main>
-    <div div id="columnchart_material" style="width: 800px; height: 500px;"></div>
+    <div div id="columnchart_material" style="width: 1800px; height: 500px;"></div>
 </main>
