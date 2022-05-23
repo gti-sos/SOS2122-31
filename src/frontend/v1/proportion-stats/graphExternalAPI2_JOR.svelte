@@ -139,6 +139,9 @@
             [title[0], ratingIMDB[0], ratingRotten[0], ratingMetacritic[0]],
             [title[1], ratingIMDB[1], ratingRotten[1], ratingMetacritic[1]],
             [title[2], ratingIMDB[2], ratingRotten[2], ratingMetacritic[2]],
+            [title[3], ratingIMDB[3], ratingRotten[3], ratingMetacritic[3]],
+            [title[4], ratingIMDB[4], ratingRotten[4], ratingMetacritic[4]],
+            [title[5], ratingIMDB[5], ratingRotten[5], ratingMetacritic[5]]
         ]);
 
         var options = {
