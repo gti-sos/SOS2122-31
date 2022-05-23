@@ -1,73 +1,187 @@
 <script>
     import { onMount } from "svelte";
 
+
+
     let apiData = [];
-    let data = [];
-    let name = [];
-    let percent = [];
+    let apiData1 = [];
+    let apiData2 = [];
+    let apiData3 = [];
+    let apiData4 = [];
+    let apiData5 = [];
+
+
+    let title = [];
+    let year = [];
+    let ratingIMDB = [];
+    let ratingRotten = [];
+    let ratingMetacritic = [];
+    let boxOffice = [];
 
     async function getData(){
-        const res = await fetch('https://api.steampowered.com/ISteamUserStats/GetGlobalAchievementPercentagesForApp/v0002/?gameid=440&format=json');
+        const res = await fetch('http://www.omdbapi.com/?i=tt0068646&apikey=fb80765d');
+        const res1 = await fetch('http://www.omdbapi.com/?i=tt0071562&apikey=fb80765d');
+        const res2 = await fetch('http://www.omdbapi.com/?i=tt0099674&apikey=fb80765d');
+
+        const res3 = await fetch('http://www.omdbapi.com/?i=tt1119646&apikey=fb80765d');
+        const res4 = await fetch('http://www.omdbapi.com/?i=tt1411697&apikey=fb80765d');
+        const res5 = await fetch('http://www.omdbapi.com/?i=tt1951261&apikey=fb80765d');
+
         if(res.ok){
             const arrayData = await res.json();
             apiData = arrayData;
-            data = apiData.achievementpercentages.achivements;
-            console.log(data.length);
+            console.log(apiData);
 
-            getLists();
         }
         else{
             window.alert("No hay datos cargados en" + window.location.href );
             console.log("INTERNAL FATAL ERROR en" + window.location.href);
         }
+
+        if (res1.ok){
+            const arrayData1 = await res1.json();
+            apiData1 = arrayData1;
+            console.log(apiData1);
+        }
+        else{
+            window.alert("No hay datos cargados en" + window.location.href );
+            console.log("INTERNAL FATAL ERROR en" + window.location.href);
+        }
+        if (res2.ok){
+            const arrayData2 = await res2.json();
+            apiData2 = arrayData2;
+            console.log(apiData2);
+        }
+        else{
+            window.alert("No hay datos cargados en" + window.location.href );
+            console.log("INTERNAL FATAL ERROR en" + window.location.href);
+        }
+        if (res3.ok){
+            const arrayData3 = await res3.json();
+            apiData3 = arrayData3;
+            console.log(apiData3);
+        }
+        else{
+            window.alert("No hay datos cargados en" + window.location.href );
+            console.log("INTERNAL FATAL ERROR en" + window.location.href);
+        }
+        if (res4.ok){
+            const arrayData4 = await res4.json();
+            apiData4 = arrayData4;
+            console.log(apiData4);
+        }
+        else{
+            window.alert("No hay datos cargados en" + window.location.href );
+            console.log("INTERNAL FATAL ERROR en" + window.location.href);
+        }
+        if (res5.ok){
+            const arrayData5 = await res5.json();
+            apiData5 = arrayData5;
+            console.log(apiData5);
+
+            getLists();
+            
+        }
+        else{
+            window.alert("No hay datos cargados en" + window.location.href );
+            console.log("INTERNAL FATAL ERROR en" + window.location.href);
+        }
+
     }
 
     async function getLists(){
-        data.forEach((v) =>{
-            name.push(v.name);
-            percent.push(v.percent);
+        apiData.forEach((v) => {
+            title.push(v.Title);
+            year.push(v.Year);
+            ratingIMDB.push(v.Ratings[0].Value);
+            ratingRotten.push(v.Ratings[1].Value);
+            ratingMetacritic.push(v.Ratings[2].Value);
+            boxOffice.push(v.BoxOffice);
         });
-        console.log(name);
-        console.log(percent);
+        apiData1.forEach((v) => {
+            title.push(v.Title);
+            year.push(v.Year);
+            ratingIMDB.push(v.Ratings[0].Value);
+            ratingRotten.push(v.Ratings[1].Value);
+            ratingMetacritic.push(v.Ratings[2].Value);
+            boxOffice.push(v.BoxOffice);
+        });
+        apiData2.forEach((v) => {
+            title.push(v.Title);
+            year.push(v.Year);
+            ratingIMDB.push(v.Ratings[0].Value);
+            ratingRotten.push(v.Ratings[1].Value);
+            ratingMetacritic.push(v.Ratings[2].Value);
+            boxOffice.push(v.BoxOffice);
+        });
+        apiData3.forEach((v) => {
+            title.push(v.Title);
+            year.push(v.Year);
+            ratingIMDB.push(v.Ratings[0].Value);
+            ratingRotten.push(v.Ratings[1].Value);
+            ratingMetacritic.push(v.Ratings[2].Value);
+            boxOffice.push(v.BoxOffice);
+        });
+        apiData4.forEach((v) => {
+            title.push(v.Title);
+            year.push(v.Year);
+            ratingIMDB.push(v.Ratings[0].Value);
+            ratingRotten.push(v.Ratings[1].Value);
+            ratingMetacritic.push(v.Ratings[2].Value);
+            boxOffice.push(v.BoxOffice);
+        });
+        apiData5.forEach((v) => {
+            title.push(v.Title);
+            year.push(v.Year);
+            ratingIMDB.push(v.Ratings[0].Value);
+            ratingRotten.push(v.Ratings[1].Value);
+            ratingMetacritic.push(v.Ratings[2].Value);
+            boxOffice.push(v.BoxOffice);
+        });
+
         loadGraph();
+        
 
     }
 
     async function loadGraph(){
         var chart = new CanvasJS.Chart("chartContainer", {
-        theme: "dark2", // "light1", "light2", "dark1"
-        animationEnabled: true,
-        exportEnabled: true,
-        title: {
-            text: "Percentile of achievements raised by the community in Team Fortress"
-        },
-        axisX: {
-            margin: 10,
-            labelPlacement: "inside",
-            tickPlacement: "inside"
-        },
-        axisY2: {
-            title: "Percentile",
-            titleFontSize: 14,
-            includeZero: true,
-            suffix: "bn"
-        },
-        data: [{
-            type: "bar",
-            axisYType: "secondary",
-            yValueFormatString: "#,###.##bn",
-            indexLabel: "{y}",
-            dataPoints: [
-            name.forEach((v) =>{
-                return {
-                    label: v,
-                    y: percent.forEach((v) =>{
-                        return v;
-                    })
-                }
-            })
-            ]
-        }]
+            animationEnabled: true,
+            exportEnabled: true,
+            theme: "light1", // "light1", "light2", "dark1", "dark2"
+            title:{
+                text: "Simple Column Chart with Index Labels"
+            },
+            axisY: {
+            includeZero: true
+            },
+            data: [{
+                type: "column", //change type to bar, line, area, pie, etc
+                //indexLabel: "{y}", //Shows y value on all Data Points
+                indexLabelFontColor: "#5A5757",
+                indexLabelFontSize: 16,
+                indexLabelPlacement: "outside",
+                dataPoints: [
+                    { x: title[0] + year[0] + "IMDB", y: ratingIMDB[0] },
+                    { x: title[0] + year[0] + "Rotten" , y: ratingRotten[0] },
+                    { x: title[0] + year[0] + "Metacritic", y: ratingMetacritic[0] },
+                    {x : title[1] + year[1] + "IMDB", y: ratingIMDB[1] },
+                    { x: title[1] + year[1] + "Rotten" , y: ratingRotten[1] },
+                    { x: title[1] + year[1] + "Metacritic", y: ratingMetacritic[1] },
+                    {x : title[2] + year[2] + "IMDB", y: ratingIMDB[2] },
+                    { x: title[2] + year[2] + "Rotten" , y: ratingRotten[2] },
+                    { x: title[2] + year[2] + "Metacritic", y: ratingMetacritic[2] },
+                    {x : title[3] + year[3] + "IMDB", y: ratingIMDB[3] },
+                    { x: title[3] + year[3] + "Rotten" , y: ratingRotten[3] },
+                    { x: title[3] + year[3] + "Metacritic", y: ratingMetacritic[3] },
+                    {x : title[4] + year[4] + "IMDB", y: ratingIMDB[4] },
+                    { x: title[4] + year[4] + "Rotten" , y: ratingRotten[4] },
+                    { x: title[4] + year[4] + "Metacritic", y: ratingMetacritic[4] },
+                    {x : title[5] + year[5] + "IMDB", y: ratingIMDB[5] },
+                    { x: title[5] + year[5] + "Rotten" , y: ratingRotten[5] },
+                    { x: title[5] + year[5] + "Metacritic", y: ratingMetacritic[5] }
+                ]
+            }]
         });
         chart.render();
     }
@@ -76,7 +190,7 @@ onMount(getData);
 </script>
 
 <svelte:head>
-    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"on:load="{loadGraph}"></script>
 </svelte:head>
 
 <main>
