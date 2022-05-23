@@ -136,11 +136,9 @@
 
 
     async function loadGraph(){
-        google.charts.load('current', {'packages':['corechart', 'bar']});       
+        google.charts.load('current', {'packages':['bar']});       
         
-        var button = document.getElementById('change-chart');
-        var chartDiv = document.getElementById('chart_div');
-
+        
         var data = google.visualization.arrayToDataTable([
             ['Film', 'IMDB', 'Rotten', 'Metacritic'],
             [title[0], ratingIMDB[0], ratingRotten[0], ratingMetacritic[0]],
@@ -151,46 +149,18 @@
             [title[5], ratingIMDB[5], ratingRotten[5], ratingMetacritic[5]]
         ]);
 
-        var materialOptions = {
-          width: 900,
+        var options = {
           chart: {
-            title: 'The definitive triology',
-            subtitle: 'IMDB on the left, Rotten Tomatoes and Metacritic on the right',
-          },
-          series: {
-            0: { axis: 'IMDB' }, // Bind series 0 to an axis named 'IMDB'.
-            1: { axis: 'Rotten' }, // Bind series 1 to an axis named 'Rotten'.
-            2: { axis: 'Metacritic' } // Bind series 2 to an axis named 'Metacritic'.
-          },
-          axes: {
-            y: {
-              distance: {label: 'Over 10 points'}, // Left y-axis.
-              brightness: {side: 'right', label: 'Over 100 points'} // Right y-axis.
-            }
+            title: 'The final VS of triologies',
+            subtitle: 'The Goodfather vs The Hangover',
           }
         };
-
-        function drawMaterialChart() {
-          var materialChart = new google.charts.Bar(chartDiv);
-          materialChart.draw(data, google.charts.Bar.convertOptions(materialOptions));
-          button.innerText = 'Change to Classic';
-          button.onclick = drawClassicChart;
-        }
-
-        function drawClassicChart() {
-          var classicChart = new google.visualization.ColumnChart(chartDiv);
-          classicChart.draw(data, classicOptions);
-          button.innerText = 'Change to Material';
-          button.onclick = drawMaterialChart;
-        }
-
-        drawMaterialChart();
-
 
         var chart = new google.charts.Bar(document.getElementById('columnchart_material'));
 
         chart.draw(data, google.charts.Bar.convertOptions(options));
-      
+
+        
 
     }
 
