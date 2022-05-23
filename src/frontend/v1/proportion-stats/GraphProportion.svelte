@@ -14,6 +14,8 @@
     let female = [];
     let total = [];
 
+    
+
     let male2015 = [];
     let male2016 = [];
     let male2017 = [];
@@ -52,37 +54,42 @@
             });
             console.log(apiData.length);
             apiData.forEach((v) => {
-                if(v.year = "2015"){
-                    male2015.push(v.male);
-                    female2015.push(v.female);
-                    total2015.push(v.total);
+                year.push(v.year);
+                
+                
+            });
+            console.log(year);
+
+            for(let i = 0; i < year.length; i++){
+                if(apiData[i].year == 2015){
+                    male2015.push(apiData[i].male);
+                    female2015.push(apiData[i].female);
+                    total2015.push(apiData[i].total);
                 }
-                else if(v.year = "2016"){
-                    male2016.push(v.male);
-                    female2016.push(v.female);
-                    total2016.push(v.total);
+                else if(apiData[i].year == 2016){
+                    male2016.push(apiData[i].male);
+                    female2016.push(apiData[i].female);
+                    total2016.push(apiData[i].total);
                 }
-                else if(v.year = "2017"){
-                    male2017.push(v.male);
-                    female2017.push(v.female);
-                    total2017.push(v.total);
+                else if(apiData[i].year == 2017){
+                    male2017.push(apiData[i].male);
+                    female2017.push(apiData[i].female);
+                    total2017.push(apiData[i].total);
+                }else if(apiData[i].year == 2018){
+                    male2018.push(apiData[i].male);
+                    female2018.push(apiData[i].female);
+                    total2018.push(apiData[i].total);
+                }else if(apiData[i].year == 2019){
+                    male2019.push(apiData[i].male);
+                    female2019.push(apiData[i].female);
+                    total2019.push(apiData[i].total);
                 }
-                else if(v.year = "2018"){
-                    male2018.push(v.male);
-                    female2018.push(v.female);
-                    total2018.push(v.total);
+                else if(apiData[i].year == 2020){
+                    male2020.push(apiData[i].male);
+                    female2020.push(apiData[i].female);
+                    total2020.push(apiData[i].total);
                 }
-                else if(v.year = "2019"){
-                    male2019.push(v.male);
-                    female2019.push(v.female);
-                    total2019.push(v.total);
-                }
-                else if(v.year = "2020"){
-                    male2020.push(v.male);
-                    female2020.push(v.female);
-                    total2020.push(v.total);
-                }
-        });
+            }
 
         
 
