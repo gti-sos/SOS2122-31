@@ -154,8 +154,9 @@
             title: 'The final VS of triologies',
             subtitle: 'The Goodfather vs The Hangover',
             vAxis: {
-              direction: -1,
-              minValue: 0,
+                direction: -1,
+                minValue: 0/10,
+                maxValue: 0/10,
             },
           }
         };
