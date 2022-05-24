@@ -202,6 +202,7 @@
 
 
 <svelte:head>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://code.highcharts.com/highcharts.js"></script>
     <script src="https://code.highcharts.com/modules/exporting.js"></script>
     <script src="https://code.highcharts.com/modules/export-data.js"></script>
@@ -218,23 +219,7 @@
 </svelte:head>
 
 <main>
-    <br />
-    <h1 align="center">Pais al que buscar gráfica:</h1>
-    <div align="center">
-        <input type="text" bind:value={country} />
-        <Button
-            outline
-            color="info"
-            on:click={() => {
-                window.location.href =  `/#/graphProportionSearch/${country}`;
-                location.reload();
-
-            }}
-        >
-            Buscar
-        </Button>
-    </div>
-    <br />
+    
     <figure class="highcharts-figure">
         <div id="container" />
     </figure>
