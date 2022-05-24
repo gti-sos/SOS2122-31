@@ -14,6 +14,14 @@
     let female = [];
     let total = [];
 
+    let sumaMale = 0;
+    let sumaFemale = 0;
+    let sumaTotal = 0;
+    let totalSuma = 0;
+    let malePercent = 0;
+    let femalePercent = 0;
+    let totalPercent = 0;
+
 
 async function getSearch(){
     const res2 = await fetch(`api/v1/proportion-stats/${country}`);
@@ -41,6 +49,26 @@ async function getSearch(){
                 }
 
             });
+
+            console.log("Male: " + male);
+            console.log("Female" + female);
+            console.log("Total" + total);
+
+            for(let i = 0; i < male.length; i++){
+                sumaMale = sumaMale + male[i];
+                sumaFemale = sumaFemale + female[i];
+                sumaTotal = sumaTotal + total[i];  
+            }
+            console.log("sumaMale " + sumaMale);
+            console.log("sumaFemale " + sumaFemale);
+            console.log("sumaTotal " + sumaTotal);
+
+            totalSuma = sumaMale + sumaFemale + sumaTotal;
+            console.log("totalSuma " + totalSuma);
+
+            malePercent = sumaMale / totalSuma;
+            femalePercent = sumaFemale / totalSuma;
+            totalPercent = sumaTotal / totalSuma;
 
         loadGraph();
     }else{
@@ -114,6 +142,57 @@ responsive: {
 }
 
 });
+
+Highcharts.chart('container2', {
+            chart: {
+                plotBackgroundColor: null,
+                plotBorderWidth: null,
+                plotShadow: false,
+                type: 'pie'
+            },
+            title: {
+                text: 'Proportion of young people without studies, work or capacitation, 2015-2020'
+            },
+            subtitle: {
+                text: 'Source: www.worldbank.org'
+            },
+            tooltip: {
+                pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+            },
+
+            accessibility: {
+                point: {
+                    valueSuffix: '%'
+                }
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: true,
+                        format: '<b>{point.name}</b>: {point.percentage:.1f} %'
+                    }
+                }
+            },
+            series: [{
+                name: 'Brands',
+                colorByPoint: true,
+                data: [{
+                    name: 'Male',
+                    y: totalPercent,
+                    sliced: true,
+                    selected: true
+                },{
+                    name: 'Total',
+                    y: malePercent
+                },{
+                    name: 'Female',
+                    y: femalePercent
+                }]
+
+            }]
+        });
  }
 
  onMount(getSearch);
@@ -155,6 +234,18 @@ responsive: {
         <p class="highcharts-description">
             En esta gráfica se muestra para el pais seleccionado el avance de la
             tasa de empleo, educación o capacitación de los jóvenes.
+        </p>
+    </figure>
+    <br />
+    <figure class="highcharts-figure">
+        <div id="container2" />
+    </figure>
+    <br />
+    <figure class="highcharts-figure">
+        <div id="container" />
+        <p class="highcharts-description">
+            En esta gráfica se muestra para el pais seleccionado el total de las proporciones a lo 
+            largo de todos los años entre 2015-2020.
         </p>
     </figure>
 </main>

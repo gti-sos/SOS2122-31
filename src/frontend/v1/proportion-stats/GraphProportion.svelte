@@ -2,7 +2,6 @@
     import { onMount } from "svelte";
     import Highcharts from "highcharts";
     import Button from "sveltestrap/src/Button.svelte";
-    
 
     export let params = {};
     //const delay = (ms) => new Promise((res) => setTimeout(res, ms));
@@ -15,56 +14,20 @@
     let female = [];
     let total = [];
 
-    
+    let sumaMale = 0;
+    let sumaFemale = 0;
+    let sumaTotal = 0;
+    let totalSuma = 0;
+    let malePercent = 0;
+    let femalePercent = 0;
+    let totalPercent = 0;
 
-    let male2015 = [];
-    let male2016 = [];
-    let male2017 = [];
-    let male2018 = [];
-    let male2019 = [];
-    let male2020 = [];
 
-    let female2015 = [];
-    let female2016 = [];
-    let female2017 = [];
-    let female2018 = [];
-    let female2019 = [];
-    let female2020 = [];
-
-    let total2015 = [];
-    let total2016 = [];
-    let total2017 = [];
-    let total2018 = [];
-    let total2019 = [];
-    let total2020 = [];
-
-    let sumaMale2015 = 0;
-    let sumaMale2016 = 0;
-    let sumaMale2017 = 0;
-    let sumaMale2018 = 0;
-    let sumaMale2019 = 0;
-    let sumaMale2020 = 0;
-
-    let sumaFemale2015 = 0;
-    let sumaFemale2016 = 0;
-    let sumaFemale2017 = 0;
-    let sumaFemale2018 = 0;
-    let sumaFemale2019 = 0;
-    let sumaFemale2020 = 0;
-
-    let sumaTotal2015 = 0;
-    let sumaTotal2016 = 0;
-    let sumaTotal2017 = 0;
-    let sumaTotal2018 = 0;
-    let sumaTotal2019 = 0;
-    let sumaTotal2020 = 0;
-
-    async function getData(){
-        const res1 = await fetch('/api/v1/proportion-stats');
-        if (res1.ok){
-            const arrayData = await res1.json();
+async function getSearch(){
+    const res2 = await fetch(`api/v1/proportion-stats`);
+        if (res2.ok) {
+            const arrayData = await res2.json();
             apiData = arrayData;
-            console.log("api data : " + apiData);
             //Ordenamos valores:
             apiData.sort(function (a, b) {
                 var keyA = new Date(a.year),
@@ -75,77 +38,38 @@
                 return 0;
             });
             console.log(apiData.length);
-            apiData.forEach((v) => {
-                year.push(v.year);
-                
-                
-            
-            console.log(year);
+            apiData.forEach((element) => {
+                year.push(element.year);
+                male.push(element.male);
+                female.push(element.female);
+                total.push(element.total);
+                //pais.push if element.country is not in the list
+                if(!pais.includes(element.country)){
+                    pais.push(element.country);
+                }
 
-            for(let i = 0; i < year.length; i++){
-                if(apiData[i].year == 2015){
-                    male2015.push(apiData[i].male);
-                    female2015.push(apiData[i].female);
-                    total2015.push(apiData[i].total);
-                }
-                else if(apiData[i].year == 2016){
-                    male2016.push(apiData[i].male);
-                    female2016.push(apiData[i].female);
-                    total2016.push(apiData[i].total);
-                }
-                else if(apiData[i].year == 2017){
-                    male2017.push(apiData[i].male);
-                    female2017.push(apiData[i].female);
-                    total2017.push(apiData[i].total);
-                }else if(apiData[i].year == 2018){
-                    male2018.push(apiData[i].male);
-                    female2018.push(apiData[i].female);
-                    total2018.push(apiData[i].total);
-                }else if(apiData[i].year == 2019){
-                    male2019.push(apiData[i].male);
-                    female2019.push(apiData[i].female);
-                    total2019.push(apiData[i].total);
-                }
-                else if(apiData[i].year == 2020){
-                    male2020.push(apiData[i].male);
-                    female2020.push(apiData[i].female);
-                    total2020.push(apiData[i].total);
-                }
-            }
+            });
+            console.log("Male: " + male);
+            console.log("Female" + female);
+            console.log("Total" + total);
 
-            for(let i= 0; i< male2015; i++){
-                sumaMale2015 = sumaMale2015 + male2015[i];
-                sumaFemale2015 = sumaFemale2015 + female2015[i];
-                sumaTotal2015 = sumaTotal2015 + total2015[i];
+            for(let i = 0; i < male.length; i++){
+                sumaMale = sumaMale + male[i];
+                sumaFemale = sumaFemale + female[i];
+                sumaTotal = sumaTotal + total[i];  
             }
-            for(let i= 0; i< male2016; i++){
-                sumaMale2016 = sumaMale2016 + male2016[i];
-                sumaFemale2016 = sumaFemale2016 + female2016[i];
-                sumaTotal2016 = sumaTotal2016 + total2016[i];
-            }
-            for(let i= 0; i< male2017; i++){
-                sumaMale2017 = sumaMale2017 + male2017[i];
-                sumaFemale2017 = sumaFemale2017 + female2017[i];
-                sumaTotal2017 = sumaTotal2017 + total2017[i];
-            }
-            for(let i= 0; i< male2018; i++){
-                sumaMale2018 = sumaMale2018 + male2018[i];
-                sumaFemale2018 = sumaFemale2018 + female2018[i];
-                sumaTotal2018 = sumaTotal2018 + total2018[i];
-            }
-            for(let i= 0; i< male2019; i++){
-                sumaMale2019 = sumaMale2019 + male2019[i];
-                sumaFemale2019 = sumaFemale2019 + female2019[i];
-                sumaTotal2019 = sumaTotal2019 + total2019[i];
-            }
-            for(let i= 0; i< male2020; i++){
-                sumaMale2020 = sumaMale2020 + male2020[i];
-                sumaFemale2020 = sumaFemale2020 + female2020[i];
-                sumaTotal2020 = sumaTotal2020 + total2020[i];
-            }
-        });
+            console.log("sumaMale " + sumaMale);
+            console.log("sumaFemale " + sumaFemale);
+            console.log("sumaTotal " + sumaTotal);
 
-        
+            totalSuma = sumaMale + sumaFemale + sumaTotal;
+            console.log("totalSuma " + totalSuma);
+
+            malePercent = sumaMale / totalSuma;
+            femalePercent = sumaFemale / totalSuma;
+            totalPercent = sumaTotal / totalSuma;
+
+
 
         loadGraph();
     }else{
@@ -154,68 +78,72 @@
         window.location.href ='/#/proportion-stats';
     }
 }
-
-
     
     async function loadGraph(){
-
         Highcharts.chart('container', {
             chart: {
-                type: 'line'
+                plotBackgroundColor: null,
+                plotBorderWidth: null,
+                plotShadow: false,
+                type: 'pie'
             },
             title: {
-                text: 'Proportion of '
+                text: 'Proportion of young people without studies, work or capacitation, 2015-2020'
             },
             subtitle: {
-                text: 'Source: WorldClimate.com'
+                text: 'Source: www.worldbank.org'
             },
-            xAxis: {
-                categories: ['2015', '2016', '2017', '2018', '2019', '2020']
+            tooltip: {
+                pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
             },
-            yAxis: {
-                title: {
-                    text: '% of population'
+
+            accessibility: {
+                point: {
+                    valueSuffix: '%'
                 }
             },
             plotOptions: {
-                line: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
                     dataLabels: {
-                        enabled: true
-                    },
-                    enableMouseTracking: false
+                        enabled: true,
+                        format: '<b>{point.name}</b>: {point.percentage:.1f} %'
+                    }
                 }
             },
             series: [{
-                name: 'Male',
-                data: [sumaMale2015, sumaMale2016, sumaMale2017, sumaMale2018, sumaMale2019, sumaMale2020]
-            }, {
-                name: 'Female',
-                data: [sumaFemale2015, sumaFemale2016, sumaFemale2017, sumaFemale2018, sumaFemale2019, sumaFemale2020]
-            },{
-                name: 'Total',
-                data: [sumaTotal2015, sumaTotal2016, sumaTotal2017, sumaTotal2018, sumaTotal2019, sumaTotal2020]
+                name: 'Brands',
+                colorByPoint: true,
+                data: [{
+                    name: 'Male',
+                    y: totalPercent,
+                    sliced: true,
+                    selected: true
+                },{
+                    name: 'Total',
+                    y: malePercent
+                },{
+                    name: 'Female',
+                    y: femalePercent
+                }]
+
             }]
         });
     }
 
- onMount(getData);
-</script>
+        
 
+ onMount(getSearch);
+</script>
 
 <svelte:head>
     <script src="https://code.highcharts.com/highcharts.js"></script>
     <script src="https://code.highcharts.com/modules/exporting.js"></script>
     <script src="https://code.highcharts.com/modules/export-data.js"></script>
-    <script src="https://code.highcharts.com/modules/accessibility.js"on:load={loadGraph}></script>
-
-    <figure class="highcharts-figure">
-        <div id="container"></div>
-        <p class="highcharts-description">
-            This chart shows how data labels can be added to the data series. This
-            can increase readability and comprehension for small datasets.
-        </p>
-    </figure>
-
+    <script
+        src="https://code.highcharts.com/modules/accessibility.js"
+        on:load="{loadGraph}"></script>
 </svelte:head>
 
 <main>
@@ -243,10 +171,54 @@
     <figure class="highcharts-figure">
         <div id="container" />
         <p class="highcharts-description">
-            En esta gráfica se muestra para el pais seleccionado el avance de la
-            tasa de empleo, educación o capacitación de los jóvenes.
+            En esta gráfica se muestra para todos los países de la API el total de las proporciones a lo 
+            largo de todos los años entre 2015-2020.
         </p>
     </figure>
 </main>
 
+<style>
+    .highcharts-figure,
+.highcharts-data-table table {
+    min-width: 360px;
+    max-width: 800px;
+    margin: 1em auto;
+}
 
+.highcharts-data-table table {
+    font-family: Verdana, sans-serif;
+    border-collapse: collapse;
+    border: 1px solid #ebebeb;
+    margin: 10px auto;
+    text-align: center;
+    width: 100%;
+    max-width: 500px;
+}
+
+.highcharts-data-table caption {
+    padding: 1em 0;
+    font-size: 1.2em;
+    color: #555;
+}
+
+.highcharts-data-table th {
+    font-weight: 600;
+    padding: 0.5em;
+}
+
+
+.highcharts-data-table td,
+.highcharts-data-table th,
+.highcharts-data-table caption {
+    padding: 0.5em;
+}
+
+.highcharts-data-table thead tr,
+.highcharts-data-table tr:nth-child(even) {
+    background: #f8f8f8;
+}
+
+.highcharts-data-table tr:hover {
+    background: #f1f7ff;
+}
+</style>
