@@ -85,7 +85,7 @@
             },
             yAxis: {
                 orientation: "opposite",
-                formatString: "",
+                formatString: "a",
             },
             defaultSeries: {
                 defaultPoint_marker: {
@@ -95,7 +95,7 @@
                     outline: { width: 2, color: "currentColor" },
                 },
             },
-            title_label_text: "Costs (Last 6 Months)",
+            title_label_text: "API Propia y Cancer Deaths",
             series: [
                 {
                     name: "Hombres",

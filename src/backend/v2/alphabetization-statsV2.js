@@ -1,19 +1,19 @@
 const BASE_API_URL = "/api/v2";
 const request = require('request');
-const cors = require('cors'); 
+const cors = require('cors');
 const express = require("express");
 const app = express();
 
 app.use(cors());
 
 //Proxy
-var paths='/remoteAPI';
+var paths = '/remoteAPI';
 var apiServerHost = 'https://sos2122-31.herokuapp.com/api/v2/alphabetization-stats';
 
-app.use(paths, function(req, res) {
-  var url = apiServerHost + req.url;
-  console.log('piped: ' + req.url);
-  req.pipe(request(url)).pipe(res);
+app.use(paths, function (req, res) {
+    var url = apiServerHost + req.url;
+    console.log('piped: ' + req.url);
+    req.pipe(request(url)).pipe(res);
 });
 
 var alphabetization_stats = [
@@ -341,9 +341,23 @@ var alphabetization_stats = [
 module.exports.register = (app, db) => {
 
     app.get(BASE_API_URL + "/alphabetization-stats/loadInitialData", (req, res) => {
-        db.insert(alphabetization_stats);
-        res.send(JSON.stringify(alphabetization_stats, null, 2));
-    });
+        db.find({}, function (err, fL) {
+            if (err) {
+                res.sendStatus(500, "INTERNAL SERVER ERROR");
+                return;
+            }
+            if (fL == 0) {
+                for (var i = 0; i < alphabetization_stats.length; i++) {
+                    db.insert(alphabetization_stats[i]);
+                }
+                res.sendStatus(200, "OK.")
+                return;
+            }else{
+            res.sendStatus(200, "INITIALIZED")
+        }
+        });
+    })
+
 
     app.get(BASE_API_URL + "/alphabetization-stats", (req, res) => {
 
