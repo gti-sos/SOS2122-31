@@ -157,42 +157,74 @@
 
     
     async function loadGraph(){
-        Highcharts.chart('container', {
-        chart: {
-            type: 'pyramid3d',
-            options3d: {
-                enabled: true,
-                alpha: 10,
-                depth: 50,
-                viewDistance: 50
-            }
-        },
-        title: {
-            text: 'Ranking de los 10 mejores tenistas del mundo'
-        },
-        plotOptions: {
-            series: {
-                dataLabels: {
-                    enabled: true,
-                    format: '<b>{point.name}</b> ({point.y:,.0f})',
-                    allowOverlap: true,
-                    x: 10,
-                    y: -5
-                },
-                width: '60%',
-                height: '80%',
-                center: ['50%', '45%']
-            }
-        },
-        series: [{
-            name: 'Puntos',
-            data: [
-                ['Total', sumaTotal2015],
-                ['Hombres', sumaMale2015],
-                ['Mujeres', sumaFemale2015]
-        ]
-
-        }]
+        Highcharts.chart('first', {
+            chart: {
+                plotBackgroundColor: null,
+                plotBorderWidth: null,
+                plotShadow: false,
+                type: 'pie',
+            },
+            title: {
+                text: 'Ranking de los 10 mejores tenistas del mundo'
+            },
+            tooltip: {
+                    pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+            },
+            accessibility: {
+                    point: {
+                        valueSuffix: '%'
+                    }
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: true,
+                        format: '<b>{point.name}</b>: {point.percentage:.1f} %'
+                    }
+                }
+            },
+            series: [{
+                name: 'Total 2015',
+                type: 'pie',
+                colorByPoint: true,
+                data: sumaTotal2015,
+            },
+            {
+                name: 'Total 2016',
+                type: 'pie',
+                colorByPoint: true,
+                data: sumaTotal2016,
+            },
+            {
+                name: 'Total 2017',
+                type: 'pie',
+                colorByPoint: true,
+                data: sumaTotal2017,
+            },
+            {
+                name: 'Total 2018',
+                type: 'pie',
+                colorByPoint: true,
+                data: sumaTotal2018,
+            },
+            {
+                name: 'Total 2019',
+                type: 'pie',
+                colorByPoint: true,
+                data: sumaTotal2019,
+            },
+            {
+                name: 'Total 2020',
+                type: 'pie',
+                colorByPoint: true,
+                data: sumaTotal2020,
+            }]
+            
+            
+            
+        
     });
  }
 
@@ -202,10 +234,10 @@
 
 <svelte:head>
     <script src="https://code.highcharts.com/highcharts.js"></script>
-    <script src="https://code.highcharts.com/highcharts-3d.js"></script>
-    <script src="https://code.highcharts.com/modules/cylinder.js"></script>
-    <script src="https://code.highcharts.com/modules/funnel3d.js"></script>
-    <script src="https://code.highcharts.com/modules/pyramid3d.js"on:load="{loadGraph}"></script>
+    <script src="https://code.highcharts.com/modules/series-label.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"on:load="{loadGraph}"></script>
 
     <figure class="highcharts-figure">
         <div id="container"></div>
