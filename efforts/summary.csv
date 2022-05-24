@@ -1,42 +1,54 @@
 ﻿Project,Client,Description,Duration
-SOS2122-31,,Revisión Toogle,00:01:40
-SOS2122-31,,Revision Toogle Grupo,00:02:14
-SOS2122-31,,Prueba,00:00:04
-SOS2122-31,,Paginación y llamadas POSTMAN,03:23:13
-SOS2122-31,,Opcional F07,02:50:55
-SOS2122-31,,Milestone F09,00:02:00
-SOS2122-31,,Llamadas POSTMAN,01:15:57
-SOS2122-31,,Información grupal Read.me,00:20:10
-SOS2122-31,,Implemetación todos los recursos y comprobación de errores,07:19:11
-SOS2122-31,,Implementación búsquedas,04:50:13
-SOS2122-31,,Gráficas Externas 2 DVV,02:38:00
-SOS2122-31,,Gráficas Externas 1 DVV,03:49:00
-SOS2122-31,,FRONT-END tabla Ismael Mesa Zyout,01:03:32
-SOS2122-31,,F09 Ismael Mesa Zyout,02:18:13
-SOS2122-31,,F07 Ismael Mesa Zyout,02:10:03
-SOS2122-31,,f05,00:25:00
-SOS2122-31,,Despliegue Heroku Grupo 31,00:10:00
-SOS2122-31,,D03_3 Ismael Mesa Zyout,05:31:50
-SOS2122-31,,D03_2 Ismael Mesa Zyout,04:42:00
-SOS2122-31,,D03 Ismael Mesa Zyout,04:01:38
-SOS2122-31,,D02 Ismael Mesa Zyout,33:53:11
-SOS2122-31,,Creación milestone F04,00:02:05
-SOS2122-31,,Comprobar npm run test ,02:41:13
-SOS2122-31,,Comprobación npm-test,00:13:33
-SOS2122-31,,Comprobación Integración continua y Tic Verde,01:01:12
-SOS2122-31,,Completar Readme.md,01:00:00
-SOS2122-31,,Cambios JS V1,01:05:00
-SOS2122-31,,Cambios DVV pre D02,02:06:22
-SOS2122-31,,Añadir front-end Heroku,00:13:12
-SOS2122-31,,Añadido paginación,03:47:00
-SOS2122-31,,Arreglos gráficos DVV,02:30:00
-SOS2122-31,,Arreglar tick verde grupo,03:02:45
-SOS2122-31,,#8 Issue Daniel Vega F04,03:00:34
-SOS2122-31,,#6 Issue para F04 de Ismael Mesa,03:35:51
-SOS2122-31,,#4 Issue F03 Daniel Vega,03:10:55
-SOS2122-31,,#4 Issue Daniel Vega F02,00:26:07
-SOS2122-31,,#3 Issue para F03,04:16:56
-SOS2122-31,,#3 Issue Ismael Mesa Zyout F02,00:26:29
-SOS2122-31,,#1 Terminar Tarea L02,00:02:42
 SOS2122-31,,#1 Hacer tareas del L02,00:00:19
+SOS2122-31,,#1 Terminar Tarea L02,00:02:42
+SOS2122-31,,#3 Issue Ismael Mesa Zyout F02,00:26:29
+SOS2122-31,,#3 Issue para F03,04:16:56
+SOS2122-31,,#4 Issue Daniel Vega F02,00:26:07
+SOS2122-31,,#4 Issue F03 Daniel Vega,03:10:55
+SOS2122-31,,#6 Issue para F04 de Ismael Mesa,03:35:51
+SOS2122-31,,#8 Issue Daniel Vega F04,03:00:34
+SOS2122-31,,Arreglar tick verde grupo,03:02:45
+SOS2122-31,,Arreglos gráficos DVV,02:30:00
+SOS2122-31,,Añadido paginación,03:47:00
+SOS2122-31,,Añadir front-end Heroku,00:13:12
+SOS2122-31,,Cambios DVV pre D02,02:06:22
+SOS2122-31,,Cambios JS V1,01:05:00
+SOS2122-31,,Completar Readme.md,01:00:00
+SOS2122-31,,Comprobación Integración continua y Tic Verde,01:01:12
+SOS2122-31,,Comprobación npm-test,00:13:33
+SOS2122-31,,Comprobar npm run test ,02:41:13
+SOS2122-31,,Creación milestone F04,00:02:05
+SOS2122-31,,crear issue personal,00:17:35
+SOS2122-31,,crear issue personal definitivo,00:00:35
+SOS2122-31,,D02 Ismael Mesa Zyout,33:53:11
+SOS2122-31,,D03 Ismael Mesa Zyout,04:01:38
+SOS2122-31,,D03_2 Ismael Mesa Zyout,04:42:00
+SOS2122-31,,D03_3 Ismael Mesa Zyout,05:31:50
+SOS2122-31,,Despliegue Heroku Grupo 31,00:10:00
+SOS2122-31,,entregable final,04:00:00
+SOS2122-31,,f 06,03:06:00
+SOS2122-31,,f05,00:25:00
+SOS2122-31,,f07,07:00:00
+SOS2122-31,,F07 Ismael Mesa Zyout,02:10:03
+SOS2122-31,,f08,04:04:00
+SOS2122-31,,f09,07:00:00
+SOS2122-31,,F09 Ismael Mesa Zyout,02:18:13
+SOS2122-31,,final,04:00:00
+SOS2122-31,,FRONT-END tabla Ismael Mesa Zyout,01:03:32
+SOS2122-31,,Gráficas Externas 1 DVV,03:49:00
+SOS2122-31,,Gráficas Externas 2 DVV,02:38:00
+SOS2122-31,,Implementación búsquedas,04:50:13
+SOS2122-31,,Implemetación todos los recursos y comprobación de errores,07:19:11
+SOS2122-31,,Información grupal Read.me,00:20:10
+SOS2122-31,,l03,03:26:18
+SOS2122-31,,l04,00:42:12
+SOS2122-31,,l94,00:25:00
+SOS2122-31,,Llamadas POSTMAN,01:15:57
+SOS2122-31,,Milestone F09,00:02:00
+SOS2122-31,,Opcional F07,02:50:55
+SOS2122-31,,Paginación y llamadas POSTMAN,03:23:13
+SOS2122-31,,Prueba,00:00:04
+SOS2122-31,,Revision Toogle Grupo,00:02:14
+SOS2122-31,,Revisión Toogle,00:01:40
+SOS2122-31,,Tareas para el F03,00:28:08
 SOS2122-31,,,00:00:03
