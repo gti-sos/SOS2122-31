@@ -1,6 +1,5 @@
 <script>
     import { onMount } from "svelte";
-    import Highcharts from "highcharts";
 
     //Atributos API Propia:
     let apiData = [];
@@ -18,15 +17,14 @@
 
     //API EXTERNA:
     async function loadAPIEXT1() {
-        const resEXT = await fetch(
-            "https://disease.sh/v2/countries?yesterday=false&sort=deaths&allowNull=true"
-        );
+        const resEXT = await fetch("https://disease.sh/v2/countries");
         if (resEXT.ok) {
             const arrayEXT = await resEXT.json();
             apiEXT = arrayEXT;
             //Ordenamos valores:
             console.log(apiEXT.length);
             apiEXT.forEach((element) => {
+                country.push(element.country);
                 cPorPersona.push(element.oneCasePerPeople);
                 mPorPersona.push(element.oneDeathPerPeople);
                 tPorPersona.push(element.oneTestPerPeople);
@@ -42,7 +40,7 @@
 
     //API PROPIA:
     async function getData() {
-        const res1 = await fetch(`api/v2/alphabetization-stats/${country}`);
+        const res1 = await fetch(`api/v2/alphabetization-stats/`);
         if (res1.ok) {
             const arrayData = await res1.json();
             apiData = arrayData;
@@ -74,69 +72,236 @@
     }
 
     async function loadGraph() {
-        Highcharts.chart("container", {
-            chart: {
-                type: "column",
+        var myConfig = {
+            globals: {
+                "font-family": "Roboto",
             },
-            title: {
-                text: "INTEGRACIÓN API 1 EXTERNA",
-            },
-            subtitle: {
-                text: "Población por país",
-            },
-            xAxis: {
-                categories: name,
-                crosshair: true,
-                categories : year
-            },
-            yAxis: {
-                min: 0,
-                title: {
-                    text: "Integración datos propios y externos",
-                },
-            },
-            tooltip: {
-                headerFormat:
-                    '<span style="font-size:10px">{point.key}</span><table>',
-                pointFormat:
-                    '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
-                    '<td style="padding:0"><b>{point.y:.1f} habitantes</b></td></tr>',
-                footerFormat: "</table>",
-                shared: true,
-                useHTML: true,
-            },
-            plotOptions: {
-                column: {
-                    pointPadding: 0.2,
-                    borderWidth: 0,
-                },
-            },
-            series: [
+            graphset: [
                 {
-                    name: "% Hombres",
-                    data: ar_ym,
-                },
-                {
-                    name: "% Mujeres",
-                    data: ar_yw,
-                },
-                {
-                    name: "% Media",
-                    data: ar_ty,
-                },
-                {
-                    name: "Casos por persona",
-                    data: cPorPersona,
-                },
-                {
-                    name: "Muertes por persona",
-                    data: mPorPersona,
-                },
-                {
-                    name: "Test por persona",
-                    data: tPorPersona,
+                    type: "area",
+                    "background-color": "#fff",
+                    utc: true,
+                    title: {
+                        y: "15px",
+                        text: "Integración datos propios y api covid",
+                        "background-color": "none",
+                        "font-color": "#05636c",
+                        "font-size": "24px",
+                        height: "25px",
+                        "adjust-layout": true,
+                    },
+                    plotarea: {
+                        "margin-top": "10%",
+                        "margin-right": "dynamic",
+                        "margin-bottom": "dynamic",
+                        "margin-left": "dynamic",
+                        "adjust-layout": true,
+                    },
+                    labels: [
+                        {
+                            text: "Test/Persona: %plot-5-value",
+                            "default-value": "",
+                            color: "#E0BEED",
+                            x: "15%",
+                            y: 50,
+                            width: 120,
+                            "text-align": "left",
+                            bold: 0,
+                            "font-size": "14px",
+                            "font-weight": "bold",
+                        },
+                        {
+                            text: "Muerte/Persona: %plot-4-value",
+                            "default-value": "",
+                            color: "#CFEDBE",
+                            x: "30%",
+                            y: 50,
+                            width: 120,
+                            "text-align": "left",
+                            bold: 0,
+                            "font-size": "14px",
+                            "font-weight": "bold",
+                        },
+                        {
+                            text: "Casos/Persona: %plot-3-value",
+                            "default-value": "",
+                            color: "#F9E641",
+                            x: "45%",
+                            y: 50,
+                            width: 120,
+                            "text-align": "left",
+                            bold: 0,
+                            "font-size": "14px",
+                            "font-weight": "bold",
+                        },
+                        {
+                            text: "% Media: %plot-2-value",
+                            "default-value": "",
+                            color: "#8da0cb",
+                            x: "60%",
+                            y: 50,
+                            width: 120,
+                            "text-align": "left",
+                            bold: 0,
+                            "font-size": "14px",
+                            "font-weight": "bold",
+                        },
+                        {
+                            text: "% Mujeres: %plot-1-value",
+                            "default-value": "",
+                            color: "#66c2a5",
+                            x: "75%",
+                            y: 50,
+                            width: 120,
+                            "text-align": "left",
+                            bold: 0,
+                            "font-size": "14px",
+                            "font-weight": "bold",
+                        },
+                        {
+                            text: "% Hombres: %plot-0-value",
+                            "default-value": "",
+                            color: "#fc8d62",
+                            x: "90%",
+                            y: 50,
+                            width: 120,
+                            "text-align": "left",
+                            bold: 0,
+                            "font-size": "14px",
+                            "font-weight": "bold",
+                        },
+                    ],
+                    "scale-x": {
+                        label: {
+                            text: "Paises",
+                            "font-size": "14px",
+                            "font-weight": "normal",
+                            "offset-x": "10%",
+                            "font-angle": 360,
+                        },
+                        item: {
+                            "text-align": "center",
+                            "font-color": "#05636c",
+                        },
+                        zooming: 1,
+                        "max-labels": 12,
+                        labels: country,
+                        "max-items": 12,
+                        "items-overlap": true,
+                        guide: {
+                            "line-width": "0px",
+                        },
+                        tick: {
+                            "line-width": "2px",
+                        },
+                    },
+                    "crosshair-x": {
+                        "line-color": "#fff",
+                        "line-width": 1,
+                        "plot-label": {
+                            visible: false,
+                        },
+                    },
+                    "scale-y": {
+                        values: "0:2500:50",
+                        item: {
+                            "font-color": "#05636c",
+                            "font-weight": "normal",
+                        },
+                        label: {
+                            text: "",
+                            "font-size": "14px",
+                        },
+                        guide: {
+                            "line-width": "0px",
+                            alpha: 0.2,
+                            "line-style": "dashed",
+                        },
+                    },
+                    plot: {
+                        "line-width": 2,
+                        marker: {
+                            size: 1,
+                            visible: false,
+                        },
+                        tooltip: {
+                            "font-family": "Roboto",
+                            "font-size": "15px",
+                            text: "",
+                            "text-align": "left",
+                            "border-radius": 5,
+                            padding: 10,
+                        },
+                    },
+                    series: [
+                        {
+                            values: ar_ym,
+                            "line-color": "#fc8d62",
+                            aspect: "spline",
+                            "background-color": "#fc8d62",
+                            "alpha-area": ".5",
+                            "font-family": "Roboto",
+                            "font-size": "14px",
+                            text: "",
+                        },
+                        {
+                            values: ar_yw,
+                            "line-color": "#66c2a5",
+                            "background-color": "#66c2a5",
+                            "alpha-area": ".3",
+                            text: "",
+                            aspect: "spline",
+                            "font-family": "Roboto",
+                            "font-size": "14px",
+                        },
+                        {
+                            values: ar_ty,
+                            "line-color": "#8da0cb",
+                            "background-color": "#8da0cb",
+                            aspect: "spline",
+                            "alpha-area": "0.2",
+                            text: "",
+                            "font-family": "Roboto",
+                            "font-size": "14px",
+                        },
+                        {
+                            values: cPorPersona,
+                            "line-color": "#F9E641",
+                            "background-color": "#F9E641",
+                            aspect: "spline",
+                            "alpha-area": "0.2",
+                            text: "",
+                            "font-family": "Roboto",
+                            "font-size": "14px",
+                        },
+                        {
+                            values: mPorPersona,
+                            "line-color": "#CFEDBE",
+                            "background-color": "#CFEDBE",
+                            aspect: "spline",
+                            "alpha-area": "0.2",
+                            text: "",
+                            "font-family": "Roboto",
+                            "font-size": "14px",
+                        },
+                        {
+                            values: tPorPersona,
+                            "line-color": "#E0BEED",
+                            "background-color": "#E0BEED",
+                            aspect: "spline",
+                            "alpha-area": "0.2",
+                            text: "",
+                            "font-family": "Roboto",
+                            "font-size": "14px",
+                        },
+                    ],
                 },
             ],
+        };
+
+        zingchart.render({
+            id: "myChart",
+            data: myConfig,
         });
     }
 
@@ -144,17 +309,11 @@
 </script>
 
 <svelte:head>
-    <script src="https://code.highcharts.com/highcharts.js"></script>
-    <script src="https://code.highcharts.com/modules/exporting.js"></script>
-    <script src="https://code.highcharts.com/modules/export-data.js"></script>
     <script
-        src="https://code.highcharts.com/modules/accessibility.js"
+        src="https://cdn.zingchart.com/zingchart.min.js"
         on:load={loadGraph}></script>
 </svelte:head>
+
 <main>
-    <figure class="highcharts-figure">
-        <div id="container" />
-        <p class="highcharts-description" />
-    </figure>
-    <br />
+    <div id="myChart" />
 </main>

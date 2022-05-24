@@ -16,7 +16,6 @@
         "dark",
     ];
 
-    const BASE_API_URL = "/api/v2";
     export let params = {};
     let reg = {};
     let upcountry = "XXXX";
@@ -32,7 +31,7 @@
     async function getReg() {
         console.log("Fetching data..." + params.country + " " + params.year);
         const res = await fetch(
-            "https://sos2122-31.herokuapp.com/api/v2/alphabetization-stats/"+
+            "/api/v2/alphabetization-stats/"+
                 params.country +
                 "/" +
                 params.year
@@ -73,7 +72,7 @@
         let year = parseInt(params.year);
 
         const res = await fetch(
-            "https://sos2122-31.herokuapp.com/api/v2/alphabetization-stats/" +
+            "/api/v2/alphabetization-stats/" +
                 params.country +
                 "/" +
                 params.year,
