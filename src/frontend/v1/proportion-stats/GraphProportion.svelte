@@ -79,7 +79,7 @@
                 year.push(v.year);
                 
                 
-            });
+            
             console.log(year);
 
             for(let i = 0; i < year.length; i++){
@@ -143,6 +143,7 @@
                 sumaFemale2020 = sumaFemale2020 + female2020[i];
                 sumaTotal2020 = sumaTotal2020 + total2020[i];
             }
+        });
 
         
 
@@ -202,7 +203,6 @@
 
 
 <svelte:head>
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://code.highcharts.com/highcharts.js"></script>
     <script src="https://code.highcharts.com/modules/exporting.js"></script>
     <script src="https://code.highcharts.com/modules/export-data.js"></script>
