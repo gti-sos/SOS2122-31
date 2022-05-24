@@ -2,7 +2,7 @@
     import { onMount } from "svelte";
     import Highcharts from "highcharts";
     import Button from "sveltestrap/src/Button.svelte";
-    require (Highcharts/Highcharts-more.js)(Highcharts);
+    
 
     export let params = {};
     //const delay = (ms) => new Promise((res) => setTimeout(res, ms));
@@ -271,6 +271,7 @@
 <svelte:head>
     <script src="https://code.highcharts.com/highcharts.js"></script>
     <script src="https://code.highcharts.com/highcharts-more.js"></script>
+    <script src="https://code.highcharts.com/modules/packedbubble.js"></script>
     <script src="https://code.highcharts.com/modules/exporting.js"></script>
     <script src="https://code.highcharts.com/modules/export-data.js"></script>
     <script src="https://code.highcharts.com/modules/accessibility.js"on:load="{loadGraph}"></script>
