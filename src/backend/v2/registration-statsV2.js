@@ -107,8 +107,8 @@ module.exports.register = (app,db) => {
                 return;
             }
             if (fL == 0) {
-                for (var i = 0; i < alphabetization_stats.length; i++) {
-                    db.insert(alphabetization_stats[i]);
+                for (var i = 0; i < registration_stats.length; i++) {
+                    db.insert(registration_stats[i]);
                 }
                 res.sendStatus(200, "OK.")
                 return;
