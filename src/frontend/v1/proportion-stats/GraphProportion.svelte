@@ -186,7 +186,11 @@
         },
         series: [{
             name: 'Puntos',
-            data: puntosPorJugador
+            data: [
+                ['Total', sumaTotal2015],
+                ['Hombres', sumaMale2015],
+                ['Mujeres', sumaFemale2015]
+        ]
 
         }]
     });
