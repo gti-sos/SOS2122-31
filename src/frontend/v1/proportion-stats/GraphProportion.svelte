@@ -244,19 +244,7 @@
 </svelte:head>
 
 <main>
-    <div class="nav">
-        <Nav>
-            <NavItem>
-              <NavLink href="#/info">Página Principal</NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink href="#/integrations">Integraciones</NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink href="#/education-stats">Datos Educación</NavLink>
-            </NavItem>
-        </Nav>
-    </div>
+    
     
   
     <div>
