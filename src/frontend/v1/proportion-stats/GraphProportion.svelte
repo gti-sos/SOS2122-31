@@ -38,6 +38,27 @@
     let total2019 = [];
     let total2020 = [];
 
+    let sumaMale2015 = 0;
+    let sumaMale2016 = 0;
+    let sumaMale2017 = 0;
+    let sumaMale2018 = 0;
+    let sumaMale2019 = 0;
+    let sumaMale2020 = 0;
+
+    let sumaFemale2015 = 0;
+    let sumaFemale2016 = 0;
+    let sumaFemale2017 = 0;
+    let sumaFemale2018 = 0;
+    let sumaFemale2019 = 0;
+    let sumaFemale2020 = 0;
+
+    let sumaTotal2015 = 0;
+    let sumaTotal2016 = 0;
+    let sumaTotal2017 = 0;
+    let sumaTotal2018 = 0;
+    let sumaTotal2019 = 0;
+    let sumaTotal2020 = 0;
+
     async function getData(){
         const res1 = await fetch('/api/v1/proportion-stats');
         if (res1.ok){
@@ -90,6 +111,37 @@
                     female2020.push(apiData[i].female);
                     total2020.push(apiData[i].total);
                 }
+            }
+
+            for(let i= 0; i< male2015; i++){
+                sumaMale2015 = sumaMale2015 + male2015[i];
+                sumaFemale2015 = sumaFemale2015 + female2015[i];
+                sumaTotal2015 = sumaTotal2015 + total2015[i];
+            }
+            for(let i= 0; i< male2016; i++){
+                sumaMale2016 = sumaMale2016 + male2016[i];
+                sumaFemale2016 = sumaFemale2016 + female2016[i];
+                sumaTotal2016 = sumaTotal2016 + total2016[i];
+            }
+            for(let i= 0; i< male2017; i++){
+                sumaMale2017 = sumaMale2017 + male2017[i];
+                sumaFemale2017 = sumaFemale2017 + female2017[i];
+                sumaTotal2017 = sumaTotal2017 + total2017[i];
+            }
+            for(let i= 0; i< male2018; i++){
+                sumaMale2018 = sumaMale2018 + male2018[i];
+                sumaFemale2018 = sumaFemale2018 + female2018[i];
+                sumaTotal2018 = sumaTotal2018 + total2018[i];
+            }
+            for(let i= 0; i< male2019; i++){
+                sumaMale2019 = sumaMale2019 + male2019[i];
+                sumaFemale2019 = sumaFemale2019 + female2019[i];
+                sumaTotal2019 = sumaTotal2019 + total2019[i];
+            }
+            for(let i= 0; i< male2020; i++){
+                sumaMale2020 = sumaMale2020 + male2020[i];
+                sumaFemale2020 = sumaFemale2020 + female2020[i];
+                sumaTotal2020 = sumaTotal2020 + total2020[i];
             }
 
         
@@ -168,15 +220,15 @@
 
             series: [{
                 name: 'Male',
-                data: [male2015, male2016, male2017, male2018, male2019, male2020]
+                data: [sumaMale2015, sumaMale2016, sumaMale2017, sumaMale2018, sumaMale2019, sumaMale2020]
             },
             {
                 name: 'Female',
-                data: [female2015, female2016, female2017, female2018, female2019, female2020]
+                data: [sumaFemale2015, sumaFemale2016, sumaFemale2017, sumaFemale2018, sumaFemale2019, sumaFemale2020]
             },
             {
                 name: 'Total',
-                data: [total2015, total2016, total2017, total2018, total2019, total2020]
+                data: [sumaTotal2015, sumaTotal2016, sumaTotal2017, sumaTotal2018, sumaTotal2019, sumaTotal2020]
             }]
             
 
@@ -189,7 +241,6 @@
 <svelte:head>
     <script src="https://code.highcharts.com/highcharts.js"></script>
     <script src="https://code.highcharts.com/highcharts-more.js"></script>
-    
     <script src="https://code.highcharts.com/modules/exporting.js"></script>
     <script src="https://code.highcharts.com/modules/export-data.js"></script>
     <script src="https://code.highcharts.com/modules/accessibility.js"on:load="{loadGraph}"></script>
