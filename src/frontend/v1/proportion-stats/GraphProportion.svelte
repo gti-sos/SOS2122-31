@@ -157,76 +157,69 @@
 
     
     async function loadGraph(){
-        Highcharts.chart('first', {
-            chart: {
-                plotBackgroundColor: null,
-                plotBorderWidth: null,
-                plotShadow: false,
-                type: 'pie',
-            },
-            title: {
-                text: 'Ranking de los 10 mejores tenistas del mundo'
-                
-            },
-            tooltip: {
-                    pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
-            },
-            accessibility: {
-                    point: {
-                        valueSuffix: '%'
-                    }
-            },
-            plotOptions: {
-                pie: {
-                    allowPointSelect: true,
-                    cursor: 'pointer',
-                    dataLabels: {
-                        enabled: true,
-                        format: '<b>{point.name}</b>: {point.percentage:.1f} %'
-                    }
-                }
-            },
-            series: [{
-                name: 'Total 2015',
-                type: 'pie',
-                colorByPoint: true,
-                data: sumaTotal2015,
-            },
-            {
-                name: 'Total 2016',
-                type: 'pie',
-                colorByPoint: true,
-                data: sumaTotal2016,
-            },
-            {
-                name: 'Total 2017',
-                type: 'pie',
-                colorByPoint: true,
-                data: sumaTotal2017,
-            },
-            {
-                name: 'Total 2018',
-                type: 'pie',
-                colorByPoint: true,
-                data: sumaTotal2018,
-            },
-            {
-                name: 'Total 2019',
-                type: 'pie',
-                colorByPoint: true,
-                data: sumaTotal2019,
-            },
-            {
-                name: 'Total 2020',
-                type: 'pie',
-                colorByPoint: true,
-                data: sumaTotal2020,
-            }]
-            
-            
-            
-        
-    });
+        Highcharts.chart('container', {
+    chart: {
+        plotBackgroundColor: null,
+        plotBorderWidth: null,
+        plotShadow: false,
+        type: 'pie'
+    },
+    title: {
+        text: 'Browser market shares in January, 2018'
+    },
+    tooltip: {
+        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+    },
+    accessibility: {
+        point: {
+            valueSuffix: '%'
+        }
+    },
+    plotOptions: {
+        pie: {
+            allowPointSelect: true,
+            cursor: 'pointer',
+            dataLabels: {
+                enabled: true,
+                format: '<b>{point.name}</b>: {point.percentage:.1f} %'
+            }
+        }
+    },
+    series: [{
+        name: 'Brands',
+        colorByPoint: true,
+        data: [{
+            name: 'Chrome',
+            y: 61.41,
+            sliced: true,
+            selected: true
+        }, {
+            name: 'Internet Explorer',
+            y: 11.84
+        }, {
+            name: 'Firefox',
+            y: 10.85
+        }, {
+            name: 'Edge',
+            y: 4.67
+        }, {
+            name: 'Safari',
+            y: 4.18
+        }, {
+            name: 'Sogou Explorer',
+            y: 1.64
+        }, {
+            name: 'Opera',
+            y: 1.6
+        }, {
+            name: 'QQ',
+            y: 1.2
+        }, {
+            name: 'Other',
+            y: 2.61
+        }]
+    }]
+});
  }
 
  onMount(getData);
