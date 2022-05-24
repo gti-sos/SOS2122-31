@@ -157,68 +157,60 @@
 
     
     async function loadGraph(){
-        Highcharts.chart('container', {
+        Highcharts.chart('container',{
             chart: {
-        type: 'column'
-    },
-    title: {
-        text: 'Stacked column chart'
-    },
-    xAxis: {
-        categories: ['Apples', 'Oranges', 'Pears', 'Grapes', 'Bananas']
-    },
-    yAxis: {
-        min: 0,
-        title: {
-            text: 'Total fruit consumption'
-        },
-        stackLabels: {
-            enabled: true,
-            style: {
-                fontWeight: 'bold',
-                color: ( // theme
-                    Highcharts.defaultOptions.title.style &&
-                    Highcharts.defaultOptions.title.style.color
-                ) || 'gray',
-                textOutline: 'none'
-            }
-        }
-    },
-    legend: {
-        align: 'right',
-        x: -30,
-        verticalAlign: 'top',
-        y: 25,
-        floating: true,
-        backgroundColor:
-            Highcharts.defaultOptions.legend.backgroundColor || 'white',
-        borderColor: '#CCC',
-        borderWidth: 1,
-        shadow: false
-    },
-    tooltip: {
-        headerFormat: '<b>{point.x}</b><br/>',
-        pointFormat: '{series.name}: {point.y}<br/>Total: {point.stackTotal}'
-    },
-    plotOptions: {
-        column: {
-            stacking: 'normal',
-            dataLabels: {
-                enabled: true
-            }
-        }
-    },
-    series: [{
-        name: 'John',
-        data: [5, 3, 4, 7, 2]
-    }, {
-        name: 'Jane',
-        data: [2, 2, 3, 2, 1]
-    }, {
-        name: 'Joe',
-        data: [3, 4, 4, 2, 5]
-    }]
-});
+                type: 'lollipop'
+            },
+
+            accessibility: {
+                point: {
+                    valueDescriptionFormat: '{index}. {xDescription}, {point.y}.'
+                }
+            },
+
+            legend: {
+                enabled: false
+            },
+
+            subtitle: {
+                text: '2015'
+            },
+
+            title: {
+                text: 'Top 10 Countries by Population'
+            },
+
+            tooltip: {
+                shared: true
+            },
+
+            xAxis: {
+                type: 'category'
+            },
+
+            yAxis: {
+                title: {
+                    text: 'Proportion'
+                }
+            },
+
+            series: [{
+                name: 'Proportion',
+                data: [{
+                    name: 'Male',
+                    low: sumaMale2015
+                },
+                {
+                    name: 'Female',
+                    low: sumaFemale2015
+                },
+                {
+                    name: 'Total',
+                    low: sumaTotal2015
+                }
+            ]
+            }]
+        })
  }
 
  onMount(getData);
@@ -227,8 +219,9 @@
 <svelte:head>
     <script src="https://code.highcharts.com/highcharts.js"></script>
     <script src="https://code.highcharts.com/highcharts-more.js"></script>
+    <script src="https://code.highcharts.com/modules/dumbbell.js"></script>
+    <script src="https://code.highcharts.com/modules/lollipop.js"></script>
     <script src="https://code.highcharts.com/modules/exporting.js"></script>
-    <script src="https://code.highcharts.com/modules/export-data.js"></script>
     <script src="https://code.highcharts.com/modules/accessibility.js"on:load="{loadGraph}"></script>
 
     <figure class="highcharts-figure">
@@ -280,7 +273,7 @@
 
 .highcharts-figure,
 .highcharts-data-table table {
-    min-width: 310px;
+    min-width: 320px;
     max-width: 800px;
     margin: 1em auto;
 }
@@ -319,6 +312,19 @@
 
 .highcharts-data-table tr:hover {
     background: #f1f7ff;
+}
+
+.ld-label {
+    width: 200px;
+    display: inline-block;
+}
+
+.ld-url-input {
+    width: 500px;
+}
+
+.ld-time-input {
+    width: 40px;
 }
 
 
