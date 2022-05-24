@@ -100,7 +100,7 @@ var registration_stats = [{
 
 module.exports.register = (app,db) => {
 
-    app.get(BASE_API_URL + "/rgistration-stats/loadInitialData", (req, res) => {
+    app.get(BASE_API_URL + "/registration-stats/loadInitialData", (req, res) => {
         db.find({}, function (err, fL) {
             if (err) {
                 res.sendStatus(500, "INTERNAL SERVER ERROR");
