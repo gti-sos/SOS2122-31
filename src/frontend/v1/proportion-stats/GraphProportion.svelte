@@ -157,44 +157,45 @@
 
     
     async function loadGraph(){
-        Highcharts.chart('container', {
-        chart: {
-            type: 'pyramid3d',
-            options3d: {
-                enabled: true,
-                alpha: 10,
-                depth: 50,
-                viewDistance: 50
-            }
-        },
-        title: {
-            text: 'Ranking de los 10 mejores tenistas del mundo'
-        },
-        plotOptions: {
-            series: {
-                dataLabels: {
-                    enabled: true,
-                    format: '<b>{point.name}</b> ({point.y:,.0f})',
-                    allowOverlap: true,
-                    x: 10,
-                    y: -5
-                },
-                width: '60%',
-                height: '80%',
-                center: ['50%', '45%']
-            }
-        },
-        series: [{
-            name: 'Puntos',
-            data: [
-                ['Total', sumaTotal2015],
-                ['Hombres', sumaMale2015],
-                ['Mujeres', sumaFemale2015]
-        ]
 
-        }]
-    });
- }
+        Highcharts.chart('container', {
+            chart: {
+                type: 'line'
+            },
+            title: {
+                text: 'Proportion of '
+            },
+            subtitle: {
+                text: 'Source: WorldClimate.com'
+            },
+            xAxis: {
+                categories: ['2015', '2016', '2017', '2018', '2019', '2020']
+            },
+            yAxis: {
+                title: {
+                    text: '% of population'
+                }
+            },
+            plotOptions: {
+                line: {
+                    dataLabels: {
+                        enabled: true
+                    },
+                    enableMouseTracking: false
+                }
+            },
+            series: [{
+                name: 'Male',
+                data: [sumaMale2015, sumaMale2016, sumaMale2017, sumaMale2018, sumaMale2019, sumaMale2020]
+            }, {
+                name: 'Female',
+                data: [sumaFemale2015, sumaFemale2016, sumaFemale2017, sumaFemale2018, sumaFemale2019, sumaFemale2020]
+            },{
+                name: 'Total',
+                data: [sumaTotal2015, sumaTotal2016, sumaTotal2017, sumaTotal2018, sumaTotal2019, sumaTotal2020]
+            }]
+        });
+    }
 
  onMount(getData);
 </script>
@@ -202,16 +203,15 @@
 
 <svelte:head>
     <script src="https://code.highcharts.com/highcharts.js"></script>
-    <script src="https://code.highcharts.com/highcharts-3d.js"></script>
-    <script src="https://code.highcharts.com/modules/cylinder.js"></script>
-    <script src="https://code.highcharts.com/modules/funnel3d.js"></script>
-    <script src="https://code.highcharts.com/modules/pyramid3d.js"on:load="{loadGraph}"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"on:load={loadGraph}></script>
 
     <figure class="highcharts-figure">
         <div id="container"></div>
         <p class="highcharts-description">
-            This chart shows how packed bubble charts can be grouped by series,
-            creating a hierarchy.
+            This chart shows how data labels can be added to the data series. This
+            can increase readability and comprehension for small datasets.
         </p>
     </figure>
 
@@ -248,67 +248,4 @@
     </figure>
 </main>
 
-<style>
-   #container {
-    height: 400px;
-}
 
-.highcharts-figure,
-.highcharts-data-table table {
-    min-width: 320px;
-    max-width: 800px;
-    margin: 1em auto;
-}
-
-.highcharts-data-table table {
-    font-family: Verdana, sans-serif;
-    border-collapse: collapse;
-    border: 1px solid #ebebeb;
-    margin: 10px auto;
-    text-align: center;
-    width: 100%;
-    max-width: 500px;
-}
-
-.highcharts-data-table caption {
-    padding: 1em 0;
-    font-size: 1.2em;
-    color: #555;
-}
-
-.highcharts-data-table th {
-    font-weight: 600;
-    padding: 0.5em;
-}
-
-.highcharts-data-table td,
-.highcharts-data-table th,
-.highcharts-data-table caption {
-    padding: 0.5em;
-}
-
-.highcharts-data-table thead tr,
-.highcharts-data-table tr:nth-child(even) {
-    background: #f8f8f8;
-}
-
-.highcharts-data-table tr:hover {
-    background: #f1f7ff;
-}
-
-.ld-label {
-    width: 200px;
-    display: inline-block;
-}
-
-.ld-url-input {
-    width: 500px;
-}
-
-.ld-time-input {
-    width: 40px;
-}
-
-
-
-</style>
