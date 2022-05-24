@@ -1,5 +1,4 @@
 <script>
-    import{Nav, NavItem, NavLink } from "sveltestrap";
     import { onMount } from "svelte";
     import Highcharts from "highcharts";
     import Button from "sveltestrap/src/Button.svelte";
@@ -158,70 +157,45 @@
 
     
     async function loadGraph(){
+
         Highcharts.chart('container', {
-    chart: {
-        plotBackgroundColor: null,
-        plotBorderWidth: null,
-        plotShadow: false,
-        type: 'pie'
-    },
-    title: {
-        text: 'Browser market shares in January, 2018'
-    },
-    tooltip: {
-        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
-    },
-    accessibility: {
-        point: {
-            valueSuffix: '%'
-        }
-    },
-    plotOptions: {
-        pie: {
-            allowPointSelect: true,
-            cursor: 'pointer',
-            dataLabels: {
-                enabled: true,
-                format: '<b>{point.name}</b>: {point.percentage:.1f} %'
-            }
-        }
-    },
-    series: [{
-        name: 'Brands',
-        colorByPoint: true,
-        data: [{
-            name: 'Chrome',
-            y: 61.41,
-            sliced: true,
-            selected: true
-        }, {
-            name: 'Internet Explorer',
-            y: 11.84
-        }, {
-            name: 'Firefox',
-            y: 10.85
-        }, {
-            name: 'Edge',
-            y: 4.67
-        }, {
-            name: 'Safari',
-            y: 4.18
-        }, {
-            name: 'Sogou Explorer',
-            y: 1.64
-        }, {
-            name: 'Opera',
-            y: 1.6
-        }, {
-            name: 'QQ',
-            y: 1.2
-        }, {
-            name: 'Other',
-            y: 2.61
-        }]
-    }]
-});
- }
+            chart: {
+                type: 'line'
+            },
+            title: {
+                text: 'Proportion of '
+            },
+            subtitle: {
+                text: 'Source: WorldClimate.com'
+            },
+            xAxis: {
+                categories: ['2015', '2016', '2017', '2018', '2019', '2020']
+            },
+            yAxis: {
+                title: {
+                    text: '% of population'
+                }
+            },
+            plotOptions: {
+                line: {
+                    dataLabels: {
+                        enabled: true
+                    },
+                    enableMouseTracking: false
+                }
+            },
+            series: [{
+                name: 'Male',
+                data: [sumaMale2015, sumaMale2016, sumaMale2017, sumaMale2018, sumaMale2019, sumaMale2020]
+            }, {
+                name: 'Female',
+                data: [sumaFemale2015, sumaFemale2016, sumaFemale2017, sumaFemale2018, sumaFemale2019, sumaFemale2020]
+            },{
+                name: 'Total',
+                data: [sumaTotal2015, sumaTotal2016, sumaTotal2017, sumaTotal2018, sumaTotal2019, sumaTotal2020]
+            }]
+        });
+    }
 
  onMount(getData);
 </script>
@@ -236,55 +210,85 @@
     <figure class="highcharts-figure">
         <div id="container"></div>
         <p class="highcharts-description">
-            This chart shows how packed bubble charts can be grouped by series,
-            creating a hierarchy.
+            This chart shows how data labels can be added to the data series. This
+            can increase readability and comprehension for small datasets.
         </p>
     </figure>
 
 </svelte:head>
 
 <main>
-    
-    
-  
-    <div>
-        <h1>
-          Análiticas de Educación
-        </h1>
-    </div>
+    <br />
+    <h1 align="center">Pais al que buscar gráfica:</h1>
+    <div align="center">
+        <input type="text" bind:value={country} />
+        <Button
+            outline
+            color="info"
+            on:click={() => {
+                window.location.href =  `/#/graphProportionSearch/${country}`;
+                location.reload();
 
-    <div id="first"></div>
-    <div id="second"></div>
-    <div id="third"></div>
-  
-    <div>
-        <p class="description">
-            Gráficos de tarta que muestran los porcentajes de abandono, terminación y gasto gubernamental; respectivamente.
+            }}
+        >
+            Buscar
+        </Button>
+    </div>
+    <br />
+    <figure class="highcharts-figure">
+        <div id="container" />
+    </figure>
+    <br />
+    <figure class="highcharts-figure">
+        <div id="container" />
+        <p class="highcharts-description">
+            En esta gráfica se muestra para el pais seleccionado el avance de la
+            tasa de empleo, educación o capacitación de los jóvenes.
         </p>
-    </div>
-    
-  
-    <div>
-      {#if !cargados}
-        <p class="error">{error}</p>
-      {/if}
-    </div>
-  </main>
+    </figure>
+</main>
 
-  <style>
-    main {
-        text-align: center;
-        padding: 30px;       
-    }
-    div.nav {
-        text-align: left;
-    }
-    p.error{
-      color: red; 
-      text-align:center;
-      font-size: 20px;
-      margin-top:80px;
-    }
-    
-   
-  </style>
+<style>
+ .highcharts-figure,
+.highcharts-data-table table {
+    min-width: 360px;
+    max-width: 800px;
+    margin: 1em auto;
+}
+
+.highcharts-data-table table {
+    font-family: Verdana, sans-serif;
+    border-collapse: collapse;
+    border: 1px solid #ebebeb;
+    margin: 10px auto;
+    text-align: center;
+    width: 100%;
+    max-width: 500px;
+}
+
+.highcharts-data-table caption {
+    padding: 1em 0;
+    font-size: 1.2em;
+    color: #555;
+}
+
+.highcharts-data-table th {
+    font-weight: 600;
+    padding: 0.5em;
+}
+
+.highcharts-data-table td,
+.highcharts-data-table th,
+.highcharts-data-table caption {
+    padding: 0.5em;
+}
+
+.highcharts-data-table thead tr,
+.highcharts-data-table tr:nth-child(even) {
+    background: #f8f8f8;
+}
+
+.highcharts-data-table tr:hover {
+    background: #f1f7ff;
+}
+</style>
