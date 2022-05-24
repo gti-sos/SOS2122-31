@@ -1,7 +1,7 @@
 {
 	"info": {
-		"_postman_id": "22905117-1194-4507-8034-cb335cc9e26f",
-		"name": "sos2122-31 v1",
+		"_postman_id": "9f6c7784-c4d2-4820-b807-84f23cd7ba64",
+		"name": "sos2122-31",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "19505610"
 	},
@@ -38,9 +38,9 @@
 					}
 				},
 				"url": {
-					"raw": "{{HOST}}{{API}}/loadInitialData",
+					"raw": "{{HOST}}{{APIV2}}/loadInitialData",
 					"host": [
-						"{{HOST}}{{API}}"
+						"{{HOST}}{{APIV2}}"
 					],
 					"path": [
 						"loadInitialData"
@@ -68,9 +68,9 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{HOST}}{{API}}",
+					"raw": "{{HOST}}{{APIV2}}",
 					"host": [
-						"{{HOST}}{{API}}"
+						"{{HOST}}{{APIV2}}"
 					]
 				}
 			},
@@ -100,9 +100,9 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{HOST}}{{API}}/argentina/2010",
+					"raw": "{{HOST}}{{APIV2}}/argentina/2010",
 					"host": [
-						"{{HOST}}{{API}}"
+						"{{HOST}}{{APIV2}}"
 					],
 					"path": [
 						"argentina",
@@ -131,9 +131,9 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{HOST}}{{API}}/argentina",
+					"raw": "{{HOST}}{{APIV2}}/argentina",
 					"host": [
-						"{{HOST}}{{API}}"
+						"{{HOST}}{{APIV2}}"
 					],
 					"path": [
 						"argentina"
@@ -173,9 +173,9 @@
 					}
 				},
 				"url": {
-					"raw": "{{HOST}}{{API}}/brazil",
+					"raw": "{{HOST}}{{APIV2}}/brazil",
 					"host": [
-						"{{HOST}}{{API}}"
+						"{{HOST}}{{APIV2}}"
 					],
 					"path": [
 						"brazil"
@@ -203,9 +203,9 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{HOST}}{{API}}/?offset=2&limit=3",
+					"raw": "{{HOST}}{{APIV2}}/?offset=2&limit=3",
 					"host": [
-						"{{HOST}}{{API}}"
+						"{{HOST}}{{APIV2}}"
 					],
 					"path": [
 						""
@@ -244,7 +244,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"country\": \"croacia\",\r\n    \"year\": 210,\r\n    \"primarylevel\": 114,\r\n    \"secondarylevel\": 30,\r\n    \"tertiarylevel\": 19191\r\n} \r\n",
+					"raw": "{\r\n    \"country\": \"croacia\",\r\n    \"year\": 210,\r\n    \"primarylevel\": 114,\r\n    \"secondarylevel\": 30,\r\n    \"tertiarylevel\": 19999\r\n} \r\n",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -252,9 +252,9 @@
 					}
 				},
 				"url": {
-					"raw": "{{HOST}}{{API}}",
+					"raw": "{{HOST}}{{APIV2}}",
 					"host": [
-						"{{HOST}}{{API}}"
+						"{{HOST}}{{APIV2}}"
 					]
 				}
 			},
@@ -280,7 +280,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"country\": \"croacia\",\r\n    \"year\": 210,\r\n    \"primarylevel\": 114,\r\n    \"secondarylevel\": 30,\r\n    \"tertiarylevel\": 0\r\n} \r\n",
+					"raw": "{\r\n    \"country\": \"croacia\",\r\n    \"year\": 210,\r\n    \"primarylevel\": 114,\r\n    \"secondarylevel\": 30,\r\n    \"tertiarylevel\": 19999\r\n} \r\n",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -288,9 +288,9 @@
 					}
 				},
 				"url": {
-					"raw": "{{HOST}}{{API}}",
+					"raw": "{{HOST}}{{APIV2}}",
 					"host": [
-						"{{HOST}}{{API}}"
+						"{{HOST}}{{APIV2}}"
 					]
 				}
 			},
@@ -324,9 +324,9 @@
 					}
 				},
 				"url": {
-					"raw": "{{HOST}}{{API}}",
+					"raw": "{{HOST}}{{APIV2}}",
 					"host": [
-						"{{HOST}}{{API}}"
+						"{{HOST}}{{APIV2}}"
 					]
 				}
 			},
@@ -360,9 +360,9 @@
 					}
 				},
 				"url": {
-					"raw": "{{HOST}}{{API}}/italy/2012",
+					"raw": "{{HOST}}{{APIV2}}/italy/2012",
 					"host": [
-						"{{HOST}}{{API}}"
+						"{{HOST}}{{APIV2}}"
 					],
 					"path": [
 						"italy",
@@ -400,9 +400,9 @@
 					}
 				},
 				"url": {
-					"raw": "{{HOST}}{{API}}/croacia/210",
+					"raw": "{{HOST}}{{APIV2}}/croacia/210",
 					"host": [
-						"{{HOST}}{{API}}"
+						"{{HOST}}{{APIV2}}"
 					],
 					"path": [
 						"croacia",
@@ -440,9 +440,9 @@
 					}
 				},
 				"url": {
-					"raw": "{{HOST}}{{API}}/argentina/2010",
+					"raw": "{{HOST}}{{APIV2}}/argentina/2010",
 					"host": [
-						"{{HOST}}{{API}}"
+						"{{HOST}}{{APIV2}}"
 					],
 					"path": [
 						"argentina",
@@ -480,9 +480,9 @@
 					}
 				},
 				"url": {
-					"raw": "{{HOST}}{{API}}/argentina/2010",
+					"raw": "{{HOST}}{{APIV2}}/argentina/2010",
 					"host": [
-						"{{HOST}}{{API}}"
+						"{{HOST}}{{APIV2}}"
 					],
 					"path": [
 						"argentina",
@@ -518,9 +518,9 @@
 					}
 				},
 				"url": {
-					"raw": "{{HOST}}{{API}}",
+					"raw": "{{HOST}}{{APIV2}}",
 					"host": [
-						"{{HOST}}{{API}}"
+						"{{HOST}}{{APIV2}}"
 					]
 				}
 			},
@@ -552,9 +552,9 @@
 					}
 				},
 				"url": {
-					"raw": "{{HOST}}{{API}}/croacia/210",
+					"raw": "{{HOST}}{{APIV2}}/croacia/210",
 					"host": [
-						"{{HOST}}{{API}}"
+						"{{HOST}}{{APIV2}}"
 					],
 					"path": [
 						"croacia",
@@ -592,9 +592,9 @@
 					}
 				},
 				"url": {
-					"raw": "{{HOST}}{{API}}",
+					"raw": "{{HOST}}{{APIV2}}",
 					"host": [
-						"{{HOST}}{{API}}"
+						"{{HOST}}{{APIV2}}"
 					]
 				}
 			},
