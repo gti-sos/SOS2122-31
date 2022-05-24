@@ -108,8 +108,7 @@
         Highcharts.chart('container', {
 
             chart: {
-                height: '100%',
-                type: 'packedbubble'
+                type: 'column'
             },
 
             title: {
@@ -117,150 +116,69 @@
                 
             },
            
-            tooltip: {
-                useHTML: true,
-                pointFormat: '<b>{point.name}:</b> {point.value}m CO<sub>2</sub>'
+            xAxis: {
+                categories: ['2015', '2016', '2017', '2018', '2019', '2020']
             },
-
+            yAxis: {
+                min: 0,
+                title: {
+                    text: 'Proportion (%)'
+                }
+            },
+            stackLabels: {
+                enabled: true,
+                style: {
+                    fontWeight: 'bold',
+                    color: ( // theme
+                        Highcharts.defaultOptions.title.style &&
+                        Highcharts.defaultOptions.title.style.color
+                    ) || 'gray',
+                    textOutline: 'none'
+                }
+            },
+            legend: {
+                align: 'right',
+                x: -30,
+                verticalAlign: 'top',
+                y: 25,
+                floating: true,
+                backgroundColor:
+                    Highcharts.defaultOptions.legend.backgroundColor || 'white',
+                borderColor: '#CCC',
+                borderWidth: 1,
+                shadow: false
+            },
+            tooltip: {
+                headerFormat: '<b>{point.x}</b><br/>',
+                pointFormat: '{series.name}: {point.y}<br/>Total: {point.stackTotal}'
+            },
             plotOptions: {
-                packedbubble: {
-                    minSize: '20%',
-                    maxSize: '100%',
-                    zMin: 0,
-                    zMax: 1000,
-                    layoutAlgorithm: {
-                        gravitationalConstant: 0.05,
-                        splitSeries: true,
-                        seriesInteraction: false,
-                        dragBetweenSeries: true,
-                        parentNodeLimit: true
-                    },
+                column: {
+                    stacking: 'normal',
                     dataLabels: {
-                        enabled: true,
-                        format: '{point.name}',
-                        filter: {
-                            property: 'y',
-                            operator: '>',
-                            value: 250
-                        },
-                        style: {
-                            color: 'black',
-                            textOutline: 'none',
-                            fontWeight: 'normal'
-                        }
+                        enabled: true
                     }
                 }
             },
+            
 
             
 
             
 
             series: [{
-                name: '2015',
-                data: [{
-                    name: 'Male',
-                    value: male2015
-                },
-                {
-                    name: 'Female',
-                    value: female2015
-                },
-                {
-                    name : 'Total',
-                    value: total2015
-                }]    
-            },{
-                name: '2016',
-                data: [{
-                    name: 'Male',
-                    value: male2016
-                },
-                {
-                    name: 'Female',
-                    value: female2016
-                },
-                {
-                    name : 'Total',
-                    value: total2016
-                }] 
-            },{
-                name: '2017',
-                data: [{
-                    name: 'Male',
-                    value: male2017
-                },
-                {
-                    name: 'Female',
-                    value: female2017
-                },
-                {
-                    name : 'Total',
-                    value: total2017
-                }] 
-            },{
-                name: '2018',
-                data: [{
-                    name: 'Male',
-                    value: male2018
-                },
-                {
-                    name: 'Female',
-                    value: female2018
-                },
-                {
-                    name : 'Total',
-                    value: total2018
-                }] 
-            },{
-                name: '2019',
-                data: [{
-                    name: 'Male',
-                    value: male2019
-                },
-                {
-                    name: 'Female',
-                    value: female2019
-                },
-                {
-                    name : 'Total',
-                    value: total2019
-                }] 
-            },{
-                name: '2020',
-                data: [{
-                    name: 'Male',
-                    value: male2020
-                },
-                {
-                    name: 'Female',
-                    value: female2020
-                },
-                {
-                    name : 'Total',
-                    value: total2020
-                }] 
-            }
-                
-
-            ],
-            responsive: {
-                rules: [{
-                    condition: {
-                        maxWidth: 500
-                    },
-                    chartOptions: {
-                        legend: {
-                            layout: 'horizontal',
-                            align: 'center',
-                            verticalAlign: 'bottom'
-                        }
-                    },
-                    pane : {
-                        size: '70%'
-                    }
-                }]
-            }
+                name: 'Male',
+                data: [male2015, male2016, male2017, male2018, male2019, male2020]
+            },
+            {
+                name: 'Female',
+                data: [female2015, female2016, female2017, female2018, female2019, female2020]
+            },
+            {
+                name: 'Total',
+                data: [total2015, total2016, total2017, total2018, total2019, total2020]
+            }]
+            
 
 });
  }
@@ -281,7 +199,7 @@
         <p class="highcharts-description">
             This chart shows how packed bubble charts can be grouped by series,
             creating a hierarchy.
-            
+
         </p>
     </figure>
 
