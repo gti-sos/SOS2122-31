@@ -157,60 +157,39 @@
 
     
     async function loadGraph(){
-        Highcharts.chart('container',{
-            chart: {
-                type: 'lollipop'
-            },
-
-            accessibility: {
-                point: {
-                    valueDescriptionFormat: '{index}. {xDescription}, {point.y}.'
-                }
-            },
-
-            legend: {
-                enabled: false
-            },
-
-            subtitle: {
-                text: '2015'
-            },
-
-            title: {
-                text: 'Top 10 Countries by Population'
-            },
-
-            tooltip: {
-                shared: true
-            },
-
-            xAxis: {
-                type: 'category'
-            },
-
-            yAxis: {
-                title: {
-                    text: 'Proportion'
-                }
-            },
-
-            series: [{
-                name: 'Proportion',
-                data: [{
-                    name: 'Male',
-                    low: sumaMale2015
+        Highcharts.chart('container', {
+        chart: {
+            type: 'pyramid3d',
+            options3d: {
+                enabled: true,
+                alpha: 10,
+                depth: 50,
+                viewDistance: 50
+            }
+        },
+        title: {
+            text: 'Ranking de los 10 mejores tenistas del mundo'
+        },
+        plotOptions: {
+            series: {
+                dataLabels: {
+                    enabled: true,
+                    format: '<b>{point.name}</b> ({point.y:,.0f})',
+                    allowOverlap: true,
+                    x: 10,
+                    y: -5
                 },
-                {
-                    name: 'Female',
-                    low: sumaFemale2015
-                },
-                {
-                    name: 'Total',
-                    low: sumaTotal2015
-                }
-            ]
-            }]
-        })
+                width: '60%',
+                height: '80%',
+                center: ['50%', '45%']
+            }
+        },
+        series: [{
+            name: 'Puntos',
+            data: puntosPorJugador
+
+        }]
+    });
  }
 
  onMount(getData);
@@ -218,18 +197,16 @@
 
 <svelte:head>
     <script src="https://code.highcharts.com/highcharts.js"></script>
-    <script src="https://code.highcharts.com/highcharts-more.js"></script>
-    <script src="https://code.highcharts.com/modules/dumbbell.js"></script>
-    <script src="https://code.highcharts.com/modules/lollipop.js"></script>
-    <script src="https://code.highcharts.com/modules/exporting.js"></script>
-    <script src="https://code.highcharts.com/modules/accessibility.js"on:load="{loadGraph}"></script>
+    <script src="https://code.highcharts.com/highcharts-3d.js"></script>
+    <script src="https://code.highcharts.com/modules/cylinder.js"></script>
+    <script src="https://code.highcharts.com/modules/funnel3d.js"></script>
+    <script src="https://code.highcharts.com/modules/pyramid3d.js"on:load="{loadGraph}"></script>
 
     <figure class="highcharts-figure">
         <div id="container"></div>
         <p class="highcharts-description">
             This chart shows how packed bubble charts can be grouped by series,
             creating a hierarchy.
-
         </p>
     </figure>
 
