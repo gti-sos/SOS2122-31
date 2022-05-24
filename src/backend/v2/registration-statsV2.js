@@ -100,10 +100,23 @@ var registration_stats = [{
 
 module.exports.register = (app,db) => {
 
-    app.get(BASE_API_URL + "/registration-stats/loadInitialData", (req, res) => {
-        db.insert(registration_stats);
-        res.send(JSON.stringify(registration_stats, null, 2));
-    });
+    app.get(BASE_API_URL + "/rgistration-stats/loadInitialData", (req, res) => {
+        db.find({}, function (err, fL) {
+            if (err) {
+                res.sendStatus(500, "INTERNAL SERVER ERROR");
+                return;
+            }
+            if (fL == 0) {
+                for (var i = 0; i < alphabetization_stats.length; i++) {
+                    db.insert(alphabetization_stats[i]);
+                }
+                res.sendStatus(200, "OK.")
+                return;
+            }else{
+            res.sendStatus(200, "INITIALIZED")
+        }
+        });
+    })
 
     app.get(BASE_API_URL + "/registration-stats",(req, res)=>{
     
