@@ -281,6 +281,7 @@
         <p class="highcharts-description">
             This chart shows how packed bubble charts can be grouped by series,
             creating a hierarchy.
+            
         </p>
     </figure>
 
