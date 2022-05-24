@@ -1,4 +1,5 @@
 <script>
+    import{Nav, NavItem, NavLink } from "sveltestrap";
     import { onMount } from "svelte";
     import Highcharts from "highcharts";
     import Button from "sveltestrap/src/Button.svelte";
