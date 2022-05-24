@@ -2,6 +2,7 @@
     import { onMount } from "svelte";
     import Highcharts from "highcharts";
     import Button from "sveltestrap/src/Button.svelte";
+    require (highcharts/highcharts-more.js)(Highcharts);
 
     export let params = {};
     //const delay = (ms) => new Promise((res) => setTimeout(res, ms));
