@@ -17,25 +17,45 @@
             "https://sos2122-10.herokuapp.com/api/v2/population-levels"
         );
         const res1 = await fetch("/api/v2/registration-stats");
-        if (res.ok) {
+        if (res.ok && res1.ok) {
             datos = await res.json();
-            console.log(datos);
-            console.log(JSON.stringify(datos, null, 2));
+            datos1 = await res1.json();
+            const comun = [];
+            for (let i = 0; i < datos1.length; i++) {
+                comun.push(datos[i].country + "/" + datos[i].year);
+                //death_rate.push(datos[i].death_rate);
+                //life_expectancy_birth.push(datos[i].life_expectancy_birth);
+                //birth_rate.push(datos[i].birth_rate);
+            }
+            datos1.forEach((data) => {
+                let fecha1 = data["country"] + "-" + data.year;
+                fechas.push(fecha1);
+                if (comun.includes(fecha1)) {
+                    let index = comun.indexOf(fecha1);
+                    death_rate.push(datos[index].death_rate);
+                    life_expectancy_birth.push(
+                        datos[index].life_expectancy_birth
+                    );
+                    birth_rate.push(datos[index].birth_rate);
+                    datos.splice(index, 1);
+                } else {
+                    death_rate.push("");
+                    life_expectancy_birth.push("");
+                    birth_rate.push("");
+                }
+                nivelPrimario.push(data.primarylevel);
+                nivelSecundario.push(data.secondarylevel);
+                nivelTerciario.push(data.tertiarylevel);
+            })
             datos.forEach((data) => {
                 fechas.push(data["country"] + "-" + data.year);
                 death_rate.push(data.death_rate);
                 life_expectancy_birth.push(data.life_expectancy_birth);
                 birth_rate.push(data.birth_rate);
-            });
-            datos1 = await res1.json();
-            console.log(datos1);
-            console.log(JSON.stringify(datos1, null, 2));
-            datos1.forEach((data) => {
-                fechas.push(data["country"] + "-" + data.year);
-                nivelPrimario.push(data.primarylevel);
-                nivelSecundario.push(data.secondarylevel);
-                nivelTerciario.push(data.tertiarylevel);
-            });
+                nivelPrimario.push("");
+                nivelSecundario.push("");
+                nivelTerciario.push("");
+            })
         } else {
             window.alert("No hay datos para este pais");
             console.log("INTERNAL FATAL ERROR");
@@ -110,7 +130,7 @@
                         lineColor: Highcharts.getOptions().colors[5],
                         fillColor: "white",
                     },
-                }
+                },
             ],
         });
     }
