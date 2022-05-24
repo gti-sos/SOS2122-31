@@ -207,6 +207,7 @@ async function getSearch(){
 }
 
 
+
 .highcharts-data-table td,
 .highcharts-data-table th,
 .highcharts-data-table caption {
