@@ -46,6 +46,19 @@
     let mediaMage = [];
     let mediaMarksman = [];
     let mediaSupport = [];
+    let bloodWell = 0;
+    let mana = 0;
+    let energy = 0;
+    let courage = 0;
+    let shield = 0;
+    let rage = 0;
+    let fury = 0;
+    let ferocity = 0;
+    let none = 0;
+    let heat = 0;
+    let grit = 0;
+    let crimsonRush = 0;
+    let flow = 0;
 
 
     
@@ -162,6 +175,50 @@
 
                 
             }
+            
+
+            for (let i in partype){
+                if(partype[i] == "Blood Well"){
+                    bloodWell++;
+                }
+                if(partype[i] == "Mana"){
+                    mana++;
+                }
+                if(partype[i] == "Energy"){
+                    energy++;
+                }
+                if(partype[i] == "Courage"){
+                    courage++;
+                }
+                if(partype[i] == "Shield"){
+                    shield++;
+                }
+                if(partype[i] == "Rage"){
+                    rage++;
+                }
+                if(partype[i] == "Fury"){
+                    fury++;
+                }
+                if(partype[i] == "Ferocity"){
+                    ferocity++;
+                }
+                if(partype[i] == "None"){
+                    none++;
+                }
+                if(partype[i] == "Heat"){
+                    heat++;
+                }
+                if(partype[i] == "Grit"){
+                    grit++;
+                }
+                if(partype[i] == "Crimson Rush"){
+                    crimsonRush++;
+                }
+                if(partype[i] == "Flow"){
+                    flow++;
+                }
+            }
+
             let countAssasin = 0;
             let countFighter = 0;
             let countMage = 0;
@@ -211,18 +268,41 @@
 
         function drawChart() {
             var data = google.visualization.arrayToDataTable([
-            ['Name', 'Diffculty'],
-            [ name,      difficulty]
+                ['Recurso', 'Número de campeones que lo usan'],
+                ['Blood Well', bloodWell],
+                ['Mana', mana],
+                ['Energy', energy],
+                ['Courage', courage],
+                ['Shield', shield],
+                ['Rage', rage],
+                ['Fury', fury],
+                ['Ferocity', ferocity],
+                ['None', none],
+                ['Heat', heat],
+                ['Grit', grit],
+                ['Crimson Rush', crimsonRush],
+                ['Flow', flow]
             ]);
 
             var options = {
-            title: 'Age vs. Weight comparison',
-            hAxis: {title: 'Name', minValue: 0, maxValue: 15},
-            vAxis: {title: 'Difficulty', minValue: 0, maxValue: 15},
-            legend: 'none'
+                title: 'Campeones por tipo de recurso',
+                pieHole: 0.4,
+                legend: { position: 'labeled' },
+                slices: {
+                    3: { offset: 0.2 },
+                    4: { offset: 0.3 },
+                    5: { offset: 0.4 },
+                    7: { offset: 0.5 },
+                    9: { offset: 0.6 },
+                    10: { offset: 0.2 },
+                    11: { offset: 0.3 },
+                    12: { offset: 0.4 },
+                    0: { offset: 0.5, color: 'red' },
+                    1: { color : 'blue'},
+                }
             };
 
-            var chart = new google.visualization.ScatterChart(document.getElementById('columnchart_material'));
+            var chart = new google.visualization.PieChart(document.getElementById('columnchart_material'));
 
             chart.draw(data, options);
             
@@ -472,8 +552,9 @@ onMount(getData);
 </svelte:head>
 
 <main>
-    <div div id="columnchart_material" style="width: 1800px; height: 500px;"></div>
-    <div id="columnchart_material2" style="width: 900px; height: 500px;"></div>
+    <h1>Gráficas de los campeones de League of Legends</h1>
+    <div id="columnchart_material" align="center" style="width: 1800px; height: 710px;"></div>
+    <div id="columnchart_material2" align="center" style="width: 1800px; height: 500px;"></div>
     <div></div>
 
 </main>
