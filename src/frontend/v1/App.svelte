@@ -15,7 +15,7 @@
 //José Ortiz Roldan
 	import GraphProportion from "./proportion-stats/GraphProportion.svelte";
 	import GraphProportionSearch from "./proportion-stats/GraphProportionSearch.svelte";
-	import ApexProportion from "./proportion-stats/ApexProportion.svelte";
+	import ApexProportion from "./proportion-stats/apexProportion.svelte";
 	import GraphExternalAPI_JOR from "./proportion-stats/graphExternalAPI_JOR.svelte";
 	import GraphExternalAPI2_JOR from "./proportion-stats/graphExternalAPI2_JOR.svelte";
 //	
@@ -46,7 +46,7 @@
 		"/proportion-stats/:country/:year": EditProportionStats,
 		"/graphProportion": GraphProportion,
 		"/graphProportionSearch/:country": GraphProportionSearch,
-		"/graphApexProportion/:country": ApexProportion,
+		"/apexProportion": ApexProportion,
 		"/graphExternalAPI_JOR": GraphExternalAPI_JOR,
 		"/graphExternalAPI2_JOR": GraphExternalAPI2_JOR,
 		"/info": Info,

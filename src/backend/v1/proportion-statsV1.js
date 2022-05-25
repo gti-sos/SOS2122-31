@@ -757,6 +757,25 @@ module.exports.register = (app,db) => {
 
     });
 
+    app.get(BASE_API_URL+"/proportion-stats/:year",(req, res)=>{
+        var year = req.params.year;
+
+        db.find({}, function(err, newRegis){
+            if(err){
+                res.sendStatus(500, "ERROR EN CLIENTE");
+                return;
+            }
+
+            newRegis = newRegis.filter((reg)=>{
+                return (reg.year == year);
+            });
+            if (newRegis==0){
+                res.sendStatus(404, "NO EXISTE");
+                return;
+            }
+        })
+    });
+
     function paginacion(req, lista){
         var res = [];
         const limit = req.query.limit;
