@@ -27,7 +27,7 @@ app.use(paths, function (req, res) {
 });
 
 var paths2 = '/remoteApiCancer';
-var apiServerHost2 = 'https://sos2122-24.herokuapp.com/api/v1/cancerdeaths-stats';
+var apiServerHost2 = 'https://sos2122-24.herokuapp.com/api/v2/cancerdeaths-stats';
 
 app.use(paths2, function (req, res) {
   var url = apiServerHost2 + req.url;

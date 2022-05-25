@@ -26,10 +26,17 @@
             const arrayEXT = await resEXT.json();
             apiEXT = arrayEXT;
             //Ordenamos valores:
+            apiEXT.sort(function (a, b) {
+                var keyA = new Date(a.year),
+                    keyB = new Date(b.year);
+                // Compare the 2 dates
+                if (keyA < keyB) return -1;
+                if (keyA > keyB) return 1;
+                return 0;
+            });
             console.log(apiEXT.length);
             apiEXT.forEach((element) => {
-                cSOS.push(element.country);
-                ySOS.push(element.year);
+                cSOS.push(element.year + " // " + element["country"]);
                 paeSOS.push(element.percentages_access_elecetricity);
                 nrecSOS.push(element.non_renewable_energy_consumptions);
                 renSOS.push(element.renewable_energy_consumptions);
@@ -60,8 +67,7 @@
             });
             console.log(apiData.length);
             apiData.forEach((element) => {
-                country.push(element.country);
-                year.push(element.year);
+                country.push(element.year + " // " + element["country"]);
                 ar_ym.push(element.ar_ym);
                 ar_yw.push(element.ar_yw);
                 ar_ty.push(element.ar_ty);
