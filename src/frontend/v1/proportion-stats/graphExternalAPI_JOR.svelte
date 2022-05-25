@@ -9,27 +9,60 @@
     let name = [];
     let tags = [];
     let partype = [];
-    let dificulty = {};
+    let difficulty = [];
     let assasin = [];
     let tank = [];
     let fighter = [];
     let mage = [];
     let marksman = [];
     let support = [];
-
+    let apiData2 = [];
+    let attack = [];
+    let defense = [];
+    let magic = [];
 
     
     async function getData(){
         const res = await fetch('https://ddragon.leagueoflegends.com/cdn/12.9.1/data/en_US/champion.json');
         if (res.ok){
             const arrayData = await res.json();
-            apiData = await (arrayData);
+            apiData = await (JSON.stringify(arrayData.data));
+            apiData2 = await (JSON.parse(apiData));
+
             console.log("api data : " + apiData);
+            console.log("api data 2 : " + apiData2);
 
-            data = await (apiData.data);
-            console.log("Data recieved :" + data.length);
+            for (let i in apiData2){
+                name.push(apiData2[i].name);
+                tags.push(apiData2[i].tags);
+                partype.push(apiData2[i].partype);
+                difficulty.push(apiData2[i].info.difficulty);
+                attack.push(apiData2[i].info.attack);
+                defense.push(apiData2[i].info.defense);
+                magic.push(apiData2[i].info.magic);
+                if(apiData2[i].tags.includes("Assassin")){
+                    assasin.push(apiData2[i].name);
+                }
+                if(apiData2[i].tags.includes("Fighter")){
+                    fighter.push(apiData2[i].name);
+                }
+                if(apiData2[i].tags.includes("Mage")){
+                    mage.push(apiData2[i].name);
+                }
+                if(apiData2[i].tags.includes("Marksman")){
+                    marksman.push(apiData2[i].name);
+                }
+                if(apiData2[i].tags.includes("Support")){
+                    support.push(apiData2[i].name);
+                }
+                if(apiData2[i].tags.includes("Tank")){
+                    tank.push(apiData2[i].name);
+                }
+                
+            }
 
-            getLists();
+            console.log("data : " + data);
+            loadGraph();
 
         }
         else{
@@ -41,146 +74,32 @@
     }
 
 
-    async function getLists(){
-        data.forEach(v =>{
-            name.push(v.name);
-            tags.push(v.tags);
-            partype.push(v.partype);
-            
-            if(v.tags.includes("Assassin")){
-                assasin.push(v.name);
-            }
-            if(v.tags.includes("Fighter")){
-                fighter.push(v.name);
-            }
-            if(v.tags.includes("Mage")){
-                mage.push(v.name);
-            }
-            if(v.tags.includes("Marksman")){
-                marksman.push(v.name);
-            }
-            if(v.tags.includes("Support")){
-                support.push(v.name);
-            }
-            if(v.tags.includes("Tank")){
-                tank.push(v.name);
-            }
-            //use v.name as key and v.info.difficulty as value
-            dificulty[v.name] = v.info.difficulty;
-
-        })
-        loadGraph();
-    }
-
+    
     async function loadGraph(){
-        Highcharts.chart('container',{
-            chart: {
-                type: 'packedbubble',
-                height: '100%'
-            },
-            title: {
-                text: 'Proportion of champions by type'
-            },
-            tooltip: {
-                useHTML: true,
-                pointFormat: '<b>{point.name}:</b> {point.value}dificulty'
-            },
-            plotOptions: {
-                packedbubble: {
-                    minSize: '20%',
-                    maxSize: '100%',
-                    zMin: 0,
-                    zMax: 1000,
-                    layoutAlgorithm: {
-                        gravitationalConstant: 0.05,
-                        splitSeries: true,
-                        seriesInteraction: false,
-                        dragBetweenSeries: true,
-                        parentNodeLimit: true
-                    },
-                    dataLabels: {
-                        enabled: true,
-                        format: '{point.name}',
-                        filter: {
-                            property: 'y',
-                            operator: '>',
-                            value: 250
-                        },
-                        style: {
-                            color: 'black',
-                            textOutline: 'none',
-                            fontWeight: 'normal'
-                        }
-                    }
-                }
-            },
-            dataLabels: {
-                enabled: true,
-                format: '{point.name}',
-                filter: {
-                    property: 'y',
-                    operator: '>',
-                    value: 250
-                },
-                style: {
-                    color: 'black',
-                    textOutline: 'none',
-                    fontWeight: 'normal'
-                }
-            },
-            series: [{
-                name: 'Assasin',
-                data: [assasin.forEach((v) => {
-                    return {
-                        name: v,
-                        value: dificulty[v]
-                    }
-                })]
-            },{
-                name: 'Fighter',
-                data: [fighter.forEach((v) => {
-                    return {
-                        name: v, 
-                        value: dificulty[v]
-                    }
-                })]
-            },{
-                name: 'Mage',
-                data: [mage.forEach((v) => {
-                    return {
-                        name: v, 
-                        value: dificulty[v]
-                    }
-                })]
-            },{
-                name: 'Marksman',
-                data: [marksman.forEach((v) => {
-                    return {
-                        name: v, 
-                        value: dificulty[v]
-                    }
-                })]
-            },{
-                name: 'Support',
-                data: [support.forEach((v) => {
-                    return {
-                        name: v, 
-                        value: dificulty[v]
-                    }
-                })]
-            },{
-                name: 'Tank',
-                data: [tank.forEach((v) => {
-                    return {
-                        name: v, 
-                        value: dificulty[v]
-                    }
-                })]
-            }]
+        google.charts.load('current', {'packages':['corechart']});
+
+        function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Name', 'Diffculty'],
+          [ name,      difficulty]
+        ]);
+
+        var options = {
+          title: 'Age vs. Weight comparison',
+          hAxis: {title: 'Name', minValue: 0, maxValue: 15},
+          vAxis: {title: 'Difficulty', minValue: 0, maxValue: 15},
+          legend: 'none'
+        };
+
+        var chart = new google.visualization.ScatterChart(document.getElementById('columnchart_material'));
+
+        chart.draw(data, options);
+      }
 
 
-        });
-    }
+        google.charts.setOnLoadCallback(drawChart);
+
+    }    
     
 onMount(getData);
 
@@ -189,64 +108,10 @@ onMount(getData);
 </script>
 
 <svelte:head>
-    <script src="https://code.highcharts.com/highcharts.js" on:load="{loadGraph}" ></script>
-    <script src="https://code.highcharts.com/highcharts-more.js"></script>
-    <script src="https://code.highcharts.com/modules/exporting.js"></script>
-    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"on:load="{loadGraph}"></script>    
 </svelte:head>
 
 <main>
-    <figure class="highcharts-figure">
-        <div id="container"></div>
-        <p class="highcharts-description">
-            This chart shows the champs for each role and the partype of each champ.
-        </p>
-    </figure>
-    <Button id="back" outline color="secondary" on:click="{pop}"> Atrás</Button>
-
+    <div div id="columnchart_material" style="width: 1800px; height: 500px;"></div>
 </main>
 
-<style>
-.highcharts-figure,
-.highcharts-data-table table {
-    min-width: 320px;
-    max-width: 800px;
-    margin: 1em auto;
-}
-
-.highcharts-data-table table {
-    font-family: Verdana, sans-serif;
-    border-collapse: collapse;
-    border: 1px solid #ebebeb;
-    margin: 10px auto;
-    text-align: center;
-    width: 100%;
-    max-width: 500px;
-}
-
-.highcharts-data-table caption {
-    padding: 1em 0;
-    font-size: 1.2em;
-    color: #555;
-}
-
-.highcharts-data-table th {
-    font-weight: 600;
-    padding: 0.5em;
-}
-
-.highcharts-data-table td,
-.highcharts-data-table th,
-.highcharts-data-table caption {
-    padding: 0.5em;
-}
-
-.highcharts-data-table thead tr,
-.highcharts-data-table tr:nth-child(even) {
-    background: #f8f8f8;
-}
-
-.highcharts-data-table tr:hover {
-    background: #f1f7ff;
-}
-</style>
