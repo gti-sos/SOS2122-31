@@ -126,8 +126,6 @@ async function getSearch(){
                 ]
                 };
         
-        
-        
 
             loadGraph();
         }else{
