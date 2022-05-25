@@ -21,7 +21,7 @@
             datos = await res.json();
             datos1 = await res1.json();
             const comun = [];
-            for (let i = 0; i < datos1.length; i++) {
+            for (let i = 0; i < datos.length; i++) {
                 comun.push(datos[i].country + "/" + datos[i].year);
                 //death_rate.push(datos[i].death_rate);
                 //life_expectancy_birth.push(datos[i].life_expectancy_birth);
