@@ -11,7 +11,6 @@
     let ar_yw = [];
     let ar_ty = [];
 
-    
     async function getData() {
         const resEXT = await fetch("https://disease.sh/v2/countries");
         const resAPI = await fetch("/api/v2/alphabetization-stats");
@@ -60,11 +59,9 @@
         } else {
             window.alert("No hay datos para este pais");
             console.log("INTERNAL FATAL ERROR");
-            window.location.href = `/#/registration-stats`;
+            window.location.href = `/#/alphabetization-stats`;
         }
-    }
 
-    async function loadGraph() {
         var myConfig = {
             globals: {
                 "font-family": "Roboto",
@@ -303,8 +300,7 @@
 
 <svelte:head>
     <script
-        src="https://cdn.zingchart.com/zingchart.min.js"
-        on:load={loadGraph}></script>
+        src="https://cdn.zingchart.com/zingchart.min.js"></script>
 </svelte:head>
 
 <main>
