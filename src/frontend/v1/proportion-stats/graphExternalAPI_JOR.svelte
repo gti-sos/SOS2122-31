@@ -59,6 +59,9 @@
     let grit = 0;
     let crimsonRush = 0;
     let flow = 0;
+    
+
+
 
 
     
@@ -244,7 +247,7 @@
             attackTank.forEach((v)=>{
                 mediaTank.push((v + defenseTank[countTank] +  magicTank[countTank])/3);
             });
-
+           
             
 
             console.log("data : " + data);
@@ -549,6 +552,7 @@ onMount(getData);
         <h3>Rol/Campeón según la media entre Attack, Magic y Defense; siendo el color la dificultad </h3>
         <div id="columnchart_material2" align="center" style="width: 1800px; height: 500px;"></div>
         <div></div>
+        
     </body>
     
 

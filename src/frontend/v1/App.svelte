@@ -46,7 +46,7 @@
 		"/proportion-stats/:country/:year": EditProportionStats,
 		"/graphProportion": GraphProportion,
 		"/graphProportionSearch/:country": GraphProportionSearch,
-		"/apexProportion": proportionSecond,
+		"/proportionSecond": proportionSecond,
 		"/graphExternalAPI_JOR": GraphExternalAPI_JOR,
 		"/graphExternalAPI2_JOR": GraphExternalAPI2_JOR,
 		"/info": Info,
