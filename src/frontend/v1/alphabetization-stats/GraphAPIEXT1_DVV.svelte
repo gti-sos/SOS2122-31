@@ -11,6 +11,7 @@
     let ar_yw = [];
     let ar_ty = [];
 
+    
     async function getData() {
         const resEXT = await fetch("https://disease.sh/v2/countries");
         const resAPI = await fetch("/api/v2/alphabetization-stats");
