@@ -29,7 +29,7 @@
             });
             console.log(apiData.length);
             apiData.forEach((element) => {
-                year.push(element.year);
+                year.push(country + " // " + element.year);
                 ar_ym.push(element.ar_ym);
                 ar_yw.push(element.ar_yw);
                 ar_ty.push(element.ar_ty);
@@ -47,14 +47,13 @@
         // JS
         JSC.chart("chartDiv", {
             debug: true,
-            legend_position: "bottom right",
-            type: "area spline",
-            defaultSeries: { shape_opacity: 0.5 },
+            defaultSeries_type: "column",
+            title_label_text: "Gráfica con JSCharting",
+            yAxis: { label_text: "Percentages" },
             xAxis: {
-                crosshair_enabled: true,
-                scale: { type: "auto" },
+                label_text: "Pais // Año",
+                categories: year,
             },
-            yAxis: { formatString: "" },
             series: [
                 {
                     name: "% Hombres",
