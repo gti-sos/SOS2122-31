@@ -18,18 +18,22 @@
     let apiData = [];
     let country = params.country;
     let pais = [];
-    let year = [];
     let male = [];
     let female = [];
     let total = [];
 
-    let sumaMale = 0;
-    let sumaFemale = 0;
-    let sumaTotal = 0;
-    let totalSuma = 0;
-    let malePercent = 0;
-    let femalePercent = 0;
-    let totalPercent = 0;
+    
+
+    let pais2015 = [];
+    let pais2016 = [];
+    let pais2017 = [];
+    let pais2018 = [];
+    let pais2019 = [];
+    let pais2020 = [];
+
+    let totalJapan = [];
+
+
 
     var chartConfigs = {};
     var dataSource = {};
@@ -52,80 +56,178 @@ async function getSearch(){
             });
             console.log(apiData.length);
             apiData.forEach((element) => {
-                year.push(element.year);
-                male.push(element.male);
-                female.push(element.female);
-                total.push(element.total);
+
+                
+                
                 //pais.push if element.country is not in the list
-                if(!pais.includes(element.country)){
+                if (pais.indexOf(element.country) == -1) {
                     pais.push(element.country);
                 }
+                console,log(pais);
+                if(element.year == "2015"){
+                    pais2015.push(element.country);
+                    total2015.push(element.total);
+                    male2015.push(element.male);
+                    female2015.push(element.female);
+                }
+                if(element.year == "2016"){
+                    pais2016.push(element.country);
+                    total2016.push(element.total);
+                    male2016.push(element.male);
+                    female2016.push(element.female);
+                }
+                if(element.year == "2017"){
+                    pais2017.push(element.country);
+                    total2017.push(element.total);
+                    male2017.push(element.male);
+                    female2017.push(element.female);
+                }
+                if(element.year == "2018"){
+                    pais2018.push(element.country);
+                    total2018.push(element.total);
+                    male2018.push(element.male);
+                    female2018.push(element.female);
+                }
+                if(element.year == "2019"){
+                    pais2019.push(element.country);
+                    total2019.push(element.total);
+                    male2019.push(element.male);
+                    female2019.push(element.female);
+                }
+                if(element.year == "2020"){
+                    pais2020.push(element.country);
+                    total2020.push(element.total);
+                    male2020.push(element.male);
+                    female2020.push(element.female);
+                }
+                
 
             });
-            console.log("Male: " + male);
-            console.log("Female" + female);
-            console.log("Total" + total);
-            console.log("Pais " + pais);
+            
 
-            for(let i = 0; i < male.length; i++){
-                sumaMale = sumaMale + male[i];
-                sumaFemale = sumaFemale + female[i];
-                sumaTotal = sumaTotal + total[i];  
-            }
-            console.log("sumaMale " + sumaMale);
-            console.log("sumaFemale " + sumaFemale);
-            console.log("sumaTotal " + sumaTotal);
-
-            totalSuma = sumaMale + sumaFemale + sumaTotal;
-            console.log("totalSuma " + totalSuma);
-
-            malePercent = sumaMale / totalSuma;
-            femalePercent = sumaFemale / totalSuma;
-            totalPercent = sumaTotal / totalSuma;
+            
 
         
-
-
-            await delay(1000);
             const dataSource = {
-                "chart": {
-                    "caption": "Late arrivals by reported cause",
-                    "subcaption": "Last month",
-                    "pyaxisname": "No. of Occurrence",
-                    "theme": "fusion",
-                    "showsecondarylimits": "0",
-                    "showdivlinesecondaryvalue": "0",
-                    "plottooltext": "Due to $label, late arrivals count is : <b>$dataValue</b> of the total <b>$sum</b> employees",
-                    "drawcrossline": "1"
+                chart: {
+                    caption: "Reach of Social Media Platforms amoung youth",
+                    yaxisname: "% of youth on this platform",
+                    subcaption: "2012-2016",
+                    showhovereffect: "1",
+                    numbersuffix: "%",
+                    drawcrossline: "1",
+                    plottooltext: "<b>$dataValue</b> of youth were on $seriesName",
+                    theme: "fusion"
                 },
-                "data": [
+                categories: [
                     {
-                    "label": "2015",
-                    "value": "5680"
+                    category: [
+                        {
+                        label: "2015"
+                        },
+                        {
+                        label: "2016"
+                        },
+                        {
+                        label: "2017"
+                        },
+                        {
+                        label: "2018"
+                        },
+                        {
+                        label: "2019"
+                        },
+                        {
+                        label: "2020"
+                        }
+                    ]
+                    }
+                ],
+                dataset: [
+                    {
+                    seriesname: "Facebook",
+                    data: [
+                        {
+                        value: "62"
+                        },
+                        {
+                        value: "64"
+                        },
+                        {
+                        value: "64"
+                        },
+                        {
+                        value: "66"
+                        },
+                        {
+                        value: "78"
+                        }
+                    ]
                     },
-                    
                     {
-                    "label": "2016",
-                    "value": "1036"
+                    seriesname: "Instagram",
+                    data: [
+                        {
+                        value: "16"
+                        },
+                        {
+                        value: "28"
+                        },
+                        {
+                        value: "34"
+                        },
+                        {
+                        value: "42"
+                        },
+                        {
+                        value: "54"
+                        }
+                    ]
                     },
                     {
-                    "label": "2017",
-                    "value": "950"
+                    seriesname: "LinkedIn",
+                    data: [
+                        {
+                        value: "20"
+                        },
+                        {
+                        value: "22"
+                        },
+                        {
+                        value: "27"
+                        },
+                        {
+                        value: "22"
+                        },
+                        {
+                        value: "29"
+                        }
+                    ]
                     },
                     {
-                    "label": "2018",
-                    "value": "500"
-                    },
-                    {
-                    "label": "2019",
-                    "value": "140"
-                    },
-                    {
-                    "label": "2020",
-                    "value": "68"
+                    seriesname: "Twitter",
+                    data: [
+                        {
+                        value: "18"
+                        },
+                        {
+                        value: "19"
+                        },
+                        {
+                        value: "21"
+                        },
+                        {
+                        value: "21"
+                        },
+                        {
+                        value: "24"
+                        }
+                    ]
                     }
                 ]
-                };
+            };
+
+            
         
 
             loadGraph();
