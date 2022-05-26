@@ -299,7 +299,8 @@
                     12: { offset: 0.4 },
                     0: { offset: 0.5, color: 'red' },
                     1: { color : 'blue'},
-                }
+                },
+                backgroundColor: '#dccbab',
             };
 
             var chart = new google.visualization.PieChart(document.getElementById('columnchart_material'));
@@ -505,7 +506,6 @@
             headerHeight: 15,
             showScale: true,
             height: 500,
-            useWeightedAverageForAggregation: true,
             // Use click to highlight and double-click to drill down.
             eventsConfig: {
             highlight: ['mouseover'],
@@ -513,22 +513,13 @@
             rollup: ['contextmenu'],
             drilldown: ['click'],
             },
-            generateTooltip: showFullTooltip
+            
 
             
         };
 
         tree.draw(data, optionsV50);
 
-        function showFullTooltip(row, size, value) {
-            return '<div style="background:#fd9; padding:10px; border-style:solid">' +
-                '<span style="font-family:Courier"><b>' + data.getValue(row, 0) +
-                '</b>, ' + data.getValue(row, 1) + ', ' + data.getValue(row, 2) +
-                ', ' + data.getValue(row, 3) + '</span><br>' +
-            data.getColumnLabel(2) +
-                ' (total value of this cell and its children): ' + size + '<br>' +
-            data.getColumnLabel(3) + ': ' + value + ' </div>';
-        }
         
 
 
@@ -552,10 +543,21 @@ onMount(getData);
 </svelte:head>
 
 <main>
-    <h1>Gráficas de los campeones de League of Legends</h1>
-    <div id="columnchart_material" align="center" style="width: 1800px; height: 710px;"></div>
-    <div id="columnchart_material2" align="center" style="width: 1800px; height: 500px;"></div>
-    <div></div>
+    <body>
+        <h1>Gráficas de los campeones de League of Legends</h1>
+        <div id="columnchart_material" align="center" style="width: 1800px; height: 710px;"></div>
+        <h3>Rol/Campeón según la media entre Attack, Magic y Defense; siendo el color la dificultad </h3>
+        <div id="columnchart_material2" align="center" style="width: 1800px; height: 500px;"></div>
+        <div></div>
+    </body>
+    
+
+    <!-- set the color of the background to #dccbab -->
+    <style>
+        body {
+            background-color: #dccbab;
+        }
+    </style>
 
 </main>
 
