@@ -58,7 +58,6 @@ async function getSearch(){
             apiData.forEach((element) => {
 
                 
-                
                 //pais.push if element.country is not in the list
                 if (pais.indexOf(element.country) == -1) {
                     pais.push(element.country);
