@@ -1,51 +1,27 @@
 <script>
     import { onMount } from "svelte";
 
-    //Atributos API Propia:
-    let apiData = [];
-    let country = [];
-    let year = [];
+    let dataEXT = [];
+    let dataAPI = [];
+    let fechas = [];
+    let dPPeople = [];
+    let cPPeople = [];
+    let tPPeople = [];
     let ar_ym = [];
     let ar_yw = [];
     let ar_ty = [];
 
-    //Atributos API Externa:
-    let apiEXT = [];
-    let cPorPersona = [];
-    let mPorPersona = [];
-    let tPorPersona = [];
-
-    //API EXTERNA:
-    async function loadAPIEXT1() {
-        const resEXT = await fetch("https://disease.sh/v2/countries");
-        if (resEXT.ok) {
-            const arrayEXT = await resEXT.json();
-            apiEXT = arrayEXT;
-            //Ordenamos valores:
-            console.log(apiEXT.length);
-            apiEXT.forEach((element) => {
-                country.push(element.country);
-                cPorPersona.push(element.oneCasePerPeople);
-                mPorPersona.push(element.oneDeathPerPeople);
-                tPorPersona.push(element.oneTestPerPeople);
-            });
-            //await delay(1000);
-            loadGraph();
-        } else {
-            window.alert("No hay datos para este pais");
-            console.log("INTERNAL FATAL ERROR");
-            window.location.href = `/#/alphabetization-stats`;
-        }
-    }
-
-    //API PROPIA:
     async function getData() {
-        const res1 = await fetch(`api/v2/alphabetization-stats/`);
-        if (res1.ok) {
-            const arrayData = await res1.json();
-            apiData = arrayData;
-            //Ordenamos valores:
-            apiData.sort(function (a, b) {
+        const resEXT = await fetch("https://disease.sh/v2/countries");
+        const resAPI = await fetch("/api/v2/alphabetization-stats");
+        if (resEXT.ok && resAPI.ok) {
+            dataEXT = await resEXT.json();
+            dataAPI = await resAPI.json();
+            const comun = [];
+            for (let i = 0; i < dataAPI.length; i++) {
+                comun.push(dataAPI[i].country + "/" + dataAPI[i].year);
+            }
+            dataAPI.sort(function (a, b) {
                 var keyA = new Date(a.year),
                     keyB = new Date(b.year);
                 // Compare the 2 dates
@@ -53,21 +29,37 @@
                 if (keyA > keyB) return 1;
                 return 0;
             });
-            console.log(apiData.length);
-            apiData.forEach((element) => {
-                country.push(element.country);
-                year.push(element.year);
-                ar_ym.push(element.ar_ym);
-                ar_yw.push(element.ar_yw);
-                ar_ty.push(element.ar_ty);
+            dataAPI.forEach((data) => {
+                let fecha1 = data["country"] + "-" + data.year;
+                fechas.push(fecha1);
+                if (comun.includes(fecha1)) {
+                    let index = comun.indexOf(fecha1);
+                    cPPeople.push(dataEXT[index].oneCasePerPeople);
+                    dPPeople.push(dataEXT[index].oneDeathPerPeople);
+                    tPPeople.push(dataEXT[index].oneTestPerPeople);
+                    dataEXT.splice(index, 1);
+                } else {
+                    cPPeople.push("");
+                    dPPeople.push("");
+                    tPPeople.push("");
+                }
+                ar_ym.push(data.ar_ym);
+                ar_yw.push(data.ar_yw);
+                ar_ty.push(data.ar_ty);
             });
-            //await delay(1000);
-            loadAPIEXT1();
-            loadGraph();
+            dataEXT.forEach((data) => {
+                fechas.push(data["country"] + "-" + data.year);
+                cPPeople.push(data.oneCasePerPeople);
+                dPPeople.push(data.oneDeathPerPeople);
+                tPPeople.push(data.oneTestPerPeople);
+                ar_ym.push("");
+                ar_yw.push("");
+                ar_ty.push("");
+            });
         } else {
-            window.alert("ERROR AL CONECTAR CON LA BASE DE DATOS");
+            window.alert("No hay datos para este pais");
             console.log("INTERNAL FATAL ERROR");
-            window.location.href = `/#/alphabetization-stats`;
+            window.location.href = `/#/registration-stats`;
         }
     }
 
@@ -185,7 +177,7 @@
                         },
                         zooming: 1,
                         "max-labels": 12,
-                        labels: country,
+                        labels: fechas,
                         "max-items": 12,
                         "items-overlap": true,
                         guide: {
@@ -265,7 +257,7 @@
                             "font-size": "14px",
                         },
                         {
-                            values: cPorPersona,
+                            values: cPPeople,
                             "line-color": "#F9E641",
                             "background-color": "#F9E641",
                             aspect: "spline",
@@ -275,7 +267,7 @@
                             "font-size": "14px",
                         },
                         {
-                            values: mPorPersona,
+                            values: dPPeople,
                             "line-color": "#CFEDBE",
                             "background-color": "#CFEDBE",
                             aspect: "spline",
@@ -285,7 +277,7 @@
                             "font-size": "14px",
                         },
                         {
-                            values: tPorPersona,
+                            values: tPPeople,
                             "line-color": "#E0BEED",
                             "background-color": "#E0BEED",
                             aspect: "spline",
