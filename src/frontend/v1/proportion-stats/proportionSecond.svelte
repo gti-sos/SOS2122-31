@@ -32,6 +32,53 @@
     let pais2020 = [];
 
     let totalJapan = [];
+    let totalMexico = [];
+    let totalAlbania = [];
+    let totalSpain = [];
+    let totalHonduras = [];
+    let totalIsrael = [];
+    let totalMauricio = [];
+    let totalColombia = [];
+    let totalCyprus = [];
+    let totalMaldivas = [];
+    let totalRwanda = [];
+    let totalAfganistan = [];
+    let totalChad = [];
+    let totalArgentina = [];
+    let totalOthers = [];
+
+    let maleMexico = [];
+    let maleJapan = [];
+    let maleAlbania = [];
+    let maleSpain = [];
+    let maleHonduras = [];
+    let maleIsrael = [];
+    let maleMauricio = [];
+    let maleColombia = [];
+    let maleCyprus = [];
+    let maleMaldivas = [];
+    let maleRwanda = [];
+    let maleAfganistan = [];
+    let maleChad = [];
+    let maleArgentina = [];
+    let maleOthers = [];
+
+    let femaleMexico = [];
+    let femaleJapan = [];
+    let femaleAlbania = [];
+    let femaleSpain = [];
+    let femaleHonduras = [];
+    let femaleIsrael = [];
+    let femaleMauricio = [];
+    let femaleColombia = [];
+    let femaleCyprus = [];
+    let femaleMaldivas = [];
+    let femaleRwanda = [];
+    let femaleAfganistan = [];
+    let femaleChad = [];
+    let femaleArgentina = [];
+    let femaleOthers = [];
+
 
 
 
@@ -59,45 +106,485 @@ async function getSearch(){
 
                 
                 //pais.push if element.country is not in the list
-                if (pais.indexOf(element.country) == -1) {
+                if(!pais.includes(element.country)){
                     pais.push(element.country);
                 }
-                console,log(pais);
+                console.log(pais);
                 if(element.year == "2015"){
                     pais2015.push(element.country);
-                    total2015.push(element.total);
-                    male2015.push(element.male);
-                    female2015.push(element.female);
+                    if(element.country == "Japan"){
+                        totalJapan.push(element.total);
+                        maleJapan.push(element.male);
+                        femaleJapan.push(element.female);
+                    }
+                    if(element.country == "Mexico"){
+                        totalMexico.push(element.total);
+                        maleMexico.push(element.male);
+                        femaleMexico.push(element.female);
+                    }
+                    if(element.country == "Albania"){
+                        totalAlbania.push(element.total);
+                        maleAlbania.push(element.male);
+                        femaleAlbania.push(element.female);
+                    }
+                    if(element.country == "Spain"){
+                        totalSpain.push(element.total);
+                        maleSpain.push(element.male);
+                        femaleSpain.push(element.female);
+                    }
+                    if(element.country == "Honduras"){
+                        totalHonduras.push(element.total);
+                        maleHonduras.push(element.male);
+                        femaleHonduras.push(element.female);
+                    }
+                    if(element.country == "Israel"){
+                        totalIsrael.push(element.total);
+                        maleIsrael.push(element.male);
+                        femaleIsrael.push(element.female);
+                    }
+                    if(element.country == "Mauricio"){
+                        totalMauricio.push(element.total);
+                        maleMauricio.push(element.male);
+                        femaleMauricio.push(element.female);
+                    }
+                    if(element.country == "Colombia"){
+                        totalColombia.push(element.total);
+                        maleColombia.push(element.male);
+                        femaleColombia.push(element.female);
+                    }
+                    if(element.country == "Cyprus"){
+                        totalCyprus.push(element.total);
+                        maleCyprus.push(element.male);
+                        femaleCyprus.push(element.female);
+                    }
+                    if(element.country == "Maldivas"){
+                        totalMaldivas.push(element.total);
+                        maleMaldivas.push(element.male);
+                        femaleMaldivas.push(element.female);
+                    }
+                    if(element.country == " Rwanda"){
+                        totalRwanda.push(element.total);
+                        maleRwanda.push(element.male);
+                        femaleRwanda.push(element.female);
+                    }
+                    if(element.country == "Afganistan"){
+                        totalAfganistan.push(element.total);
+                        maleAfganistan.push(element.male);
+                        femaleAfganistan.push(element.female);
+                    }
+                    if(element.country == "Chad"){
+                        totalChad.push(element.total);
+                        maleChad.push(element.male);
+                        femaleChad.push(element.female);
+                    }
+                    if(element.country == "Argentina"){
+                        totalArgentina.push(element.total);
+                        maleArgentina.push(element.male);
+                        femaleArgentina.push(element.female);
+                    }
+                    else{
+                        totalOthers.push(element.total);
+                        maleOthers.push(element.male);
+                        femaleOthers.push(element.female);
+                    }
+                    
                 }
                 if(element.year == "2016"){
                     pais2016.push(element.country);
-                    total2016.push(element.total);
-                    male2016.push(element.male);
-                    female2016.push(element.female);
+                    if(element.country == "Japan"){
+                        totalJapan.push(element.total);
+                        maleJapan.push(element.male);
+                        femaleJapan.push(element.female);
+                    }
+                    if(element.country == "Mexico"){
+                        totalMexico.push(element.total);
+                        maleMexico.push(element.male);
+                        femaleMexico.push(element.female);
+                    }
+                    if(element.country == "Albania"){
+                        totalAlbania.push(element.total);
+                        maleAlbania.push(element.male);
+                        femaleAlbania.push(element.female);
+                    }
+                    if(element.country == "Spain"){
+                        totalSpain.push(element.total);
+                        maleSpain.push(element.male);
+                        femaleSpain.push(element.female);
+                    }
+                    if(element.country == "Honduras"){
+                        totalHonduras.push(element.total);
+                        maleHonduras.push(element.male);
+                        femaleHonduras.push(element.female);
+                    }
+                    if(element.country == "Israel"){
+                        totalIsrael.push(element.total);
+                        maleIsrael.push(element.male);
+                        femaleIsrael.push(element.female);
+                    }
+                    if(element.country == "Mauricio"){
+                        totalMauricio.push(element.total);
+                        maleMauricio.push(element.male);
+                        femaleMauricio.push(element.female);
+                    }
+                    if(element.country == "Colombia"){
+                        totalColombia.push(element.total);
+                        maleColombia.push(element.male);
+                        femaleColombia.push(element.female);
+                    }
+                    if(element.country == "Cyprus"){
+                        totalCyprus.push(element.total);
+                        maleCyprus.push(element.male);
+                        femaleCyprus.push(element.female);
+                    }
+                    if(element.country == "Maldivas"){
+                        totalMaldivas.push(element.total);
+                        maleMaldivas.push(element.male);
+                        femaleMaldivas.push(element.female);
+                    }
+                    if(element.country == " Rwanda"){
+                        totalRwanda.push(element.total);
+                        maleRwanda.push(element.male);
+                        femaleRwanda.push(element.female);
+                    }
+                    if(element.country == "Afganistan"){
+                        totalAfganistan.push(element.total);
+                        maleAfganistan.push(element.male);
+                        femaleAfganistan.push(element.female);
+                    }
+                    if(element.country == "Chad"){
+                        totalChad.push(element.total);
+                        maleChad.push(element.male);
+                        femaleChad.push(element.female);
+                    }
+                    if(element.country == "Argentina"){
+                        totalArgentina.push(element.total);
+                        maleArgentina.push(element.male);
+                        femaleArgentina.push(element.female);
+                    }
+                    else{
+                        totalOthers.push(element.total);
+                        maleOthers.push(element.male);
+                        femaleOthers.push(element.female);
+                    }
+                    
                 }
                 if(element.year == "2017"){
                     pais2017.push(element.country);
-                    total2017.push(element.total);
-                    male2017.push(element.male);
-                    female2017.push(element.female);
+                    if(element.country == "Japan"){
+                        totalJapan.push(element.total);
+                        maleJapan.push(element.male);
+                        femaleJapan.push(element.female);
+                    }
+                    if(element.country == "Mexico"){
+                        totalMexico.push(element.total);
+                        maleMexico.push(element.male);
+                        femaleMexico.push(element.female);
+                    }
+                    if(element.country == "Albania"){
+                        totalAlbania.push(element.total);
+                        maleAlbania.push(element.male);
+                        femaleAlbania.push(element.female);
+                    }
+                    if(element.country == "Spain"){
+                        totalSpain.push(element.total);
+                        maleSpain.push(element.male);
+                        femaleSpain.push(element.female);
+                    }
+                    if(element.country == "Honduras"){
+                        totalHonduras.push(element.total);
+                        maleHonduras.push(element.male);
+                        femaleHonduras.push(element.female);
+                    }
+                    if(element.country == "Israel"){
+                        totalIsrael.push(element.total);
+                        maleIsrael.push(element.male);
+                        femaleIsrael.push(element.female);
+                    }
+                    if(element.country == "Mauricio"){
+                        totalMauricio.push(element.total);
+                        maleMauricio.push(element.male);
+                        femaleMauricio.push(element.female);
+                    }
+                    if(element.country == "Colombia"){
+                        totalColombia.push(element.total);
+                        maleColombia.push(element.male);
+                        femaleColombia.push(element.female);
+                    }
+                    if(element.country == "Cyprus"){
+                        totalCyprus.push(element.total);
+                        maleCyprus.push(element.male);
+                        femaleCyprus.push(element.female);
+                    }
+                    if(element.country == "Maldivas"){
+                        totalMaldivas.push(element.total);
+                        maleMaldivas.push(element.male);
+                        femaleMaldivas.push(element.female);
+                    }
+                    if(element.country == " Rwanda"){
+                        totalRwanda.push(element.total);
+                        maleRwanda.push(element.male);
+                        femaleRwanda.push(element.female);
+                    }
+                    if(element.country == "Afganistan"){
+                        totalAfganistan.push(element.total);
+                        maleAfganistan.push(element.male);
+                        femaleAfganistan.push(element.female);
+                    }
+                    if(element.country == "Chad"){
+                        totalChad.push(element.total);
+                        maleChad.push(element.male);
+                        femaleChad.push(element.female);
+                    }
+                    if(element.country == "Argentina"){
+                        totalArgentina.push(element.total);
+                        maleArgentina.push(element.male);
+                        femaleArgentina.push(element.female);
+                    }
+                    else{
+                        totalOthers.push(element.total);
+                        maleOthers.push(element.male);
+                        femaleOthers.push(element.female);
+                    }
+                    
                 }
                 if(element.year == "2018"){
                     pais2018.push(element.country);
-                    total2018.push(element.total);
-                    male2018.push(element.male);
-                    female2018.push(element.female);
+                    if(element.country == "Japan"){
+                        totalJapan.push(element.total);
+                        maleJapan.push(element.male);
+                        femaleJapan.push(element.female);
+                    }
+                    if(element.country == "Mexico"){
+                        totalMexico.push(element.total);
+                        maleMexico.push(element.male);
+                        femaleMexico.push(element.female);
+                    }
+                    if(element.country == "Albania"){
+                        totalAlbania.push(element.total);
+                        maleAlbania.push(element.male);
+                        femaleAlbania.push(element.female);
+                    }
+                    if(element.country == "Spain"){
+                        totalSpain.push(element.total);
+                        maleSpain.push(element.male);
+                        femaleSpain.push(element.female);
+                    }
+                    if(element.country == "Honduras"){
+                        totalHonduras.push(element.total);
+                        maleHonduras.push(element.male);
+                        femaleHonduras.push(element.female);
+                    }
+                    if(element.country == "Israel"){
+                        totalIsrael.push(element.total);
+                        maleIsrael.push(element.male);
+                        femaleIsrael.push(element.female);
+                    }
+                    if(element.country == "Mauricio"){
+                        totalMauricio.push(element.total);
+                        maleMauricio.push(element.male);
+                        femaleMauricio.push(element.female);
+                    }
+                    if(element.country == "Colombia"){
+                        totalColombia.push(element.total);
+                        maleColombia.push(element.male);
+                        femaleColombia.push(element.female);
+                    }
+                    if(element.country == "Cyprus"){
+                        totalCyprus.push(element.total);
+                        maleCyprus.push(element.male);
+                        femaleCyprus.push(element.female);
+                    }
+                    if(element.country == "Maldivas"){
+                        totalMaldivas.push(element.total);
+                        maleMaldivas.push(element.male);
+                        femaleMaldivas.push(element.female);
+                    }
+                    if(element.country == "Rwanda"){
+                        totalRwanda.push(element.total);
+                        maleRwanda.push(element.male);
+                        femaleRwanda.push(element.female);
+                    }
+                    if(element.country == "Afganistan"){
+                        totalAfganistan.push(element.total);
+                        maleAfganistan.push(element.male);
+                        femaleAfganistan.push(element.female);
+                    }
+                    if(element.country == "Chad"){
+                        totalChad.push(element.total);
+                        maleChad.push(element.male);
+                        femaleChad.push(element.female);
+                    }
+                    if(element.country == "Argentina"){
+                        totalArgentina.push(element.total);
+                        maleArgentina.push(element.male);
+                        femaleArgentina.push(element.female);
+                    }
+                    else{
+                        totalOthers.push(element.total);
+                        maleOthers.push(element.male);
+                        femaleOthers.push(element.female);
+                    }
+                    
                 }
                 if(element.year == "2019"){
                     pais2019.push(element.country);
-                    total2019.push(element.total);
-                    male2019.push(element.male);
-                    female2019.push(element.female);
+                    if(element.country == "Japan"){
+                        totalJapan.push(element.total);
+                        maleJapan.push(element.male);
+                        femaleJapan.push(element.female);
+                    }
+                    if(element.country == "Mexico"){
+                       totalMexico.push(element.total);
+                       maleMexico.push(element.male);
+                       femaleMexico.push(element.female);
+                   }
+                   if(element.country == "Albania"){
+                       totalAlbania.push(element.total);
+                       maleAlbania.push(element.male);
+                       femaleAlbania.push(element.female);
+                   }
+                   if(element.country == "Spain"){
+                       totalSpain.push(element.total);
+                       maleSpain.push(element.male);
+                       femaleSpain.push(element.female);
+                   }
+                   if(element.country == "Honduras"){
+                       totalHonduras.push(element.total);
+                       maleHonduras.push(element.male);
+                       femaleHonduras.push(element.female);
+                   }
+                   if(element.country == "Israel"){
+                       totalIsrael.push(element.total);
+                       maleIsrael.push(element.male);
+                       femaleIsrael.push(element.female);
+                   }
+                   if(element.country == "Mauricio"){
+                       totalMauricio.push(element.total);
+                       maleMauricio.push(element.male);
+                       femaleMauricio.push(element.female);
+                   }
+                   if(element.country == "Colombia"){
+                       totalColombia.push(element.total);
+                       maleColombia.push(element.male);
+                       femaleColombia.push(element.female);
+                   }
+                   if(element.country == "Cyprus"){
+                       totalCyprus.push(element.total);
+                       maleCyprus.push(element.male);
+                       femaleCyprus.push(element.female);
+                   }
+                   if(element.country == "Maldivas"){
+                       totalMaldivas.push(element.total);
+                       maleMaldivas.push(element.male);
+                       femaleMaldivas.push(element.female);
+                   }
+                   if(element.country == "Rwanda"){
+                       totalRwanda.push(element.total);
+                       maleRwanda.push(element.male);
+                       femaleRwanda.push(element.female);
+                   }
+                   if(element.country == "Afganistan"){
+                       totalAfganistan.push(element.total);
+                       maleAfganistan.push(element.male);
+                       femaleAfganistan.push(element.female);
+                   }
+                   if(element.country == "Chad"){
+                       totalChad.push(element.total);
+                       maleChad.push(element.male);
+                       femaleChad.push(element.female);
+                   }
+                   if(element.country == "Argentina"){
+                       totalArgentina.push(element.total);
+                       maleArgentina.push(element.male);
+                       femaleArgentina.push(element.female);
+                   }
+                   else{
+                       totalOthers.push(element.total);
+                       maleOthers.push(element.male);
+                       femaleOthers.push(element.female);
+                   }
+                
+
+                    
                 }
                 if(element.year == "2020"){
                     pais2020.push(element.country);
-                    total2020.push(element.total);
-                    male2020.push(element.male);
-                    female2020.push(element.female);
+                   if(element.country == "Japan"){
+                       totalJapan.push(element.total);
+                       maleJapan.push(element.male);
+                       femaleJapan.push(element.female);
+                   }
+                   if(element.country == "Mexico"){
+                       totalMexico.push(element.total);
+                       maleMexico.push(element.male);
+                       femaleMexico.push(element.female);
+                   }
+                   if(element.country == "Albania"){
+                       totalAlbania.push(element.total);
+                       maleAlbania.push(element.male);
+                       femaleAlbania.push(element.female);
+                   }
+                   if(element.country == "Spain"){
+                       totalSpain.push(element.total);
+                       maleSpain.push(element.male);
+                       femaleSpain.push(element.female);
+                   }
+                   if(element.country == "Honduras"){
+                       totalHonduras.push(element.total);
+                       maleHonduras.push(element.male);
+                       femaleHonduras.push(element.female);
+                   }
+                   if(element.country == "Israel"){
+                       totalIsrael.push(element.total);
+                       maleIsrael.push(element.male);
+                       femaleIsrael.push(element.female);
+                   }
+                   if(element.country == "Mauricio"){
+                       totalMauricio.push(element.total);
+                       maleMauricio.push(element.male);
+                       femaleMauricio.push(element.female);
+                   }
+                   if(element.country == "Colombia"){
+                       totalColombia.push(element.total);
+                       maleColombia.push(element.male);
+                       femaleColombia.push(element.female);
+                   }
+                   if(element.country == "Cyprus"){
+                       totalCyprus.push(element.total);
+                       maleCyprus.push(element.male);
+                       femaleCyprus.push(element.female);
+                   }
+                   if(element.country == "Maldivas"){
+                       totalMaldivas.push(element.total);
+                       maleMaldivas.push(element.male);
+                       femaleMaldivas.push(element.female);
+                   }
+                   if(element.country == "Rwanda"){
+                       totalRwanda.push(element.total);
+                       maleRwanda.push(element.male);
+                       femaleRwanda.push(element.female);
+                   }
+                   if(element.country == "Afganistan"){
+                       totalAfganistan.push(element.total);
+                       maleAfganistan.push(element.male);
+                       femaleAfganistan.push(element.female);
+                   }
+                   if(element.country == "Chad"){
+                       totalChad.push(element.total);
+                       maleChad.push(element.male);
+                       femaleChad.push(element.female);
+                   }
+                   if(element.country == "Argentina"){
+                       totalArgentina.push(element.total);
+                       maleArgentina.push(element.male);
+                       femaleArgentina.push(element.female);
+                   }
+                   else{
+                       totalOthers.push(element.total);
+                       maleOthers.push(element.male);
+                       femaleOthers.push(element.female);
+                   }
+                   
                 }
                 
 
@@ -144,85 +631,776 @@ async function getSearch(){
                 ],
                 dataset: [
                     {
-                    seriesname: "Facebook",
+                    seriesname: "Japan Total",
                     data: [
                         {
-                        value: "62"
+                        value: totalJapan[0]
                         },
                         {
-                        value: "64"
+                        value: totalJapan[1]
                         },
                         {
-                        value: "64"
+                        value: totalJapan[2]
                         },
                         {
-                        value: "66"
+                        value: totalJapan[3]
                         },
                         {
-                        value: "78"
+                        value: totalJapan[4]
                         }
                     ]
                     },
                     {
-                    seriesname: "Instagram",
+                    seriesname: "Japan Male",
                     data: [
                         {
-                        value: "16"
+                        value: maleJapan[0]
                         },
                         {
-                        value: "28"
+                        value: maleJapan[1]
                         },
                         {
-                        value: "34"
+                        value: maleJapan[2]
                         },
                         {
-                        value: "42"
+                        value: maleJapan[3]
                         },
                         {
-                        value: "54"
+                        value: maleJapan[4]
                         }
                     ]
                     },
                     {
-                    seriesname: "LinkedIn",
+                    seriesname: "Japan Female",
                     data: [
                         {
-                        value: "20"
+                        value: femaleJapan[0]
                         },
                         {
-                        value: "22"
+                        value: femaleJapan[1]
                         },
                         {
-                        value: "27"
+                        value: femaleJapan[2]
                         },
                         {
-                        value: "22"
+                        value: femaleJapan[3]
                         },
                         {
-                        value: "29"
+                        value: femaleJapan[4]
                         }
                     ]
                     },
                     {
-                    seriesname: "Twitter",
+                    seriesname: "Mexico Total",
                     data: [
                         {
-                        value: "18"
+                        value: totalMexico[0]
                         },
                         {
-                        value: "19"
+                        value: totalMexico[1]
                         },
                         {
-                        value: "21"
+                        value: totalMexico[2]
                         },
                         {
-                        value: "21"
+                        value: totalMexico[3]
                         },
                         {
-                        value: "24"
+                        value: totalMexico[4]
+                        }
+                    ]
+                    },
+                    {
+                    seriesname: "Mexico Male",
+                    data: [
+                        {
+                        value: maleMexico[0]
+                        },
+                        {
+                        value: maleMexico[1]
+                        },
+                        {
+                        value: maleMexico[2]
+                        },
+                        {
+                        value: maleMexico[3]
+                        },
+                        {
+                        value: maleMexico[4]
+                        }
+                    ]
+                    },
+                    {
+                    seriesname: "Mexico Female",
+                    data: [
+                        {
+                        value: femaleMexico[0]
+                        },
+                        {
+                        value: femaleMexico[1]
+                        },
+                        {
+                        value: femaleMexico[2]
+                        },
+                        {
+                        value: femaleMexico[3]
+                        },
+                        {
+                        value: femaleMexico[4]
+                        }
+                    ]
+                    },
+                    {
+                    seriesname: "Albania Total",
+                    data: [
+                        {
+                        value: totalAlbania[0]
+                        },
+                        {
+                        value: totalAlbania[1]
+                        },
+                        {
+                        value: totalAlbania[2]
+                        },
+                        {
+                        value: totalAlbania[3]
+                        },
+                        {
+                        value: totalAlbania[4]
+                        }
+                    ]
+                    },
+                    {
+                    seriesname: "Albania Male",
+                    data: [
+                        {
+                        value: maleAlbania[0]
+                        },
+                        {
+                        value: maleAlbania[1]
+                        },
+                        {
+                        value: maleAlbania[2]
+                        },
+                        {
+                        value: maleAlbania[3]
+                        },
+                        {
+                        value: maleAlbania[4]
+                        }
+                    ]
+                    },
+                    {
+                    seriesname: "Albania Female",
+                    data: [
+                        {
+                        value: femaleJapan[0]
+                        },
+                        {
+                        value: femaleJapan[1]
+                        },
+                        {
+                        value: femaleJapan[2]
+                        },
+                        {
+                        value: femaleJapan[3]
+                        },
+                        {
+                        value: femaleJapan[4]
+                        }
+                    ]
+                    },
+                    {
+                    seriesname: "Spain Total",
+                    data: [
+                        {
+                        value: totalSpain[0]
+                        },
+                        {
+                        value: totalSpain[1]
+                        },
+                        {
+                        value: totalSpain[2]
+                        },
+                        {
+                        value: totalSpain[3]
+                        },
+                        {
+                        value: totalSpain[4]
+                        }
+                    ]
+                    },
+                    {
+                    seriesname: "Spain Male",
+                    data: [
+                        {
+                        value: maleSpain[0]
+                        },
+                        {
+                        value: maleSpain[1]
+                        },
+                        {
+                        value: maleSpain[2]
+                        },
+                        {
+                        value: maleSpain[3]
+                        },
+                        {
+                        value: maleSpain[4]
+                        }
+                    ]
+                    },
+                    {
+                    seriesname: "Spain Female",
+                    data: [
+                        {
+                        value: femaleSpain[0]
+                        },
+                        {
+                        value: femaleSpain[1]
+                        },
+                        {
+                        value: femaleSpain[2]
+                        },
+                        {
+                        value: femaleSpain[3]
+                        },
+                        {
+                        value: femaleSpain[4]
+                        }
+                    ]
+                    },
+                    {
+                    seriesname: "Honduras Total",
+                    data: [
+                        {
+                        value: totalHonduras[0]
+                        },
+                        {
+                        value: totalHonduras[1]
+                        },
+                        {},
+                        {
+                        value: totalHonduras[2]
+                        },
+                        {
+                        value: totalHonduras[3]
+                        },
+                        {
+                        value: totalHonduras[4]
+                        }
+                    ]
+                    },
+                    {
+                    seriesname: "Honduras Male",
+                    data: [
+                        {
+                        value: maleHonduras[0]
+                        },
+                        {
+                        value: maleHonduras[1]
+                        },
+                        {},
+                        {
+                        value: maleHonduras[2]
+                        },
+                        {
+                        value: maleHonduras[3]
+                        },
+                        {
+                        value: maleHonduras[4]
+                        }
+                    ]
+                    },
+                    {
+                    seriesname: "Honduras Female",
+                    data: [
+                        {
+                        value: femaleHonduras[0]
+                        },
+                        {
+                        value: femaleHonduras[1]
+                        },
+                        {},
+                        {
+                        value: femaleHonduras[2]
+                        },
+                        {
+                        value: femaleHonduras[3]
+                        },
+                        {
+                        value: femaleHonduras[4]
+                        }
+                    ]
+                    },
+                    {
+                    seriesname: "Israel Total",
+                    data: [
+                        {
+                        value: totalIsrael[0]
+                        },
+                        {
+                        value: totalIsrael[1]
+                        },
+                        {
+                        value: totalIsrael[2]
+                        },
+                        {
+                        value: totalIsrael[3]
+                        },
+                        {
+                        value: totalIsrael[4]
+                        }
+                    ]
+                    },
+                    {
+                    seriesname: "Israel Male",
+                    data: [
+                        {
+                        value: maleIsrael[0]
+                        },
+                        {
+                        value: maleIsrael[1]
+                        },
+                        {
+                        value: maleIsrael[2]
+                        },
+                        {
+                        value: maleIsrael[3]
+                        },
+                        {
+                        value: maleIsrael[4]
+                        }
+                    ]
+                    },
+                    {
+                    seriesname: "Israel Female",
+                    data: [
+                        {
+                        value: femaleIsrael[0]
+                        },
+                        {
+                        value: femaleIsrael[1]
+                        },
+                        {
+                        value: femaleIsrael[2]
+                        },
+                        {
+                        value: femaleIsrael[3]
+                        },
+                        {
+                        value: femaleIsrael[4]
+                        }
+                    ]
+                    },
+                    {
+                    seriesname: "Mauricio Total",
+                    data: [
+                        {
+                        value: totalMauricio[0]
+                        },
+                        {
+                        value: totalMauricio[1]
+                        },
+                        {
+                        value: totalMauricio[2]
+                        },
+                        {
+                        value: totalMauricio[3]
+                        },
+                        {
+                        value: totalMauricio[4]
+                        }
+                    ]
+                    },
+                    {
+                    seriesname: "Mauricio Male",
+                    data: [
+                        {
+                        value: maleMauricio[0]
+                        },
+                        {
+                        value: maleMauricio[1]
+                        },
+                        {
+                        value: maleMauricio[2]
+                        },
+                        {
+                        value: maleMauricio[3]
+                        },
+                        {
+                        value: maleMauricio[4]
+                        }
+                    ]
+                    },
+                    {
+                    seriesname: "Mauricio Female",
+                    data: [
+                        {
+                        value: femaleMauricio[0]
+                        },
+                        {
+                        value: femaleMauricio[1]
+                        },
+                        {
+                        value: femaleMauricio[2]
+                        },
+                        {
+                        value: femaleMauricio[3]
+                        },
+                        {
+                        value: femaleMauricio[4]
+                        }
+                    ]
+                    },
+                    {
+                    seriesname: "Colombia Total",
+                    data: [
+                        {
+                        value: totalColombia[0]
+                        },
+                        {
+                        value: totalColombia[1]
+                        },
+                        {
+                        value: totalColombia[2]
+                        },
+                        {
+                        value: totalColombia[3]
+                        }
+                    ]
+                    },
+                    {
+                    seriesname: "Colombia Male",
+                    data: [
+                        {
+                        value: maleColombia[0]
+                        },
+                        {
+                        value: maleColombia[1]
+                        },
+                        {
+                        value: maleColombia[2]
+                        },
+                        {
+                        value: maleColombia[3]
+                        }
+                    ]
+                    },
+                    {
+                    seriesname: "Colombia Female",
+                    data: [
+                        {
+                        value: femaleColombia[0]
+                        },
+                        {
+                        value: femaleColombia[1]
+                        },
+                        {
+                        value: femaleColombia[2]
+                        },
+                        {
+                        value: femaleColombia[3]
+                        }
+                    ]
+                    },
+                    {
+                    seriesname: "Cyprus Total",
+                    data: [
+                        {
+                        value: totalCyprus[0]
+                        },
+                        {
+                        value: totalCyprus[1]
+                        },
+                        {
+                        value: totalCyprus[2]
+                        },
+                        {
+                        value: totalCyprus[3]
+                        },
+                        {
+                        value: totalCyprus[4]
+                        }
+                    ]
+                    },
+                    {
+                    seriesname: "Cyprus Male",
+                    data: [
+                        {
+                        value: maleCyprus[0]
+                        },
+                        {
+                        value: maleCyprus[1]
+                        },
+                        {
+                        value: maleCyprus[2]
+                        },
+                        {
+                        value: maleCyprus[3]
+                        },
+                        {
+                        value: maleCyprus[4]
+                        }
+                    ]
+                    },
+                    {
+                    seriesname: "Cyprus Female",
+                    data: [
+                        {
+                        value: femaleCyprus[0]
+                        },
+                        {
+                        value: femaleCyprus[1]
+                        },
+                        {
+                        value: femaleCyprus[2]
+                        },
+                        {
+                        value: femaleCyprus[3]
+                        },
+                        {
+                        value: femaleCyprus[4]
+                        }
+                    ]
+                    },
+                    {
+                    seriesname: "Maldivas Total",
+                    data: [
+                        {
+                        value: totalMaldivas[0]
+                        },
+                        {
+                        value: totalMaldivas[1]
+                        },
+                        {
+                        value: totalMaldivas[2]
+                        },
+                        {
+                        value: totalMaldivas[3]
+                        },
+                        {
+                        value: totalMaldivas[4]
+                        }
+                    ]
+                    },
+                    {
+                    seriesname: "Maldivas Male",
+                    data: [
+                        {
+                        value: maleMaldivas[0]
+                        },
+                        {
+                        value: maleMaldivas[1]
+                        },
+                        {
+                        value: maleMaldivas[2]
+                        },
+                        {
+                        value: maleMaldivas[3]
+                        },
+                        {
+                        value: maleMaldivas[4]
+                        }
+                    ]
+                    },
+                    {
+                    seriesname: "Maldivas Female",
+                    data: [
+                        {
+                        value: femaleMaldivas[0]
+                        },
+                        {
+                        value: femaleMaldivas[1]
+                        },
+                        {
+                        value: femaleMaldivas[2]
+                        },
+                        {
+                        value: femaleMaldivas[3]
+                        },
+                        {
+                        value: femaleMaldivas[4]
+                        }
+                    ]
+                    },
+                    {
+                    seriesname: "Rwanda Total",
+                    data: [
+                        {},
+                        {},
+                        {},
+                        {
+                        value: totalRwanda[0]
+                        },
+                        {
+                        value: totalRwanda[1]
+                        
+                        }
+                    ]
+                    },
+                    
+                    {
+                    seriesname: "Rwanda Male",
+                    data: [
+                        {},
+                        {},
+                        {},
+                        {
+                        value: maleRwanda[0]
+                        },
+                        {
+                        value: maleRwanda[1]
+                        }
+                    ]
+                    },
+                    {
+                    seriesname: "Rwanda Female",
+                    data: [
+                        {},
+                        {},
+                        {},
+                        {
+                        value: femaleRwanda[0]
+                        },
+                        {
+                        value: femaleRwanda[1]
+                        }
+                    ]
+                    },
+                    {
+                    seriesname: "Afganistan Total",
+                    data: [
+                        {},
+                        {},
+                        {
+                        value: totalAfganistan[0]
+                        },
+                        {},
+                        {
+                        value: totalAfganistan[1]
+                        }
+                    ]
+                    },
+                    {
+                    seriesname: "Afganistan Male",
+                    data: [
+                        {},
+                        {},
+                        {
+                        value: maleAfganistan[0]
+                        },
+                        {},
+                        {
+                        value: maleAfganistan[1]
+                        }
+                    ]
+                    },
+                    {
+                    seriesname: "Afganistan Female",
+                    data: [
+                        {},
+                        {},
+                        {
+                        value: femaleAfganistan[0]
+                        },
+                        {},
+                        {
+                        value: femaleAfganistan[1]
+                        }
+                    ]
+                    },
+                    {
+                    seriesname: "Chad Total",
+                    data: [
+                        {
+                        value: totalChad[0]
+                        },
+                        {
+                        },
+                        {
+                        },
+                        {
+                        },
+                        {
+                        }
+                    ]
+                    },
+                    {
+                    seriesname: "Chad Male",
+                    data: [
+                        {
+                        value: maleChad[0]
+                        },
+                        {
+                        },
+                        {
+                        },
+                        {
+                        },
+                        {
+                        }
+                    ]
+                    },
+                    {
+                    seriesname: "Chad Female",
+                    data: [
+                        {
+                        value: femaleChad[0]
+                        },
+                        {
+                        },
+                        {
+                        },
+                        {
+                        },
+                        {
+                        }
+                    ]
+                    },
+                    {
+                    seriesname: "Argentina Total",
+                    data: [
+                        {
+                        value: totalArgentina[0]
+                        },
+                        {},
+                        {},
+                        {},
+                        {
+                        value: totalArgentina[1]
+                        }
+                    ]
+                    },
+                    {
+                    seriesname: "Argentina Male",
+                    data: [
+                        {
+                        value: maleArgentina[0]
+                        },
+                        {},
+                        {},
+                        {},
+                        {
+                        value: maleArgentina[1]
+                        }
+                    ]
+                    },
+                    {
+                    seriesname: "Argentina Female",
+                    data: [
+                        {
+                        value: femaleArgentina[0]
+                        },
+                        {},
+                        {},
+                        {},
+                        {
+                        value: femaleArgentina[1]
                         }
                     ]
                     }
+                    
                 ]
             };
 
@@ -238,12 +1416,12 @@ async function getSearch(){
     }
     
     async function loadGraph(){
-        chartConfigs = {
-            type: "pareto2d",
-            width: 1000,
-            height: 600,
-            dataFormat: "json",
-            dataSource,
+        const chartConfigs = {
+            type: 'msline',
+            width: 600,
+            height: 400,
+            dataFormat: 'json',
+            dataSource
         };
     }
 
@@ -281,7 +1459,7 @@ async function getSearch(){
             Volver
             </Button>
     </div>
-    <div align="left">
+    <div >
         <SvelteFC {...chartConfigs}/>
     </div>
        

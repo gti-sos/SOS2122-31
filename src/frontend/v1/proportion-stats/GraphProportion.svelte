@@ -47,6 +47,7 @@ async function getSearch(){
                 if(!pais.includes(element.country)){
                     pais.push(element.country);
                 }
+                console.log(pais);
 
             });
             console.log("Male: " + male);
