@@ -17,6 +17,8 @@
 	import GraphProportionSearch from "./proportion-stats/GraphProportionSearch.svelte";
 	import proportionSecond from "./proportion-stats/proportionSecond.svelte";
 	import proportionSecondSearch from "./proportion-stats/proportionSecondSearch.svelte";
+	import graphSOSJOR from "./proportion-stats/graphSOSJOR.svelte";
+	import graphSOSJOR2 from "./proportion-stats/graphSOSJOR2.svelte";
 	import GraphExternalAPI_JOR from "./proportion-stats/graphExternalAPI_JOR.svelte";
 	import GraphExternalAPI2_JOR from "./proportion-stats/graphExternalAPI2_JOR.svelte";
 //	
@@ -49,6 +51,8 @@
 		"/graphProportionSearch/:country": GraphProportionSearch,
 		"/proportionSecond": proportionSecond,
 		"/proportionSecondSearch/:country": proportionSecondSearch,
+		"/graphSOSJOR": graphSOSJOR,
+		"/graphSOSJOR2": graphSOSJOR2,
 		"/graphExternalAPI_JOR": GraphExternalAPI_JOR,
 		"/graphExternalAPI2_JOR": GraphExternalAPI2_JOR,
 		"/info": Info,
