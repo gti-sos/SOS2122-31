@@ -65,7 +65,7 @@
 
 
 async function getSearch(){
-    const res2 = await fetch(`api/v1/proportion-stats`);
+    const res2 = await fetch(`api/v1/proportion-stats/${country}`);
         if (res2.ok) {
             const arrayData = await res2.json();
             apiData = arrayData;
@@ -163,7 +163,7 @@ async function getSearch(){
             totalMale2020 = totalMale2020/total2020.length;
             totalFemale2020 = totalFemale2020/total2020.length;
             totalTotal2020 = totalTotal2020/total2020.length;
-
+            
 
 
         loadGraph();
