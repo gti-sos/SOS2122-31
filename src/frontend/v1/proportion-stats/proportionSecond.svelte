@@ -179,11 +179,11 @@ async function getSearch(){
             labels: ['2015', '2016', '2017', '2018', '2019', '2020'],
             datasets: [
                 {
-                    name : "Male", type : "bar",
+                    name : "Male", type : "line",
                     values: [totalMale2015, totalMale2016, totalMale2017, totalMale2018, totalMale2019, totalMale2020]
                 },
                 {
-                    name : "Female", type : "bar",
+                    name : "Female", type : "line",
                     values: [totalFemale2015, totalFemale2016, totalFemale2017, totalFemale2018, totalFemale2019, totalFemale2020]
                 },
                 {
@@ -198,9 +198,9 @@ async function getSearch(){
                                             // new Chart() in case of ES6 module with above usage
             title: "My Awesome Chart",
             data: data,
-            type: 'bar', // or 'bar', 'line', 'scatter', 'pie', 'percentage'
+            type: 'axis-mixed', // or 'bar', 'line', 'scatter', 'pie', 'percentage'
             height: 250,
-            colors: ['#7cd6fd', '#743ee2']
+            colors: ['#7cd6fd', '#743ee2', '#d24168']
         }) 
      }
 

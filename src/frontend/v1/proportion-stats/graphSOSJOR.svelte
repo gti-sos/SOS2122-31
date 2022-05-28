@@ -178,6 +178,8 @@ async function getSearch(){
             totalFemale2020 = totalFemale2020/total2020.length;
             totalTotal2020 = totalTotal2020/total2020.length;
 
+            console.log("totalMale2015" + totalMale2015);
+
 
             const arrayData1 = await res1.json();
             apiData1 = arrayData1;
