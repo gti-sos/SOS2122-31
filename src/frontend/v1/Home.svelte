@@ -23,7 +23,7 @@
             </a>)</li>
             <li><a href="https://sos2122-31.herokuapp.com/api/v1/proportion-stats/docs">[https://sos2122-31.herokuapp.com/api/v1/proportion-stats/docs]</a>(developed by [José Ortiz Roldán] <a href="https://github.com/madgIitch">
             </a>)</li>
-            <li><a href="https://sos2122-31.herokuapp.com/api/v2/proportion-stats/docs">[https://sos2122-31.herokuapp.com/api/v2/proportion-stats/docs]</a>(developed by [José Ortiz Roldán] <a href="https://github.com/madgIitch">
+            <li><a href="https://sos2122-31.herokuapp.com/api/v1/proportion-stats/docs">[https://sos2122-31.herokuapp.com/api/v2/proportion-stats/docs]</a>(developed by [José Ortiz Roldán] <a href="https://github.com/madgIitch">
             </a>)</li>
         </ul>
         <h6>
