@@ -307,7 +307,7 @@
         ]);
 
         var options = {
-          title: 'Company Performance',
+          title: 'Capacitation and inequality',
           curveType: 'function',
           legend: { position: 'bottom' }
         };

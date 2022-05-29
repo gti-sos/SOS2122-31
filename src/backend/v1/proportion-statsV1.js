@@ -868,7 +868,7 @@ module.exports.register = (app,db) => {
                 res.sendStatus(404,"NOT FOUND");
                 return;
             }
-            db.remove({country: countryR, year: yearR}, {}, (err, numRemoved)=>{
+            db.remove({country: countryR, year: parseInt(yearR)}, {}, (err, numRemoved)=>{
                 if (err){
                     res.sendStatus(500,"ERROR EN CLIENTE");
                     return;

@@ -51,35 +51,61 @@ import { element } from "svelte/internal";
     let totalFemale2020 = 0;
     let totalTotal2020 = 0;
 
-    let publicExpenditure2018 = [];
-    let publicExpenditure2019 = [];
-    let publicExpenditure2020 = [];
+    
 
-    let peToGpd2018 = [];
-    let peToGpd2019 = [];
-    let peToGpd2020 = [];
+    let export2010 = [];
+    let import2010 = [];
+    let balance2010 = [];
 
-    let peOnDefense2018 = [];
-    let peOnDefense2019 = [];
-    let peOnDefense2020 = [];
+    let export2013 = [];
+    let import2013 = [];
+    let balance2013 = [];
 
-    let totalPublicExpenditure2018 = 0;
-    let totalPublicExpenditure2019 = 0;
-    let totalPublicExpenditure2020 = 0;
+    let export2015 = [];
+    let import2015 = [];
+    let balance2015 = [];
 
-    let totalGpd2018 = 0;
-    let totalGpd2019 = 0;
-    let totalGpd2020 = 0;
+    let export2016 = [];
+    let import2016 = [];
+    let balance2016 = [];
 
-    let totalPeOnDefense2018 = 0;
-    let totalPeOnDefense2019 = 0;
-    let totalPeOnDefense2020 = 0;
+    let export2017 = [];
+    let import2017 = [];
+    let balance2017 = [];
+
+    let export2018 = [];
+    let import2018 = [];
+    let balance2018 = [];
+
+    let totalExport2010 = 0;
+    let totalImport2010 = 0;
+    let totalBalance2010 = 0;
+
+    let totalExport2013 = 0;
+    let totalImport2013 = 0;
+    let totalBalance2013 = 0;
+
+    let totalExport2015 = 0;
+    let totalImport2015 = 0;
+    let totalBalance2015 = 0;
+
+    let totalExport2016 = 0;
+    let totalImport2016 = 0;
+    let totalBalance2016 = 0;
+
+    let totalExport2017 = 0;
+    let totalImport2017 = 0;
+    let totalBalance2017 = 0;
+
+    let totalExport2018 = 0;
+    let totalImport2018 = 0;
+    let totalBalance2018 = 0;
 
 
 
 async function getSearch(){
     const res = await fetch(`api/v1/proportion-stats`);
-    const res1 = await fetch('https://sos2122-27.herokuapp.com/api/v2/public-expenditure-stats');
+    const res1 = await fetch('https://sos2122-22.herokuapp.com/api/v2/trade-stats');
         if (res.ok && res1.ok) {
             const arrayData = await res.json();
             apiData = arrayData;
@@ -185,53 +211,71 @@ async function getSearch(){
             apiData1 = arrayData1;
             console.log(apiData1);
             apiData1.forEach((v) => {
+                if(v.year == 2010){
+                    export2010.push(v.export);
+                    import2010.push(v.import);
+                    balance2010.push(v.balance);
+                }
+                if(v.year == 2013){
+                    export2013.push(v.export);
+                    import2013.push(v.import);
+                    balance2013.push(v.balance);
+                }
+                if(v.year == 2015){
+                    export2015.push(v.export);
+                    import2015.push(v.import);
+                    balance2015.push(v.balance);
+                }
+                if(v.year == 2016){
+                    export2016.push(v.export);
+                    import2016.push(v.import);
+                    balance2016.push(v.balance);
+                }
+                if(v.year == 2017){
+                    export2017.push(v.export);
+                    import2017.push(v.import);
+                    balance2017.push(v.balance);
+                }
                 if(v.year == 2018){
-                    publicExpenditure2018.push(v.public_expenditure);
-                    peToGpd2018.push(v.pe_to_gdp);
-                    peOnDefense2018.push(v.pe_on_defence);
+                    export2018.push(v.export);
+                    import2018.push(v.import);
+                    balance2018.push(v.balance);
+                }
 
-                    console.log("publicExpenditure2018: " + publicExpenditure2018);
-                }
-                if(v.year == 2019){
-                    publicExpenditure2019.push(v.public_expenditure);
-                    peToGpd2019.push(v.pe_to_gdp);
-                    peOnDefense2019.push(v.pe_on_defence);
-                }
-                if(v.year == 2020){
-                    publicExpenditure2020.push(v.public_expenditure);
-                    peToGpd2020.push(v.pe_to_gdp);
-                    peOnDefense2020.push(v.pe_on_defence);
-                }
             });
-            for(let i = 0; i < publicExpenditure2018.length; i++){
-                totalPublicExpenditure2018 = totalPublicExpenditure2018 + publicExpenditure2018[i];
-                totalGpd2018 = totalGpd2018 + peToGpd2018[i];
-                totalPeOnDefense2018 = totalPeOnDefense2018 + peOnDefense2018[i];
-
-                console.log(totalPublicExpenditure2018);
+            for(let i = 0; i < export2010.length; i++){
+                totalExport2010 = totalExport2010 + export2010[i];
+                totalImport2010 = totalImport2010 + import2010[i];
+                totalBalance2010 = totalBalance2010 + balance2010[i];
             }
-            for(let i = 0; i < publicExpenditure2019.length; i++){
-                totalPublicExpenditure2019 = totalPublicExpenditure2019 + publicExpenditure2019[i];
-                totalGpd2019 = totalGpd2019 + peToGpd2019[i];
-                totalPeOnDefense2019 = totalPeOnDefense2019 + peOnDefense2019[i];
+            for(let i = 0; i < export2013.length; i++){
+                totalExport2013 = totalExport2013 + export2013[i];
+                totalImport2013 = totalImport2013 + import2013[i];
+                totalBalance2013 = totalBalance2013 + balance2013[i];
             }
-            for(let i = 0; i < publicExpenditure2020.length; i++){
-                totalPublicExpenditure2020 = totalPublicExpenditure2020 + publicExpenditure2020[i];
-                totalGpd2020 = totalGpd2020 + peToGpd2020[i];
-                totalPeOnDefense2020 = totalPeOnDefense2020 + peOnDefense2020[i];
+            for(let i = 0; i < export2015.length; i++){
+                totalExport2015 = totalExport2015 + export2015[i];
+                totalImport2015 = totalImport2015 + import2015[i];
+                totalBalance2015 = totalBalance2015 + balance2015[i];
+            }
+            for(let i = 0; i < export2016.length; i++){
+                totalExport2016 = totalExport2016 + export2016[i];
+                totalImport2016 = totalImport2016 + import2016[i];
+                totalBalance2016 = totalBalance2016 + balance2016[i];
+            }
+            for(let i = 0; i < export2017.length; i++){
+                totalExport2017 = totalExport2017 + export2017[i];
+                totalImport2017 = totalImport2017 + import2017[i];
+                totalBalance2017 = totalBalance2017 + balance2017[i];
+            }
+            for(let i = 0; i < export2018.length; i++){
+                totalExport2018 = totalExport2018 + export2018[i];
+                totalImport2018 = totalImport2018 + import2018[i];
+                totalBalance2018 = totalBalance2018 + balance2018[i];
             }
 
-            totalPublicExpenditure2018 = totalPublicExpenditure2018/(publicExpenditure2018.length *100000);
-            totalGpd2018 = totalGpd2018/(publicExpenditure2018.length *100000);
-            totalPeOnDefense2018 = totalPeOnDefense2018/(publicExpenditure2018.length *100000);
-            totalPublicExpenditure2019 = totalPublicExpenditure2019/(publicExpenditure2019.length *1000000);
-            totalGpd2019 = totalGpd2019/(publicExpenditure2019.length *100000);
-            totalPeOnDefense2019 = totalPeOnDefense2019/(publicExpenditure2019.length *100000);
-            totalPublicExpenditure2020 = totalPublicExpenditure2020/(publicExpenditure2020.length *100000);
-            totalGpd2020 = totalGpd2020/(publicExpenditure2020.length *100000);
-            totalPeOnDefense2020 = totalPeOnDefense2020/(publicExpenditure2020.length *100000);
 
-            console.log(totalPublicExpenditure2018);
+            
 
 
 
@@ -248,36 +292,36 @@ async function getSearch(){
     
     async function loadGraph(){
         const data = {
-            labels: ['2015', '2016', '2017', '2018', '2019', '2020'],
+            labels: ['2010','2013','2015', '2016', '2017', '2018', '2019', '2020'],
             datasets: [
                 {
                     name: "Total Capacitation proportion",
-                    values: [totalTotal2015, totalTotal2016, totalTotal2017, totalTotal2018, totalTotal2019, totalTotal2020],
+                    values: [0,0, totalTotal2015, totalTotal2016, totalTotal2017, totalTotal2018, totalTotal2019, totalTotal2020],
                     chartType: 'bar'
                 },
                 {
                     name: "Male Capacitation proportion",
-                    values: [totalMale2015, totalMale2016, totalMale2017, totalMale2018, totalMale2019, totalMale2020],
+                    values: [0,0, totalMale2015, totalMale2016, totalMale2017, totalMale2018, totalMale2019, totalMale2020],
                     chartType: 'line'
                 },
                 {
                     name: "Female Capacitation proportion",
-                    values: [totalFemale2015, totalFemale2016, totalFemale2017, totalFemale2018, totalFemale2019, totalFemale2020],
+                    values: [0,0, totalFemale2015, totalFemale2016, totalFemale2017, totalFemale2018, totalFemale2019, totalFemale2020],
                     chartType: 'line'
                 },
                 {
-                    name: "Media Public Expenditure",
-                    values: [0, 0, 0, totalPublicExpenditure2018, totalPublicExpenditure2019, totalPublicExpenditure2020],
+                    name: "Media Exports",
+                    values: [totalExport2010, totalExport2013, totalExport2015, totalExport2016, totalExport2017, totalExport2018, 0, 0],
                     chartType: 'bar'
                 },
                 {
-                    name: "Media GPD",
-                    values: [0, 0, 0, totalGpd2018, totalGpd2019, totalGpd2020],
+                    name: "Media Imports",
+                    values: [totalImport2010, totalImport2013, totalImport2015, totalImport2016, totalImport2017, totalImport2018, 0, 0],
                     chartType: 'line'
                 },
                 {
-                    name: "Media Public Expenditure on Defense",
-                    values: [0, 0, 0, totalPeOnDefense2018, totalPeOnDefense2019, totalPeOnDefense2020],
+                    name: "Media Balances",
+                    values: [totalBalance2010, totalBalance2013, totalBalance2015, totalBalance2016, totalBalance2017, totalBalance2018, 0, 0],
                     chartType: 'line'
                 }
             ]
@@ -304,23 +348,7 @@ async function getSearch(){
 </svelte:head>
 
 <main>
-    <br />
-    <h1 align="center">Pais al que buscar gráfica:</h1>
-    <div align="center">
-        <input type="text" bind:value={country} />
-        <Button
-            outline
-            color="info"
-            on:click={() => {
-                window.location.href =  `/#/proportionSecondSearch/${country}`;
-                location.reload();
-
-            }}
-        >
-            Buscar
-        </Button>
-    </div>
-    <br />
+    
     <figure>
         <div id="chart"></div>
     </figure>
