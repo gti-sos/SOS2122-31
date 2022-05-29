@@ -188,31 +188,64 @@
                     coeff2015.push(v.coefficients);
                     education2015.push(v.educations);
                     life2015.push(v.lifes);
+
+                    
                 }
                 if(v.year == 2018){
                     coeff2018.push(v.coefficients);
                     education2018.push(v.educations);
                     life2018.push(v.lifes);
+
+                  
                 }
                 if(v.year == 2019){
                     coeff2019.push(v.coefficients);
                     education2019.push(v.educations);
                     life2019.push(v.lifes);
+
+                    
                 }
 
                 console.log("Coeff2015: " + coeff2015);
                 console.log("Education2015: " + education2015);
                 console.log("Life2015: " + life2015);
             });
+
             
+            
+            //convert the string from coeff2015 to numbers
+            for(let i = 0; i < coeff2015.length; i++){
+                coeff2015[i] = parseFloat(coeff2015[i]);
+            }
+            for(let i = 0; i < education2015.length; i++){
+                education2015[i] = parseFloat(education2015[i]);
+            }
+            for(let i = 0; i < life2015.length; i++){
+                life2015[i] = parseFloat(life2015[i]);
+            }
+            for(let i = 0; i < coeff2018.length; i++){
+                coeff2018[i] = parseFloat(coeff2018[i]);
+            }
+            for(let i = 0; i < education2018.length; i++){
+                education2018[i] = parseFloat(education2018[i]);
+            }
+            for(let i = 0; i < life2018.length; i++){
+                life2018[i] = parseFloat(life2018[i]);
+            }
+            for(let i = 0; i < coeff2019.length; i++){
+                coeff2019[i] = parseFloat(coeff2019[i]);
+            }
+            for(let i = 0; i < education2019.length; i++){
+                education2019[i] = parseFloat(education2019[i]);
+            }
+            for(let i = 0; i < life2019.length; i++){
+                life2019[i] = parseFloat(life2019[i]);
+            }
+
             for(let i = 0; i < coeff2015.length; i++){
                 totalcoeff2015 = totalcoeff2015 + coeff2015[i];
                 totaleducation2015 = totaleducation2015 + education2015[i];
                 totallife2015 = totallife2015 + life2015[i];
-
-                console.log("totalcoeff2015: " + totalcoeff2015);
-                console.log("totaleducation2015: " + totaleducation2015);
-                console.log("totallife2015: " + totallife2015);
             }
             for(let i = 0; i < coeff2018.length; i++){
                 totalcoeff2018 = totalcoeff2018 + coeff2018[i];
@@ -225,15 +258,21 @@
                 totallife2019 = totallife2019 + life2019[i];
             }
 
-            totalcoeff2015 = totalcoeff2015/(coeff2015.length * 1000);
-            totaleducation2015 = totaleducation2015/(education2015.length * 1000);
-            totallife2015 = totallife2015/(life2015.length * 100);
-            totalcoeff2018 = totalcoeff2018/(coeff2018.length * 1000);
-            totaleducation2018 = totaleducation2018/(education2018.length * 1000);
-            totallife2018 = totallife2018/(life2018.length * 100);
-            totalcoeff2019 = totalcoeff2019/(coeff2019.length * 1000);
-            totaleducation2019 = totaleducation2019/(education2019.length * 1000);
-            totallife2019 = totallife2019/(life2019.length * 100);
+
+
+
+            console.log("Coeff2015: " + coeff2015);
+
+
+            totalcoeff2015 = totalcoeff2015/(coeff2015.length * 1);
+            totaleducation2015 = totaleducation2015/(education2015.length * 1);
+            totallife2015 = totallife2015/(life2015.length * 1);
+            totalcoeff2018 = totalcoeff2018/(coeff2018.length * 1);
+            totaleducation2018 = totaleducation2018/(education2018.length * 1);
+            totallife2018 = totallife2018/(life2018.length * 1);
+            totalcoeff2019 = totalcoeff2019/(coeff2019.length * 1);
+            totaleducation2019 = totaleducation2019/(education2019.length * 1);
+            totallife2019 = totallife2019/(life2019.length * 1);
 
 
             console.log("totalcoeff2015: " + totalcoeff2015);
@@ -246,7 +285,7 @@
     }else{
         window.alert("No hay datos cargados");
         console.log("INTERNAL FATAL ERROR");
-        window.location.href ='/#/proportion-stats';
+        await fetch('https://sos2122-11.herokuapp.com/api/v2/inequality-stats/loadInitialData');
     }
 
 
