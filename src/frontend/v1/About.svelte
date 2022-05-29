@@ -15,7 +15,8 @@
             Daniel Vega Vera:
         </h6>
         <h6>
-            José Ortiz Roldán:
+            José Ortiz Roldán: (<a href="https://youtu.be/xnNUDhU6_nE">https://youtu.be/xnNUDhU6_nE</a>)
+            
         </h6>
     
     </body>
