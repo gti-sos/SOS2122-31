@@ -68,7 +68,7 @@
         <h6>
             José Ortiz Roldán:
             <a href="https://sos2122-31.herokuapp.com/api/v1/proportion-stats">Enlace BackEnd v1</a>
-            <a href="https://sos2122-31.herokuapp.com/api/v2/proportion-stats">Enlace BackEnd v2</a>
+            <a href="https://sos2122-31.herokuapp.com/api/v1/proportion-stats">Enlace BackEnd v2</a>
             <a href="https://sos2122-31.herokuapp.com/#/proportion-stats">Enlace FrontEnd</a>
             <li><strong>Gráficas José Ortiz Roldán</strong>:
             <ul>
