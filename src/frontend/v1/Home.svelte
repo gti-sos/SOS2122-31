@@ -73,15 +73,15 @@
             <li><strong>Gráficas José Ortiz Roldán</strong>:
             <ul>
                 <h8>Individuales:</h8>
-                <li><a href="https://sos2122-31.herokuapp.com/#/graphProportion">/#/graphProportion</a> (developed by <a href="https://github.com/madgIitch">Jose Ortiz Roldán</a>)</li>
-                <li><a href="https://sos2122-31.herokuapp.com/#/proportionSecond">/#/proportionSecond</a> (developed by <a href="https://github.com/madgIitch">Jose Ortiz Roldán</a>)</li>
+                <li><a href="https://sos2122-31.herokuapp.com/#/graphProportion">/#/graphProportion</a> (developed by <a href="https://github.com/madgIitch">Jose Ortiz Roldán</a> with the technology of <a href="https://www.highcharts.com/demo"> Highcharts</a>)</li>
+                <li><a href="https://sos2122-31.herokuapp.com/#/proportionSecond">/#/proportionSecond</a> (developed by <a href="https://github.com/madgIitch">Jose Ortiz Roldán</a> with the technology of <a href="https://frappe.io/charts"> Frappe Charts</a>)</li>
 
                 <h8>Integraciones SOS:</h8>
-                <li><a href="https://sos2122-31.herokuapp.com/#/graphSOSJOR">/#/graphSOSJOR</a> (developed by <a href="https://github.com/madgIitch">Jose Ortiz Roldán</a>)</li>
-                <li><a href="https://sos2122-31.herokuapp.com/#/graphSOSJOR2">/#/graphSOSJOR2</a> (developed by <a href="https://github.com/madgIitch">Jose Ortiz Roldán</a>)</li>
+                <li><a href="https://sos2122-31.herokuapp.com/#/graphSOSJOR">/#/graphSOSJOR</a> (developed by <a href="https://github.com/MarcoSaa01">Marcos Saa Martinez</a> with the technology of <a href="https://frappe.io/charts"> Frappe Charts</a>)</li>
+                <li><a href="https://sos2122-31.herokuapp.com/#/graphSOSJOR2">/#/graphSOSJOR2</a> (developed by <a href="https://github.com/Jackman97">Antonio Maiquez</a> with the technology of <a href="https://developers.google.com/chart/interactive/docs/gallery?hl=es"> Google Charts</a>)</li>
                 <h8>Integraciones Esternas:</h8>
-                <li><a href="https://sos2122-31.herokuapp.com/#/graphExternalAPI_JOR">/#//graphExternalAPI_JOR</a>(developed by <a href="https://github.com/madgIitch">Jose Ortiz Roldán</a>)</li>
-                <li><a href="https://sos2122-31.herokuapp.com/#/graphExternalAPI2_JOR">/#/graphExternalAPI2_JOR</a>(developed by <a href="https://github.com/madgIitch">Jose Ortiz Roldán</a>)</li>
+                <li><a href="https://sos2122-31.herokuapp.com/#/graphExternalAPI_JOR">/#//graphExternalAPI_JOR</a>(developed by <a href="https://github.com/madgIitch">Jose Ortiz Roldán</a> with the technology of <a href="https://developers.google.com/chart/interactive/docs/gallery?hl=es"> Google Charts</a>)</li>
+                <li><a href="https://sos2122-31.herokuapp.com/#/graphExternalAPI2_JOR">/#/graphExternalAPI2_JOR</a>(developed by <a href="https://github.com/madgIitch">Jose Ortiz Roldán</a> with the technology of <a href="https://developers.google.com/chart/interactive/docs/gallery?hl=es"> Google Charts</a>)</li>
             </ul>
             </li>
 
