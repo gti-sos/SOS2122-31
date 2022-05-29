@@ -94,6 +94,10 @@
             <li><strong>VIDEO D03 ISMAEL MESA</strong>:<ul>
                 <li><a href="https://www.youtube.com/watch?v=mFv_BTX8kn4">VIDEO-SOS-ISMAELMESA</a></li>
                 </ul>
+            <li><strong>VIDEO D03 DANIEL VEGA</strong>:<ul>
+                <li><a href="https://youtu.be/gjvSoKYuTTE">VIDEO-SOS-DANIELVEGA</a></li>
+                </ul>
+            </li>
         </h6>
         
     </body>

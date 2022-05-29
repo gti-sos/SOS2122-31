@@ -12,7 +12,7 @@
             Ismael Mesa Zyout: (<a href="https://www.youtube.com/watch?v=mFv_BTX8kn4">https://www.youtube.com/watch?v=mFv_BTX8kn4</a>)
         </h6>
         <h6>
-            Daniel Vega Vera:
+            Daniel Vega Vera: (<a href="https://youtu.be/gjvSoKYuTTE">https://youtu.be/gjvSoKYuTTE</a>)
         </h6>
         <h6>
             José Ortiz Roldán: (<a href="https://youtu.be/xnNUDhU6_nE">https://youtu.be/xnNUDhU6_nE</a>)

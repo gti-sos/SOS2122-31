@@ -115,6 +115,10 @@
             <li><strong>VIDEO D03 JOSE ORTIZ ROLDAN</strong>:<ul>
                 <li><a href="https://youtu.be/xnNUDhU6_nE">VIDEO-SOS-JOSE ORTIZ ROLDAN</a></li>
                 </ul>
+            <li><strong>VIDEO D03 DANIEL VEGA</strong>:<ul>
+                <li><a href="https://youtu.be/gjvSoKYuTTE">VIDEO-SOS-DANIELVEGA</a></li>
+                </ul>
+            </li>
         </h6>
     
     </body>
